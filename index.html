@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de Emergencia</title>
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Meta tags para mejorar la experiencia -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Emergencia">
+    <link rel="apple-touch-icon" href="icono_192.png">
+    <!-- Estilos -->
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            font-family: Arial, sans-serif;
+            position: relative; /* Necesario para posicionar elementos hijos de forma absoluta */
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 28px;
+            color: #7c7a7a;
+            margin: 0;
+        }
+        header h1.large-title {
+            font-size: 40px;    
+            color: #333333;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: -250px;
+            font-family: 'Arial Black', Courier, monospace;
+            letter-spacing: 2px;
+            background: linear-gradient(270deg, #161616, rgb(223, 219, 219), rgb(53, 50, 50)); /* Gradiente invertido */
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 8s linear infinite; /* Animación del resplandor */
+        }
+        @keyframes shine {
+            from {
+                background-position: 200% center; /* Comienza desde la derecha */
+            }
+            to {
+                background-position: -100% center; /* Termina en la izquierda */
+            }
+        }
+        header p {
+            font-size: 16px;
+            color: #7c7a7a;
+            margin: 10px 0 0;
+        }
+        #emergencyButton {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            width: 150px;
+            height: 150px;
+            border: 10px solid #daa520;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            animation: glow 1s infinite alternate;
+        }
+        #emergencyButton:active, #emergencyButton.active {
+            background-color: darkred;
+            border-color: rgb(138, 101, 7);
+            transform: scale(0.95);
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 07px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.9);
+            }
+        }
+        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
+            background-color: #000000; /* Color azul */
+            color: rgb(157, 151, 151);
+            font-size: 14px; /* Tamaño de fuente más pequeño */
+            width: 100px; /* Ancho más pequeño */
+            height: 40px; /* Altura más pequeña */
+            border: 2px solid #5d5f5f; /* Borde azul claro */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            animation: glowBlue 1s infinite alternate;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Forma de trapezoide */
+            position: absolute; /* Posicionamiento absoluto */
+            bottom: 20px; /* Distancia desde la parte inferior */
+            left: 20px; /* Distancia desde la izquierda */
+        }
+        #modifyGiroButton {
+            left: 130px; /* Posición al lado del botón "Cargar URL" */
+        }
+        #modifyNombreButton {
+            left: 240px; /* Posición al lado del botón "Giro Negocio" */
+        }
+        #modifyUrlButton:active, #modifyUrlButton.active, #modifyGiroButton:active, #modifyGiroButton.active, #modifyNombreButton:active, #modifyNombreButton.active {
+            background-color: #1e90ff; /* Azul más oscuro al hacer clic */
+            border-color: #00bfff; /* Borde más claro al hacer clic */
+            transform: scale(0.95);
+        }
+        @keyframes glowBlue {
+            from {
+                box-shadow: 0 0 10px rgba(0, 135, 255, 0.7), 0 0 20px rgba(0, 135, 255, 0.7);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(0, 135, 255, 0.9), 0 0 30px rgba(0, 135, 255, 0.9);
+            }
+        }
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(238, 238, 121);
+            border: 6px solid rgb(124, 115, 115);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2000; /*para indicar el orden de apilamiento del mensaje*/
+            text-align: center;
+        }
+        .custom-alert.confirmation {
+            background-color: rgb(119, 176, 105);
+            color: black;
+        }
+        /*Para personalizar Cuadro de Confirmación*/
+        .custom-confirm {
+            display: none;
+            position: fixed;
+            width: 230px; /* Ancho del cuadro */
+            height: 130px; /* Altura */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #0687f0; 
+            border: 6px solid #07edf5;
+            color: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            text-align: center;
+            
+        }
+        .custom-confirm p {
+            margin: 0 0 20px;
+            font-size: 18px;
+        }
+        .custom-confirm .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        .custom-confirm button {
+            background-color: #8a182b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .custom-confirm button:hover {
+            background-color: #1e90ff;
+            border: 2px solid #8a182b;
+        }
+        /*Cuadro de texto para nueva URL*/
+        .custom-url-input {
+            display: none;
+            position: fixed;
+            width: 250px; /* Ancho más grande */
+            height: 100px; /* Altura más grande */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            border: 6px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(181, 13, 167, 0.5);
+            z-index: 1000;
+            /*display: none;*/
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        .custom-url-input input {
+            width: 90%; /* Ancho del input */
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .custom-url-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .custom-url-input .button-container button {
+            background-color: #8a182b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .custom-url-input .button-container button:hover {
+            background-color: #1e90ff;
+            border: 2px solid #8a182b;
+        }
+        /* Estilos para el cuadro de diálogo personalizado del giro del negocio */
+        .custom-giro-input {
+            display: none;
+            position: fixed;
+            width: 250px; /* Ancho del cuadro */
+            height: 100px; /* Altura */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0; /* Color de fondo */
+            border: 6px solid #07edf5; /* Borde */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        .custom-giro-input input {
+            width: 90%; /* Ancho del input */
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .custom-giro-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .custom-giro-input .button-container button {
+            background-color: #8a182b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .custom-giro-input .button-container button:hover {
+            background-color: #1e90ff;
+            border: 2px solid #8a182b;
+        }
+        /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
+        .custom-nombre-input {
+            display: none;
+            position: fixed;
+            width: 250px; /* Ancho del cuadro */
+            height: 100px; /* Altura */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0; /* Color de fondo */
+            border: 6px solid #f507dd; /* Borde */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        .custom-nombre-input input {
+            width: 90%; /* Ancho del input */
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .custom-nombre-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .custom-nombre-input .button-container button {
+            background-color: #8a182b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .custom-nombre-input .button-container button:hover {
+            background-color: #1e90ff;
+            border: 2px solid #8a182b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="large-title">SECRETARÍA DE SEGURIDAD CIUDADANA</h1><br><br>
+        <h1 id="giroNegocioText">GIRO DEL NEGOCIO</h1>
+        <h1 id="nombreNegocioText">"NOMBRE DEL NEGOCIO"</h1>
+        <p>Mi Policía en Mi Negocio</p><br>
+    </header>
+    <button id="emergencyButton" aria-label="Activar emergencia">Emergencia</button>
+    <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
+    <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
+    <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
+
+    <!-- Ventana de mensaje personalizada -->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button id="alertCloseButton">Ok!</button>
+    </div>
+
+    <!-- Cuadro de confirmación personalizado -->
+    <div id="customConfirm" class="custom-confirm">
+        <p>¿Estás seguro de activar la emergencia? Esto enviará una alerta a las autoridades.</p>
+        <div class="button-container">
+            <button id="confirmYes">Sí</button>
+            <button id="confirmNo">No</button>
+        </div>
+    </div>
+
+    <!-- Cuadro de diálogo para modificar la URL -->
+    <div id="customUrlInput" class="custom-url-input">
+        <input type="text" id="newUrlInput" placeholder="Ingresa la nueva URL">
+        <div class="button-container">
+            <button id="urlSubmitButton">Guardar</button>
+            <button id="urlCancelButton">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Cuadro de diálogo para modificar el giro del negocio -->
+    <div id="customGiroInput" class="custom-giro-input">
+        <input type="text" id="newGiroInput" placeholder="Ingresa el nuevo giro del negocio">
+        <div class="button-container">
+            <button id="giroSubmitButton">Guardar</button>
+            <button id="giroCancelButton">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Cuadro de diálogo para modificar el nombre del negocio -->
+    <div id="customNombreInput" class="custom-nombre-input">
+        <input type="text" id="newNombreInput" placeholder="Ingresa el nuevo nombre del negocio">
+        <div class="button-container">
+            <button id="nombreSubmitButton">Guardar</button>
+            <button id="nombreCancelButton">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+
+/*-----Esta sección fue lo último que se agrego para poder guardar el giro y nombre en el localStorage------*/
+
+// Guardar el giro del negocio en localStorage
+document.getElementById('giroSubmitButton').addEventListener('click', function () {
+    const newGiro = document.getElementById('newGiroInput').value;
+    if (newGiro) {
+        document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+        localStorage.setItem('giroNegocio', newGiro);
+        hideCustomGiroInput();
+    } else {
+        showCustomAlert("Por favor, ingresa un giro válido.");
+    }
+});
+
+// Cargar el giro del negocio desde localStorage al cargar la página
+window.addEventListener('load', function () {
+    const savedGiro = localStorage.getItem('giroNegocio');
+    if (savedGiro) {
+        document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
+    }
+});
+
+
+
+
+// Guardar el nombre del negocio en localStorage
+document.getElementById('nombreSubmitButton').addEventListener('click', function () {
+    const newNombre = document.getElementById('newNombreInput').value;
+    if (newNombre) {
+        // Asegurarse de que el nombre esté entre comillas
+        const nombreConComillas = `"${newNombre}"`;
+        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+        localStorage.setItem('nombreNegocio', nombreConComillas); // Guardar con comillas
+        hideCustomNombreInput();
+    } else {
+        showCustomAlert("Por favor, ingresa un nombre válido.");
+    }
+});
+
+// Cargar el nombre del negocio desde localStorage al cargar la página
+window.addEventListener('load', function () {
+    const savedNombre = localStorage.getItem('nombreNegocio');
+    if (savedNombre) {
+        // Verificar si el nombre ya tiene comillas
+        const nombreConComillas = savedNombre.startsWith('"') && savedNombre.endsWith('"') 
+            ? savedNombre 
+            : `"${savedNombre}"`;
+        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+    }
+});
+
+
+
+
+/*--------------------------------------------------------------*/
+
+
+
+// Cargar el nombre del negocio desde localStorage al cargar la página
+window.addEventListener('load', function () {
+    const savedNombre = localStorage.getItem('nombreNegocio');
+    if (savedNombre) {
+        document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
+    }
+});
+
+        // Obtener la URL guardada en el LocalStorage o usar la predeterminada
+        let currentUrl = localStorage.getItem('emergencyUrl') || '';// '' Aquí estaba la URL MPN
+
+        // Función para mostrar la ventana de mensaje personalizada
+        function showCustomAlert(message, alertType = 'error') {
+            const customAlert = document.getElementById('customAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+
+            // Restablecer clases
+            customAlert.className = 'custom-alert';
+
+            // Cambiar el color de fondo según el tipo de alerta
+            if (alertType === 'success') {
+                customAlert.classList.add('success');
+            } else if (alertType === 'confirmation') {
+                customAlert.classList.add('confirmation');
+            }
+
+            customAlert.style.display = 'block';
+        }
+
+        // Función para ocultar la ventana de mensaje personalizada
+        function hideCustomAlert() {
+            const customAlert = document.getElementById('customAlert');
+            customAlert.style.display = 'none';
+        }
+
+        // Función para mostrar el cuadro de confirmación personalizado
+        function showCustomConfirm() {
+            const customConfirm = document.getElementById('customConfirm');
+            customConfirm.style.display = 'block';
+
+            // Agregar la clase "active" al botón de emergencia
+            const emergencyButton = document.getElementById('emergencyButton');
+            emergencyButton.classList.add('active');
+        }
+
+        // Función para ocultar el cuadro de confirmación personalizado
+        function hideCustomConfirm() {
+            const customConfirm = document.getElementById('customConfirm');
+            customConfirm.style.display = 'none';
+
+            // Eliminar la clase "active" del botón de emergencia
+            const emergencyButton = document.getElementById('emergencyButton');
+            emergencyButton.classList.remove('active');
+        }
+
+        // Función para mostrar el cuadro de diálogo para modificar la URL
+        function showCustomUrlInput() {
+            const customUrlInput = document.getElementById('customUrlInput');
+            customUrlInput.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo para modificar la URL
+        function hideCustomUrlInput() {
+            const customUrlInput = document.getElementById('customUrlInput');
+            customUrlInput.style.display = 'none';
+        }
+
+        // Función para mostrar el cuadro de diálogo para modificar el giro del negocio
+        function showCustomGiroInput() {
+            const customGiroInput = document.getElementById('customGiroInput');
+            customGiroInput.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo para modificar el giro del negocio
+        function hideCustomGiroInput() {
+            const customGiroInput = document.getElementById('customGiroInput');
+            customGiroInput.style.display = 'none';
+        }
+
+        // Función para mostrar el cuadro de diálogo para modificar el nombre del negocio
+        function showCustomNombreInput() {
+            const customNombreInput = document.getElementById('customNombreInput');
+            customNombreInput.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo para modificar el nombre del negocio
+        function hideCustomNombreInput() {
+            const customNombreInput = document.getElementById('customNombreInput');
+            customNombreInput.style.display = 'none';
+        }
+
+        // Evento para cerrar la ventana de mensaje
+        document.getElementById('alertCloseButton').addEventListener('click', hideCustomAlert);
+
+        // Evento para el botón "Sí" del cuadro de confirmación
+        document.getElementById('confirmYes').addEventListener('click', function () {
+            hideCustomConfirm();
+
+            // Verificar si hay conexión a Internet
+            if (!navigator.onLine) {
+                showCustomAlert("No hay conexión a internet, o datos móviles.");
+                return;
+            }
+
+            try {
+                const nuevaVentana = window.open(currentUrl, '_blank');
+
+                if (!nuevaVentana) {
+                    throw new Error("No se pudo abrir la ventana. Verifica si hay un bloqueador de ventanas emergentes.");
+                }
+
+                setTimeout(() => {
+                    if (!nuevaVentana.closed) {
+                        nuevaVentana.close();
+                        showCustomAlert("Activación Exitosa.", 'confirmation');
+                    }
+                }, 5000);
+            } catch (error) {
+                showCustomAlert(`Error: ${error.message}`);
+            }
+        });
+
+        // Evento para el botón "No" del cuadro de confirmación
+        document.getElementById('confirmNo').addEventListener('click', function () {
+            hideCustomConfirm();
+        });
+
+        // Evento para el botón "Aceptar" del cuadro de diálogo para modificar la URL
+        document.getElementById('urlSubmitButton').addEventListener('click', function () {
+            const newUrl = document.getElementById('newUrlInput').value;
+            if (newUrl) {
+                currentUrl = newUrl;
+                localStorage.setItem('emergencyUrl', newUrl); // Guardar la nueva URL en el LocalStorage
+                hideCustomUrlInput();
+                showCustomAlert("URL modificada exitosamente.", 'success');
+            } else {
+                showCustomAlert("Por favor, ingresa una URL válida.");
+            }
+        });
+
+        // Evento para el botón "Cancelar" del cuadro de diálogo para modificar la URL
+        document.getElementById('urlCancelButton').addEventListener('click', function () {
+            hideCustomUrlInput();
+        });
+
+        // Evento para el botón "Aceptar" del cuadro de diálogo para modificar el giro del negocio
+        document.getElementById('giroSubmitButton').addEventListener('click', function () {
+            const newGiro = document.getElementById('newGiroInput').value;
+            if (newGiro) {
+                document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+                hideCustomGiroInput();
+            } else {
+                showCustomAlert("Por favor, ingresa un giro válido.");
+            }
+        });
+
+        // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el giro del negocio
+        document.getElementById('giroCancelButton').addEventListener('click', function () {
+            hideCustomGiroInput();
+        });
+
+        // Evento para el botón "Aceptar" del cuadro de diálogo para modificar el nombre del negocio
+        document.getElementById('nombreSubmitButton').addEventListener('click', function () {
+            const newNombre = document.getElementById('newNombreInput').value;
+            if (newNombre) {
+                document.getElementById('nombreNegocioText').textContent = newNombre.toUpperCase();
+                hideCustomNombreInput();
+            } else {
+                showCustomAlert("Por favor, ingresa un nombre válido.");
+            }
+        });
+
+        // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el nombre del negocio
+        document.getElementById('nombreCancelButton').addEventListener('click', function () {
+            hideCustomNombreInput();
+        });
+
+        // Lógica del botón de emergencia
+        document.getElementById('emergencyButton').addEventListener('click', function () {
+            // Verificar si la URL está vacía
+            if (!currentUrl || currentUrl.trim() === '') {
+                showCustomAlert("Por favor, carga una URL antes de activar la emergencia.");
+            } else {
+                showCustomConfirm();
+            }
+        });
+
+        // Lógica del botón para modificar la URL
+        document.getElementById('modifyUrlButton').addEventListener('click', function () {
+            showCustomUrlInput();
+        });
+
+        // Lógica del botón para modificar el giro del negocio
+        document.getElementById('modifyGiroButton').addEventListener('click', function () {
+            showCustomGiroInput();
+        });
+
+        // Lógica del botón para modificar el nombre del negocio
+        document.getElementById('modifyNombreButton').addEventListener('click', function () {
+            showCustomNombreInput();
+        });
+    </script>
+</body>
+</html>
