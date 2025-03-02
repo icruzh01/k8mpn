@@ -407,7 +407,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         localStorage.setItem('giroNegocio', newGiro);
         hideCustomGiroInput();
     } else {
-        showCustomAlert("Por favor, ingresa un giro válido.");
+        showCustomAlert("Ingresa un giro válido.");
     }
 });
 
@@ -432,7 +432,7 @@ document.getElementById('nombreSubmitButton').addEventListener('click', function
         localStorage.setItem('nombreNegocio', nombreConComillas); // Guardar con comillas
         hideCustomNombreInput();
     } else {
-        showCustomAlert("Por favor, ingresa un nombre válido.");
+        showCustomAlert("Ingresa un nombre válido.");
     }
 });
 
@@ -592,7 +592,7 @@ window.addEventListener('load', function () {
                 hideCustomUrlInput();
                 showCustomAlert("URL modificada exitosamente.", 'success');
             } else {
-                showCustomAlert("Por favor, ingresa una URL válida.");
+                showCustomAlert("Ingresa una URL MPN válida.");
             }
         });
 
