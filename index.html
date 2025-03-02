@@ -608,7 +608,7 @@ window.addEventListener('load', function () {
                 document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
                 hideCustomGiroInput();
             } else {
-                showCustomAlert("Por favor, ingresa un giro válido.");
+                showCustomAlert("Ingresa un giro válido.");
             }
         });
 
@@ -624,7 +624,7 @@ window.addEventListener('load', function () {
                 document.getElementById('nombreNegocioText').textContent = newNombre.toUpperCase();
                 hideCustomNombreInput();
             } else {
-                showCustomAlert("Por favor, ingresa un nombre válido.");
+                showCustomAlert("Ingresa un nombre válido.");
             }
         });
 
@@ -637,7 +637,7 @@ window.addEventListener('load', function () {
         document.getElementById('emergencyButton').addEventListener('click', function () {
             // Verificar si la URL está vacía
             if (!currentUrl || currentUrl.trim() === '') {
-                showCustomAlert("Por favor, carga una URL antes de activar la emergencia.");
+                showCustomAlert("Carga una URL MPN antes de activar la emergencia.");
             } else {
                 showCustomConfirm();
             }
