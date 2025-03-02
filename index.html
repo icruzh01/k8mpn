@@ -134,19 +134,38 @@
         .custom-alert {
             display: none;
             position: fixed;
+            width: 250px; /* Ancho del cuadro */
+            height: 100px; /* Altura */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: rgb(238, 238, 121);
-            border: 6px solid rgb(124, 115, 115);
+            border: 6px solid rgb(137, 109, 0);
             padding: 20px;
+            color: rgb(0, 0, 0);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 2000; /*para indicar el orden de apilamiento del mensaje*/
             text-align: center;
+            font-size: 20px; /* Tamaño de fuente más pequeño */
+            border-radius: 10px; /* Bordes redondeados */
         }
         .custom-alert.confirmation {
+            display: none;
+            position: fixed;
+            width: 250px; /* Ancho del cuadro */
+            height: 100px; /* Altura */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgb(119, 176, 105);
-            color: black;
+            border: 6px solid rgb(189, 188, 186);
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            box-shadow: 10px 10px 10px rgba(63, 220, 38, 0.5);
+            text-align: center;
+            font-size: 20px; /* Tamaño de fuente más pequeño */
+            border-radius: 10px; /* Bordes redondeados */
+
         }
         /*Para personalizar Cuadro de Confirmación*/
         .custom-confirm {
@@ -337,7 +356,7 @@
     <!-- Ventana de mensaje personalizada -->
     <div id="customAlert" class="custom-alert">
         <p id="alertMessage"></p>
-        <button id="alertCloseButton">Ok!</button>
+        <button id="alertCloseButton">Entendido</button>
     </div>
 
     <!-- Cuadro de confirmación personalizado -->
