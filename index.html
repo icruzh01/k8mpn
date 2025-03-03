@@ -35,40 +35,41 @@
             margin: 0;
         }
         header h1.large-title {
-            font-size: 40px;    
-            color: #333333;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-top: -250px;
-            font-family: 'Arial Black', arial, monospace;
-            letter-spacing: 2px;
-            background: linear-gradient(270deg, #161616, rgb(223, 223, 219), rgb(92, 71, 7)); /* Gradiente invertido */
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;  
-            background-clip: text;
-            animation: change-color 20s linear infinite; /* Animación del resplandor */
-        }
-        .color-change-text {
-            font-size: 48px;
-            font-weight: bold;
-            text-align: center;
-            /*animation: change-color 20s infinite;*/
+           
+        margin-top: -280px;
+        margin-bottom: 5px;
+        box-sizing:border-box;
+
+        background: radial-gradient(#272727, #1b1b1b);
+        font-family: sans-serif;
+        text-transform: uppercase;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+         align-items: center;
+
+
+        background-image: repeating-linear-gradient(
+            105deg,
+            #ffb338 0%,
+            #3e2904 5%,
+            #ffb338 12%
+            );
+        color: #000000;
+        filter:drop-shadow(5px 15px #1b1b1b);
+        transform: scaleY(1.05);
+        position: relative;
+        
+        font-weight: 900;
+        font-size: 3.5em;
+        letter-spacing: 4px;
+        -webkit-text-stroke: 5px transparent;
+        -webkit-background-clip: text;
+
+
         }
 
-        @keyframes change-color {
-            0% {
-                color: #86888b; /* Gris */
-            }
-            50% {
-                color: #675605; /* Dorado */
-            }
-            100% {
-                color: #6a5a0a; /* Dorado obscuro */
-            }
-        }   
-
-        }
+        
         header p {
             font-size: 16px;
             color: #7c7a7a;
