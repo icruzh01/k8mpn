@@ -27,17 +27,17 @@
         }
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 100px;
         }
         header h1 {
             font-size: 28px;
-            color: #7c7a7a;
-            margin: 20px;
+            color: #7a7a7a;
+            margin: 4px;
         }
 
-        header h1.large-title {
+        header h1.title_1 {
            
-        margin-top: -130px;
+        margin-top: -210px;
         margin-bottom: 0px;
         box-sizing:border-box;
 
@@ -62,11 +62,11 @@
             transform: scaleY(1.05);
             position: relative;
             font-weight: 900;
-            font-size: 2.2em;
+            font-size: 3em;
             letter-spacing: 4px;
             -webkit-text-stroke: 2px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 07s linear infinite alternate; /* Animación para desplazar el fondo */
 
         }
 
@@ -79,9 +79,9 @@
             }
         }
 
-        header h1.large-title_2 {
+        header h1.title_2 {
            
-           margin-top: -90px;
+           margin-top: -80px;
            margin-bottom: 0px;
            box-sizing:border-box;
    
@@ -106,11 +106,11 @@
                transform: scaleY(1.05);
                position: relative;
                font-weight: 900;
-               font-size: 1.4em;
+               font-size: 1.25em;
                letter-spacing: 4px;
-               -webkit-text-stroke: 2px transparent;
+               -webkit-text-stroke: 1.5px transparent;
                -webkit-background-clip: text;
-               animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+               animation: desplazarFondo 7s linear infinite alternate; /* Animación para desplazar el fondo */
    
            }
    
@@ -124,11 +124,20 @@
            }
 
         
-        header p {
-            font-size: 16px;
+        header h1.title_3 {
+            font-size: 30px;
             color: #7c7a7a;
-            margin: 10px 0 0;
+            margin: 30px 0 0;
+
+
         }
+
+        header h1.giroNegocio {
+            font-size: 30px;
+            color: #7c7a7a;
+            margin: 50px 0 0;
+        }
+
         #emergencyButton {
             background-color: red;
             color: white;
@@ -410,12 +419,12 @@
 </head>
 <body>
     <header>
-        <h1 class="large-title">SECRETARÍA DE</h1>
-        <h1 class="large-title_2">SEGURIDAD CIUDADANA</h1>
-        <h1>Mi Policía en Mi Negocio</h1><br><br><br><br><br><br><br>
+        <h1 class="title_1">Secretaría</h1>
+        <h1 class="title_2">Seguridad Ciudadana<br>Ciudad de México</h1>
+        <h1 class="title_3">Mi Policía en Mi Negocio</h1><br><br>
         
-        <h1 id="giroNegocioText">GIRO DEL NEGOCIO</h1>
-        <h1 id="nombreNegocioText">"NOMBRE DEL NEGOCIO"</h1><br><br>
+        <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
+        <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
        
     </header>
     <button id="emergencyButton" aria-label="Activar emergencia">Emergencia</button>
