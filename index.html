@@ -66,7 +66,7 @@
             letter-spacing: 4px;
             -webkit-text-stroke: 2px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 07s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
 
         }
 
@@ -82,8 +82,76 @@
         header h1.title_2 {
            
            margin-top: -80px;
-           margin-bottom: 0px;
+           margin-bottom: -30px;
            box-sizing:border-box;
+   
+           background: radial-gradient(#272727, #1b1b1b);
+           font-family: sans-serif;
+           text-transform: uppercase;
+           height: 135px;
+           display: flex;
+           justify-content: center;
+            align-items: center;
+   
+   
+           background-image: repeating-linear-gradient(
+               105deg,
+               #ffb338 0%,
+               #3e2904 5%,
+               #ffb338 12%
+               );
+           background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+           color: #000000;
+           filter: drop-shadow(5px 15px #000);
+           transform: scaleY(1.05);
+           position: relative;
+           font-weight: 900;
+           font-size: 1.25em;
+           letter-spacing: 4px;
+           -webkit-text-stroke: 1.5px transparent;
+           -webkit-background-clip: text;
+           animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+        }
+   
+           @keyframes desplazarFondo {
+               0% {
+                   background-position: 100% 50%; /* Inicia el gradiente desde la izquierda */
+               }
+               100% {
+                   background-position: 0% 50%; /* Mueve el gradiente hacia la derecha */
+               }
+           }
+
+        hr {
+            border: none; /* Elimina el borde predeterminado */
+            height: 5px; /* Grosor de la línea */
+            margin: 20px 0px; /* Espacio arriba y abajo de la línea */
+            background: linear-gradient(
+                90deg,
+                #c38521 0%, /* Dorado claro */
+                #3e2904 25%, /* Dorado oscuro */
+                #ffb338 50%, /* Dorado claro */
+                #3e2904 75%, /* Dorado oscuro */
+                #c38521 100% /* Dorado claro */
+            );
+            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+            animation: desplazarFondo 10s linear infinite; /* Animación para desplazar el fondo */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0); /* Sombra dorada */
+        }
+
+            @keyframes desplazarFondo {
+                0% {
+                background-position: 100% 50%; /* Inicia el gradiente desde la derecha */
+                }
+                100% {
+                background-position: 0% 50%; /* Mueve el gradiente hacia la izquierda */
+                }
+            }
+
+        header h1.title_3 {
+            margin-top: -50px;
+            margin-bottom: 0px;
+            box-sizing:border-box;
    
            background: radial-gradient(#272727, #1b1b1b);
            font-family: sans-serif;
@@ -110,7 +178,7 @@
                letter-spacing: 4px;
                -webkit-text-stroke: 1.5px transparent;
                -webkit-background-clip: text;
-               animation: desplazarFondo 7s linear infinite alternate; /* Animación para desplazar el fondo */
+               animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
         }
    
            @keyframes desplazarFondo {
@@ -120,18 +188,12 @@
                100% {
                    background-position: 0% 50%; /* Mueve el gradiente hacia la derecha */
                }
-           }
-
-        header h1.title_3 {
-            font-size: 30px;
-            color: #7c7a7a;
-            margin: 30px 0 0;
-        }
+            }
 
         header h1.giroNegocio {
             font-size: 30px;
             color: #7c7a7a;
-            margin: 90px 0 0;
+            margin: 60px 0 0;
         }
 
         header h1.nombreNegocio {
@@ -424,6 +486,7 @@
     <header>
         <h1 class="title_1">Secretaría</h1>
         <h1 class="title_2">Seguridad Ciudadana<br>Ciudad de México</h1>
+        <hr>
         <h1 class="title_3">Mi Policía en Mi Negocio</h1><br><br>
         
         <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
