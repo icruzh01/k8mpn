@@ -1,0 +1,23 @@
+{
+    "short_name": "Emergencia",
+    "name": "Mi Policía en Mi Negocio",
+    "description": "Boton de Emergencia para Negocios.",
+    "icons": [
+      {
+        "src": ".../icon_192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": ".../icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4285f4",
+    "scope": "/",
+    "orientation": "portrait-primary"
+  }
