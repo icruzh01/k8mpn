@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Emergencia">
-    <link rel="apple-touch-icon" href="icono_192.png">
+    <link rel="apple-touch-icon" href="icon_192.png">
     <!-- Estilos -->
     <style>
         body {
@@ -37,24 +37,24 @@
 
         header h1.title_1 {
            
-        margin-top: -200px;
-        margin-bottom: 0px;
-        box-sizing:border-box;
+            margin-top: -170px;
+            margin-bottom: -95px;
+            box-sizing:border-box;
 
-        background: radial-gradient(#272727, #1b1b1b);
-        font-family: sans-serif;
-        text-transform: uppercase;
-        height: 135px;
-        display: flex;
-        justify-content: center;
-         align-items: center;
+            background: radial-gradient(#272727, #1b1b1b);
+            font-family: sans-serif;
+            text-transform: uppercase;
+            height: 135px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
 
-        background-image: repeating-linear-gradient(
-            105deg,
-            #ffb338 0%,
-            #3e2904 5%,
-            #ffb338 12%
+            background-image: repeating-linear-gradient(
+                105deg,
+                #ffb338 0%,
+                #3e2904 5%,
+                #ffb338 12%
             );
             background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
             color: #000000;
@@ -62,11 +62,11 @@
             transform: scaleY(1.05);
             position: relative;
             font-weight: 900;
-            font-size: 3em;
+            font-size: 1.5em;
             letter-spacing: 4px;
             -webkit-text-stroke: 2px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
 
         }
 
@@ -81,36 +81,36 @@
 
         header h1.title_2 {
            
-           margin-top: -80px;
-           margin-bottom: -30px;
-           box-sizing:border-box;
+            margin-top: -80px;
+            margin-bottom: -40px;
+            box-sizing:border-box;
    
-           background: radial-gradient(#272727, #1b1b1b);
-           font-family: sans-serif;
-           text-transform: uppercase;
-           height: 135px;
-           display: flex;
-           justify-content: center;
+            background: radial-gradient(#272727, #1b1b1b);
+            font-family: sans-serif;
+            text-transform: uppercase;
+            height: 135px;
+            display: flex;
+            justify-content: center;
             align-items: center;
    
    
-           background-image: repeating-linear-gradient(
+            background-image: repeating-linear-gradient(
                105deg,
                #ffb338 0%,
                #3e2904 5%,
                #ffb338 12%
                );
-           background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
-           color: #000000;
-           filter: drop-shadow(5px 15px #000);
-           transform: scaleY(1.05);
-           position: relative;
-           font-weight: 900;
-           font-size: 1.25em;
-           letter-spacing: 4px;
-           -webkit-text-stroke: 1.5px transparent;
-           -webkit-background-clip: text;
-           animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+            color: #000000;
+            filter: drop-shadow(5px 15px #000);
+            transform: scaleY(1.05);
+            position: relative;
+            font-weight: 900;
+            font-size: 1.25em;
+            letter-spacing: 4px;
+            -webkit-text-stroke: 1.5px transparent;
+            -webkit-background-clip: text;
+            animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
         }
    
            @keyframes desplazarFondo {
@@ -124,8 +124,8 @@
 
         hr {
             border: none; /* Elimina el borde predeterminado */
-            height: 5px; /* Grosor de la línea */
-            margin: 20px 0px; /* Espacio arriba y abajo de la línea */
+            height: 1px; /* Grosor de la línea */
+            margin: 15px 0px; /* Espacio arriba y abajo de la línea */
             background: linear-gradient(
                 90deg,
                 #c38521 0%, /* Dorado claro */
@@ -175,10 +175,10 @@
                position: relative;
                font-weight: 900;
                font-size: 1.25em;
-               letter-spacing: 4px;
+               letter-spacing: 3px;
                -webkit-text-stroke: 1.5px transparent;
                -webkit-background-clip: text;
-               animation: desplazarFondo 25s linear infinite alternate; /* Animación para desplazar el fondo */
+               animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
         }
    
            @keyframes desplazarFondo {
@@ -193,7 +193,7 @@
         header h1.giroNegocio {
             font-size: 30px;
             color: #7c7a7a;
-            margin: 60px 0 0;
+            margin: 10px 0 0;
         }
 
         header h1.nombreNegocio {
@@ -214,15 +214,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: center; 
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
             margin: -40px;
+            margin-bottom: 60px;
             animation: glow 1s infinite alternate;
         }
         #emergencyButton:active, #emergencyButton.active {
-            background-color: darkred;
-            border-color: rgb(138, 101, 7);
+            background-color: rgb(125, 2, 2);
+            border-color: rgb(91, 67, 6);
+            color: rgb(131, 132, 133);
             transform: scale(0.95);
         }
         @keyframes glow {
@@ -248,7 +250,7 @@
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
             animation: glowBlue 30s infinite alternate;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Forma de trapezoide */
+            clip-path: rect(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Forma de trapezoide */
             position: absolute; /* Posicionamiento absoluto */
             bottom: 20px; /* Distancia desde la parte inferior */
             left: 20px; /* Distancia desde la izquierda */
@@ -264,14 +266,14 @@
             border-color: #00bfff; /* Borde más claro al hacer clic */
             transform: scale(0.95);
         }
-        @keyframes glowBlue {
+        /*@keyframes glowBlue {
             from {
                 box-shadow: 0 0 2px rgba(0, 135, 255, 0.7), 0 0 5px rgba(0, 135, 255, 0.7);
             }
             to {
                 box-shadow: 0 0 5px rgba(0, 135, 255, 0.9), 0 0 10px rgba(0, 135, 255, 0.9);
             }
-        }
+        }*/
         .custom-alert { 
             display: none;
             position: fixed;
@@ -317,14 +319,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #0687f0; 
-            border: 6px solid #07edf5;
+            background-color: #000000; 
+            border: 6px solid goldenrod;
             color: white;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             text-align: center;
-            
+            border-radius: 10px; /* Bordes redondeados */
         }
         .custom-confirm p {
             margin: 0 0 20px;
@@ -336,16 +338,17 @@
             gap: 50px;
         }
         .custom-confirm button {
-            background-color: #8a182b;
-            color: white;
-            border: none;
+            background-color: rgb(0, 0, 0);
+            color: rgb(188, 173, 173);
+            border: 2px solid goldenrod;
             padding: 10px 20px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 16px;        
         }
         .custom-confirm button:hover {
-            background-color: #1e90ff;
-            border: 2px solid #8a182b;
+            background-color: goldenrod;
+            border: 2px solid #000000;
+            color: #000;
         }
         /*Cuadro de texto para nueva URL*/
         .custom-url-input {
@@ -484,7 +487,7 @@
 </head>
 <body>
     <header>
-        <h1 class="title_1">Secretaría</h1>
+        <h1 class="title_1">Secretaría de</h1>
         <h1 class="title_2">Seguridad Ciudadana<br>Ciudad de México</h1>
         <hr>
         <h1 class="title_3">Mi Policía en Mi Negocio</h1><br><br>
