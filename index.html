@@ -48,6 +48,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 0;
 
 
             background-image: repeating-linear-gradient(
@@ -92,6 +93,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 0;
    
    
             background-image: repeating-linear-gradient(
@@ -137,6 +139,7 @@
             background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
             animation: desplazarFondo 10s linear infinite; /* Animación para desplazar el fondo */
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0); /* Sombra dorada */
+            z-index: 2000;
         }
 
             @keyframes desplazarFondo {
@@ -179,6 +182,7 @@
                -webkit-text-stroke: 1.5px transparent;
                -webkit-background-clip: text;
                animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
+               z-index: 1000;
         }
    
            @keyframes desplazarFondo {
@@ -224,10 +228,10 @@
         #emergencyButton:active, #emergencyButton.active {
             background-color: rgb(125, 2, 2);
             border-color: rgb(91, 67, 6);
-            color: rgb(131, 132, 133);
+            color: rgb(100, 101, 103);
             transform: scale(0.95);
         }
-        @keyframes glow {
+        @keyframes glow {   
             from {
                 box-shadow: 0 0 07px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
             }
@@ -316,7 +320,7 @@
             position: fixed;
             width: 230px; /* Ancho del cuadro */
             height: 130px; /* Altura */
-            top: 50%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #000000; 
@@ -483,9 +487,24 @@
             background-color: #1e90ff;
             border: 2px solid #8a182b;
         }
+
+/* Estilos para el overlay */
+.overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+            z-index: 999; /* Asegura que esté por encima de otros elementos */
+        }
+
+
     </style>
 </head>
 <body>
+    <div id="overlay" class="overlay"></div>
     <header>
         <h1 class="title_1">Secretaría de</h1>
         <h1 class="title_2">Seguridad Ciudadana<br>Ciudad de México</h1>
@@ -544,7 +563,6 @@
     </div>
 
     <script>
-
 /*-----Esta sección fue lo último que se agrego para poder guardar el giro y nombre en el localStorage------*/
 
 // Guardar el giro del negocio en localStorage
@@ -642,7 +660,9 @@ window.addEventListener('load', function () {
         // Función para mostrar el cuadro de confirmación personalizado
         function showCustomConfirm() {
             const customConfirm = document.getElementById('customConfirm');
+            const overlay = document.getElementById('overlay');
             customConfirm.style.display = 'block';
+            overlay.style.display = 'block';
 
             // Agregar la clase "active" al botón de emergencia
             const emergencyButton = document.getElementById('emergencyButton');
@@ -652,12 +672,15 @@ window.addEventListener('load', function () {
         // Función para ocultar el cuadro de confirmación personalizado
         function hideCustomConfirm() {
             const customConfirm = document.getElementById('customConfirm');
+            const overlay = document.getElementById('overlay');
             customConfirm.style.display = 'none';
+            overlay.style.display = 'none';
 
             // Eliminar la clase "active" del botón de emergencia
             const emergencyButton = document.getElementById('emergencyButton');
             emergencyButton.classList.remove('active');
         }
+        
 
         // Función para mostrar el cuadro de diálogo para modificar la URL
         function showCustomUrlInput() {
