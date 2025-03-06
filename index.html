@@ -48,7 +48,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 0;
+            z-index: 1000;
 
 
             background-image: repeating-linear-gradient(
@@ -93,7 +93,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 0;
+            z-index: 1000;
    
    
             background-image: repeating-linear-gradient(
@@ -124,7 +124,9 @@
                }
            }
 
-        hr {
+        header hr {
+            
+            position: relative;
             border: none; /* Elimina el borde predeterminado */
             height: 1px; /* Grosor de la línea */
             margin: 15px 0px; /* Espacio arriba y abajo de la línea */
@@ -138,8 +140,8 @@
             );
             background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
             animation: desplazarFondo 10s linear infinite; /* Animación para desplazar el fondo */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0); /* Sombra dorada */
-            z-index: 2000;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0); /* Sombra dorada */
+            z-index:1000;
         }
 
             @keyframes desplazarFondo {
@@ -496,7 +498,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+            background-color: rgb(0, 0, 0); /* Fondo negro semitransparente */
             z-index: 999; /* Asegura que esté por encima de otros elementos */
         }
 
@@ -685,37 +687,49 @@ window.addEventListener('load', function () {
         // Función para mostrar el cuadro de diálogo para modificar la URL
         function showCustomUrlInput() {
             const customUrlInput = document.getElementById('customUrlInput');
+            const overlay = document.getElementById('overlay');
             customUrlInput.style.display = 'block';
+            overlay.style.display = 'block';
         }
 
         // Función para ocultar el cuadro de diálogo para modificar la URL
         function hideCustomUrlInput() {
             const customUrlInput = document.getElementById('customUrlInput');
+            const overlay = document.getElementById('overlay');
             customUrlInput.style.display = 'none';
+            overlay.style.display = 'none';
         }
 
         // Función para mostrar el cuadro de diálogo para modificar el giro del negocio
         function showCustomGiroInput() {
             const customGiroInput = document.getElementById('customGiroInput');
+            const overlay = document.getElementById('overlay');
             customGiroInput.style.display = 'block';
+            overlay.style.display = 'block';
         }
 
         // Función para ocultar el cuadro de diálogo para modificar el giro del negocio
         function hideCustomGiroInput() {
             const customGiroInput = document.getElementById('customGiroInput');
+            const overlay = document.getElementById('overlay');
             customGiroInput.style.display = 'none';
+            overlay.style.display = 'none';
         }
 
         // Función para mostrar el cuadro de diálogo para modificar el nombre del negocio
         function showCustomNombreInput() {
             const customNombreInput = document.getElementById('customNombreInput');
+            const overlay = document.getElementById('overlay');
             customNombreInput.style.display = 'block';
+            overlay.style.display = 'block';
         }
 
         // Función para ocultar el cuadro de diálogo para modificar el nombre del negocio
         function hideCustomNombreInput() {
             const customNombreInput = document.getElementById('customNombreInput');
+            const overlay = document.getElementById('overlay');
             customNombreInput.style.display = 'none';
+            overlay.style.display = 'none';
         }
 
         // Evento para cerrar la ventana de mensaje
