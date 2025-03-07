@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Policía en Mi Negocio</title>
     <!-- Web App Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <!-- Meta tags para mejorar la experiencia -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -225,7 +225,8 @@
             box-sizing: border-box;
             margin: -40px;
             margin-bottom: 60px;
-            animation: glow 1s infinite alternate;
+            animation: glow 1.5s infinite alternate;
+            
             
         }
         #emergencyButton:active, #emergencyButton.active {
@@ -241,7 +242,16 @@
             to {
                 box-shadow: 0 0 20px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.9);
             }
+            /*Efecto Pulso*/
+            0%, 50% { transform: scale(1); }
+      100% { transform: scale(1.1);
         }
+    }
+    
+
+
+
+
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
             background-color: #000000; /* Color negro */
             color: rgb(157, 151, 151);
