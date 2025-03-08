@@ -241,14 +241,14 @@
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados al final*/
             background-color: #000000; /* Color negro */
-            color: rgb(157, 151, 151);
+            color: rgb(255, 255, 255);
             text-transform: uppercase;
             padding: 10px 20px;
             border-radius: 10px;
             font-size: 14px; /* Tamaño de fuente */
             width: 100px; /* Ancho */
             height: 40px; /* Altura */
-            border: 2px solid #fafafa; /* Borde gris */
+            border: 2px solid rgb(157, 151, 151); /* Borde gris */
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -256,14 +256,14 @@
             text-align: center;
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
-            box-shadow: 3px 3px #fafafa;
+            box-shadow: 3px 3px rgb(157, 151, 151);
             position: absolute; /* Posicionamiento absoluto */
             bottom: 20px; /* Distancia desde la parte inferior */
             left: 20px; /* Distancia desde la izquierda */
-            margin: 35px 0;
+            margin: 10px 0;
         }
        
-        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton:active {
+        #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
 
             box-shadow: none;
             transform: translate(3px, 3px);
@@ -571,7 +571,7 @@
 
     <!-- Cuadro de diálogo para modificar la URL -->
     <div id="customUrlInput" class="custom-url-input">
-        <input type="text" id="newUrlInput" placeholder="Ingresa la nueva URL">
+        <input type="text" id="newUrlInput" placeholder="Ingresa una URL MPN">
         <div class="button-container">
             <button id="urlSubmitButton">Guardar</button>
             <button id="urlCancelButton">Cancelar</button>
@@ -580,7 +580,7 @@
 
     <!-- Cuadro de diálogo para modificar el giro del negocio -->
     <div id="customGiroInput" class="custom-giro-input">
-        <input type="text" id="newGiroInput" placeholder="Ingresa el nuevo giro del negocio">
+        <input type="text" id="newGiroInput" placeholder="Ingresa Giro del Negocio">
         <div class="button-container">
             <button id="giroSubmitButton">Guardar</button>
             <button id="giroCancelButton">Cancelar</button>
@@ -589,7 +589,7 @@
 
     <!-- Cuadro de diálogo para modificar el nombre del negocio -->
     <div id="customNombreInput" class="custom-nombre-input">
-        <input type="text" id="newNombreInput" placeholder="Ingresa el nuevo nombre del negocio">
+        <input type="text" id="newNombreInput" placeholder="Ingresa Nombre del Negocio">
         <div class="button-container">
             <button id="nombreSubmitButton">Guardar</button>
             <button id="nombreCancelButton">Cancelar</button>
