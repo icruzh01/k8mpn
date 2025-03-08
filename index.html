@@ -239,13 +239,16 @@
                 }
             }
 
-        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
+        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados al final*/
             background-color: #000000; /* Color negro */
             color: rgb(157, 151, 151);
-            font-size: 14px; /* Tamaño de fuente más pequeño */
-            width: 100px; /* Ancho más pequeño */
-            height: 40px; /* Altura más pequeña */
-            border: 2px solid #5d5f5f; /* Borde azul claro */
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px; /* Tamaño de fuente */
+            width: 100px; /* Ancho */
+            height: 40px; /* Altura */
+            border: 2px solid #fafafa; /* Borde gris */
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -253,13 +256,19 @@
             text-align: center;
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
-            animation: glowBlue 30s infinite alternate;
-            clip-path: rect(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Forma de trapezoide */
+            box-shadow: 3px 3px #fafafa;
             position: absolute; /* Posicionamiento absoluto */
             bottom: 20px; /* Distancia desde la parte inferior */
             left: 20px; /* Distancia desde la izquierda */
+            margin: 35px 0;
         }
        
+        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton:active {
+
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
+
         #modifyGiroButton {
             left: 130px; /* Posición al lado del botón "Cargar URL" */
         }
