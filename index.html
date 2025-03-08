@@ -209,7 +209,7 @@
         }
 
         #emergencyButton {
-            background-color: red;
+            background-color:  red;
             color: white;
             font-size: 20px;
             width: 150px;
@@ -225,7 +225,7 @@
             box-sizing: border-box;
             margin: -40px;
             margin-bottom: 60px;
-            animation: /*glow 1s infinite alternate, scale linear 1s;*/ neon-color-change 2s infinite;    
+            animation: neon-color-change 2s infinite;    
         }
         #emergencyButton:active, #emergencyButton.active {
             background-color: rgb(125, 2, 2);
@@ -234,40 +234,20 @@
             transform: scale(0.95);
         }
         
-        /*@keyframes glow {   
-            from {
-                box-shadow: 0 0 07px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
+        @keyframes neon-color-change {
+            0% {
+            border-color: #b10000;
+            box-shadow: 0 0 10px #b10000, 0 0 20px #b10000, 0 0 40px #b10000;
             }
-            to {
-                box-shadow: 0 0 20px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.9);
+            50% {
+            border-color: #ff4757;
+            box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+            }
+            100% {
+            border-color: #2e89ca;
+            box-shadow: 0 0 10px #2e89ca, 0 0 20px #2e89ca, 0 0 40px #2e89ca;
             }
         }
-       
-        @keyframes scale {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }*/
-
-        @keyframes neon-color-change {
-      0% {
-        border-color: #ff4757;
-        box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
-      }
-     /* 50% {
-        border-color: white;
-        box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffffff;
-      }*/
-      100% {
-        border-color: #2e89ca;
-        box-shadow: 0 0 10px #2e89ca, 0 0 20px #2e89ca, 0 0 40px #2e89ca;
-      }
-    }
-
-
-
-
-
-
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
             background-color: #000000; /* Color negro */
@@ -300,14 +280,7 @@
             border-color: #00bfff; /* Borde más claro al hacer clic */
             transform: scale(0.95);
         }
-        /*@keyframes glowBlue {
-            from {
-                box-shadow: 0 0 2px rgba(0, 135, 255, 0.7), 0 0 5px rgba(0, 135, 255, 0.7);
-            }
-            to {
-                box-shadow: 0 0 5px rgba(0, 135, 255, 0.9), 0 0 10px rgba(0, 135, 255, 0.9);
-            }
-        }*/
+        
         .custom-alert { 
             display: none;
             position: fixed;
@@ -342,8 +315,7 @@
             text-align: center;
             font-size: 20px; /* Tamaño de fuente más pequeño */
             border-radius: 10px; /* Bordes redondeados */
-            
-
+      
         }
         /*Para personalizar Cuadro de Confirmación*/
         .custom-confirm {
@@ -362,12 +334,8 @@
             z-index: 1000;
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
+            animation: glowGold 1s infinite alternate;
 
-
-
-
-
-animation: glowGold 1s infinite alternate;
         }
         @keyframes glowGold {
             from {
