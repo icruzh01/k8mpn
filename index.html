@@ -225,7 +225,7 @@
             box-sizing: border-box;
             margin: -40px;
             margin-bottom: 60px;
-            animation: glow 1s infinite alternate, scale linear 1s;    
+            animation: /*glow 1s infinite alternate, scale linear 1s;*/ neon-color-change 2s infinite;    
         }
         #emergencyButton:active, #emergencyButton.active {
             background-color: rgb(125, 2, 2);
@@ -234,7 +234,7 @@
             transform: scale(0.95);
         }
         
-        @keyframes glow {   
+        /*@keyframes glow {   
             from {
                 box-shadow: 0 0 07px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
             }
@@ -246,7 +246,28 @@
         @keyframes scale {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
-        }
+        }*/
+
+        @keyframes neon-color-change {
+      0% {
+        border-color: #ff4757;
+        box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+      }
+     /* 50% {
+        border-color: white;
+        box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffffff;
+      }*/
+      100% {
+        border-color: #2e89ca;
+        box-shadow: 0 0 10px #2e89ca, 0 0 20px #2e89ca, 0 0 40px #2e89ca;
+      }
+    }
+
+
+
+
+
+
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
             background-color: #000000; /* Color negro */
