@@ -48,9 +48,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-
-
             background-image: repeating-linear-gradient(
                 105deg,
                 #ffb338 0%,
@@ -67,8 +64,8 @@
             letter-spacing: 4px;
             -webkit-text-stroke: 2px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
-
+            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            z-index: 1000;
         }
 
         @keyframes desplazarFondo {
@@ -85,7 +82,6 @@
             margin-top: -80px;
             margin-bottom: -40px;
             box-sizing:border-box;
-   
             background: radial-gradient(#272727, #1b1b1b);
             font-family: sans-serif;
             text-transform: uppercase;
@@ -93,9 +89,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-   
-   
             background-image: repeating-linear-gradient(
                105deg,
                #ffb338 0%,
@@ -112,7 +105,8 @@
             letter-spacing: 4px;
             -webkit-text-stroke: 1.5px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            z-index: 1000;
         }
    
            @keyframes desplazarFondo {
@@ -125,7 +119,6 @@
            }
 
         header hr {
-            
             position: relative;
             border: none; /* Elimina el borde predeterminado */
             height: 1px; /* Grosor de la línea */
@@ -139,8 +132,7 @@
                 #c38521 100% /* Dorado claro */
             );
             background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
-            animation: desplazarFondo 10s linear infinite; /* Animación para desplazar el fondo */
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0); /* Sombra dorada */
+            animation: desplazarFondo 35s linear infinite; /* Animación para desplazar el fondo */
             z-index:1000;
         }
 
@@ -157,7 +149,6 @@
             margin-top: -50px;
             margin-bottom: 0px;
             box-sizing:border-box;
-   
             background: radial-gradient(#272727, #1b1b1b);
             font-family: sans-serif;
             text-transform: uppercase;
@@ -165,26 +156,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-   
-   
-           background-image: repeating-linear-gradient(
+            background-image: repeating-linear-gradient(
                105deg,
                #ffb338 0%,
                #3e2904 5%,
                #ffb338 12%
                );
-               background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
-               color: #000000;
-               filter: drop-shadow(5px 15px #000);
-               transform: scaleY(1.05);
-               position: relative;
-               font-weight: 900;
-               font-size: 1.25em;
-               letter-spacing: 3px;
-               -webkit-text-stroke: 1.5px transparent;
-               -webkit-background-clip: text;
-               animation: desplazarFondo 10s linear infinite alternate; /* Animación para desplazar el fondo */
-               z-index: 1000;
+            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+            color: #000000;
+            filter: drop-shadow(5px 15px #000);
+            transform: scaleY(1.05);
+            position: relative;
+            font-weight: 900;
+            font-size: 1.25em;
+            letter-spacing: 3px;
+            -webkit-text-stroke: 1.5px transparent;
+            -webkit-background-clip: text;
+            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            z-index: 1000;
         }
    
            @keyframes desplazarFondo {
@@ -227,6 +216,7 @@
             margin-bottom: 60px;
             animation: neon-color-change 2s infinite;    
         }
+        
         #emergencyButton:active, #emergencyButton.active {
             background-color: rgb(125, 2, 2);
             border-color: rgb(91, 67, 6);
@@ -234,20 +224,20 @@
             transform: scale(0.95);
         }
         
-        @keyframes neon-color-change {
-            0% {
-            border-color: #b10000;
-            box-shadow: 0 0 10px #b10000, 0 0 20px #b10000, 0 0 40px #b10000;
+            @keyframes neon-color-change {
+                0% {
+                border-color: #b10000;
+                box-shadow: 0 0 10px #b10000, 0 0 20px #b10000, 0 0 40px #b10000;
+                }
+                /*50% {
+                border-color: #ff4757;
+                box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+                }*/
+                100% {
+                border-color: #2e89ca;
+                box-shadow: 0 0 10px #2e89ca, 0 0 20px #2e89ca, 0 0 40px #2e89ca;
+                }
             }
-            50% {
-            border-color: #ff4757;
-            box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
-            }
-            100% {
-            border-color: #2e89ca;
-            box-shadow: 0 0 10px #2e89ca, 0 0 20px #2e89ca, 0 0 40px #2e89ca;
-            }
-        }
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados en la final*/
             background-color: #000000; /* Color negro */
@@ -269,12 +259,15 @@
             bottom: 20px; /* Distancia desde la parte inferior */
             left: 20px; /* Distancia desde la izquierda */
         }
+       
         #modifyGiroButton {
             left: 130px; /* Posición al lado del botón "Cargar URL" */
         }
+       
         #modifyNombreButton {
             left: 240px; /* Posición al lado del botón "Giro Negocio" */
         }
+        
         #modifyUrlButton:active, #modifyUrlButton.active, #modifyGiroButton:active, #modifyGiroButton.active, #modifyNombreButton:active, #modifyNombreButton.active {
             background-color: #1e90ff; /* Azul más oscuro al hacer clic */
             border-color: #00bfff; /* Borde más claro al hacer clic */
@@ -337,25 +330,26 @@
             animation: glowGold 1s infinite alternate;
 
         }
-        @keyframes glowGold {
-            from {
-                box-shadow: 0 0 7px rgba(0, 135, 255, 0.7), 0 0 20px rgba(0, 135, 255, 0.7);
+            @keyframes glowGold {
+                from {
+                    box-shadow: 0 0 7px rgba(0, 135, 255, 0.7), 0 0 20px rgba(0, 135, 255, 0.7);
+                }
+                to {
+                    box-shadow: 0 0 20px rgba(0, 135, 255, 0.9), 0 0 30px rgba(0, 135, 255, 0.9);
+                }
             }
-            to {
-                box-shadow: 0 0 20px rgba(0, 135, 255, 0.9), 0 0 30px rgba(0, 135, 255, 0.9);
-            }
-        }
-
 
         .custom-confirm p {
             margin: 0 0 20px;
             font-size: 18px;
         }
+        
         .custom-confirm .button-container {
             display: flex;
             justify-content: center;
             gap: 50px;
         }
+        
         .custom-confirm button {
             background-color: rgb(0, 0, 0);
             color: rgb(188, 173, 173);
@@ -364,11 +358,13 @@
             cursor: pointer;
             font-size: 16px;        
         }
+        
         .custom-confirm button:hover {
             background-color: goldenrod;
             border: 2px solid #000000;
             color: #000;
         }
+        
         /*Cuadro de texto para nueva URL*/
         .custom-url-input {
             display: none;
@@ -390,6 +386,7 @@
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
         }
+       
         .custom-url-input input {
             width: 90%; /* Ancho del input */
             padding: 10px;
@@ -398,11 +395,13 @@
             border: 2px solid #ccc;
             border-radius: 5px;
         }
+        
         .custom-url-input .button-container {
             display: flex;
             justify-content: center;
             gap: 20px;
         }
+        
         .custom-url-input .button-container button {
             background-color: #8a182b;
             color: white;
@@ -412,10 +411,12 @@
             font-size: 16px;
             border-radius: 5px;
         }
+       
         .custom-url-input .button-container button:hover {
             background-color: #1e90ff;
             border: 2px solid #8a182b;
         }
+        
         /* Estilos para el cuadro de diálogo personalizado del giro del negocio */
         .custom-giro-input {
             display: none;
@@ -433,6 +434,7 @@
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
         }
+        
         .custom-giro-input input {
             width: 90%; /* Ancho del input */
             padding: 10px;
@@ -441,11 +443,13 @@
             border: 2px solid #ccc;
             border-radius: 5px;
         }
+        
         .custom-giro-input .button-container {
             display: flex;
             justify-content: center;
             gap: 20px;
         }
+        
         .custom-giro-input .button-container button {
             background-color: #8a182b;
             color: white;
@@ -455,10 +459,12 @@
             font-size: 16px;
             border-radius: 5px;
         }
+        
         .custom-giro-input .button-container button:hover {
             background-color: #1e90ff;
             border: 2px solid #8a182b;
         }
+        
         /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
         .custom-nombre-input {
             display: none;
@@ -476,6 +482,7 @@
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
         }
+        
         .custom-nombre-input input {
             width: 90%; /* Ancho del input */
             padding: 10px;
@@ -484,11 +491,13 @@
             border: 2px solid #ccc;
             border-radius: 5px;
         }
+       
         .custom-nombre-input .button-container {
             display: flex;
             justify-content: center;
             gap: 20px;
         }
+        
         .custom-nombre-input .button-container button {
             background-color: #8a182b;
             color: white;
@@ -498,21 +507,22 @@
             font-size: 16px;
             border-radius: 5px;
         }
+       
         .custom-nombre-input .button-container button:hover {
             background-color: #1e90ff;
             border: 2px solid #8a182b;
         }
 
-/* Estilos para el overlay */
-.overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(0, 0, 0); /* Fondo negro semitransparente */
-            z-index: 999; /* Asegura que esté por encima de otros elementos */
+        /* Estilos para el overlay */
+        .overlay {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgb(0, 0, 0); /* Fondo negro semitransparente*/
+                    z-index: 999; /*Asegura que esté por encima de otros elementos*/
         }
 
 
@@ -600,9 +610,6 @@ window.addEventListener('load', function () {
     }
 });
 
-
-
-
 // Guardar el nombre del negocio en localStorage
 document.getElementById('nombreSubmitButton').addEventListener('click', function () {
     const newNombre = document.getElementById('newNombreInput').value;
@@ -628,13 +635,6 @@ window.addEventListener('load', function () {
         document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
     }
 });
-
-
-
-
-/*--------------------------------------------------------------*/
-
-
 
 // Cargar el nombre del negocio desde localStorage al cargar la página
 window.addEventListener('load', function () {
