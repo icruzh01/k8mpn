@@ -860,6 +860,34 @@ window.addEventListener('load', function () {
         document.getElementById('modifyNombreButton').addEventListener('click', function () {
             showCustomNombreInput();
         });
+
+
+
+
+        // Inicializar los botones como desactivados al cargar la página
+        window.addEventListener('load', function () {
+            document.getElementById('urlSubmitButton').disabled = true;
+            document.getElementById('giroSubmitButton').disabled = true;
+            document.getElementById('nombreSubmitButton').disabled = true;
+        });
+
+        // Habilitar/deshabilitar el botón de guardar URL
+        document.getElementById('newUrlInput').addEventListener('input', function () {
+            const urlSubmitButton = document.getElementById('urlSubmitButton');
+            urlSubmitButton.disabled = !this.value.trim();
+        });
+
+        // Habilitar/deshabilitar el botón de guardar giro
+        document.getElementById('newGiroInput').addEventListener('input', function () {
+            const giroSubmitButton = document.getElementById('giroSubmitButton');
+            giroSubmitButton.disabled = !this.value.trim();
+        });
+
+        // Habilitar/deshabilitar el botón de guardar nombre
+        document.getElementById('newNombreInput').addEventListener('input', function () {
+            const nombreSubmitButton = document.getElementById('nombreSubmitButton');
+            nombreSubmitButton.disabled = !this.value.trim();
+        });
     </script>
 </body>
 </html>
