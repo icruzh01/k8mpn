@@ -321,6 +321,7 @@
         }
         /*Para personalizar Cuadro de Confirmación*/
         .custom-confirm {
+            
             display: none;
             position: fixed;
             width: 230px; /* Ancho del cuadro */
@@ -329,7 +330,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #000000; 
-            border: 6px solid goldenrod;
+            border: 0px solid goldenrod;
             color: white;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -341,10 +342,10 @@
         }
             @keyframes glowGold {
                 from {
-                    box-shadow: 0 0 7px rgba(0, 135, 255, 0.7), 0 0 20px rgba(0, 135, 255, 0.7);
+                    box-shadow: 0 0 7px rgba(113, 95, 2, 0.7), 0 0 20px rgba(110, 118, 4, 0.7);
                 }
                 to {
-                    box-shadow: 0 0 20px rgba(0, 135, 255, 0.9), 0 0 30px rgba(0, 135, 255, 0.9);
+                    box-shadow: 0 0 20px rgba(141, 121, 9, 0.9), 0 0 30px rgba(130, 77, 4, 0.9);
                 }
             }
 
@@ -869,9 +870,6 @@ window.addEventListener('load', function () {
         document.getElementById('modifyNombreButton').addEventListener('click', function () {
             showCustomNombreInput();
         });
-
-
-
 
         // Inicializar los botones como desactivados al cargar la página
         window.addEventListener('load', function () {
