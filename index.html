@@ -226,16 +226,16 @@
         
             @keyframes neon-color-change {
                 0% {
-                border-color: rgb(221, 183, 12);
-                box-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C, 0 0 40px #DC143C;
+                border-color: #fffb00;
+                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
                 }
                 50% {
-                border-color: #ffbc03;
-                box-shadow: 0 0 10px #ffbc03, 0 0 20px #ffbc03, 0 0 40px #ffbc03;
+                border-color: #de9000;
+                box-shadow: 0 0 10px #7b1300, 0 0 20px #7b1300, 0 0 40px #7b1300;
                 }
                 100% {
-                border-color: rgb(221, 183, 12);
-                box-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C, 0 0 40px #DC143C;
+                border-color: #fffb00;
+                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
                 }
             }
 
@@ -510,10 +510,16 @@
             border-radius: 5px;
         }
         
+        .custom-giro-input input:hover {
+            background: #000000;
+            border: 0.5px solid #4ee2ec;
+
+        }
+
         .custom-giro-input .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 20px; /* Separación de botones */
         }
         
         .custom-giro-input .button-container button {
@@ -531,7 +537,38 @@
             border: 2px solid #fbb917;
             box-shadow: 0 0 10px #f8f401;
         }
+
+        .custom-giro-input input:focus {
+            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            border: 0.5px solid #5cbd02;
+            color: #4ee2ec;
+        }
+
         
+
+        /*.custom-giro-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Separación de botones */
+                       
+        /*}*/
+        
+        /*.custom-giro-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #d4a017;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }*/
+       
+        .custom-giro-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #c20303;
+            box-shadow: 0 0 10px #ff0000;
+
+        }
         /*---------------------------------------------------------------*/
 
         /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
