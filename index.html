@@ -293,10 +293,10 @@
             left: 50%;
             transform: translate(-50%, -50%); /* Centra el cuadro en la página */
             background-color: #000000;
-            border: 1px solid #e8a317;
+            border: 1px solid #837e7c;
             padding: 20px;
             color: #aaaaaa;
-            box-shadow: 0 0 20px #af7817;
+            box-shadow: 0 0 20px #ffffff;
             z-index: 1000; /* Para indicar el orden de apilamiento del mensaje */
             text-align: center;
             font-size: 20px;
@@ -305,24 +305,27 @@
         }
  
         #alertCloseButton {
-            background-color: #030303; /* Color de fondo */
-            color: white; /* Color del texto */
+            background-color: #000000; /* Color de fondo */
+            color: #ffffff; /* Color del texto */
             padding: 10px 20px; /* Espaciado interno */
-            border: 1px solid #af7817; /* Sin borde */
+            border: 2px solid #ff0000; /* Sin borde */
             border-radius: 15px; /* Bordes redondeados */
             font-size: 16px; /* Tamaño de la fuente */
             cursor: pointer; /* Cambia el cursor al pasar el mouse */
             transition: background-color 0.3s ease; /* Transición suave */
+            box-shadow: 0 0 10px #f80101;
             
             
         }
 
         #alertCloseButton:hover {
-            background-color: #af7817; /* Cambia el color al pasar el mouse */
+            background-color: #000000; /* Cambia el color al pasar el mouse */
+            border: 0.5px solid #ff0000;
+            box-shadow: 0 0 10px #f80101;
         }
 
         #alertCloseButton:active {
-            background-color: #fcb900; /* Cambia el color al hacer clic */
+            background-color: #800000; /* Cambia el color al hacer clic */
         }
 
         .custom-alert.confirmation {
