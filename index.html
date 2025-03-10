@@ -227,7 +227,7 @@
             @keyframes neon-color-change {
                 0% {
                 border-color: rgb(221, 183, 12);
-                box-shadow: 0 0 10px rgb(255, 255, 0), 0 0 20px rgb(255, 255, 0), 0 0 40px rgb(255, 255, 0);
+                box-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C, 0 0 40px #DC143C;
                 }
                 50% {
                 border-color: #ffbc03;
@@ -235,13 +235,13 @@
                 }
                 100% {
                 border-color: rgb(221, 183, 12);
-                box-shadow: 0 0 10px rgb(255, 255, 0), 0 0 20px rgb(255, 255, 0), 0 0 40px rgb(255, 255, 0);
+                box-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C, 0 0 40px #DC143C;
                 }
             }
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados al final*/
             background-color: #000000; /* Color negro */
-            color: rgb(255, 255, 255);
+            color: #FFFFFF;
             text-transform: uppercase;
             padding: 10px 20px;
             border-radius: 10px;
@@ -283,6 +283,7 @@
             transform: scale(0.95);
         }
         
+        /* Notificación que te pide cargar una URL antes de mandar la emergencia */
         .custom-alert { 
             display: none;
             position: fixed;
@@ -290,17 +291,40 @@
             height: 100px; /* Altura */
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgb(238, 238, 121);
-            border: 6px solid rgb(137, 109, 0);
+            transform: translate(-50%, -50%); /* Centra el cuadro en la página */
+            background-color: #000000;
+            border: 1px solid #e8a317;
             padding: 20px;
-            color: rgb(0, 0, 0);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 2000; /*para indicar el orden de apilamiento del mensaje*/
+            color: #aaaaaa;
+            box-shadow: 0 0 20px #af7817;
+            z-index: 1000; /* Para indicar el orden de apilamiento del mensaje */
             text-align: center;
-            font-size: 20px; /* Tamaño de fuente más pequeño */
+            font-size: 20px;
             border-radius: 10px; /* Bordes redondeados */
+            
         }
+ 
+        #alertCloseButton {
+            background-color: #030303; /* Color de fondo */
+            color: white; /* Color del texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: 1px solid #af7817; /* Sin borde */
+            border-radius: 15px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de la fuente */
+            cursor: pointer; /* Cambia el cursor al pasar el mouse */
+            transition: background-color 0.3s ease; /* Transición suave */
+            
+            
+        }
+
+        #alertCloseButton:hover {
+            background-color: #af7817; /* Cambia el color al pasar el mouse */
+        }
+
+        #alertCloseButton:active {
+            background-color: #fcb900; /* Cambia el color al hacer clic */
+        }
+
         .custom-alert.confirmation {
             display: none;
             position: fixed;
@@ -330,7 +354,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #000000; 
-            border: 0px solid goldenrod;
+            border: 1px solid goldenrod;
             color: white;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -374,7 +398,7 @@
             border: 2px solid #000000;
             color: #000;
         }
-        
+     /*--------------------------------------------------------------*/   
         /*Cuadro de texto para nueva URL*/
         .custom-url-input {
             display: none;
@@ -384,10 +408,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #f0f0f0;
-            border: 6px solid #13e336;
+            background-color: #000000;
+            border: 1px solid #13e336;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(181, 13, 167, 0.5);
+            box-shadow: 0 0 20px #59e817;
             z-index: 1000;
             /*display: none;*/
             flex-direction: column;
@@ -402,29 +426,56 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            border: 2px solid #ccc;
+            background: #ffffff;
+            color: #d81313;
+            border: 0px solid #f0f0f0;
             border-radius: 5px;
         }
         
+        .custom-url-input input:hover {
+            background: #000000;
+            border: 0.5px solid #5cbd02;
+            
+        }
+
+        .custom-url-input input.filled {
+            background: #000000;
+            border: 0.5px solid #fd00db;
+            
+        }
+
+
+        .custom-url-input input:focus {
+            background: #000000;
+            border: 0.5px solid #5cbd02;
+            color: #ff0000;
+            
+            
+        }
+
+/*---------------------------------------------------------------*/
         .custom-url-input .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 20px; /* Separación de botones */
+            
         }
         
         .custom-url-input .button-container button {
-            background-color: #8a182b;
+            background-color: #000000;
             color: white;
-            border: none;
+            border: 1px solid #13e336;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 15px;
         }
        
         .custom-url-input .button-container button:hover {
-            background-color: #1e90ff;
-            border: 2px solid #8a182b;
+            background-color: #000000;
+            border: 2px solid #000000;
+            box-shadow: 0 0 10px #59e817;
+
         }
         
         /* Estilos para el cuadro de diálogo personalizado del giro del negocio */
