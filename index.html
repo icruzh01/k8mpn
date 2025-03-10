@@ -409,9 +409,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #000000;
-            border: 1px solid #13e336;
+            border: 1px solid #d4a017;
             padding: 20px;
-            box-shadow: 0 0 20px #59e817;
+            box-shadow: 0 0 20px #e8a317;
             z-index: 1000;
             /*display: none;*/
             flex-direction: column;
@@ -426,45 +426,45 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            background: #ffffff;
-            color: #d81313;
-            border: 0px solid #f0f0f0;
+            background: #e4e4e4;
+            color: #f8163c;
+            border: 0px solid #13e336;
             border-radius: 5px;
         }
         
         .custom-url-input input:hover {
             background: #000000;
-            border: 0.5px solid #5cbd02;
+            border: 0.5px solid #d4a017;
             
         }
 
+
+        /* Este código .filled aun no lo aplico en el proyecto */
         .custom-url-input input.filled {
-            background: #000000;
-            border: 0.5px solid #fd00db;
+            background: #000000; /* Cambia el color de fondo cuando hay texto en el input */
+            border: 20px solid #fd00db;
             
         }
 
 
         .custom-url-input input:focus {
-            background: #000000;
+            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
             border: 0.5px solid #5cbd02;
-            color: #ff0000;
-            
-            
+            color: #f8163c;
+                    
         }
 
-/*---------------------------------------------------------------*/
         .custom-url-input .button-container {
             display: flex;
             justify-content: center;
             gap: 20px; /* Separación de botones */
-            
+                       
         }
         
         .custom-url-input .button-container button {
             background-color: #000000;
             color: white;
-            border: 1px solid #13e336;
+            border: 1px solid #d4a017;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
@@ -473,11 +473,12 @@
        
         .custom-url-input .button-container button:hover {
             background-color: #000000;
-            border: 2px solid #000000;
-            box-shadow: 0 0 10px #59e817;
+            border: 2px solid #c20303;
+            box-shadow: 0 0 10px #ff0000;
 
         }
-        
+        /*---------------------------------------------------------------*/
+
         /* Estilos para el cuadro de diálogo personalizado del giro del negocio */
         .custom-giro-input {
             display: none;
@@ -487,10 +488,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #f0f0f0; /* Color de fondo */
-            border: 6px solid #07edf5; /* Borde */
+            background-color: #000000; /* Color de fondo */
+            border: 1px solid #07edf5; /* Borde */
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px #4ee2ec;
             z-index: 1000;
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
@@ -512,20 +513,23 @@
         }
         
         .custom-giro-input .button-container button {
-            background-color: #8a182b;
+            background-color: #000000;
             color: white;
-            border: none;
+            border: 1px solid #4ee2ec;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 15px;
         }
         
         .custom-giro-input .button-container button:hover {
-            background-color: #1e90ff;
-            border: 2px solid #8a182b;
+            background-color: #000000;
+            border: 2px solid #fbb917;
+            box-shadow: 0 0 10px #f8f401;
         }
         
+        /*---------------------------------------------------------------*/
+
         /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
         .custom-nombre-input {
             display: none;
@@ -535,10 +539,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #f0f0f0; /* Color de fondo */
-            border: 6px solid #f507dd; /* Borde */
+            background-color: #000000; /* Color de fondo */
+            border: 1px solid #f30086; /* Borde */
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px #f507dd;
             z-index: 1000;
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
@@ -560,18 +564,19 @@
         }
         
         .custom-nombre-input .button-container button {
-            background-color: #8a182b;
+            background-color: #000000;
             color: white;
-            border: none;
+            border: 1px solid #f30086;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 15px;
         }
        
         .custom-nombre-input .button-container button:hover {
-            background-color: #1e90ff;
-            border: 2px solid #8a182b;
+            background-color: #000000;
+            border: 2px solid #027e94;
+            box-shadow: 0 0 10px #00d9ff;
         }
 
         /* Estilos para el overlay */
