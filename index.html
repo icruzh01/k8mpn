@@ -358,13 +358,13 @@
             transform: translate(-50%, -50%);
             background-color: #000000; 
             border: 1px solid #f70d1a;
-            color: white;
+            color: rgb(185, 185, 185);
             padding: 30px;
             box-shadow: 0 0 20px #ff0000;
             z-index: 1000;
             text-align: center;
             border-radius: 10px; /* Bordes redondeados */
-            animation: glowRed 1s infinite alternate;
+            /*animation: glowRed 1s infinite alternate; */
 
         }
             /*@keyframes glowRed {
@@ -384,17 +384,18 @@
         .custom-confirm .button-container {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 40px;
         }
         
         .custom-confirm button {
-            background-color: rgb(0, 0, 0);
-            color: rgb(188, 173, 173);
-            border: 3px solid #ff0000;
-            padding: 10px 30px;
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ff0000;
+            padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 15px;        
+            border-radius: 15px;
+            box-shadow: 0 0 10px #f70d1a;        
         }
         
         .custom-confirm button:hover {
@@ -543,32 +544,7 @@
             border: 0.5px solid #5cbd02;
             color: #4ee2ec;
         }
-
-        
-
-        /*.custom-giro-input .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Separación de botones */
-                       
-        /*}*/
-        
-        /*.custom-giro-input .button-container button {
-            background-color: #000000;
-            color: white;
-            border: 1px solid #d4a017;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 15px;
-        }*/
        
-        .custom-giro-input .button-container button:hover {
-            background-color: #000000;
-            border: 2px solid #c20303;
-            box-shadow: 0 0 10px #ff0000;
-
-        }
         /*---------------------------------------------------------------*/
 
         /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
@@ -662,8 +638,8 @@
     <div id="customConfirm" class="custom-confirm">
         <p>¿Confirma activar la emergencia? <br>Esto enviará una alerta a las autoridades.</p>
         <div class="button-container">
-            <button id="confirmYes">Sí</button>
-            <button id="confirmNo">No</button>
+            <button id="confirmYes">Activar</button>
+            <button id="confirmNo">Cancelar</button>
         </div>
     </div>
 
