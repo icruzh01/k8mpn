@@ -327,7 +327,8 @@
         #alertCloseButton:active {
             background-color: #800000; /* Cambia el color al hacer clic */
         }
-
+        
+        /* Personalizar cuadro de "Envío exitoso" */
         .custom-alert.confirmation {
             display: none;
             position: fixed;
@@ -336,19 +337,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgb(0, 0, 0);
+            background: rgb(0, 0, 0);
             border: 1px solid #3ea055;
             padding: 20px;
             color: rgb(207, 207, 207);
-            box-shadow: 0px 0px 10px #00ff00(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 10px #02ff02;
             text-align: center;
             font-size: 20px; /* Tamaño de fuente más pequeño */
             border-radius: 10px; /* Bordes redondeados */
             
         }
-        /*Para personalizar Cuadro de Confirmación*/
+        /*Para personalizar "Confirmación de Alerta" */
         .custom-confirm {
-            
             display: none;
             position: fixed;
             width: 230px; /* Ancho del cuadro */
@@ -395,14 +395,33 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 15px;
-            box-shadow: 0 0 10px #f70d1a;        
+            box-shadow: 0 0 10px #f8212c;        
         }
         
-        .custom-confirm button:hover {
+        .custom-confirm button:hover {  
             background-color: #000000;
-            border: 2px solid #157dec;
-            box-shadow: 0 0 10px #3bb9ff;
+            border: 3px solid #0095ff;
+            box-shadow: 0 0 10px #0debf7;
         }
+
+        #confirmNo {
+
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #7a7a7a;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #a4a3a3;    
+        }
+        #confirmNo:hover {
+            background-color: #000000;
+            border: 3px solid #898989;
+            box-shadow: 0 0 10px #ffffff;
+        }
+        
+        
      /*--------------------------------------------------------------*/   
         /*Cuadro de texto para nueva URL*/
         .custom-url-input {
@@ -418,7 +437,6 @@
             padding: 20px;
             box-shadow: 0 0 20px #e8a317;
             z-index: 1000;
-            /*display: none;*/
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -431,31 +449,32 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            background: #e4e4e4;
-            color: #f8163c;
-            border: 0px solid #13e336;
+            background: #ffe8ba;
+            color: #000000;
+            border: 0px solid #e8a317;
+            box-shadow: 0 0 10px #e8a317;
             border-radius: 5px;
         }
         
         .custom-url-input input:hover {
             background: #000000;
             border: 0.5px solid #d4a017;
-            
+            color: #d4a017; 
         }
 
 
         /* Este código .filled aun no lo aplico en el proyecto */
-        .custom-url-input input.filled {
+        /*.custom-url-input input.filled {
             background: #000000; /* Cambia el color de fondo cuando hay texto en el input */
-            border: 20px solid #fd00db;
+            /* border: 20px solid #fd00db;
             
-        }
+        }*/
 
 
         .custom-url-input input:focus {
             background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
             border: 0.5px solid #5cbd02;
-            color: #f8163c;
+            color: #d4a017;
                     
         }
 
@@ -507,16 +526,26 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            border: 2px solid #ccc;
+            background: #aef7fd;
+            color: #000000;
+            border: 1px solid #4ee2ec;
+            box-shadow: 0 0 5px #4ee2ec;
             border-radius: 5px;
         }
         
         .custom-giro-input input:hover {
             background: #000000;
             border: 0.5px solid #4ee2ec;
+            color: #4ee2ec;
 
         }
 
+        .custom-giro-input input:focus {
+            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            border: 0.5px solid #5cbd02;
+            color: #4ee2ec;
+        }
+        
         .custom-giro-input .button-container {
             display: flex;
             justify-content: center;
@@ -539,11 +568,7 @@
             box-shadow: 0 0 10px #f8f401;
         }
 
-        .custom-giro-input input:focus {
-            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
-            border: 0.5px solid #5cbd02;
-            color: #4ee2ec;
-        }
+        
        
         /*---------------------------------------------------------------*/
 
@@ -570,10 +595,25 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            border: 2px solid #ccc;
+            background: #ffb1f7;
+            color: #000000;
+            border: 1px solid #f507dd;
+            box-shadow: 0 0 5px #f507dd;
             border-radius: 5px;
         }
        
+        .custom-nombre-input input:hover {
+            background: #000000;
+            border: 0.5px solid #f507dd;
+            color: #f507dd;
+        }
+
+        .custom-nombre-input input:focus {
+            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            border: 0.5px solid #5cbd02;
+            color: #f507dd;
+        }
+
         .custom-nombre-input .button-container {
             display: flex;
             justify-content: center;
@@ -856,7 +896,7 @@ window.addEventListener('load', function () {
                 setTimeout(() => {
                     if (!nuevaVentana.closed) {
                         nuevaVentana.close();
-                        showCustomAlert("Activación Exitosa.", 'confirmation');
+                        showCustomAlert("¡Activación Exitosa!", 'confirmation');
                     }
                 }, 5000);
             } catch (error) {
