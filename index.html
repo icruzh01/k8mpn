@@ -25,6 +25,72 @@
             font-family: Arial;
             position: relative; /* Necesario para posicionar elementos hijos de forma absoluta */
         }
+
+        /* Estilos para el mensaje inicial */
+        #initialMessage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column; /* Añadido para alinear el texto y la línea verticalmente */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            z-index: 10000; /* Asegura que esté por encima de todo */
+        }
+
+        /* Estilos para la línea debajo del mensaje inicial */
+        #initialMessage::after {
+            content: '';
+            display: block;
+            width: 80%; /* Ancho de la línea */
+            height: 2px; /* Grosor de la línea */
+            background: linear-gradient(
+                90deg,
+                #ff0000, /* Rojo */
+                #cccccc, /* Gris claro */
+                #0000ff  /* Azul */
+            );
+            margin-top: 20px; /* Espacio entre el texto y la línea */
+            border-radius: 50%; /* Bordes redondeados para un efecto más suave */
+            box-shadow: 
+                0 0 10px #ff0000, /* Sombra roja */
+                0 0 20px #cccccc, /* Sombra gris */
+                0 0 30px #0000ff; /* Sombra azul */
+            filter: drop-shadow(0 0 5px #ff0000) /* Efecto glow rojo */
+                    drop-shadow(0 0 10px #cccccc) /* Efecto glow gris */
+                    drop-shadow(0 0 15px #0000ff); /* Efecto glow azul */
+            animation: glow 2s infinite alternate; /* Animación de glow */
+        }
+
+        /* Animación para el efecto glow */
+        @keyframes glow {
+            0% {
+                box-shadow: 
+                    0 0 10px #ff0000,
+                    0 0 20px #cccccc,
+                    0 0 30px #0000ff;
+                filter: drop-shadow(0 0 5px #ff0000)
+                        drop-shadow(0 0 10px #cccccc)
+                        drop-shadow(0 0 15px #0000ff);
+            }
+            100% {
+                box-shadow: 
+                    0 0 20px #ff0000,
+                    0 0 40px #cccccc,
+                    0 0 60px #0000ff;
+                filter: drop-shadow(0 0 10px #ff0000)
+                        drop-shadow(0 0 20px #cccccc)
+                        drop-shadow(0 0 30px #0000ff);
+            }
+        }
+
+        /* Resto de los estilos (mantén el resto del CSS sin cambios) */
         header {
             text-align: center;
             margin-bottom: 100px;
@@ -36,11 +102,9 @@
         }
 
         header h1.title_1 {
-           
             margin-top: -170px;
             margin-bottom: -95px;
-            box-sizing:border-box;
-
+            box-sizing: border-box;
             background: radial-gradient(#272727, #1b1b1b);
             font-family: sans-serif;
             text-transform: uppercase;
@@ -54,7 +118,7 @@
                 #3e2904 5%,
                 #ffb338 12%
             );
-            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+            background-size: 200% 100%;
             color: #000000;
             filter: drop-shadow(5px 15px #000);
             transform: scaleY(1.05);
@@ -64,24 +128,23 @@
             letter-spacing: 4px;
             -webkit-text-stroke: 2px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 35s linear infinite alternate;
             z-index: 1000;
         }
 
         @keyframes desplazarFondo {
             0% {
-                background-position: 100% 50%; /* Inicia el gradiente desde la izquierda */
+                background-position: 100% 50%;
             }
             100% {
-                background-position: 0% 50%; /* Mueve el gradiente hacia la derecha */
+                background-position: 0% 50%;
             }
         }
 
         header h1.title_2 {
-           
             margin-top: -80px;
             margin-bottom: -40px;
-            box-sizing:border-box;
+            box-sizing: border-box;
             background: radial-gradient(#272727, #1b1b1b);
             font-family: sans-serif;
             text-transform: uppercase;
@@ -90,12 +153,12 @@
             justify-content: center;
             align-items: center;
             background-image: repeating-linear-gradient(
-               105deg,
-               #ffb338 0%,
-               #3e2904 5%,
-               #ffb338 12%
-               );
-            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+                105deg,
+                #ffb338 0%,
+                #3e2904 5%,
+                #ffb338 12%
+            );
+            background-size: 200% 100%;
             color: #000000;
             filter: drop-shadow(5px 15px #000);
             transform: scaleY(1.05);
@@ -105,50 +168,41 @@
             letter-spacing: 4px;
             -webkit-text-stroke: 1.5px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 35s linear infinite alternate;
             z-index: 1000;
         }
-   
-           @keyframes desplazarFondo {
-               0% {
-                   background-position: 100% 50%; /* Inicia el gradiente desde la izquierda */
-               }
-               100% {
-                   background-position: 0% 50%; /* Mueve el gradiente hacia la derecha */
-               }
-           }
 
         header hr {
             position: relative;
-            border: none; /* Elimina el borde predeterminado */
-            height: 1px; /* Grosor de la línea */
-            margin: 15px 0px; /* Espacio arriba y abajo de la línea */
+            border: none;
+            height: 1px;
+            margin: 15px 0px;
             background: linear-gradient(
                 90deg,
-                #c38521 0%, /* Dorado claro */
-                #3e2904 25%, /* Dorado oscuro */
-                #ffb338 50%, /* Dorado claro */
-                #3e2904 75%, /* Dorado oscuro */
-                #c38521 100% /* Dorado claro */
+                #c38521 0%,
+                #3e2904 25%,
+                #ffb338 50%,
+                #3e2904 75%,
+                #c38521 100%
             );
-            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
-            animation: desplazarFondo 35s linear infinite; /* Animación para desplazar el fondo */
-            z-index:1000;
+            background-size: 200% 100%;
+            animation: desplazarFondo 35s linear infinite;
+            z-index: 1000;
         }
 
-            @keyframes desplazarFondo {
-                0% {
-                background-position: 100% 50%; /* Inicia el gradiente desde la derecha */
-                }
-                100% {
-                background-position: 0% 50%; /* Mueve el gradiente hacia la izquierda */
-                }
+        @keyframes desplazarFondo {
+            0% {
+                background-position: 100% 50%;
             }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
         header h1.title_3 {
             margin-top: -50px;
             margin-bottom: 0px;
-            box-sizing:border-box;
+            box-sizing: border-box;
             background: radial-gradient(#272727, #1b1b1b);
             font-family: sans-serif;
             text-transform: uppercase;
@@ -157,12 +211,12 @@
             justify-content: center;
             align-items: center;
             background-image: repeating-linear-gradient(
-               105deg,
-               #ffb338 0%,
-               #3e2904 5%,
-               #ffb338 12%
-               );
-            background-size: 200% 100%; /* Aumenta el tamaño del fondo para permitir el desplazamiento */
+                105deg,
+                #ffb338 0%,
+                #3e2904 5%,
+                #ffb338 12%
+            );
+            background-size: 200% 100%;
             color: #000000;
             filter: drop-shadow(5px 15px #000);
             transform: scaleY(1.05);
@@ -172,18 +226,9 @@
             letter-spacing: 3px;
             -webkit-text-stroke: 1.5px transparent;
             -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate; /* Animación para desplazar el fondo */
+            animation: desplazarFondo 35s linear infinite alternate;
             z-index: 1000;
         }
-   
-           @keyframes desplazarFondo {
-               0% {
-                   background-position: 100% 50%; /* Inicia el gradiente desde la izquierda */
-               }
-               100% {
-                   background-position: 0% 50%; /* Mueve el gradiente hacia la derecha */
-               }
-            }
 
         header h1.giroNegocio {
             font-size: 30px;
@@ -198,7 +243,7 @@
         }
 
         #emergencyButton {
-            background-color:  rgb(255, 0, 0);
+            background-color: rgb(255, 0, 0);
             color: white;
             font-size: 20px;
             width: 150px;
@@ -209,46 +254,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center; 
+            text-align: center;
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
             margin: -40px;
             margin-bottom: 60px;
-            animation: neon-color-change 2s infinite;    
+            animation: neon-color-change 2s infinite;
         }
-        
+
         #emergencyButton:active, #emergencyButton.active {
             background-color: rgb(125, 2, 2);
             border-color: rgb(91, 67, 6);
             color: rgb(100, 101, 103);
             transform: scale(0.95);
         }
-        
-            @keyframes neon-color-change {
-                0% {
+
+        @keyframes neon-color-change {
+            0% {
                 border-color: #fffb00;
                 box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
-                }
-                50% {
+            }
+            50% {
                 border-color: #de9000;
                 box-shadow: 0 0 10px #7b1300, 0 0 20px #7b1300, 0 0 40px #7b1300;
-                }
-                100% {
+            }
+            100% {
                 border-color: #fffb00;
                 box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
-                }
             }
+        }
 
-        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {/*Para modificar los botones ubicados al final*/
-            background-color: #000000; /* Color negro */
+        #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {
+            background-color: #000000;
             color: #FFFFFF;
             text-transform: uppercase;
             padding: 10px 20px;
             border-radius: 10px;
-            font-size: 14px; /* Tamaño de fuente */
-            width: 100px; /* Ancho */
-            height: 40px; /* Altura */
-            border: 2px solid rgb(157, 151, 151); /* Borde gris */
+            font-size: 14px;
+            width: 100px;
+            height: 40px;
+            border: 2px solid rgb(157, 151, 151);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -257,83 +302,77 @@
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
             box-shadow: 3px 3px rgb(157, 151, 151);
-            position: absolute; /* Posicionamiento absoluto */
-            bottom: 20px; /* Distancia desde la parte inferior */
-            left: 20px; /* Distancia desde la izquierda */
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
             margin: 10px 0;
         }
-       
-        #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
 
+        #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
             box-shadow: none;
             transform: translate(3px, 3px);
         }
 
         #modifyGiroButton {
-            left: 130px; /* Posición al lado del botón "Cargar URL" */
+            left: 130px;
         }
-       
+
         #modifyNombreButton {
-            left: 240px; /* Posición al lado del botón "Giro Negocio" */
+            left: 240px;
         }
-        
+
         #modifyUrlButton:active, #modifyUrlButton.active, #modifyGiroButton:active, #modifyGiroButton.active, #modifyNombreButton:active, #modifyNombreButton.active {
-            background-color: #1e90ff; /* Azul más oscuro al hacer clic */
-            border-color: #00bfff; /* Borde más claro al hacer clic */
+            background-color: #1e90ff;
+            border-color: #00bfff;
             transform: scale(0.95);
         }
-        
-        /* Notificación que te pide cargar una URL antes de mandar la emergencia */
-        .custom-alert { 
+
+        .custom-alert {
             display: none;
             position: fixed;
-            width: 250px; /* Ancho del cuadro */
-            height: 100px; /* Altura */
+            width: 250px;
+            height: 100px;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Centra el cuadro en la página */
+            transform: translate(-50%, -50%);
             background-color: #000000;
             border: 1px solid #837e7c;
             padding: 20px;
             color: #aaaaaa;
             box-shadow: 0 0 20px #ffffff;
-            z-index: 1000; /* Para indicar el orden de apilamiento del mensaje */
+            z-index: 1000;
             text-align: center;
             font-size: 20px;
-            border-radius: 10px; /* Bordes redondeados */
-            
+            border-radius: 10px;
         }
- 
+
         #alertCloseButton {
-            background-color: #000000; /* Color de fondo */
-            color: #ffffff; /* Color del texto */
-            padding: 10px 20px; /* Espaciado interno */
-            border: 2px solid #ff0000; /* Sin borde */
-            border-radius: 15px; /* Bordes redondeados */
-            font-size: 16px; /* Tamaño de la fuente */
-            cursor: pointer; /* Cambia el cursor al pasar el mouse */
-            transition: background-color 0.3s ease; /* Transición suave */
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
             box-shadow: 0 0 10px #f80101;
-            
-            
         }
 
         #alertCloseButton:hover {
-            background-color: #000000; /* Cambia el color al pasar el mouse */
+            background-color: #000000;
             border: 0.5px solid #ff0000;
             box-shadow: 0 0 10px #f80101;
         }
 
         #alertCloseButton:active {
-            background-color: #800000; /* Cambia el color al hacer clic */
+            background-color: #800000;
         }
-        
-        /* Personalizar cuadro de "Envío exitoso" */
+
         .custom-alert.confirmation {
             display: none;
             position: fixed;
-            width: 250px; /* Ancho del cuadro */
-            height: 100px; /* Altura */
+            width: 250px;
+            height: 100px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -343,50 +382,39 @@
             color: rgb(207, 207, 207);
             box-shadow: 0px 0px 10px #02ff02;
             text-align: center;
-            font-size: 20px; /* Tamaño de fuente más pequeño */
-            border-radius: 10px; /* Bordes redondeados */
-            
+            font-size: 20px;
+            border-radius: 10px;
         }
-        /*Para personalizar "Confirmación de Alerta" */
+
         .custom-confirm {
             display: none;
             position: fixed;
-            width: 230px; /* Ancho del cuadro */
-            height: 130px; /* Altura */
+            width: 230px;
+            height: 130px;
             top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #000000; 
+            background-color: #000000;
             border: 1px solid #f70d1a;
             color: rgb(185, 185, 185);
             padding: 30px;
             box-shadow: 0 0 20px #ff0000;
             z-index: 1000;
             text-align: center;
-            border-radius: 10px; /* Bordes redondeados */
-            /*animation: glowRed 1s infinite alternate; */
-
+            border-radius: 10px;
         }
-            /*@keyframes glowRed {
-                from {
-                    box-shadow: 0 0 7px rgba(113, 2, 2, 0.7), 0 0 20px rgba(165, 1, 1, 0.7);
-                }
-                to {
-                    box-shadow: 0 0 20px rgba(141, 13, 9, 0.9), 0 0 30px rgba(130, 4, 4, 0.9);
-                }
-            } */
 
         .custom-confirm p {
             margin: 0 0 20px;
             font-size: 18px;
         }
-        
+
         .custom-confirm .button-container {
             display: flex;
             justify-content: center;
             gap: 40px;
         }
-        
+
         .custom-confirm button {
             background-color: #000000;
             color: #ffffff;
@@ -395,17 +423,16 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 15px;
-            box-shadow: 0 0 10px #f8212c;        
+            box-shadow: 0 0 10px #f8212c;
         }
-        
-        .custom-confirm button:hover {  
+
+        .custom-confirm button:hover {
             background-color: #000000;
             border: 3px solid #0095ff;
             box-shadow: 0 0 10px #0debf7;
         }
 
         #confirmNo {
-
             background-color: #000000;
             color: #ffffff;
             border: 2px solid #7a7a7a;
@@ -413,22 +440,20 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 15px;
-            box-shadow: 0 0 10px #a4a3a3;    
+            box-shadow: 0 0 10px #a4a3a3;
         }
+
         #confirmNo:hover {
             background-color: #000000;
             border: 3px solid #898989;
             box-shadow: 0 0 10px #ffffff;
         }
-        
-        
-     /*--------------------------------------------------------------*/   
-        /*Cuadro de texto para nueva URL*/
+
         .custom-url-input {
             display: none;
             position: fixed;
-            width: 250px; /* Ancho más grande */
-            height: 100px; /* Altura más grande */
+            width: 250px;
+            height: 100px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -441,11 +466,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-radius: 10px; /* Bordes redondeados */
+            border-radius: 10px;
         }
-       
+
         .custom-url-input input {
-            width: 90%; /* Ancho del input */
+            width: 90%;
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
@@ -455,36 +480,25 @@
             box-shadow: 0 0 5px #e8a317;
             border-radius: 5px;
         }
-        
+
         .custom-url-input input:hover {
             background: #000000;
             border: 0.5px solid #d4a017;
-            color: #d4a017; 
+            color: #d4a017;
         }
 
-
-        /* Este código .filled aun no lo aplico en el proyecto */
-        /*.custom-url-input input.filled {
-            background: #000000; /* Cambia el color de fondo cuando hay texto en el input */
-            /* border: 20px solid #fd00db;
-            
-        }*/
-
-
         .custom-url-input input:focus {
-            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            background: #000000;
             border: 0.5px solid #5cbd02;
             color: #d4a017;
-                    
         }
 
         .custom-url-input .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Separación de botones */
-                       
+            gap: 20px;
         }
-        
+
         .custom-url-input .button-container button {
             background-color: #000000;
             color: white;
@@ -494,35 +508,32 @@
             font-size: 16px;
             border-radius: 15px;
         }
-       
+
         .custom-url-input .button-container button:hover {
             background-color: #000000;
             border: 2px solid #c20303;
             box-shadow: 0 0 10px #ff0000;
-
         }
-        /*---------------------------------------------------------------*/
 
-        /* Estilos para el cuadro de diálogo personalizado del giro del negocio */
         .custom-giro-input {
             display: none;
             position: fixed;
-            width: 250px; /* Ancho del cuadro */
-            height: 100px; /* Altura */
+            width: 250px;
+            height: 100px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #000000; /* Color de fondo */
-            border: 1px solid #07edf5; /* Borde */
+            background-color: #000000;
+            border: 1px solid #07edf5;
             padding: 20px;
             box-shadow: 0 0 20px #4ee2ec;
             z-index: 1000;
             text-align: center;
-            border-radius: 10px; /* Bordes redondeados */
+            border-radius: 10px;
         }
-        
+
         .custom-giro-input input {
-            width: 90%; /* Ancho del input */
+            width: 90%;
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
@@ -532,26 +543,25 @@
             box-shadow: 0 0 5px #4ee2ec;
             border-radius: 5px;
         }
-        
+
         .custom-giro-input input:hover {
             background: #000000;
             border: 0.5px solid #4ee2ec;
             color: #4ee2ec;
-
         }
 
         .custom-giro-input input:focus {
-            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            background: #000000;
             border: 0.5px solid #5cbd02;
             color: #4ee2ec;
         }
-        
+
         .custom-giro-input .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Separación de botones */
+            gap: 20px;
         }
-        
+
         .custom-giro-input .button-container button {
             background-color: #000000;
             color: white;
@@ -561,37 +571,32 @@
             font-size: 16px;
             border-radius: 15px;
         }
-        
+
         .custom-giro-input .button-container button:hover {
             background-color: #000000;
             border: 2px solid #d7159d;
             box-shadow: 0 0 10px #ec4ebd;
         }
 
-        
-       
-        /*---------------------------------------------------------------*/
-
-        /* Estilos para el cuadro de diálogo personalizado del nombre del negocio */
         .custom-nombre-input {
             display: none;
             position: fixed;
-            width: 250px; /* Ancho del cuadro */
-            height: 100px; /* Altura */
+            width: 250px;
+            height: 100px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #000000; /* Color de fondo */
-            border: 1px solid #f30086; /* Borde */
+            background-color: #000000;
+            border: 1px solid #f30086;
             padding: 20px;
             box-shadow: 0 0 20px #f507dd;
             z-index: 1000;
             text-align: center;
-            border-radius: 10px; /* Bordes redondeados */
+            border-radius: 10px;
         }
-        
+
         .custom-nombre-input input {
-            width: 90%; /* Ancho del input */
+            width: 90%;
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
@@ -601,7 +606,7 @@
             box-shadow: 0 0 5px #f507dd;
             border-radius: 5px;
         }
-       
+
         .custom-nombre-input input:hover {
             background: #000000;
             border: 0.5px solid #f507dd;
@@ -609,7 +614,7 @@
         }
 
         .custom-nombre-input input:focus {
-            background: #000000; /* Cambia el color de fondo cuando el input está enfocado */
+            background: #000000;
             border: 0.5px solid #5cbd02;
             color: #f507dd;
         }
@@ -619,7 +624,7 @@
             justify-content: center;
             gap: 20px;
         }
-        
+
         .custom-nombre-input .button-container button {
             background-color: #000000;
             color: white;
@@ -629,42 +634,23 @@
             font-size: 16px;
             border-radius: 15px;
         }
-       
+
         .custom-nombre-input .button-container button:hover {
             background-color: #000000;
             border: 2px solid #027e94;
             box-shadow: 0 0 10px #00d9ff;
         }
 
-        /* Estilos para el overlay */
         .overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgb(0, 0, 0); /* Fondo negro semitransparente*/
-                    z-index: 999; /*Asegura que esté por encima de otros elementos*/
-        }
-
-        /* Estilos para el mensaje inicial */
-        #initialMessage {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            font-size: 50px;
-            z-index: 10000; /* Asegura que esté por encima de todo */
+            background-color: rgb(0, 0, 0);
+            z-index: 999;
         }
-
     </style>
 </head>
 <body>
@@ -673,6 +659,7 @@
     <div id="initialMessage">
         Mi Emergencia<br>k8
     </div>
+
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
     <header>
@@ -683,7 +670,6 @@
         
         <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
         <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
-       
     </header>
     <button id="emergencyButton" aria-label="Activar emergencia">Emergencia</button>
     <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
@@ -733,61 +719,61 @@
     </div>
 
     <script>
-/*-----Esta sección fue lo último que se agrego para poder guardar el giro y nombre en el localStorage------*/
+        /*-----Esta sección fue lo último que se agrego para poder guardar el giro y nombre en el localStorage------*/
 
-// Guardar el giro del negocio en localStorage
-document.getElementById('giroSubmitButton').addEventListener('click', function () {
-    const newGiro = document.getElementById('newGiroInput').value;
-    if (newGiro) {
-        document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
-        localStorage.setItem('giroNegocio', newGiro);
-        hideCustomGiroInput();
-    } else {
-        showCustomAlert("Ingresa un giro válido.");
-    }
-});
+        // Guardar el giro del negocio en localStorage
+        document.getElementById('giroSubmitButton').addEventListener('click', function () {
+            const newGiro = document.getElementById('newGiroInput').value;
+            if (newGiro) {
+                document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+                localStorage.setItem('giroNegocio', newGiro);
+                hideCustomGiroInput();
+            } else {
+                showCustomAlert("Ingresa un giro válido.");
+            }
+        });
 
-// Cargar el giro del negocio desde localStorage al cargar la página
-window.addEventListener('load', function () {
-    const savedGiro = localStorage.getItem('giroNegocio');
-    if (savedGiro) {
-        document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
-    }
-});
+        // Cargar el giro del negocio desde localStorage al cargar la página
+        window.addEventListener('load', function () {
+            const savedGiro = localStorage.getItem('giroNegocio');
+            if (savedGiro) {
+                document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
+            }
+        });
 
-// Guardar el nombre del negocio en localStorage
-document.getElementById('nombreSubmitButton').addEventListener('click', function () {
-    const newNombre = document.getElementById('newNombreInput').value;
-    if (newNombre) {
-        // Asegurarse de que el nombre esté entre comillas
-        const nombreConComillas = `"${newNombre}"`;
-        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-        localStorage.setItem('nombreNegocio', nombreConComillas); // Guardar con comillas
-        hideCustomNombreInput();
-    } else {
-        showCustomAlert("Ingresa un nombre válido.");
-    }
-});
+        // Guardar el nombre del negocio en localStorage
+        document.getElementById('nombreSubmitButton').addEventListener('click', function () {
+            const newNombre = document.getElementById('newNombreInput').value;
+            if (newNombre) {
+                // Asegurarse de que el nombre esté entre comillas
+                const nombreConComillas = `"${newNombre}"`;
+                document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+                localStorage.setItem('nombreNegocio', nombreConComillas); // Guardar con comillas
+                hideCustomNombreInput();
+            } else {
+                showCustomAlert("Ingresa un nombre válido.");
+            }
+        });
 
-// Cargar el nombre del negocio desde localStorage al cargar la página
-window.addEventListener('load', function () {
-    const savedNombre = localStorage.getItem('nombreNegocio');
-    if (savedNombre) {
-        // Verificar si el nombre ya tiene comillas
-        const nombreConComillas = savedNombre.startsWith('"') && savedNombre.endsWith('"') 
-            ? savedNombre 
-            : `"${savedNombre}"`;
-        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-    }
-});
+        // Cargar el nombre del negocio desde localStorage al cargar la página
+        window.addEventListener('load', function () {
+            const savedNombre = localStorage.getItem('nombreNegocio');
+            if (savedNombre) {
+                // Verificar si el nombre ya tiene comillas
+                const nombreConComillas = savedNombre.startsWith('"') && savedNombre.endsWith('"') 
+                    ? savedNombre 
+                    : `"${savedNombre}"`;
+                document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+            }
+        });
 
-// Cargar el nombre del negocio desde localStorage al cargar la página
-window.addEventListener('load', function () {
-    const savedNombre = localStorage.getItem('nombreNegocio');
-    if (savedNombre) {
-        document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
-    }
-});
+        // Cargar el nombre del negocio desde localStorage al cargar la página
+        window.addEventListener('load', function () {
+            const savedNombre = localStorage.getItem('nombreNegocio');
+            if (savedNombre) {
+                document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
+            }
+        });
 
         // Obtener la URL guardada en el LocalStorage o usar la predeterminada
         let currentUrl = localStorage.getItem('emergencyUrl') || '';// '' Aquí estaba la URL MPN
@@ -808,7 +794,6 @@ window.addEventListener('load', function () {
                 customAlert.classList.add('success');
             } else if (alertType === 'confirmation') {
                 customAlert.classList.add('confirmation');
-               
             }
             customAlert.style.display = 'block';
             overlay.style.display = 'block';
@@ -845,7 +830,6 @@ window.addEventListener('load', function () {
             const emergencyButton = document.getElementById('emergencyButton');
             emergencyButton.classList.remove('active');
         }
-        
 
         // Función para mostrar el cuadro de diálogo para modificar la URL
         function showCustomUrlInput() {
@@ -1031,16 +1015,13 @@ window.addEventListener('load', function () {
             nombreSubmitButton.disabled = !this.value.trim();
         });
 
-
         // Mostrar el mensaje inicial y ocultarlo después de 2 segundos
         document.addEventListener('DOMContentLoaded', function () {
             const initialMessage = document.getElementById('initialMessage');
-                setTimeout(() => {
-                    initialMessage.style.display = 'none';
-                }, 2000); // 2000 milisegundos = 2 segundos
+            setTimeout(() => {
+                initialMessage.style.display = 'none';
+            }, 15000); // 2000 milisegundos = 2 segundos
         });
-
-
     </script>
 </body>
 </html>
