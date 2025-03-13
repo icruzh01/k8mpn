@@ -19,7 +19,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Cambia a flex-start para alinear al inicio */
             align-items: center;
             background-color: #000000;
             font-family: Arial;
@@ -40,31 +40,32 @@
             align-items: center;
             text-align: center;
             color: white;
-            font-size: 50px;
+            font-size: 40px;
             z-index: 10000; /* Asegura que esté por encima de todo */
         }
 
         /* Estilos para la línea debajo del mensaje inicial */
-        #initialMessage::after {
+        #initialMessage::before {
             content: '';
             display: block;
             width: 80%; /* Ancho de la línea */
-            height: 2px; /* Grosor de la línea */
+            height: 3px; /* Grosor de la línea */
             background: linear-gradient(
                 90deg,
                 #ff0000, /* Rojo */
                 #ffffff, /* Blanco */
-                #0000ff  /* Azul */
+                #0026ff  /* Azul */
             );
-            margin-top: 20px; /* Espacio entre el texto y la línea */
+            /*margin-top: 20px; /* Espacio entre el texto y la línea */
+            margin-bottom: 20px;
             border-radius: 50%; /* Bordes redondeados para un efecto más suave */
             box-shadow: 
                 0 0 10px #ff0000, /* Sombra roja */
                 0 0 20px #ffffff, /* Sombra blanca */
-                0 0 30px #0000ff; /* Sombra azul */
+                0 0 30px #007ef3; /* Sombra azul */
             filter: drop-shadow(0 0 5px #ff0000) /* Efecto glow rojo */
                     drop-shadow(0 0 10px #ffffff) /* Efecto glow gris */
-                    drop-shadow(0 0 15px #0000ff); /* Efecto glow azul */
+                    drop-shadow(0 0 15px #0066ff); /* Efecto glow azul */
             animation: glow 2s infinite alternate; /* Animación de glow */
         }
 
@@ -90,156 +91,115 @@
             }
         }
 
-        /* Resto de los estilos (mantén el resto del CSS sin cambios) */
-        header {
-            text-align: center;
-            margin-bottom: 100px;
-        }
-        header h1 {
-            font-size: 28px;
-            color: #7a7a7a;
-            margin: 4px;
+        /* Animación para el mensaje inicial */
+        @keyframes slideUpAndFade {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%) scale(0.5);
+                opacity: 0;
+            }
         }
 
+        /* Clase para aplicar la animación */
+        .slide-up-and-fade {
+            animation: slideUpAndFade 1s forwards;
+        }
+
+
+        /* Resto de los estilos (mantén el resto del CSS sin cambios) */
+        header {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            background-color: #000000; /* Color de fondo del header */
+            color: #b4b4b4; /* Color del texto */
+            text-align: center; /* Centra el texto */
+            padding: 0; /* Elimina el padding interno */
+            
+                }
+        
+        header h1 {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            background-color: #000000; /* Color de fondo del h1 */
+            color: #b4b4b4; /* Color del texto */
+            text-align: center; /* Centra el texto */
+            padding: 20px 0; /* Espaciado interno */
+            margin: 0; /* Elimina el margen predeterminado */
+            
+        }
+        .codigos {
+            margin-top: 10px;
+            border: 0; /* Elimina el borde por defecto */
+            height: 3px; /* Grosor de la línea */
+            width: 80%; /* Ancho de la línea */
+            background: linear-gradient(to right, #ff0000, #720909 41.33%, #636363 45.33%, #636363 56.66%, #00009b 66.66%, #00e1ff 100%);
+            box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #0000ff, 0 0 80px #0000ff; /* Efecto neón inicial */
+            animation: neon-blink 1s infinite; /* Aplicar la animación de parpadeo */
+        }
+
+        @keyframes neon-blink {
+            0%, 50% {
+                box-shadow: 0 0 2px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #0000ff, 0 0 80px #0000ff; /* Efecto neón rojo */
+            }
+            25%, 75% {
+                box-shadow: 0 0 2px #00aeff, 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 40px #00b7ff, 0 0 80px #00b7ff; /* Efecto neón azul */
+            }
+            100% {
+                box-shadow: 0 0 2px #ff0000, 0 0 10px #ff0000, 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #0000ff; /* Volver al efecto neón rojo */
+            }
+        }
+        
         header h1.title_1 {
-            margin-top: -170px;
-            margin-bottom: -95px;
-            box-sizing: border-box;
-            background: radial-gradient(#272727, #1b1b1b);
+            padding: 0 0; /* Añade padding para separar el texto del borde superior */
             font-family: sans-serif;
             text-transform: uppercase;
-            height: 135px;
+            min-height: auto; /* Elimina la altura mínima fija */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: repeating-linear-gradient(
-                105deg,
-                #ffb338 0%,
-                #3e2904 5%,
-                #ffb338 12%
-            );
-            background-size: 200% 100%;
-            color: #000000;
-            filter: drop-shadow(5px 15px #000);
-            transform: scaleY(1.05);
+            color: #b4b4b4;
             position: relative;
-            font-weight: 900;
-            font-size: 1.5em;
+            font-weight: 500;
+            font-size: 2.3rem;
             letter-spacing: 4px;
-            -webkit-text-stroke: 2px transparent;
-            -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate;
             z-index: 1000;
-        }
-
-        @keyframes desplazarFondo {
-            0% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            
         }
 
         header h1.title_2 {
-            margin-top: -80px;
-            margin-bottom: -40px;
-            box-sizing: border-box;
-            background: radial-gradient(#272727, #1b1b1b);
+            margin: 0; /* Reinicia márgenes para evitar inconsistencias */
+            margin-bottom: 150px;
+            padding: 0 0; /* Añade padding en lugar de márgenes negativos */
             font-family: sans-serif;
-            text-transform: uppercase;
-            height: 135px;
+            text-transform: lowercase;
+            min-height: 0; /* Usa min-height en lugar de height */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: repeating-linear-gradient(
-                105deg,
-                #ffb338 0%,
-                #3e2904 5%,
-                #ffb338 12%
-            );
-            background-size: 200% 100%;
-            color: #000000;
-            filter: drop-shadow(5px 15px #000);
-            transform: scaleY(1.05);
+            color: #b4b4b4;
             position: relative;
-            font-weight: 900;
-            font-size: 1.25em;
+            font-weight: 500;
+            font-size: 2.5rem; /* Usa rem en lugar de em */
             letter-spacing: 4px;
-            -webkit-text-stroke: 1.5px transparent;
-            -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate;
-            z-index: 1000;
-        }
-
-        header hr {
-            position: relative;
-            border: none;
-            height: 1px;
-            margin: 15px 0px;
-            background: linear-gradient(
-                90deg,
-                #c38521 0%,
-                #3e2904 25%,
-                #ffb338 50%,
-                #3e2904 75%,
-                #c38521 100%
-            );
-            background-size: 200% 100%;
-            animation: desplazarFondo 35s linear infinite;
-            z-index: 1000;
-        }
-
-        @keyframes desplazarFondo {
-            0% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        header h1.title_3 {
-            margin-top: -50px;
-            margin-bottom: 0px;
-            box-sizing: border-box;
-            background: radial-gradient(#272727, #1b1b1b);
-            font-family: sans-serif;
-            text-transform: uppercase;
-            height: 135px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: repeating-linear-gradient(
-                105deg,
-                #ffb338 0%,
-                #3e2904 5%,
-                #ffb338 12%
-            );
-            background-size: 200% 100%;
-            color: #000000;
-            filter: drop-shadow(5px 15px #000);
-            transform: scaleY(1.05);
-            position: relative;
-            font-weight: 900;
-            font-size: 1.25em;
-            letter-spacing: 3px;
-            -webkit-text-stroke: 1.5px transparent;
-            -webkit-background-clip: text;
-            animation: desplazarFondo 35s linear infinite alternate;
-            z-index: 1000;
+            z-index: 1000; 
+            
         }
 
         header h1.giroNegocio {
+            margin: 0 0 0;
+            padding: 0;
             font-size: 30px;
             color: #ffffff;
-            margin: 10px 0 0;
+            
         }
 
         header h1.nombreNegocio {
+            margin: 0 0 0;
+            padding: 0;
             font-size: 30px;
             color: #ffffff;
-            margin: 10px 0 0;
+            
         }
 
         #emergencyButton {
@@ -257,7 +217,7 @@
             text-align: center;
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
-            margin: -40px;
+            margin: 40px;
             margin-bottom: 60px;
             animation: neon-color-change 2s infinite;
         }
@@ -293,7 +253,7 @@
             font-size: 14px;
             width: 100px;
             height: 40px;
-            border: 2px solid rgb(157, 151, 151);
+            border: 2px solid rgb(65, 61, 61);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -305,7 +265,8 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            margin: 10px 0;
+            margin: 0 0;
+            
         }
 
         #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
@@ -657,16 +618,16 @@
 
     <!-- Mensaje inicial -->
     <div id="initialMessage">
-        Mi Emergencia<br>k8
+        Emergencia<br>k8
     </div>
 
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
     <header>
-        <h1 class="title_1">Secretaría de</h1>
-        <h1 class="title_2">Seguridad Ciudadana<br>Ciudad de México</h1>
-        <hr>
-        <h1 class="title_3">Mi Policía en Mi Negocio</h1><br><br>
+        <hr class="codigos">
+        <h1 class="title_1">Emergencia</h1>
+        <h1 class="title_2">k8</h1>
+        
         
         <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
         <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
@@ -1015,12 +976,15 @@
             nombreSubmitButton.disabled = !this.value.trim();
         });
 
-        // Mostrar el mensaje inicial y ocultarlo después de 2 segundos
+        // Mostrar el mensaje inicial y ocultarlo después de 2 segundos con animación
         document.addEventListener('DOMContentLoaded', function () {
             const initialMessage = document.getElementById('initialMessage');
             setTimeout(() => {
-                initialMessage.style.display = 'none';
-            }, 15000); // 2000 milisegundos = 2 segundos
+                initialMessage.classList.add('slide-up-and-fade');
+                setTimeout(() => {
+                    initialMessage.style.display = 'none';
+                }, 1000); // Ocultar después de que termine la animación
+            }, 2000); // 2000 milisegundos = 2 segundos
         });
     </script>
 </body>
