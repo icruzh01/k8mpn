@@ -19,87 +19,62 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Cambia a flex-start para alinear al inicio */
+            justify-content: flex-start;
             align-items: center;
             background-color: #000000;
             font-family: Arial;
-            position: relative; /* Necesario para posicionar elementos hijos de forma absoluta */
+            position: relative;
         }
 
-        /* Estilos para el mensaje inicial */
-        #initialMessage {
+        /* Contenedor del fondo negro */
+        #initialMessageContainer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgb(0, 0, 0);
-            display: flex;
-            flex-direction: column; /* Añadido para alinear el texto y la línea verticalmente */
-            justify-content: center;
-            align-items: center;
+            z-index: 10000;
+        }
+
+        /* Contenedor del contenido (texto y línea) */
+        #initialMessageContent {
+            position: absolute;
+            font-family: sans-serif;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            font-size: 40px;
-            z-index: 10000; /* Asegura que esté por encima de todo */
+            
+            font-weight: 500;
+            letter-spacing: 4px;
+
+
+
+           
+            
+            min-height: auto;
+           
+            justify-content: center;
+            align-items: center;
+            
+           
+            
+            font-size: 2.3rem;
+            letter-spacing: 4px;
+            z-index: 1000;
         }
 
-        /* Estilos para la línea debajo del mensaje inicial */
-        #initialMessage::before {
-            content: '';
-            display: block;
-            width: 80%; /* Ancho de la línea */
-            height: 3px; /* Grosor de la línea */
-            background: linear-gradient(
-                90deg,
-                #ff0000, /* Rojo */
-                #ffffff, /* Blanco */
-                #0026ff  /* Azul */
-            );
-            /*margin-top: 20px; /* Espacio entre el texto y la línea */
-            margin-bottom: 20px;
-            border-radius: 50%; /* Bordes redondeados para un efecto más suave */
-            box-shadow: 
-                0 0 10px #ff0000, /* Sombra roja */
-                0 0 20px #ffffff, /* Sombra blanca */
-                0 0 30px #007ef3; /* Sombra azul */
-            filter: drop-shadow(0 0 5px #ff0000) /* Efecto glow rojo */
-                    drop-shadow(0 0 10px #ffffff) /* Efecto glow gris */
-                    drop-shadow(0 0 15px #0066ff); /* Efecto glow azul */
-            animation: glow 2s infinite alternate; /* Animación de glow */
-        }
-
-        /* Animación para el efecto glow */
-        @keyframes glow {
-            0% {
-                box-shadow: 
-                    0 0 10px #ff0000,
-                    0 0 20px #cccccc,
-                    0 0 30px #0000ff;
-                filter: drop-shadow(0 0 5px #ff0000)
-                        drop-shadow(0 0 10px #cccccc)
-                        drop-shadow(0 0 15px #0000ff);
-            }
-            100% {
-                box-shadow: 
-                    0 0 20px #ff0000,
-                    0 0 40px #cccccc,
-                    0 0 60px #0000ff;
-                filter: drop-shadow(0 0 10px #ff0000)
-                        drop-shadow(0 0 20px #cccccc)
-                        drop-shadow(0 0 30px #0000ff);
-            }
-        }
-
-        /* Animación para el mensaje inicial */
+        /* Animación para el contenido */
         @keyframes slideUpAndFade {
             0% {
-                transform: translateY(0) scale(1);
+                transform: translate(-50%, -50%);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100%) scale(0.5);
-                opacity: 0;
+                transform: translate(-50%, -333%);
+                opacity: 1;
             }
         }
 
@@ -108,106 +83,104 @@
             animation: slideUpAndFade 1s forwards;
         }
 
-
         /* Resto de los estilos (mantén el resto del CSS sin cambios) */
         header {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            background-color: #000000; /* Color de fondo del header */
-            color: #b4b4b4; /* Color del texto */
-            text-align: center; /* Centra el texto */
-            padding: 0; /* Elimina el padding interno */
-            
-                }
+            width: 100%;
+            background-color: #000000;
+            color: #b4b4b4;
+            text-align: center;
+            padding: 0;
+        }
         
         header h1 {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            background-color: #000000; /* Color de fondo del h1 */
-            color: #b4b4b4; /* Color del texto */
-            text-align: center; /* Centra el texto */
-            padding: 20px 0; /* Espaciado interno */
-            margin: 0; /* Elimina el margen predeterminado */
-            
+            width: 100%;
+            background-color: #000000;
+            color: #b4b4b4;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
         }
         .codigos {
-    margin-top: 10px;
-    border: 0; /* Elimina el borde por defecto */
-    height: 5px; /* Grosor de la línea */
-    width: 100%; /* Ancho de la línea */
-    background: linear-gradient(to right, #770000, #770000 41.33%, #770000 49.33%, #001eb4 53.33%, #001eb4 66.66%, #001eb4 100%);
-    box-shadow: 0 0 5px #740000, 0 0 10px #740000, 0 0 20px #250000, 0 0 40px #00009b, 0 0 80px #00009b; /* Efecto neón inicial */
-    animation: neon-blink 1s infinite; /* Aplicar la animación de parpadeo */
-    position: relative; /* Necesario para los pseudo-elementos */
-    overflow: hidden; /* Oculta el exceso de los pseudo-elementos */
-}
+            margin-top: 10px;
+            border: 0;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right, #770000, #770000 41.33%, #770000 49.33%, #001eb4 53.33%, #001eb4 66.66%, #001eb4 100%);
+            box-shadow: 0 0 5px #740000, 0 0 10px #740000, 0 0 20px #250000, 0 0 40px #00009b, 0 0 80px #00009b;
+            animation: neon-blink 1s infinite;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
 
-/* Pseudo-elemento para el efecto de barra roja */
-.codigos::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Comienza fuera del contenedor */
-    width: 20%; /* Ancho del pseudo-elemento */
-    height: 100%; /* Altura del pseudo-elemento */
-    background: linear-gradient(to right, transparent, #ff0000 50%, transparent); /* Barra roja con degradado */
-    animation: move-red 1.5s infinite; /* Animación de movimiento */
-}
+        /* Pseudo-elemento para el efecto de barra roja */
+        .codigos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #ff0000 50%, transparent);
+            animation: move-red 1.5s infinite;
+        }
 
-/* Pseudo-elemento para el efecto de barra azul */
-.codigos::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -100%; /* Comienza fuera del contenedor */
-    width: 20%; /* Ancho del pseudo-elemento */
-    height: 100%; /* Altura del pseudo-elemento */
-    background: linear-gradient(to left, transparent, #00b7ff 50%, transparent); /* Barra azul con degradado */
-    animation: move-blue 1.5s infinite; /* Animación de movimiento */
-}
+        /* Pseudo-elemento para el efecto de barra azul */
+        .codigos::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(to left, transparent, #00b7ff 50%, transparent);
+            animation: move-blue 1.5s infinite;
+        }
 
-/* Animación para mover la barra roja */
-@keyframes move-red {
-    0% {
-        left: 0%; /* Comienza fuera del contenedor */
-    }
-    50% {
-        left: 30%; /* Llega al centro */
-    }
-    100% {
-        left: 0%; /* Regresa al inicio */
-    }
-}
+        /* Animación para mover la barra roja */
+        @keyframes move-red {
+            0% {
+                left: 0%;
+            }
+            50% {
+                left: 30%;
+            }
+            100% {
+                left: 0%;
+            }
+        }
 
-/* Animación para mover la barra azul */
-@keyframes move-blue {
-    0% {
-        right: 0%; /* Comienza fuera del contenedor */
-    }
-    50% {
-        right: 30%; /* Llega al centro */
-    }
-    100% {
-        right: 0%; /* Regresa al inicio */
-    }
-}
+        /* Animación para mover la barra azul */
+        @keyframes move-blue {
+            0% {
+                right: 0%;
+            }
+            50% {
+                right: 30%;
+            }
+            100% {
+                right: 0%;
+            }
+        }
 
-/* Animación de parpadeo neón */
-@keyframes neon-blink {
-    0%, 60% {
-        box-shadow: 0 0 2px #ff0000c0, 0 0 10px #ff0000c0, 0 0 20px #ff0000c0, 0 0 40px #ff0000c0, 0 0 80px #ff0000c0; /* Efecto neón rojo */
-    }
-    25%, 75% {
-        box-shadow: 0 0 2px #000000, 0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000; /* Efecto neón azul */
-    }
-    100% {
-        box-shadow: 0 0 2px #00b7ffc0, 0 0 10px #00b7ffc0, 0 0 20px #00b7ffc0, 0 0 40px #00b7ffc0, 0 0 80px #00b7ffc0; /* Volver al efecto neón rojo */
-    }
-}
+        /* Animación de parpadeo neón */
+        @keyframes neon-blink {
+            0%, 60% {
+                box-shadow: 0 0 2px #ff0000c0, 0 0 10px #ff0000c0, 0 0 20px #ff0000c0, 0 0 40px #ff0000c0, 0 0 80px #ff0000c0;
+            }
+            25%, 75% {
+                box-shadow: 0 0 2px #000000, 0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000;
+            }
+            100% {
+                box-shadow: 0 0 2px #00b7ffc0, 0 0 10px #00b7ffc0, 0 0 20px #00b7ffc0, 0 0 40px #00b7ffc0, 0 0 80px #00b7ffc0;
+            }
+        }
         
         header h1.title_1 {
-            padding: 0 0; /* Añade padding para separar el texto del borde superior */
+            padding: 0 0;
             font-family: sans-serif;
             text-transform:none;
-            min-height: auto; /* Elimina la altura mínima fija */
+            min-height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -217,26 +190,24 @@
             font-size: 2.3rem;
             letter-spacing: 4px;
             z-index: 1000;
-            
         }
 
         header h1.title_2 {
-            margin: 0; /* Reinicia márgenes para evitar inconsistencias */
+            margin: 0;
             margin-bottom: 150px;
-            padding: 0 0; /* Añade padding en lugar de márgenes negativos */
+            padding: 0 0;
             font-family: sans-serif;
             text-transform: lowercase;
-            min-height: 0; /* Usa min-height en lugar de height */
+            min-height: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #b4b4b4;
             position: relative;
             font-weight: 500;
-            font-size: 2.5rem; /* Usa rem en lugar de em */
+            font-size: 2.5rem;
             letter-spacing: 4px;
             z-index: 1000; 
-            
         }
 
         header h1.giroNegocio {
@@ -244,7 +215,7 @@
             padding: 0;
             font-size: 30px;
             color: #ffffff;
-            
+            margin-bottom: 10px;
         }
 
         header h1.nombreNegocio {
@@ -252,7 +223,6 @@
             padding: 0;
             font-size: 30px;
             color: #ffffff;
-            
         }
 
         #emergencyButton {
@@ -319,7 +289,6 @@
             bottom: 20px;
             left: 20px;
             margin: 0 0;
-            
         }
 
         #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
@@ -669,9 +638,13 @@
 </head>
 <body>
 
-    <!-- Mensaje inicial -->
-    <div id="initialMessage">
-        EMERGENCIA<br>k8
+    <!-- Contenedor del fondo negro -->
+    <div id="initialMessageContainer">
+        <!-- Contenido del mensaje inicial -->
+        <div id="initialMessageContent">
+            <hr class="codigos">
+            EMERGENCIA<br>k8
+        </div>
     </div>
 
     <!-- Resto del contenido de la página -->
@@ -1031,11 +1004,12 @@
 
         // Mostrar el mensaje inicial y ocultarlo después de 2 segundos con animación
         document.addEventListener('DOMContentLoaded', function () {
-            const initialMessage = document.getElementById('initialMessage');
+            const initialMessageContent = document.getElementById('initialMessageContent');
+            const initialMessageContainer = document.getElementById('initialMessageContainer');
             setTimeout(() => {
-                initialMessage.classList.add('slide-up-and-fade');
+                initialMessageContent.classList.add('slide-up-and-fade');
                 setTimeout(() => {
-                    initialMessage.style.display = 'none';
+                    initialMessageContainer.style.display = 'none'; // Eliminar el fondo negro abruptamente
                 }, 1000); // Ocultar después de que termine la animación
             }, 2000); // 2000 milisegundos = 2 segundos
         });
