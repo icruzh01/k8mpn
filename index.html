@@ -129,31 +129,84 @@
             
         }
         .codigos {
-            margin-top: 10px;
-            border: 0; /* Elimina el borde por defecto */
-            height: 3px; /* Grosor de la línea */
-            width: 80%; /* Ancho de la línea */
-            background: linear-gradient(to right, #ff0000, #720909 41.33%, #636363 45.33%, #636363 56.66%, #00009b 66.66%, #00e1ff 100%);
-            box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #0000ff, 0 0 80px #0000ff; /* Efecto neón inicial */
-            animation: neon-blink 1s infinite; /* Aplicar la animación de parpadeo */
-        }
+    margin-top: 10px;
+    border: 0; /* Elimina el borde por defecto */
+    height: 5px; /* Grosor de la línea */
+    width: 100%; /* Ancho de la línea */
+    background: linear-gradient(to right, #770000, #770000 41.33%, #770000 49.33%, #001eb4 53.33%, #001eb4 66.66%, #001eb4 100%);
+    box-shadow: 0 0 5px #740000, 0 0 10px #740000, 0 0 20px #250000, 0 0 40px #00009b, 0 0 80px #00009b; /* Efecto neón inicial */
+    animation: neon-blink 1s infinite; /* Aplicar la animación de parpadeo */
+    position: relative; /* Necesario para los pseudo-elementos */
+    overflow: hidden; /* Oculta el exceso de los pseudo-elementos */
+}
 
-        @keyframes neon-blink {
-            0%, 50% {
-                box-shadow: 0 0 2px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #0000ff, 0 0 80px #0000ff; /* Efecto neón rojo */
-            }
-            25%, 75% {
-                box-shadow: 0 0 2px #00aeff, 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 40px #00b7ff, 0 0 80px #00b7ff; /* Efecto neón azul */
-            }
-            100% {
-                box-shadow: 0 0 2px #ff0000, 0 0 10px #ff0000, 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #0000ff; /* Volver al efecto neón rojo */
-            }
-        }
+/* Pseudo-elemento para el efecto de barra roja */
+.codigos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Comienza fuera del contenedor */
+    width: 20%; /* Ancho del pseudo-elemento */
+    height: 100%; /* Altura del pseudo-elemento */
+    background: linear-gradient(to right, transparent, #ff0000 50%, transparent); /* Barra roja con degradado */
+    animation: move-red 1.5s infinite; /* Animación de movimiento */
+}
+
+/* Pseudo-elemento para el efecto de barra azul */
+.codigos::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%; /* Comienza fuera del contenedor */
+    width: 20%; /* Ancho del pseudo-elemento */
+    height: 100%; /* Altura del pseudo-elemento */
+    background: linear-gradient(to left, transparent, #00b7ff 50%, transparent); /* Barra azul con degradado */
+    animation: move-blue 1.5s infinite; /* Animación de movimiento */
+}
+
+/* Animación para mover la barra roja */
+@keyframes move-red {
+    0% {
+        left: 0%; /* Comienza fuera del contenedor */
+    }
+    50% {
+        left: 30%; /* Llega al centro */
+    }
+    100% {
+        left: 0%; /* Regresa al inicio */
+    }
+}
+
+/* Animación para mover la barra azul */
+@keyframes move-blue {
+    0% {
+        right: 0%; /* Comienza fuera del contenedor */
+    }
+    50% {
+        right: 30%; /* Llega al centro */
+    }
+    100% {
+        right: 0%; /* Regresa al inicio */
+    }
+}
+
+/* Animación de parpadeo neón */
+@keyframes neon-blink {
+    0%, 60% {
+        box-shadow: 0 0 2px #ff0000c0, 0 0 10px #ff0000c0, 0 0 20px #ff0000c0, 0 0 40px #ff0000c0, 0 0 80px #ff0000c0; /* Efecto neón rojo */
+    }
+    25%, 75% {
+        box-shadow: 0 0 2px #000000, 0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000; /* Efecto neón azul */
+    }
+    100% {
+        box-shadow: 0 0 2px #00b7ffc0, 0 0 10px #00b7ffc0, 0 0 20px #00b7ffc0, 0 0 40px #00b7ffc0, 0 0 80px #00b7ffc0; /* Volver al efecto neón rojo */
+    }
+}
         
         header h1.title_1 {
             padding: 0 0; /* Añade padding para separar el texto del borde superior */
             font-family: sans-serif;
-            text-transform: uppercase;
+            text-transform:none;
             min-height: auto; /* Elimina la altura mínima fija */
             display: flex;
             justify-content: center;
@@ -618,14 +671,14 @@
 
     <!-- Mensaje inicial -->
     <div id="initialMessage">
-        Emergencia<br>k8
+        EMERGENCIA<br>k8
     </div>
 
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
     <header>
         <hr class="codigos">
-        <h1 class="title_1">Emergencia</h1>
+        <h1 class="title_1">EMERGENCIA</h1>
         <h1 class="title_2">k8</h1>
         
         
