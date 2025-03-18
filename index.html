@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Policía en Mi Negocio</title>
+    <title>Emergencia k8</title>
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
+    <!-- Incluir jsQR desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
     <!-- Meta tags para mejorar la experiencia -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Emergencia">
-    <link rel="apple-touch-icon" href="icon_192.png">
+    <link rel="apple-touch-icon" href="/icon_192.png">
     <!-- Estilos -->
     <style>
         body {
@@ -34,7 +37,7 @@
             width: 100%;
             height: 100%;
             background-color: rgb(0, 0, 0);
-            z-index: 10000;
+            z-index: 1002;
         }
 
         /* Contenedor del contenido (texto y línea) */
@@ -48,9 +51,6 @@
             color: white;
             font-weight: 500;
             letter-spacing: 4px;
-            
-         
-            
             min-height: auto;
             justify-content: center;
             align-items: center;
@@ -104,6 +104,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 50%;
+            z-index: 1001;
         }
 
         /* Pseudo-elemento para el efecto de barra roja */
@@ -426,6 +427,7 @@
         }
 
         .custom-url-input {
+            position: relative; /* Asegura que el botón se posicione relativamente a este contenedor */
             display: none;
             position: fixed;
             width: 250px;
@@ -443,6 +445,26 @@
             align-items: center;
             text-align: center;
             border-radius: 10px;
+        }   
+
+        #scanQRButton {
+            position: absolute;
+            right: 25px; /* Ajusta la posición a la derecha */
+            top: 29%; /* Centra verticalmente */
+            transform: translateY(-50%); /* Ajusta el centrado vertical */
+            background-color: #000000;
+            color: #d4a017;
+            border: 0px solid #d4a017;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 5px;
+            z-index: 1001; /* Asegura que esté por encima del input */
+        }
+
+        #scanQRButton:hover {
+            background-color: #d4a017;
+            color: #000000;
         }
 
         .custom-url-input input {
@@ -627,6 +649,57 @@
             background-color: rgb(0, 0, 0);
             z-index: 999;
         }
+
+        /* Estilos para el contenedor del escáner con efecto glow */
+        #qrScannerContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilos para el video del escáner con efecto glow */
+        #qrScanner {
+            position: relative;
+            width: 300px; /* Ancho del video */
+            height: 300px; /* Alto del video */
+            border: 2px solid rgb(0, 94, 255);
+            object-fit: cover;
+            z-index: 2000;
+            background-color: black;
+            display: none;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(1, 104, 133, 0.8), 0 0 20px rgba(0, 112, 211, 0.8), 0 0 30px rgba(1, 145, 255, 0.8);
+        }
+
+        /* Estilos para el botón de cerrar el escáner */
+        #closeScannerButton {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            z-index: 2002; /* Asegurar que esté por encima del láser */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        }
+
+        #closeScannerButton:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 1);
+        }    
     </style>
 </head>
 <body>
@@ -635,13 +708,13 @@
     <div id="initialMessageContainer">
         <!-- Contenido del mensaje inicial -->
         <div id="initialMessageContent">
-            <hr class="codigos">
-            EMERGENCIA<br>k8
+            <hr class="codigos">EMERGENCIA<br>k8
         </div>
     </div>
 
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
+
     <header>
         <hr class="codigos">
         <h1 class="title_1">EMERGENCIA</h1>
@@ -676,7 +749,14 @@
         <div class="button-container">
             <button id="urlSubmitButton">Guardar</button>
             <button id="urlCancelButton">Cancelar</button>
+            
         </div>
+        <button id="scanQRButton">[-]</button>  
+    </div>
+    
+    <div id="qrScannerContainer">
+        <video id="qrScanner"></video>
+            <button id="closeScannerButton">Cerrar</button>
     </div>
 
     <!-- Cuadro de diálogo para modificar el giro del negocio -->
@@ -695,10 +775,10 @@
             <button id="nombreSubmitButton">Guardar</button>
             <button id="nombreCancelButton">Cancelar</button>
         </div>
-    </div>
+    </div>  
 
     <script>
-        /*-----Esta sección fue lo último que se agrego para poder guardar el giro y nombre en el localStorage------*/
+        /*-----Esta sección donde se guarda el giro y nombre en el localStorage------*/
 
         // Guardar el giro del negocio en localStorage
         document.getElementById('giroSubmitButton').addEventListener('click', function () {
@@ -756,6 +836,13 @@
 
         // Obtener la URL guardada en el LocalStorage o usar la predeterminada
         let currentUrl = localStorage.getItem('emergencyUrl') || '';// '' Aquí estaba la URL MPN
+
+
+        const savedUrl = localStorage.getItem('emergencyUrl');
+        if (savedUrl) {
+            document.getElementById('newUrlInput').value = maskData(savedUrl);
+        }
+
 
         // Función para mostrar la ventana de mensaje personalizada
         function showCustomAlert(message, alertType = 'error') {
@@ -976,11 +1063,24 @@
             document.getElementById('nombreSubmitButton').disabled = true;
         });
 
-        // Habilitar/deshabilitar el botón de guardar URL
+       // Habilitar/deshabilitar el botón "Guardar" cuando cambie el valor del campo de entrada
         document.getElementById('newUrlInput').addEventListener('input', function () {
             const urlSubmitButton = document.getElementById('urlSubmitButton');
-            urlSubmitButton.disabled = !this.value.trim();
+            urlSubmitButton.disabled = !this.value.trim(); // Habilitar si hay texto
         });
+
+        // Ocultar el botón de escanear QR cuando el campo de URL está enfocado
+        document.getElementById('newUrlInput').addEventListener('focus', function () {
+            const scanQRButton = document.getElementById('scanQRButton');
+            scanQRButton.style.display = 'none'; // Ocultar el botón
+        });
+
+        // Mostrar el botón de escanear QR cuando el campo de URL pierde el foco
+        document.getElementById('newUrlInput').addEventListener('blur', function () {
+            const scanQRButton = document.getElementById('scanQRButton');
+            scanQRButton.style.display = 'block'; // Mostrar el botón
+        });
+
 
         // Habilitar/deshabilitar el botón de guardar giro
         document.getElementById('newGiroInput').addEventListener('input', function () {
@@ -1005,6 +1105,99 @@
                 }, 1000); // Ocultar después de que termine la animación
             }, 2000); // 2000 milisegundos = 2 segundos
         });
+
+        function startQRScanner() {
+            const video = document.getElementById('qrScanner');
+            const qrScannerContainer = document.getElementById('qrScannerContainer');
+            const closeScannerButton = document.getElementById('closeScannerButton');
+            const newUrlInput = document.getElementById('newUrlInput');
+
+                // Mostrar el contenedor y el video
+                qrScannerContainer.style.display = 'flex';
+                video.style.display = 'block';
+                closeScannerButton.style.display = 'block';
+
+            // Solicitar acceso a la cámara
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true);
+                    video.play();
+                    requestAnimationFrame(tick);
+                })
+                .catch(function(err) {
+                    console.error("Error al acceder a la cámara: ", err);
+                    alert("No se pudo acceder a la cámara.");
+                });
+
+            function tick() {
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    const context = canvas.getContext('2d');
+                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                        inversionAttempts: "dontInvert",
+                    });
+
+                    if (code) {
+                        // Asignar el valor escaneado al campo de entrada de la URL
+                        newUrlInput.value = code.data;
+
+                        // Habilitar el botón de guardar
+                        document.getElementById('urlSubmitButton').disabled = false;
+
+                        // Detener el escáner después de un breve momento
+                        setTimeout(() => {
+                            stopQRScanner();
+                        }, 1000); // Reducido a 1 segundo para una respuesta más rápida
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+        }
+
+        function stopQRScanner() {
+            const video = document.getElementById('qrScanner');
+            const qrScannerContainer = document.getElementById('qrScannerContainer');
+            const closeScannerButton = document.getElementById('closeScannerButton');
+        
+            if (video.srcObject) {
+                const tracks = video.srcObject.getTracks();
+                tracks.forEach(track => track.stop());
+                video.srcObject = null;
+            }
+
+            video.style.display = 'none';
+            qrScannerContainer.style.display = 'none';
+            closeScannerButton.style.display = 'none';
+        }
+
+        // Evento para el botón de escanear QR
+        document.getElementById('scanQRButton').addEventListener('click', function () {
+            startQRScanner();
+        });
+
+        // Evento para el botón de cerrar el escáner de QR
+        document.getElementById('closeScannerButton').addEventListener('click', function () {
+            stopQRScanner();
+        });
+
+        // Evento para el botón de escanear QR
+        document.getElementById('scanQRButton').addEventListener('click', function () {
+            startQRScanner();
+        });
+
+        function maskData(value) {
+            if (!value) return '';
+            const length = value.length;
+            if (length <= 5) return value; // Si el valor es corto, no lo enmascares
+            const masked = '*'.repeat(length - 5) + value.slice(-5);
+            return masked;
+        }
+
     </script>
 </body>
 </html>
