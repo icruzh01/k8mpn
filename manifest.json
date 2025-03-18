@@ -1,23 +1,73 @@
 {
-    "short_name": "Emergencia",
-    "name": "Mi Policía en Mi Negocio",
-    "description": "Boton de Emergencia para Negocios.",
-    "icons": [
-      {
-        "src": ".../icon_192.png",
-        "type": "image/png",
-        "sizes": "192x192"
-      },
-      {
-        "src": ".../icon-512.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ],
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#4285f4",
-    "scope": "/",
-    "orientation": "portrait-primary"
-  }
+  "short_name": "Emergencia K8",
+  "name": "Emergencia K8",
+  "description": "Botón para solicitar apoyo.",
+  "icons": [
+    {
+      "src": "icons/icon-24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "icons/icon-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "icons/icon-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "icons/icon-64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "icons/icon-72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "icons/icon-168.png",
+      "type": "image/png",
+      "sizes": "168x168"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4285f4",
+  "scope": "/",
+  "orientation": "portrait-primary"
+}
