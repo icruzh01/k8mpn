@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergencia k8</title>
     <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon-64x64.png">
     <!-- Incluir jsQR desde un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
     <!-- Meta tags para mejorar la experiencia -->
@@ -1208,6 +1208,83 @@
             const masked = '*'.repeat(length - 5) + value.slice(-5);
             return masked;
         }
+
+
+
+
+
+
+
+
+        // Solicitar permiso para mostrar notificaciones
+        function requestNotificationPermission() {
+            if (Notification.permission !== 'granted') {
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === 'granted') {
+                        console.log('Permiso para notificaciones concedido');
+                    }
+                });
+            }
+        }
+
+        // Mostrar una notificación
+        function showNotification(title, options) {
+            if (Notification.permission === 'granted') {
+                new Notification(title, options);
+            } else {
+                console.log('No se tiene permiso para mostrar notificaciones');
+            }
+        }
+
+        // Lógica del botón de emergencia
+        document.getElementById('emergencyButton').addEventListener('click', function () {
+            // Verificar si la URL está vacía
+            if (!currentUrl || currentUrl.trim() === '') {
+                showCustomAlert("Carga una URL MPN antes de activar la emergencia.");
+            } else {
+                showCustomConfirm();
+            }
+        });
+
+        // Evento para el botón "Sí" del cuadro de confirmación
+        document.getElementById('confirmYes').addEventListener('click', function () {
+            hideCustomConfirm();
+
+            // Verificar si hay conexión a Internet
+            if (!navigator.onLine) {
+                showCustomAlert("No hay conexión a internet, o datos móviles.");
+                return;
+            }
+
+            try {
+                const nuevaVentana = window.open(currentUrl, '_blank');
+
+                if (!nuevaVentana) {
+                    throw new Error("No se pudo abrir la ventana. Verifica si hay un bloqueador de ventanas emergentes.");
+                }
+
+                setTimeout(() => {
+                    if (!nuevaVentana.closed) {
+                        nuevaVentana.close();
+                        showCustomAlert("¡Activación Exitosa!", 'confirmation');
+                        // Mostrar notificación push
+                        showNotification('Emergencia Activada', {
+                            body: 'La emergencia ha sido activada exitosamente.',
+                            icon: 'icons/icon-192.png'
+                        });
+                    }
+                }, 5000);
+            } catch (error) {
+                showCustomAlert(`Error: ${error.message}`);
+            }
+        });
+
+        // Solicitar permiso para notificaciones al cargar la página
+        window.addEventListener('load', function () {
+            requestNotificationPermission();
+        });
+
+
 
     </script>
 </body>
