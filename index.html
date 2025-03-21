@@ -6,7 +6,7 @@
     <title>Emergencia k8</title>
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="icons/favicon-64x64.png">
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
     <!-- Incluir jsQR desde un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
     <!-- Meta tags para mejorar la experiencia -->
@@ -222,7 +222,7 @@
         #emergencyButton {
             background-color: rgb(255, 0, 0);
             color: white;
-            font-size: 45px;
+            font-size: 20px;
             width: 150px;
             height: 150px;
             border: 15px solid #da2020;
@@ -263,7 +263,7 @@
 
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {
             background-color: #000000;
-            color: #FFFFFF;
+            color: #7c7c7c;
             text-transform: uppercase;
             padding: 10px 20px;
             border-radius: 10px;
@@ -278,7 +278,7 @@
             text-align: center;
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
-            box-shadow: 3px 3px rgb(157, 151, 151);
+            /*box-shadow: 3px 3px rgb(157, 151, 151); */
             position: absolute;
             bottom: 20px;
             left: 20px;
@@ -711,6 +711,199 @@
             background-color: #cc0000;
             box-shadow: 0 0 15px rgba(255, 0, 0, 1);
         }    
+
+
+
+
+
+
+/* Estilos para los nuevos botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio debajo del botón de emergencia */
+}
+
+.custom-button {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 10px;
+    width: 80px;
+    height: 40px;
+    border: 2px solid rgb(65, 61, 61);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    box-sizing: border-box;
+    box-shadow: 3px 3px rgb(157, 151, 151);
+}
+
+.custom-button:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
+}
+
+.custom-button:active, .custom-button.active {
+    background-color: #1e90ff;
+    border-color: #00bfff;
+    transform: scale(0.95);
+}
+
+/* Estilo base para los botones */
+.custom-button {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 12px;
+    width: 90px;
+    height: 40px;
+    border: 2px solid rgb(65, 61, 61);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    box-sizing: border-box;
+    box-shadow: 3px 3px rgb(157, 151, 151);
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.custom-button:disabled {
+    background-color: #333333; /* Fondo más oscuro */
+    color: #888888; /* Texto más claro */
+    border-color: #555555; /* Borde más claro */
+    cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
+    box-shadow: none; /* Eliminar la sombra */
+    opacity: 0.7; /* Reducir la opacidad */
+}
+
+
+
+
+#emergenciaCuadranteButton {
+    display: none;
+    background-color: rgb(0, 110, 255);
+    color: white;
+    font-size: 15px;
+    width: 150px;
+    height: 150px;
+    border: 15px solid #1e90ff;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    box-sizing: border-box;
+    margin: 40px;
+    margin-bottom: 60px;
+    animation: neon-color-change-blue 2s infinite;
+}
+
+@keyframes neon-color-change-blue {
+    0% {
+        border-color: #00bfff;
+        box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+    }
+    50% {
+        border-color: #166fc9;
+        box-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 40px #1e90ff;
+    }
+    100% {
+        border-color: #00bfff;
+        box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+    }
+}
+
+
+
+/* Estilo para el nuevo botón EmergenciaExtorsion */
+#emergenciaExtorsionButton {
+    display: none;
+    background-color: #640026;
+    color: white;
+    font-size: 15px;
+    width: 150px;
+    height: 150px;
+    border: 15px solid #b70046;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    box-sizing: border-box;
+    margin: 40px;
+    margin-bottom: 60px;
+    animation: neon-color-change-green 2s infinite;
+}
+
+@keyframes neon-color-change-green {
+    0% {
+        border-color: #b70046;
+        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+    }
+    50% {
+        border-color: #a03b62;
+        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+    }
+    100% {
+        border-color: #b70046;
+        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+    }
+}
+
+
+#emergenciaConocidoButton {
+display: none;
+background-color: rgb(230, 28, 116);
+color: rgb(255, 255, 255);
+font-size: 15px;
+width: 150px;
+height: 150px;
+border: 15px solid #ff69b4;
+border-radius: 50%;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+text-align: center;
+transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+box-sizing: border-box;
+margin: 40px;
+margin-bottom: 60px;
+animation: neon-color-change-pink 2s infinite;
+
+}
+
+
+
+@keyframes neon-color-change-pink {
+    0% {
+        border-color: #ff69b4;
+        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+    }
+    50% {
+        border-color: #b5618e;
+        box-shadow: 0 0 10px #b5618e, 0 0 20px #b5618e, 0 0 40px #b5618e;
+    }
+    100% {
+        border-color: #ff69b4;
+        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -734,7 +927,34 @@
         <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
         <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
     </header>
-    <button id="emergencyButton" aria-label="Activar emergencia">K8</button>
+   
+    <!-- Botón de emergencia -->
+    <button id="emergencyButton" aria-label="Activar emergencia">Negocio</button>
+    
+
+    <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
+    <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante</button>
+
+
+    <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
+<button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsion</button>
+
+
+<!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
+<button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>
+
+
+
+
+    <!-- Nuevos botones -->
+    <div class="button-container">
+        <button id="c5Button" class="custom-button" disabled>C5</button>
+        <button id="cuadranteButton" class="custom-button">Cuadrante</button>
+        <button id="extorsionButton" class="custom-button">Extorsión</button>
+        <button id="conocidoButton" class="custom-button">Conocido</button>
+    </div>
+
+
     <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
     <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
     <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
@@ -1211,6 +1431,173 @@
 
 
 
+
+// Eventos para los nuevos botones
+document.getElementById('c5Button').addEventListener('click', function () {
+    // showCustomAlert("Botón C5 presionado."); //
+});
+
+document.getElementById('cuadranteButton').addEventListener('click', function () {
+   // showCustomAlert("Botón Cuadrante presionado."); //
+});
+
+document.getElementById('extorsionButton').addEventListener('click', function () {
+    // showCustomAlert("Botón Extorsión presionado."); //
+});
+
+document.getElementById('conocidoButton').addEventListener('click', function () {
+   //  showCustomAlert("Botón Conocido presionado."); //
+});
+
+
+
+
+// Obtener referencias a los botones
+const c5Button = document.getElementById('c5Button');
+const cuadranteButton = document.getElementById('cuadranteButton');
+const extorsionButton = document.getElementById('extorsionButton');
+const conocidoButton = document.getElementById('conocidoButton');
+
+// Función para habilitar el botón C5
+function habilitarC5() {
+    c5Button.disabled = false;
+}
+
+// Función para deshabilitar un botón y habilitar los demás
+function manejarEstadoBotones(botonPresionado) {
+    // Deshabilitar el botón presionado
+    botonPresionado.disabled = true;
+
+    // Habilitar los demás botones
+    if (botonPresionado !== c5Button) {
+        c5Button.disabled = false;
+    }
+    if (botonPresionado !== cuadranteButton) {
+        cuadranteButton.disabled = false;
+    }
+    if (botonPresionado !== extorsionButton) {
+        extorsionButton.disabled = false;
+    }
+    if (botonPresionado !== conocidoButton) {
+        conocidoButton.disabled = false;
+    }
+}
+
+// Eventos para los botones (sin mostrar alertas)
+cuadranteButton.addEventListener('click', function () {
+    manejarEstadoBotones(cuadranteButton);
+    // showCustomAlert("Botón Cuadrante presionado."); // Eliminar esta línea
+});
+
+extorsionButton.addEventListener('click', function () {
+    manejarEstadoBotones(extorsionButton);
+    // showCustomAlert("Botón Extorsión presionado."); // Eliminar esta línea
+});
+
+conocidoButton.addEventListener('click', function () {
+    manejarEstadoBotones(conocidoButton);
+    // showCustomAlert("Botón Conocido presionado."); // Eliminar esta línea
+});
+
+c5Button.addEventListener('click', function () {
+    manejarEstadoBotones(c5Button);
+    // showCustomAlert("Botón C5 presionado."); // Eliminar esta línea
+});
+
+
+
+
+// Evento para el botón C5
+document.getElementById('c5Button').addEventListener('click', function () {
+    // Restablecer el botón de emergencia
+    document.getElementById('emergencyButton').style.display = 'block'; // Mostrar el botón de emergencia original
+    document.getElementById('emergenciaCuadranteButton').style.display = 'none'; // Ocultar el botón de emergencia cuadrante
+    document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
+    document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
+
+    // Habilitar los botones deshabilitados
+    document.getElementById('cuadranteButton').disabled = false;
+    document.getElementById('extorsionButton').disabled = false;
+    document.getElementById('conocidoButton').disabled = false;
+
+    // Deshabilitar el botón C5
+    this.disabled = true;
+});
+
+
+
+document.getElementById('cuadranteButton').addEventListener('click', function () {
+    // Ocultar el botón de emergencia
+    document.getElementById('emergencyButton').style.display = 'none';
+    document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
+    document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
+    // Mostrar el botón EmergenciaCuadrante
+    document.getElementById('emergenciaCuadranteButton').style.display = 'block';
+    
+    // Deshabilitar el botón Cuadrante
+    this.disabled = true;
+    
+    // Habilitar los demás botones
+    document.getElementById('c5Button').disabled = false;
+    document.getElementById('extorsionButton').disabled = false;
+    document.getElementById('conocidoButton').disabled = false;
+});
+
+
+
+
+// Evento para el botón "Extorsión"
+document.getElementById('extorsionButton').addEventListener('click', function () {
+    // Ocultar los botones de emergencia y emergencia cuadrante
+    document.getElementById('emergencyButton').style.display = 'none';
+    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
+    document.getElementById('emergenciaConocidoButton').style.display = 'none';
+    // Mostrar el nuevo botón EmergenciaExtorsion
+    document.getElementById('emergenciaExtorsionButton').style.display = 'block';
+    
+    // Deshabilitar el botón Extorsión
+    this.disabled = true;
+    
+    // Habilitar los demás botones
+    document.getElementById('c5Button').disabled = false;
+    document.getElementById('cuadranteButton').disabled = false;
+    document.getElementById('conocidoButton').disabled = false;
+});
+
+// Evento para el nuevo botón EmergenciaExtorsion
+document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
+    // Aquí puedes agregar la lógica para manejar la emergencia por extorsión
+    showCustomAlert("Emergencia por Extorsión activada.");
+});
+
+
+
+
+
+
+document.getElementById('conocidoButton').addEventListener('click', function () {
+    // Ocultar los botones de emergencia, emergencia cuadrante y extorsión
+    document.getElementById('emergencyButton').style.display = 'none';
+    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
+    document.getElementById('emergenciaExtorsionButton').style.display = 'none';
+    
+    // Mostrar el nuevo botón EmergenciaConocido
+    document.getElementById('emergenciaConocidoButton').style.display = 'block';
+    
+    // Deshabilitar el botón Conocido
+    this.disabled = true;
+    
+    // Habilitar los demás botones
+    document.getElementById('c5Button').disabled = false;
+    document.getElementById('cuadranteButton').disabled = false;
+    document.getElementById('extorsionButton').disabled = false;
+});
+
+// Evento para el nuevo botón EmergenciaConocido
+document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
+    // Aquí puedes agregar la lógica para manejar la emergencia por conocido
+    showCustomAlert("Emergencia por Conocido activada.");
+});
 
 
 
