@@ -261,6 +261,7 @@
             }
         }
 
+        /*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu*/
         #modifyUrlButton, #modifyGiroButton, #modifyNombreButton {
             background-color: #000000;
             color: #7c7c7c;
@@ -272,7 +273,7 @@
             height: 40px;
             border: 2px solid rgb(65, 61, 61);
             cursor: pointer;
-            display: flex;
+            display: none; /*Le puse none para que no se vean los botones*/
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -763,8 +764,8 @@
     text-transform: uppercase;
     padding: 10px 20px;
     border-radius: 10px;
-    font-size: 12px;
-    width: 90px;
+    font-size: 10px;
+    width: 70px;
     height: 40px;
     border: 2px solid rgb(65, 61, 61);
     cursor: pointer;
@@ -779,12 +780,12 @@
 
 /* Estilo cuando el botón está deshabilitado */
 .custom-button:disabled {
-    background-color: #333333; /* Fondo más oscuro */
-    color: #888888; /* Texto más claro */
-    border-color: #555555; /* Borde más claro */
+    background-color: #047900; /* Fondo más oscuro */
+    color: #ffffff; /* Texto más claro */
+    border-color: #09ff00; /* Borde más claro */
     cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
     box-shadow: none; /* Eliminar la sombra */
-    opacity: 0.7; /* Reducir la opacidad */
+    /*opacity: 0.7; /* Reducir la opacidad */
 }
 
 
@@ -808,6 +809,7 @@
     margin: 40px;
     margin-bottom: 60px;
     animation: neon-color-change-blue 2s infinite;
+    
 }
 
 @keyframes neon-color-change-blue {
@@ -829,7 +831,7 @@
 
 /* Estilo para el nuevo botón EmergenciaExtorsion */
 #emergenciaExtorsionButton {
-    display: none;
+    display: none; /* Oculta el botón inicialmente */
     background-color: #640026;
     color: white;
     font-size: 15px;
@@ -838,15 +840,22 @@
     border: 15px solid #b70046;
     border-radius: 50%;
     cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
     box-sizing: border-box;
     margin: 40px;
     margin-bottom: 60px;
     animation: neon-color-change-green 2s infinite;
+    
 }
+
+#emergenciaExtorsionButton::before {
+/* Asegurar que el texto esté centrado */
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @keyframes neon-color-change-green {
     0% {
@@ -904,6 +913,318 @@ animation: neon-color-change-pink 2s infinite;
 
 
 
+/*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu---------------------------------*/
+#modifyTelCuadranteButton, #modifyTelExtorsionButton, #modifyTelConocidoButton {
+    background-color: #000000;
+    color: #7c7c7c;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid rgb(65, 61, 61);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 20px;
+    left: 350px; /* Ajusta la posición según sea necesario */
+    margin: 0 0;
+}
+
+#modifyTelExtorsionButton {
+    left: 460px; /* Ajusta la posición según sea necesario */
+}
+
+#modifyTelConocidoButton {
+    left: 570px; /* Ajusta la posición según sea necesario */
+}
+
+#modifyTelCuadranteButton:active, #modifyTelExtorsionButton:active, #modifyTelConocidoButton:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
+}
+
+#modifyTelCuadranteButton:active, #modifyTelCuadranteButton.active, #modifyTelExtorsionButton:active, #modifyTelExtorsionButton.active, #modifyTelConocidoButton:active, #modifyTelConocidoButton.active {
+    background-color: #1e90ff;
+    border-color: #00bfff;
+    transform: scale(0.95);
+}
+
+
+/* Estilos para el cuadro de diálogo de teléfono, pero de CUADRANTE*/
+.custom-tel-input {
+    display: none;
+    position: fixed;
+    width: 250px;
+    height: 120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    border: 1px solid #d4a017;
+    padding: 20px;
+    box-shadow: 0 0 20px #e8a317;
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.custom-tel-input input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background: #ffe9bd;
+    color: #000000;
+    border: 1px solid #f5b104;
+    box-shadow: 0 0 5px #e8a317;
+    border-radius: 5px;
+}
+
+.custom-tel-input .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.custom-tel-input .button-container button {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #d4a017;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.custom-tel-input .button-container button:hover {
+    background-color: #000000;
+    border: 2px solid #c20303;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+
+
+
+/* Estilos para el cuadro de diálogo de teléfono, pero de EXTORSIÓN (Checarlo porque comparte los mismos estilos que el imput para CUADRANTE)*/
+.custom-tel-input {
+    display: none;
+    position: fixed;
+    width: 250px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    border: 1px solid #b70046;
+    padding: 20px;
+    box-shadow: 0 0 20px #a42656;
+    z-index: 1000;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.custom-tel-input input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background: #ffb1f7;
+    color: #000000;
+    border: 1px solid #f507dd;
+    box-shadow: 0 0 5px #f507dd;
+    border-radius: 5px;
+}
+
+.custom-tel-input input:hover {
+    background: #000000;
+    border: 0.5px solid #f507dd;
+    color: #f507dd;
+}
+
+.custom-tel-input input:focus {
+    background: #000000;
+    border: 0.5px solid #5cbd02;
+    color: #f507dd;
+}
+
+.custom-tel-input .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.custom-tel-input .button-container button {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #f30086;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.custom-tel-input .button-container button:hover {
+    background-color: #000000;
+    border: 2px solid #027e94;
+    box-shadow: 0 0 10px #00d9ff;
+}
+
+
+
+
+
+
+
+/* Estilos para el cuadro de diálogo de teléfono, pero de CONOCIDO*/
+.custom-tel-conocido-input {
+    display: none;
+    position: fixed;
+    width: 250px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    border: 1px solid #b70046;
+    padding: 20px;
+    box-shadow: 0 0 20px #a42656;
+    z-index: 1000;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.custom-tel-conocido-input input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background: #ffb1f7;
+    color: #000000;
+    border: 1px solid #f507dd;
+    box-shadow: 0 0 5px #f507dd;
+    border-radius: 5px;
+}
+
+.custom-tel-conocido-input input:hover {
+    background: #000000;
+    border: 0.5px solid #f507dd;
+    color: #f507dd;
+}
+
+.custom-tel-conocido-input input:focus {
+    background: #000000;
+    border: 0.5px solid #5cbd02;
+    color: #f507dd;
+}
+
+.custom-tel-conocido-input .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.custom-tel-conocido-input .button-container button {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #f30086;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.custom-tel-conocido-input .button-container button:hover {
+    background-color: #000000;
+    border: 2px solid #027e94;
+    box-shadow: 0 0 10px #00d9ff;
+}
+
+
+
+
+
+/* Estilos para el menú de hamburguesa */
+.hamburger-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 998;
+}
+
+.hamburger-icon {
+    background-color: #000000;
+    color: #999999;
+    border: 2px solid #999999;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hamburger-icon:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.menu-options {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 1000; /* Asegurar que esté por encima del overlay */
+}
+
+
+.menu-item {
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+}
+
+
+
+/* Estilos para el overlay del menú */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo opaco */
+    z-index: 998; /* Asegurar que esté por encima de otros elementos */
+}
+
+
+
     </style>
 </head>
 <body>
@@ -919,6 +1240,11 @@ animation: neon-color-change-pink 2s infinite;
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
 
+<!-- Overlay para el menú -->
+<div id="menuOverlay" class="menu-overlay"></div>
+
+
+
     <header>
         <hr class="codigos">
         <h1 class="title_1">EMERGENCIA</h1>
@@ -933,15 +1259,15 @@ animation: neon-color-change-pink 2s infinite;
     
 
     <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
-    <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante</button>
+    <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button>
 
 
     <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
-<button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsion</button>
+    <button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsión</button>
 
 
-<!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
-<button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>
+    <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
+    <button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>
 
 
 
@@ -958,6 +1284,13 @@ animation: neon-color-change-pink 2s infinite;
     <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
     <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
     <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
+    <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
+    <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
+    <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
+
+
+
+
 
     <!-- Ventana de mensaje personalizada -->
     <div id="customAlert" class="custom-alert">
@@ -1007,6 +1340,61 @@ animation: neon-color-change-pink 2s infinite;
             <button id="nombreCancelButton">Cancelar</button>
         </div>
     </div>  
+
+
+
+
+<!-- Cuadro de diálogo para ingresar el número de teléfono -->
+<div id="customTelCuadranteInput" class="custom-tel-input">
+    <input type="tel" id="newTelCuadranteInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+    <div class="button-container">
+        <button id="telCuadranteSubmitButton">Guardar</button>
+        <button id="telCuadranteCancelButton">Cancelar</button>
+    </div>
+</div>
+
+
+
+
+
+<!-- Cuadro de diálogo para ingresar el número de teléfono -->
+<div id="customTelExtorsionInput" class="custom-tel-input">
+    <input type="tel" id="newTelExtorsionInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+    <div class="button-container">
+        <button id="telExtorsionSubmitButton">Guardar</button>
+        <button id="telExtorsionCancelButton">Cancelar</button>
+    </div>
+</div>
+
+
+
+<!-- Cuadro de diálogo para modificar el teléfono de conocido -->
+<div id="customTelConocidoInput" class="custom-tel-conocido-input">
+    <input type="tel" id="newTelConocidoInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+    <div class="button-container">
+        <button id="telConocidoSubmitButton">Guardar</button>
+        <button id="telConocidoCancelButton">Cancelar</button>
+    </div>
+</div>
+
+
+
+
+
+<!-- Menú de hamburguesa -->
+<div id="hamburgerMenu" class="hamburger-menu">
+    <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+    <div id="menuOptions" class="menu-options">
+        <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
+        <div class="menu-item" onclick="showCustomGiroInput()">Giro</div>
+        <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div>
+        <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
+        <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
+        <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
+    </div>
+</div>
+
+
 
     <script>
         /*-----Esta sección donde se guarda el giro y nombre en el localStorage------*/
@@ -1532,7 +1920,7 @@ document.getElementById('cuadranteButton').addEventListener('click', function ()
     document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
     document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
     // Mostrar el botón EmergenciaCuadrante
-    document.getElementById('emergenciaCuadranteButton').style.display = 'block';
+    document.getElementById('emergenciaCuadranteButton').style.display = 'flex';
     
     // Deshabilitar el botón Cuadrante
     this.disabled = true;
@@ -1553,7 +1941,7 @@ document.getElementById('extorsionButton').addEventListener('click', function ()
     document.getElementById('emergenciaCuadranteButton').style.display = 'none';
     document.getElementById('emergenciaConocidoButton').style.display = 'none';
     // Mostrar el nuevo botón EmergenciaExtorsion
-    document.getElementById('emergenciaExtorsionButton').style.display = 'block';
+    document.getElementById('emergenciaExtorsionButton').style.display = 'flex';
     
     // Deshabilitar el botón Extorsión
     this.disabled = true;
@@ -1582,7 +1970,7 @@ document.getElementById('conocidoButton').addEventListener('click', function () 
     document.getElementById('emergenciaExtorsionButton').style.display = 'none';
     
     // Mostrar el nuevo botón EmergenciaConocido
-    document.getElementById('emergenciaConocidoButton').style.display = 'block';
+    document.getElementById('emergenciaConocidoButton').style.display = 'flex';
     
     // Deshabilitar el botón Conocido
     this.disabled = true;
@@ -1600,6 +1988,244 @@ document.getElementById('emergenciaConocidoButton').addEventListener('click', fu
 });
 
 
+// Guardar el teléfono de cuadrante en localStorage
+document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
+    // const newTelCuadrante = prompt("Ingresa el número de teléfono para Cuadrante:");
+    if (newTelCuadrante) {
+        localStorage.setItem('telCuadrante', newTelCuadrante);
+        showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido.");
+    }
+});
+
+// Guardar el teléfono de extorsión en localStorage
+document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
+    //const newTelExtorsion = prompt("Ingresa el número de teléfono para Extorsión:");
+    if (newTelExtorsion) {
+        localStorage.setItem('telExtorsion', newTelExtorsion);
+        showCustomAlert("Teléfono de Extorsión guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido.");
+    }
+});
+
+// Guardar el teléfono de conocido en localStorage
+document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
+    //const newTelConocido = prompt("Ingresa el número de teléfono para Conocido:");
+    if (newTelConocido) {
+        localStorage.setItem('telConocido', newTelConocido);
+        showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido.");
+    }
+});
+
+// Cargar los números de teléfono desde localStorage al cargar la página
+window.addEventListener('load', function () {
+    const savedTelCuadrante = localStorage.getItem('telCuadrante');
+    const savedTelExtorsion = localStorage.getItem('telExtorsion');
+    const savedTelConocido = localStorage.getItem('telConocido');
+
+    if (savedTelCuadrante) {
+        console.log("Teléfono de Cuadrante cargado:", savedTelCuadrante);
+    }
+    if (savedTelExtorsion) {
+        console.log("Teléfono de Extorsión cargado:", savedTelExtorsion);
+    }
+    if (savedTelConocido) {
+        console.log("Teléfono de Conocido cargado:", savedTelConocido);
+    }
+});
+
+
+
+
+
+// Función para mostrar el cuadro de diálogo para modificar el teléfono de cuadrante
+function showCustomTelCuadranteInput() {
+    const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
+    const overlay = document.getElementById('overlay');
+    customTelCuadranteInput.style.display = 'block';
+    overlay.style.display = 'block';
+}
+
+// Función para ocultar el cuadro de diálogo para modificar el teléfono de cuadrante
+function hideCustomTelCuadranteInput() {
+    const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
+    const overlay = document.getElementById('overlay');
+    customTelCuadranteInput.style.display = 'none';
+    overlay.style.display = 'none';
+}
+
+// Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de cuadrante
+document.getElementById('telCuadranteSubmitButton').addEventListener('click', function () {
+    const newTelCuadrante = document.getElementById('newTelCuadranteInput').value;
+    if (newTelCuadrante && newTelCuadrante.length === 10 && /^\d+$/.test(newTelCuadrante)) {
+        localStorage.setItem('telCuadrante', newTelCuadrante);
+        hideCustomTelCuadranteInput();
+        showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+    }
+});
+
+// Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de cuadrante
+document.getElementById('telCuadranteCancelButton').addEventListener('click', function () {
+    hideCustomTelCuadranteInput();
+});
+
+// Evento para el botón "Tel Cuadrante"
+document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
+    showCustomTelCuadranteInput();
+});
+
+// Evento para el botón "EmergenciaCuadrante"
+document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
+    const telCuadrante = localStorage.getItem('telCuadrante');
+    if (telCuadrante) {
+        window.location.href = `tel:${telCuadrante}`;
+    } else {
+        showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
+    }
+});
+
+
+
+
+
+// Mostrar el cuadro de diálogo para ingresar el número de teléfono de extorsión
+document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
+    showCustomTelExtorsionInput();
+});
+
+// Función para mostrar el cuadro de diálogo de teléfono de extorsión
+function showCustomTelExtorsionInput() {
+    const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
+    const overlay = document.getElementById('overlay');
+    customTelExtorsionInput.style.display = 'block';
+    overlay.style.display = 'block';
+}
+
+// Función para ocultar el cuadro de diálogo de teléfono de extorsión
+function hideCustomTelExtorsionInput() {
+    const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
+    const overlay = document.getElementById('overlay');
+    customTelExtorsionInput.style.display = 'none';
+    overlay.style.display = 'none';
+}
+
+// Guardar el número de teléfono de extorsión en localStorage
+document.getElementById('telExtorsionSubmitButton').addEventListener('click', function () {
+    const newTelExtorsion = document.getElementById('newTelExtorsionInput').value;
+    if (newTelExtorsion && newTelExtorsion.length === 10) {
+        localStorage.setItem('telExtorsion', newTelExtorsion);
+        hideCustomTelExtorsionInput();
+        showCustomAlert("Número de teléfono guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+    }
+});
+
+// Cancelar la edición del número de teléfono de extorsión
+document.getElementById('telExtorsionCancelButton').addEventListener('click', function () {
+    hideCustomTelExtorsionInput();
+});
+
+// Realizar la llamada cuando se pulse el botón "EmergenciaExtorsión"
+document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
+    const telExtorsion = localStorage.getItem('telExtorsion');
+    if (telExtorsion) {
+        window.location.href = `tel:${telExtorsion}`;
+    } else {
+        showCustomAlert("No se ha configurado un número de teléfono para extorsión.");
+    }
+});
+
+
+
+// Función para mostrar el cuadro de diálogo para modificar el teléfono de conocido
+function showCustomTelConocidoInput() {
+    const customTelConocidoInput = document.getElementById('customTelConocidoInput');
+    const overlay = document.getElementById('overlay');
+    customTelConocidoInput.style.display = 'block';
+    overlay.style.display = 'block';
+}
+
+// Función para ocultar el cuadro de diálogo para modificar el teléfono de conocido
+function hideCustomTelConocidoInput() {
+    const customTelConocidoInput = document.getElementById('customTelConocidoInput');
+    const overlay = document.getElementById('overlay');
+    customTelConocidoInput.style.display = 'none';
+    overlay.style.display = 'none';
+}
+
+// Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de conocido
+document.getElementById('telConocidoSubmitButton').addEventListener('click', function () {
+    const newTelConocido = document.getElementById('newTelConocidoInput').value;
+    if (newTelConocido && newTelConocido.length === 10 && /^\d+$/.test(newTelConocido)) {
+        localStorage.setItem('telConocido', newTelConocido);
+        hideCustomTelConocidoInput();
+        showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
+    } else {
+        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+    }
+});
+
+// Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de conocido
+document.getElementById('telConocidoCancelButton').addEventListener('click', function () {
+    hideCustomTelConocidoInput();
+});
+
+// Evento para el botón "EmergenciaConocido"
+document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
+    const telConocido = localStorage.getItem('telConocido');
+    if (telConocido) {
+        window.location.href = `tel:${telConocido}`;
+    } else {
+        showCustomAlert("No se ha configurado un número de teléfono para Conocido.");
+    }
+});
+
+// Evento para el botón "Tel Conocido"
+document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
+    showCustomTelConocidoInput();
+});
+
+
+
+
+
+// Función para mostrar/ocultar el menú
+function toggleMenu() {
+    const menuOptions = document.getElementById('menuOptions');
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+        menuOverlay.style.display = 'none'; // Ocultar el overlay
+    } else {
+        menuOptions.style.display = 'block';
+        menuOverlay.style.display = 'block'; // Mostrar el overlay
+    }
+}
+
+// Cerrar el menú si se hace clic fuera de él
+document.addEventListener('click', function(event) {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const menuOptions = document.getElementById('menuOptions');
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (!hamburgerMenu.contains(event.target)) {
+        menuOptions.style.display = 'none';
+        menuOverlay.style.display = 'none'; // Ocultar el overlay
+    }
+});
+
+// Agregar eventos a los elementos del menú para ocultarlo al seleccionar una opción
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', function() {
+        toggleMenu(); // Ocultar el menú al seleccionar una opción
+    });
+});
 
 
     </script>
