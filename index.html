@@ -2208,6 +2208,32 @@ document.querySelectorAll('.menu-item').forEach(item => {
 });
 
 
+
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') {
+        // El usuario ha vuelto a la aplicación después de la llamada
+        // Aquí puedes agregar la lógica para volver a la pantalla principal
+        resetToMainScreen();
+    }
+});
+
+function resetToMainScreen() {
+    // Ocultar todos los botones de emergencia específicos
+    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
+    document.getElementById('emergenciaExtorsionButton').style.display = 'none';
+    document.getElementById('emergenciaConocidoButton').style.display = 'none';
+
+    // Mostrar el botón de emergencia principal
+    document.getElementById('emergencyButton').style.display = 'block';
+
+    // Habilitar todos los botones de selección
+    document.getElementById('c5Button').disabled = false;
+    document.getElementById('cuadranteButton').disabled = false;
+    document.getElementById('extorsionButton').disabled = false;
+    document.getElementById('conocidoButton').disabled = false;
+}
+
+
     </script>
 </body>
 </html>
