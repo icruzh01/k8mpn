@@ -859,16 +859,16 @@ display: flex;
 
 @keyframes neon-color-change-green {
     0% {
-        border-color: #b70046;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #ff0062;
+        box-shadow: 0 0 10px #ff0062, 0 0 20px #ff0062, 0 0 40px #ff0062;
     }
     50% {
-        border-color: #a03b62;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #a60040;
+        box-shadow: 0 0 10px #a60040, 0 0 20px #a60040, 0 0 40px #a60040;
     }
     100% {
-        border-color: #b70046;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #ff0062;
+        box-shadow: 0 0 10px #ff0062, 0 0 20px #ff0062, 0 0 40px #ff0062;
     }
 }
 
@@ -2209,29 +2209,7 @@ document.querySelectorAll('.menu-item').forEach(item => {
 
 
 
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-        // El usuario ha vuelto a la aplicación después de la llamada
-        // Aquí puedes agregar la lógica para volver a la pantalla principal
-        resetToMainScreen();
-    }
-});
 
-function resetToMainScreen() {
-    // Ocultar todos los botones de emergencia específicos
-    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
-    document.getElementById('emergenciaExtorsionButton').style.display = 'none';
-    document.getElementById('emergenciaConocidoButton').style.display = 'none';
-
-    // Mostrar el botón de emergencia principal
-    document.getElementById('emergencyButton').style.display = 'block';
-
-    // Habilitar todos los botones de selección
-    document.getElementById('c5Button').disabled = false;
-    document.getElementById('cuadranteButton').disabled = false;
-    document.getElementById('extorsionButton').disabled = false;
-    document.getElementById('conocidoButton').disabled = false;
-}
 
 
     </script>
