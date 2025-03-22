@@ -1455,6 +1455,8 @@ animation: neon-color-change-pink 2s infinite;
     </div>
 </div>
 
+
+
 <!-- Cuadro de confirmación para llamar al cuadrante -->
 <div id="confirmCallCuadrante" class="custom-confirm">
     <p>¿Llamar al cuadrante?</p>
@@ -1462,9 +1464,7 @@ animation: neon-color-change-pink 2s infinite;
         <button id="confirmCallYes">Sí, llamar</button>
         <button id="confirmCallNo">Cancelar</button>
     </div>
-</div>
-
-
+</div>  
 
 
 
@@ -2301,43 +2301,74 @@ document.querySelectorAll('.menu-item').forEach(item => {
 
 
 
+
+
+
+
 // Función para mostrar el cuadro de confirmación para llamar al cuadrante
 function showConfirmCallCuadrante() {
-    const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
-    const overlay = document.getElementById('overlay');
-    confirmCallCuadrante.style.display = 'block';
-    overlay.style.display = 'block';
-}
+            const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
+            const overlay = document.getElementById('overlay');
+            confirmCallCuadrante.style.display = 'block';
+            overlay.style.display = 'block';
+        }
 
-// Función para ocultar el cuadro de confirmación para llamar al cuadrante
-function hideConfirmCallCuadrante() {
-    const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
-    const overlay = document.getElementById('overlay');
-    confirmCallCuadrante.style.display = 'none';
-    overlay.style.display = 'none';
-}
+        // Función para ocultar el cuadro de confirmación para llamar al cuadrante
+        function hideConfirmCallCuadrante() {
+            const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
+            const overlay = document.getElementById('overlay');
+            confirmCallCuadrante.style.display = 'none';
+            overlay.style.display = 'none';
+        }
 
-// Evento para el botón "Sí, llamar" del cuadro de confirmación
-document.getElementById('confirmCallYes').addEventListener('click', function () {
-    const telCuadrante = localStorage.getItem('telCuadrante');
-    if (telCuadrante) {
-        window.location.href = `tel:${telCuadrante}`;
-    } else {
-        showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
-    }
-    hideConfirmCallCuadrante();
-});
+        // Evento para el botón "Sí, llamar" del cuadro de confirmación
+        document.getElementById('confirmCallYes').addEventListener('click', function () {
+            const telCuadrante = localStorage.getItem('telCuadrante');
+            if (telCuadrante) {
+                window.location.href = `tel:${telCuadrante}`;
+            } else {
+                showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
+            }
+            hideConfirmCallCuadrante();
+        });
 
-// Evento para el botón "Cancelar" del cuadro de confirmación
-document.getElementById('confirmCallNo').addEventListener('click', function () {
-    hideConfirmCallCuadrante();
-});
+        // Evento para el botón "Cancelar" del cuadro de confirmación
+        document.getElementById('confirmCallNo').addEventListener('click', function () {
+            hideConfirmCallCuadrante();
+        });
 
+        // Modificar el evento del botón "EmergenciaCuadrante" para mostrar el cuadro de confirmación
+        document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
+            showConfirmCallCuadrante();
+        });
 
-// Modificar el evento del botón "EmergenciaCuadrante" para mostrar el cuadro de confirmación
-document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
-    showConfirmCallCuadrante();
-});
+        // Función para mostrar la ventana de mensaje personalizada
+        function showCustomAlert(message, alertType = 'error') {
+            const customAlert = document.getElementById('customAlert');
+            const overlay = document.getElementById('overlay');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+
+            // Restablecer clases
+            customAlert.className = 'custom-alert';
+
+            // Cambiar el color de fondo según el tipo de alerta
+            if (alertType === 'success') {
+                customAlert.classList.add('success');
+            } else if (alertType === 'confirmation') {
+                customAlert.classList.add('confirmation');
+            }
+            customAlert.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Función para ocultar la ventana de mensaje personalizada
+        function hideCustomAlert() {
+            const customAlert = document.getElementById('customAlert');
+            const overlay = document.getElementById('overlay');
+            customAlert.style.display = 'none';
+            overlay.style.display = 'none';
+        }
 
 
 
