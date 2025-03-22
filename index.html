@@ -1075,14 +1075,9 @@ animation: neon-color-change-pink 2s infinite;
 
 .custom-tel-input .button-container button:hover {
     background-color: #000000;
-    border: 2px solid #027e94;
+    border: 2px solid #edf9fb;
     box-shadow: 0 0 10px #00d9ff;
 }
-
-
-
-
-
 
 
 /* Estilos para el cuadro de diálogo de teléfono, pero de CONOCIDO*/
@@ -1148,9 +1143,6 @@ animation: neon-color-change-pink 2s infinite;
     border: 2px solid #027e94;
     box-shadow: 0 0 10px #00d9ff;
 }
-
-
-
 
 
 /* Estilos para el menú de hamburguesa */
@@ -1225,73 +1217,6 @@ animation: neon-color-change-pink 2s infinite;
 
 
 
-
-.custom-confirm {
-    display: none;
-    position: fixed;
-    width: 250px;
-    height: 130px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000000;
-    border: 1px solid #f70d1a;
-    color: rgb(185, 185, 185);
-    padding: 30px;
-    box-shadow: 0 0 20px #ff0000;
-    z-index: 1000;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.custom-confirm p {
-    margin: 0 0 20px;
-    font-size: 18px;
-}
-
-.custom-confirm .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.custom-confirm button {
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #ff0000;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #f8212c;
-}
-
-.custom-confirm button:hover {
-    background-color: #000000;
-    border: 3px solid #0095ff;
-    box-shadow: 0 0 10px #0debf7;
-}
-
-#confirmCallNo {
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #7a7a7a;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #a4a3a3;
-}
-
-#confirmCallNo:hover {
-    background-color: #000000;
-    border: 3px solid #898989;
-    box-shadow: 0 0 10px #ffffff;
-}
-
-
-
-
     </style>
 </head>
 <body>
@@ -1357,8 +1282,6 @@ animation: neon-color-change-pink 2s infinite;
 
 
 
-
-
     <!-- Ventana de mensaje personalizada -->
     <div id="customAlert" class="custom-alert">
         <p id="alertMessage"></p>
@@ -1421,9 +1344,6 @@ animation: neon-color-change-pink 2s infinite;
 </div>
 
 
-
-
-
 <!-- Cuadro de diálogo para ingresar el número de teléfono -->
 <div id="customTelExtorsionInput" class="custom-tel-input">
     <input type="tel" id="newTelExtorsionInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
@@ -1454,18 +1374,6 @@ animation: neon-color-change-pink 2s infinite;
         <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
     </div>
 </div>
-
-
-
-<!-- Cuadro de confirmación para llamar al cuadrante -->
-<div id="confirmCallCuadrante" class="custom-confirm">
-    <p>¿Llamar al cuadrante?</p>
-    <div class="button-container">
-        <button id="confirmCallYes">Sí, llamar</button>
-        <button id="confirmCallNo">Cancelar</button>
-    </div>
-</div>  
-
 
 
     <script>
@@ -2298,78 +2206,6 @@ document.querySelectorAll('.menu-item').forEach(item => {
         toggleMenu(); // Ocultar el menú al seleccionar una opción
     });
 });
-
-
-
-
-
-
-
-// Función para mostrar el cuadro de confirmación para llamar al cuadrante
-function showConfirmCallCuadrante() {
-            const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
-            const overlay = document.getElementById('overlay');
-            confirmCallCuadrante.style.display = 'block';
-            overlay.style.display = 'block';
-        }
-
-        // Función para ocultar el cuadro de confirmación para llamar al cuadrante
-        function hideConfirmCallCuadrante() {
-            const confirmCallCuadrante = document.getElementById('confirmCallCuadrante');
-            const overlay = document.getElementById('overlay');
-            confirmCallCuadrante.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-
-        // Evento para el botón "Sí, llamar" del cuadro de confirmación
-        document.getElementById('confirmCallYes').addEventListener('click', function () {
-            const telCuadrante = localStorage.getItem('telCuadrante');
-            if (telCuadrante) {
-                window.location.href = `tel:${telCuadrante}`;
-            } else {
-                showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
-            }
-            hideConfirmCallCuadrante();
-        });
-
-        // Evento para el botón "Cancelar" del cuadro de confirmación
-        document.getElementById('confirmCallNo').addEventListener('click', function () {
-            hideConfirmCallCuadrante();
-        });
-
-        // Modificar el evento del botón "EmergenciaCuadrante" para mostrar el cuadro de confirmación
-        document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
-            showConfirmCallCuadrante();
-        });
-
-        // Función para mostrar la ventana de mensaje personalizada
-        function showCustomAlert(message, alertType = 'error') {
-            const customAlert = document.getElementById('customAlert');
-            const overlay = document.getElementById('overlay');
-            const alertMessage = document.getElementById('alertMessage');
-            alertMessage.textContent = message;
-
-            // Restablecer clases
-            customAlert.className = 'custom-alert';
-
-            // Cambiar el color de fondo según el tipo de alerta
-            if (alertType === 'success') {
-                customAlert.classList.add('success');
-            } else if (alertType === 'confirmation') {
-                customAlert.classList.add('confirmation');
-            }
-            customAlert.style.display = 'block';
-            overlay.style.display = 'block';
-        }
-
-        // Función para ocultar la ventana de mensaje personalizada
-        function hideCustomAlert() {
-            const customAlert = document.getElementById('customAlert');
-            const overlay = document.getElementById('overlay');
-            customAlert.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-
 
 
     </script>
