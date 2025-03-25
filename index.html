@@ -9,6 +9,9 @@
     <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
     <!-- Incluir jsQR desde un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+    
+    <!-- Incluir Chart.js desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Meta tags para mejorar la experiencia -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -482,7 +485,7 @@
         .custom-url-input input {
             width: 90%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 7px;
             font-size: 16px;
             background: #ffe9bd;
             color: #000000;
@@ -506,6 +509,7 @@
         .custom-url-input .button-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
         }
 
@@ -545,7 +549,7 @@
         .custom-giro-input input {
             width: 90%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 7px;
             font-size: 16px;
             background: #bbf9ff;
             color: #000000;
@@ -608,7 +612,7 @@
         .custom-nombre-input input {
             width: 90%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 7px;
             font-size: 16px;
             background: #ffb1f7;
             color: #000000;
@@ -780,9 +784,9 @@
 
 /* Estilo cuando el botón está deshabilitado */
 .custom-button:disabled {
-    background-color: #047900; /* Fondo más oscuro */
-    color: #ffffff; /* Texto más claro */
-    border-color: #09ff00; /* Borde más claro */
+    background-color: #023501; /* Fondo más oscuro */
+    color: #09ff00; /* Texto más claro */
+    border: 0.5px solid #09ff00; /* Borde más claro */
     cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
     box-shadow: none; /* Eliminar la sombra */
     /*opacity: 0.7; /* Reducir la opacidad */
@@ -832,7 +836,7 @@
 /* Estilo para el nuevo botón EmergenciaExtorsion */
 #emergenciaExtorsionButton {
     display: none; /* Oculta el botón inicialmente */
-    background-color: #640026;
+    background-color: #c6004c;
     color: white;
     font-size: 15px;
     width: 150px;
@@ -859,23 +863,23 @@ display: flex;
 
 @keyframes neon-color-change-green {
     0% {
-        border-color: #b70046;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #e00257;
+        box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
     }
     50% {
-        border-color: #a03b62;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #ff5890;
+        box-shadow: 0 0 10px #92254e, 0 0 20px #92254e, 0 0 40px #92254e;
     }
     100% {
-        border-color: #b70046;
-        box-shadow: 0 0 10px #a42656, 0 0 20px #a42656, 0 0 40px #a42656;
+        border-color: #e00257;
+        box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
     }
 }
 
 
 #emergenciaConocidoButton {
 display: none;
-background-color: rgb(230, 28, 116);
+background-color: rgb(251, 95, 162);
 color: rgb(255, 255, 255);
 font-size: 15px;
 width: 150px;
@@ -899,11 +903,11 @@ animation: neon-color-change-pink 2s infinite;
 @keyframes neon-color-change-pink {
     0% {
         border-color: #ff69b4;
-        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+        box-shadow: 0 0 10px #fb1b8b, 0 0 20px #fb1b8b, 0 0 40px #fb1b8b;
     }
     50% {
-        border-color: #b5618e;
-        box-shadow: 0 0 10px #b5618e, 0 0 20px #b5618e, 0 0 40px #b5618e;
+        border-color: #a83f77;
+        box-shadow: 0 0 10px #a83f77, 0 0 20px #a83f77, 0 0 40px #a83f77;
     }
     100% {
         border-color: #ff69b4;
@@ -958,11 +962,11 @@ animation: neon-color-change-pink 2s infinite;
 
 
 /* Estilos para el cuadro de diálogo de teléfono, pero de CUADRANTE*/
-.custom-tel-input {
+.custom-tel-cuadrante-input {
     display: none;
     position: fixed;
     width: 250px;
-    height: 120px;
+    height: 100px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -978,10 +982,10 @@ animation: neon-color-change-pink 2s infinite;
     border-radius: 10px;
 }
 
-.custom-tel-input input {
+.custom-tel-cuadrante-input input {
     width: 90%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom:7px;
     font-size: 16px;
     background: #ffe9bd;
     color: #000000;
@@ -990,13 +994,13 @@ animation: neon-color-change-pink 2s infinite;
     border-radius: 5px;
 }
 
-.custom-tel-input .button-container {
+.custom-tel-cuadrante-input .button-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.custom-tel-input .button-container button {
+.custom-tel-cuadrante-input .button-container button {
     background-color: #000000;
     color: white;
     border: 1px solid #d4a017;
@@ -1006,7 +1010,7 @@ animation: neon-color-change-pink 2s infinite;
     border-radius: 15px;
 }
 
-.custom-tel-input .button-container button:hover {
+.custom-tel-cuadrante-input .button-container button:hover {
     background-color: #000000;
     border: 2px solid #c20303;
     box-shadow: 0 0 10px #ff0000;
@@ -1016,7 +1020,7 @@ animation: neon-color-change-pink 2s infinite;
 
 
 /* Estilos para el cuadro de diálogo de teléfono, pero de EXTORSIÓN (Checarlo porque comparte los mismos estilos que el imput para CUADRANTE)*/
-.custom-tel-input {
+.custom-tel-extorsion-input {
     display: none;
     position: fixed;
     width: 250px;
@@ -1025,64 +1029,59 @@ animation: neon-color-change-pink 2s infinite;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #000000;
-    border: 1px solid #b70046;
+    border: 1px solid #037787;
     padding: 20px;
-    box-shadow: 0 0 20px #a42656;
+    box-shadow: 0 0 20px #00d9ff;
     z-index: 1000;
     text-align: center;
     border-radius: 10px;
 }
 
-.custom-tel-input input {
+.custom-tel-extorsion-input input {
     width: 90%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom:7px;
     font-size: 16px;
-    background: #ffb1f7;
+    background: #9ef4ff;
     color: #000000;
-    border: 1px solid #f507dd;
-    box-shadow: 0 0 5px #f507dd;
+    border: 1px solid #037787;
+    box-shadow: 0 0 5px #00d9ff;
     border-radius: 5px;
 }
 
-.custom-tel-input input:hover {
+.custom-tel-extorsion-input input:hover {
     background: #000000;
-    border: 0.5px solid #f507dd;
-    color: #f507dd;
+    border: 0.5px solid #004c5b;
+    color: #00d5ff;
 }
 
-.custom-tel-input input:focus {
+.custom-tel-extorsion-input input:focus {
     background: #000000;
-    border: 0.5px solid #5cbd02;
-    color: #f507dd;
+    border: .5px solid #007292;
+    color: #00e1ff;
 }
 
-.custom-tel-input .button-container {
+.custom-tel-extorsion-input .button-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.custom-tel-input .button-container button {
+.custom-tel-extorsion-input .button-container button {
     background-color: #000000;
     color: white;
-    border: 1px solid #f30086;
+    border: 1px solid #00d9ff;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
     border-radius: 15px;
 }
 
-.custom-tel-input .button-container button:hover {
+.custom-tel-extorsion-input .button-container button:hover {
     background-color: #000000;
-    border: 2px solid #027e94;
+    border: 2px solid #00d5ff;
     box-shadow: 0 0 10px #00d9ff;
 }
-
-
-
-
-
 
 
 /* Estilos para el cuadro de diálogo de teléfono, pero de CONOCIDO*/
@@ -1095,9 +1094,9 @@ animation: neon-color-change-pink 2s infinite;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #000000;
-    border: 1px solid #b70046;
+    border: 1px solid #318c00;
     padding: 20px;
-    box-shadow: 0 0 20px #a42656;
+    box-shadow: 0 0 20px #59ff00;
     z-index: 1000;
     text-align: center;
     border-radius: 10px;
@@ -1106,25 +1105,25 @@ animation: neon-color-change-pink 2s infinite;
 .custom-tel-conocido-input input {
     width: 90%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom:7px;
     font-size: 16px;
-    background: #ffb1f7;
+    background: #d1f9bb;
     color: #000000;
-    border: 1px solid #f507dd;
-    box-shadow: 0 0 5px #f507dd;
+    border: 1px solid #389f00;
+    box-shadow: 0 0 5px #59ff00;
     border-radius: 5px;
 }
 
 .custom-tel-conocido-input input:hover {
     background: #000000;
-    border: 0.5px solid #f507dd;
-    color: #f507dd;
+    border: 0.5px solid #59ff00;
+    color: #389f00;
 }
 
 .custom-tel-conocido-input input:focus {
     background: #000000;
-    border: 0.5px solid #5cbd02;
-    color: #f507dd;
+    border: 0.5px solid #389f00;
+    color: #59ff00;
 }
 
 .custom-tel-conocido-input .button-container {
@@ -1136,7 +1135,7 @@ animation: neon-color-change-pink 2s infinite;
 .custom-tel-conocido-input .button-container button {
     background-color: #000000;
     color: white;
-    border: 1px solid #f30086;
+    border: 1px solid #59ff00;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
@@ -1145,86 +1144,412 @@ animation: neon-color-change-pink 2s infinite;
 
 .custom-tel-conocido-input .button-container button:hover {
     background-color: #000000;
-    border: 2px solid #027e94;
-    box-shadow: 0 0 10px #00d9ff;
+    border: 2px solid #389f00;
+    box-shadow: 0 0 10px #59ff00;
 }
 
 
 
 
+/* Estilos para el botón de Registro */
+#toggleRegistrosButton {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #000000;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 10px;
+            width: 80px;
+            height: 40px;
+            border: 2px solid rgb(65, 61, 61);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            box-shadow: 3px 3px rgb(157, 151, 151);
+        }
 
-/* Estilos para el menú de hamburguesa */
-.hamburger-menu {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 998;
-}
+        #toggleRegistrosButton:active {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
 
-.hamburger-icon {
+        #toggleRegistrosButton:active, #toggleRegistrosButton.active {
+            background-color: #1e90ff;
+            border-color: #00bfff;
+            transform: scale(0.95);
+        }
+
+        /* Estilos para el menú de hamburguesa */
+        .hamburger-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 998;
+        }
+
+        .hamburger-icon {
+            background-color: #000000;
+            color: #999999;
+            border: 2px solid #999999;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hamburger-icon:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .menu-options {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background-color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            width: 150px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            z-index: 1000; /* Asegurar que esté por encima del overlay */
+        }
+
+        .menu-item {
+            color: #ffffff;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 5px;
+        }
+
+        /* Estilos para el overlay del menú */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo opaco */
+            z-index: 998; /* Asegurar que esté por encima de otros elementos */
+        }
+
+
+
+
+.registros-container {
+    position: center; /*tenía fixed*/
+    bottom: -5px;
+    left: 20px;
     background-color: #000000;
-    color: #999999;
-    border: 2px solid #999999;
+    border: 0px solid #00e1ff;
+    border-radius: 10px;
+    padding: 10px;
+    height: 500px;
+    width: 300px;
+    color: #ffffff;
+    z-index: 1005;
+    max-height: 200px; /* Ajusta este valor según sea necesario */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    box-shadow: 0 0 20px #00bfff;
+}
+
+.registros-container h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; /* Fondo para que el texto sea legible */
+    margin: 0 0 10px;
+    font-size: 16px;
+    padding: 10px 0; /* Añadir padding para mejor apariencia */
+    position: sticky;
+    top: 0;
+    z-index: 1005; /* Asegurar que esté por encima de los registros */
+}
+
+.close-button {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+    margin-left: 10px; /* Espacio entre el título y el botón */
 }
 
-.hamburger-icon:hover {
-    background-color: #ffffff;
-    color: #000000;
+.close-button:hover {
+    background-color: #cc0000;
 }
 
-.menu-options {
-    display: none;
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    background-color: #000000;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    padding: 10px;
-    width: 150px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    z-index: 1000; /* Asegurar que esté por encima del overlay */
+#listaRegistros {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-
-.menu-item {
-    color: #ffffff;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+#listaRegistros li {
+    padding: 5px 0;
+    border-bottom: 1px solid #444;
 }
 
-.menu-item:hover {
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 5px;
+#listaRegistros li:last-child {
+    border-bottom: none;
 }
 
 
-
-/* Estilos para el overlay del menú */
-.menu-overlay {
+/* Estilo para el overlay semitransparente */
+.registros-overlay {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo opaco */
-    z-index: 998; /* Asegurar que esté por encima de otros elementos */
+    background-color: rgb(0, 0, 0); /* Fondo semitransparente */
+    z-index: 1005; /* Asegurar que esté por encima de otros elementos */
 }
 
 
+/* Estilos para el botón de Registro */
+#toggleRegistrosButton {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #000000;
+            color: #a5a5a5;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 10px;
+            width: 80px;
+            height: 40px;
+            border: 2px solid rgb(65, 61, 61);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            box-shadow: 0 0 rgb(157, 151, 151);
+        }
 
+        #toggleRegistrosButton:active {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
+
+        #toggleRegistrosButton:active, #toggleRegistrosButton.active {
+            background-color: #1e90ff;
+            border-color: #00bfff;
+            transform: scale(0.95);
+        }
+
+        .emergencia-negocio {
+            color: yellow;
+        }
+
+        .emergencia-extorsion {
+            color: red;
+        }
+
+        .emergencia-cuadrante {
+            color: rgb(0, 195, 255);
+        }
+
+        .emergencia-conocido {
+            color: rgb(254, 0, 216);
+        }
+
+
+        /* Estilos para el contenedor de gráficas */
+        #graficasContainer {
+            display: none;
+            position: fixed;
+            margin: 0;
+            top: 33.5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*background-color: #000000;
+            /*border: 1px solid #ffffff;*/
+            padding: 0;
+            z-index: 1005;
+            width: 99%; /* Ajustar el ancho del contenedor */
+            height: 66.5%;
+            max-width: 800px; /* Aumentar el ancho máximo */
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* Contenedor flexible para las gráficas */
+        .graficas-flex {
+            
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding: 20px;
+        }
+
+/* Estilos mejorados para las gráficas con efecto neón */
+.grafica {
+        flex: 1;
+        min-width: 100px;
+        max-width: 150px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .grafica canvas {
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 10px currentColor);
+        transition: all 0.3s ease;
+    }
+
+    .grafica:hover canvas {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    /* Efecto de halo neón base */
+    .grafica::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.5s ease;
+        background: radial-gradient(circle, currentColor, transparent 70%);
+    }
+
+    .grafica:hover::before {
+        opacity: 0.5;
+        animation: neon-pulse 1.5s infinite alternate;
+    }
+
+    /* Efectos neón específicos para cada tipo de gráfica */
+    .grafica-negocio {
+        color: #FFFF00; /* Amarillo neón */
+    }
+
+    .grafica-cuadrante {
+        color: #00FFFF; /* Cian neón */
+    }
+
+    .grafica-extorsion {
+        color: #FF0000; /* Rojo neón */
+    }
+
+    .grafica-conocido {
+        color: #FF00FF; /* Magenta neón */
+    }
+
+    /* Animación de pulsación para el efecto neón */
+    @keyframes neon-pulse {
+        0% {
+            box-shadow: 0 0 5px currentColor;
+        }
+        100% {
+            box-shadow: 0 0 20px currentColor;
+        }
+    }
+
+    /* Estilo para el título de activaciones con efecto neón mejorado */
+    #graficasContainer h2 {
+        color: #0ff;
+        text-shadow: 
+            0 0 5px #0090b4,
+            0 0 10px #0090b4,
+            0 0 15px #0ff,
+            0 0 20px #0ff;
+        animation: neon-glow 1.5s infinite alternate;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Animación mejorada para el efecto neón del título */
+    @keyframes neon-glow {
+        from {
+            text-shadow: 
+                0 0 5px #0090b4,
+                0 0 10px #0090b4,
+                0 0 15px #0ff,
+                0 0 20px #0ff;
+        }
+        to {
+            text-shadow: 
+                0 0 10px #0090b4,
+                0 0 20px #0090b4,
+                0 0 30px #0ff,
+                0 0 40px #0ff;
+        }
+    }
+
+    /* Estilo mejorado para el número de activaciones */
+    #totalActivacionesGraficas {
+        color: #0ff;
+        font-weight: bold;
+        font-size: 1.5rem;
+        animation: neon-pulse-number 1s infinite alternate;
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes neon-pulse-number {
+        from {
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff;
+            transform: scale(1);
+        }
+        to {
+            text-shadow: 
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            transform: scale(1.05);
+        }
+    }
+
+
+
+
+        
     </style>
 </head>
 <body>
@@ -1240,9 +1565,11 @@ animation: neon-color-change-pink 2s infinite;
     <!-- Resto del contenido de la página -->
     <div id="overlay" class="overlay"></div>
 
-<!-- Overlay para el menú -->
-<div id="menuOverlay" class="menu-overlay"></div>
+    <!-- Overlay para el menú -->
+    <div id="menuOverlay" class="menu-overlay"></div>
 
+    <!-- Overlay para los registros de activación -->
+    <div id="registrosOverlay" class="registros-overlay"></div>
 
 
     <header>
@@ -1257,18 +1584,17 @@ animation: neon-color-change-pink 2s infinite;
     <!-- Botón de emergencia -->
     <button id="emergencyButton" aria-label="Activar emergencia">Negocio</button>
     
-
     <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
     <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button>
-
 
     <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
     <button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsión</button>
 
-
     <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
     <button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>
 
+
+   
 
 
 
@@ -1287,8 +1613,6 @@ animation: neon-color-change-pink 2s infinite;
     <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
     <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
     <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
-
-
 
 
 
@@ -1345,7 +1669,7 @@ animation: neon-color-change-pink 2s infinite;
 
 
 <!-- Cuadro de diálogo para ingresar el número de teléfono -->
-<div id="customTelCuadranteInput" class="custom-tel-input">
+<div id="customTelCuadranteInput" class="custom-tel-cuadrante-input">
     <input type="tel" id="newTelCuadranteInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
     <div class="button-container">
         <button id="telCuadranteSubmitButton">Guardar</button>
@@ -1354,19 +1678,14 @@ animation: neon-color-change-pink 2s infinite;
 </div>
 
 
-
-
-
 <!-- Cuadro de diálogo para ingresar el número de teléfono -->
-<div id="customTelExtorsionInput" class="custom-tel-input">
+<div id="customTelExtorsionInput" class="custom-tel-extorsion-input">
     <input type="tel" id="newTelExtorsionInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
     <div class="button-container">
         <button id="telExtorsionSubmitButton">Guardar</button>
         <button id="telExtorsionCancelButton">Cancelar</button>
     </div>
 </div>
-
-
 
 <!-- Cuadro de diálogo para modificar el teléfono de conocido -->
 <div id="customTelConocidoInput" class="custom-tel-conocido-input">
@@ -1376,7 +1695,6 @@ animation: neon-color-change-pink 2s infinite;
         <button id="telConocidoCancelButton">Cancelar</button>
     </div>
 </div>
-
 
 
 
@@ -1393,6 +1711,46 @@ animation: neon-color-change-pink 2s infinite;
         <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
     </div>
 </div>
+
+
+
+<!-- Apartado para mostrar los registros de activación -->
+<div id="registrosActivacion" class="registros-container" style="display: none;">
+    <h2>Registros de Activación <button id="closeRegistrosButton" class="close-button">X</button></h2>
+    
+    <ul id="listaRegistros"></ul>
+</div>
+
+<!-- Botón para consultar los registros de activación -->
+<button id="toggleRegistrosButton" class="custom-button">Registros</button>
+
+
+<!-- Contenedor de gráficas -->
+<div id="graficasContainer">
+    <h2>Activaciones: <span id="totalActivacionesGraficas">0</span></h2>
+    <div class="graficas-flex">
+        <div class="grafica">
+            <canvas id="graficaNegocio"></canvas>
+        </div>
+        <div class="grafica">
+            <canvas id="graficaCuadrante"></canvas>
+        </div>
+        <div class="grafica">
+            <canvas id="graficaExtorsion"></canvas>
+        </div>
+        <div class="grafica">
+            <canvas id="graficaConocido"></canvas>
+        </div>
+    </div>
+    <!--  <button id="cerrarGraficasButton">X</button> ---- Este botón esta deshabilitado porque el contenedor se cierra con el de registro--> 
+</div>
+
+<!--<div id="totalActivaciones" style="text-align: center; color: rgb(131, 32, 32); font-size: .9rem; margin-top: 20px;">
+    Activaciones: <span id="activacionesCount">0</span>
+</div> ---------Este boton se ubica en la parte inferior donde estan los botones de emergencia y muetra el total de activaciones ----->
+<!---    <h2>Activaciones: <span id="totalActivacionesGraficas">0</span></h2>  ----->
+
+
 
 
 
@@ -1463,12 +1821,18 @@ animation: neon-color-change-pink 2s infinite;
         }
 
 
+
+
+
+
+
+
         // Función para mostrar la ventana de mensaje personalizada
         function showCustomAlert(message, alertType = 'error') {
             const customAlert = document.getElementById('customAlert');
             const overlay = document.getElementById('overlay');
             const alertMessage = document.getElementById('alertMessage');
-            alertMessage.textContent = message;
+            alertMessage.innerHTML = message; // Usar innerHTML en lugar de textContent
 
             // Restablecer clases
             customAlert.className = 'custom-alert';
@@ -1584,16 +1948,30 @@ animation: neon-color-change-pink 2s infinite;
                     throw new Error("No se pudo abrir la ventana. Verifica si hay un bloqueador de ventanas emergentes.");
                 }
 
+                guardarRegistroActivacion('Emergencia Negocio');
+                // Obtener la hora actual
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const timeString = `${hours}:${minutes}:${seconds}`;
+
+
+
+
+
                 setTimeout(() => {
                     if (!nuevaVentana.closed) {
                         nuevaVentana.close();
-                        showCustomAlert("¡Activación Exitosa!", 'confirmation');
+                        showCustomAlert(`¡Activación Exitosa!<br>Hora: ${timeString}`, 'confirmation');
                     }
                 }, 5000);
             } catch (error) {
                 showCustomAlert(`Error: ${error.message}`);
             }
         });
+
+
 
         // Evento para el botón "No" del cuadro de confirmación
         document.getElementById('confirmNo').addEventListener('click', function () {
@@ -1931,6 +2309,21 @@ document.getElementById('cuadranteButton').addEventListener('click', function ()
     document.getElementById('conocidoButton').disabled = false;
 });
 
+// Evento para el botón "EmergenciaCuadrante"
+document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
+    guardarRegistroActivacion('Emergencia Cuadrante');
+    // Obtener la hora actual
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
+    // Mostrar el mensaje con la hora de activación
+    showCustomAlert(`Emergencia Cuadrante<br>Hora: ${timeString}`);
+});
+
+
 
 
 
@@ -1954,8 +2347,16 @@ document.getElementById('extorsionButton').addEventListener('click', function ()
 
 // Evento para el nuevo botón EmergenciaExtorsion
 document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
+    guardarRegistroActivacion('Emergencia por Extorsión');
+    // Obtener la hora actual
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
     // Aquí puedes agregar la lógica para manejar la emergencia por extorsión
-    showCustomAlert("Emergencia por Extorsión activada.");
+    showCustomAlert(`Emergencia por Extorsión<br>Hora: ${timeString}`);
 });
 
 
@@ -1983,8 +2384,16 @@ document.getElementById('conocidoButton').addEventListener('click', function () 
 
 // Evento para el nuevo botón EmergenciaConocido
 document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
+    guardarRegistroActivacion('Emergencia a Conocido');
+    // Obtener la hora actual
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
     // Aquí puedes agregar la lógica para manejar la emergencia por conocido
-    showCustomAlert("Emergencia por Conocido activada.");
+    showCustomAlert(`Emergencia a Conocido <br>Hora: ${timeString}`);
 });
 
 
@@ -2077,7 +2486,7 @@ document.getElementById('telCuadranteCancelButton').addEventListener('click', fu
 
 // Evento para el botón "Tel Cuadrante"
 document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
-    showCustomTelCuadranteInput();
+    showCustomTelCuadranteInput("");
 });
 
 // Evento para el botón "EmergenciaCuadrante"
@@ -2228,6 +2637,532 @@ document.querySelectorAll('.menu-item').forEach(item => {
 });
 
 
-    </script>
+ // Función para guardar un registro de activación
+ function guardarRegistroActivacion(tipoEmergencia) {
+            const now = new Date();
+            const fecha = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+            const horas = String(now.getHours()).padStart(2, '0');
+            const minutos = String(now.getMinutes()).padStart(2, '0');
+            const segundos = String(now.getSeconds()).padStart(2, '0');
+            const registro = {
+                tipo: tipoEmergencia,
+                hora: `${horas}:${minutos}:${segundos}`,
+                fecha: fecha
+            };
+
+            // Obtener los registros existentes o inicializar un array vacío
+            const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+            registros.push(registro);
+
+            // Guardar los registros actualizados en localStorage
+            localStorage.setItem('registrosActivacion', JSON.stringify(registros));
+
+            // Actualizar la lista de registros en la interfaz
+            actualizarListaRegistros();
+
+            // Actualizar el contador de activaciones
+            actualizarContadorActivaciones();
+        }
+
+// Función para agrupar registros por día
+function agruparRegistrosPorDia(registros) {
+    return registros.reduce((acc, registro) => {
+        const fecha = registro.fecha;
+        if (!acc[fecha]) {
+            acc[fecha] = [];
+        }
+        acc[fecha].push(registro);
+        return acc;
+    }, {});
+}
+
+document.getElementById('toggleRegistrosButton').addEventListener('click', function () {
+    const registrosContainer = document.getElementById('registrosActivacion');
+    const registrosOverlay = document.getElementById('registrosOverlay');
+    
+    if (registrosContainer.style.display === 'none' || registrosContainer.style.display === '') {
+        registrosContainer.style.display = 'block';
+        registrosOverlay.style.display = 'block'; // Mostrar el overlay
+        this.textContent = 'Ocultar Registros';
+    } else {
+        registrosContainer.style.display = 'none';
+        registrosOverlay.style.display = 'none'; // Ocultar el overlay
+        this.textContent = 'Registros';
+    }
+});
+
+document.getElementById('closeRegistrosButton').addEventListener('click', function () {
+    const registrosContainer = document.getElementById('registrosActivacion');
+    const registrosOverlay = document.getElementById('registrosOverlay');
+    
+    registrosContainer.style.display = 'none';
+    registrosOverlay.style.display = 'none'; // Ocultar el overlay
+    document.getElementById('toggleRegistrosButton').textContent = 'Registros';
+});
+
+function actualizarListaRegistros() {
+    const listaRegistros = document.getElementById('listaRegistros');
+    listaRegistros.innerHTML = ''; // Limpiar la lista actual
+
+    // Obtener los registros de localStorage
+    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+
+    // Agrupar los registros por día
+    const registrosPorDia = agruparRegistrosPorDia(registros);
+
+    // Obtener la fecha actual
+    const now = new Date();
+    const fechaHoy = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+
+
+    // Convertir las fechas a objetos Date para poder ordenarlas
+    const fechasOrdenadas = Object.keys(registrosPorDia)
+        .map(fechaStr => {
+            // Convertir la cadena de fecha a objeto Date
+            const partes = fechaStr.split(', ');
+            if (partes.length === 2) {
+                const [diaSemana, resto] = partes;
+                const [dia, mes, año] = resto.split('/');
+                return new Date(`${mes}/${dia}/${año}`);
+            }
+            return new Date(); // Si el formato no es el esperado, usar fecha actual
+        })
+        .sort((a, b) => b - a); // Ordenar de más reciente a más antiguo
+
+    // Mostrar los registros ordenados por fecha
+    fechasOrdenadas.forEach(fechaObj => {
+        const fechaStr = fechaObj.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+        
+        if (registrosPorDia[fechaStr]) {
+            const liFecha = document.createElement('li');
+            liFecha.textContent = fechaStr === fechaHoy ? "Hoy" : fechaStr;
+            liFecha.style.fontWeight = 'bold';
+            liFecha.style.marginTop = '10px';
+            listaRegistros.appendChild(liFecha);
+
+            // Ordenar los registros del día por hora (de mayor a menor)
+            registrosPorDia[fechaStr].sort((a, b) => {
+                const horaA = a.hora.split(':').join('');
+                const horaB = b.hora.split(':').join('');
+                return horaB.localeCompare(horaA);
+            });
+
+            // Mostrar cada registro en la lista
+            registrosPorDia[fechaStr].forEach(registro => {
+                const li = document.createElement('li');
+                li.textContent = `${registro.tipo} - ${registro.hora}`;
+                li.style.marginLeft = '20px';
+
+                // Aplicar clases según el tipo de registro
+                switch (registro.tipo) {
+                    case 'Emergencia Negocio':
+                        li.classList.add('emergencia-negocio');
+                        break;
+                    case 'Emergencia por Extorsión':
+                        li.classList.add('emergencia-extorsion');
+                        break;
+                    case 'Emergencia Cuadrante':
+                        li.classList.add('emergencia-cuadrante');
+                        break;
+                    case 'Emergencia a Conocido':
+                        li.classList.add('emergencia-conocido');
+                        break;
+                }
+
+                listaRegistros.appendChild(li);
+            });
+        }
+    });
+}
+
+// Función para agrupar registros por día
+function agruparRegistrosPorDia(registros) {
+    return registros.reduce((acc, registro) => {
+        const fecha = registro.fecha; // Asume que cada registro tiene una propiedad 'fecha'
+        if (!acc[fecha]) {
+            acc[fecha] = [];
+        }
+        acc[fecha].push(registro);
+        return acc;
+    }, {});
+}
+
+// Llamar a esta función al cargar la página para mostrar los registros existentes
+window.addEventListener('load', actualizarListaRegistros);
+
+        // Función para mostrar/ocultar el contenedor de gráficas
+        document.getElementById('toggleRegistrosButton').addEventListener('click', function() {
+    const graficasContainer = document.getElementById('graficasContainer');
+    const registrosOverlay = document.getElementById('registrosOverlay');
+    
+    if (graficasContainer.style.display === 'none' || graficasContainer.style.display === '') {
+        // Inicializar el contador a cero antes de mostrar
+        document.getElementById('totalActivacionesGraficas').textContent = '0';
+        graficasContainer.style.display = 'block';
+        registrosOverlay.style.display = 'block';
+        actualizarGraficas();
+    } else {
+        graficasContainer.style.display = 'none';
+        registrosOverlay.style.display = 'none';
+    }
+});
+
+        // Función para cerrar el contenedor de gráficas
+        document.getElementById(/*'cerrarGraficasButton'*/'closeRegistrosButton').addEventListener('click', function () {
+            const graficasContainer = document.getElementById('graficasContainer');
+            const registrosOverlay = document.getElementById('registrosOverlay');
+            graficasContainer.style.display = 'none';
+            registrosOverlay.style.display = 'none';
+        });
+
+
+  
+
+        function actualizarGraficas() {
+    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+    const datos = {
+        negocio: 0,
+        cuadrante: 0,
+        extorsion: 0,
+        conocido: 0
+    };
+
+    // Contar las activaciones por tipo
+    registros.forEach(registro => {
+        switch (registro.tipo) {
+            case 'Emergencia Negocio':
+                datos.negocio++;
+                break;
+            case 'Emergencia Cuadrante':
+                datos.cuadrante++;
+                break;
+            case 'Emergencia por Extorsión':
+                datos.extorsion++;
+                break;
+            case 'Emergencia a Conocido':
+                datos.conocido++;
+                break;
+        }
+    });
+
+    // Calcular el total de activaciones
+    const totalActivaciones = registros.length;
+    
+    // Animación del contador total
+    animateCounter('totalActivacionesGraficas', totalActivaciones);
+
+    // Calcular porcentajes finales
+    const porcentajesFinales = {
+        negocio: totalActivaciones > 0 ? Math.round((datos.negocio / totalActivaciones) * 100 * 10) / 10 : 0,
+        cuadrante: totalActivaciones > 0 ? Math.round((datos.cuadrante / totalActivaciones) * 100 * 10) / 10 : 0,
+        extorsion: totalActivaciones > 0 ? Math.round((datos.extorsion / totalActivaciones) * 100 * 10) / 10 : 0,
+        conocido: totalActivaciones > 0 ? Math.round((datos.conocido / totalActivaciones) * 100 * 10) / 10 : 0
+    };
+
+    // Destruir gráficas existentes si las hay
+    ['graficaNegocio', 'graficaCuadrante', 'graficaExtorsion', 'graficaConocido'].forEach(id => {
+        const chart = Chart.getChart(id);
+        if (chart) chart.destroy();
+    });
+
+    // Crear gráficas con animación desde cero
+    crearGraficasConAnimacion(porcentajesFinales, datos);
+}
+
+// Función para animar el contador
+function animateCounter(elementId, targetValue) {
+    const element = document.getElementById(elementId);
+    let current = 0;
+    const increment = targetValue / 100; // Ajustar para que la animación dure aproximadamente 1 segundo
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= targetValue) {
+            current = targetValue;
+            clearInterval(timer);
+        }
+        element.textContent = Math.round(current);
+    }, 30);
+}
+
+function crearGraficasConAnimacion(porcentajesFinales, datos) {
+    // Configuración común para todas las gráficas
+    const configComun = {
+        type: 'doughnut',
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            circumference: 360,
+            rotation: -90,
+            cutout: '70%',
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.raw}%`;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    // Crear gráficas iniciales con 0%
+    const charts = {
+        negocio: crearGraficaInicial('graficaNegocio', '#FFFF00', '#FFD700', 'Negocio', datos.negocio),
+        cuadrante: crearGraficaInicial('graficaCuadrante', '#00FFFF', '#008B8B', 'Cuadrante', datos.cuadrante),
+        extorsion: crearGraficaInicial('graficaExtorsion', '#FF0000', '#8B0000', 'Extorsión', datos.extorsion),
+        conocido: crearGraficaInicial('graficaConocido', '#FF00FF', '#8B008B', 'Conocido', datos.conocido)
+    };
+
+    // Animación para cada gráfica
+    Object.keys(porcentajesFinales).forEach((tipo, index) => {
+        setTimeout(() => {
+            animarGrafica(charts[tipo], porcentajesFinales[tipo], tipo, datos);
+        }, index * 300); // Retraso escalonado para cada gráfica
+    });
+}
+
+function crearGraficaInicial(id, color, colorOscuro, nombreGrafica, activaciones) {
+    const container = document.getElementById(id).parentElement;
+    container.classList.add(`grafica-${id.replace('grafica', '').toLowerCase()}`);
+    
+    return new Chart(document.getElementById(id).getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: [nombreGrafica, 'Otros'],
+            datasets: [{
+                data: [0, 100], // Comienza en 0%
+                backgroundColor: [
+                    `rgba(${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}, 0.8)`,
+                    `rgba(${hexToRgb(colorOscuro).r}, ${hexToRgb(colorOscuro).g}, ${hexToRgb(colorOscuro).b}, 0.4)`
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            circumference: 360,
+            rotation: -90,
+            cutout: '70%',
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            if(context.dataIndex === 0) {
+                                return `Activación: ${activaciones}`;
+                            }
+                            return '';
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: '0%',
+                    color: color,
+                    font: { size: 24, weight: 'bold' }
+                }
+            },
+            animation: { duration: 0 } // Desactivar animación inicial
+        }
+    });
+}
+
+function animarGrafica(chart, porcentajeFinal, tipo, datos) {
+    let porcentajeActual = 0;
+    const duracion = 1500; // 1.5 segundos
+    const incremento = porcentajeFinal / (duracion / 16); // 60fps
+    
+    const animacion = setInterval(() => {
+        porcentajeActual += incremento;
+        if (porcentajeActual >= porcentajeFinal) {
+            porcentajeActual = porcentajeFinal;
+            clearInterval(animacion);
+        }
+        
+        // Actualizar datos del gráfico
+        chart.data.datasets[0].data = [porcentajeActual, 100 - porcentajeActual];
+        
+        // Actualizar título con porcentaje
+        chart.options.plugins.title.text = `${Math.round(porcentajeActual)}%`;
+        
+        chart.update();
+    }, 16); // ~60fps
+}
+
+function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return {r, g, b};
+}
+   
+    // Función para crear gráficas con efecto neón
+function crearGraficaNeon(id, porcentaje, color, colorOscuro) {
+    const porcentajeRestante = 100 - porcentaje;
+    
+    // Obtener el número absoluto de activaciones
+    let activaciones = 0;
+    switch(id) {
+        case 'graficaNegocio':
+            activaciones = datos.negocio;
+            break;
+        case 'graficaCuadrante':
+            activaciones = datos.cuadrante;
+            break;
+        case 'graficaExtorsion':
+            activaciones = datos.extorsion;
+            break;
+        case 'graficaConocido':
+            activaciones = datos.conocido;
+            break;
+    }
+    
+    // Determinar el nombre de la gráfica basado en el ID
+    let nombreGrafica = '';
+    switch(id) {
+        case 'graficaNegocio':
+            nombreGrafica = 'Negocio';
+            break;
+        case 'graficaCuadrante':
+            nombreGrafica = 'Cuadrante';
+            break;
+        case 'graficaExtorsion':
+            nombreGrafica = 'Extorsión';
+            break;
+        case 'graficaConocido':
+            nombreGrafica = 'Conocido';
+            break;
+    }
+    
+   // Añadir clase para el efecto hover y color específico
+   const container = document.getElementById(id).parentElement;
+    container.classList.add(`grafica-${id.replace('grafica', '').toLowerCase()}`);
+
+    
+    new Chart(document.getElementById(id).getContext('2d'), {
+        ...configComun,
+        data: {
+            labels: [nombreGrafica, 'Otros'],
+            datasets: [{
+                data: [porcentaje, porcentajeRestante],
+                backgroundColor: [
+                    `rgba(${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}, 0.8)`,
+                    `rgba(${hexToRgb(colorOscuro).r}, ${hexToRgb(colorOscuro).g}, ${hexToRgb(colorOscuro).b}, 0.4)`
+                ],
+                borderWidth: 0,
+                hoverBackgroundColor: [
+                    color,
+                    colorOscuro
+                ],
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#ffffff'
+            }]
+        },
+        options: {
+            ...configComun.options,
+            plugins: {
+                ...configComun.options.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            // Mostrar "Activaciones: X" en lugar del porcentaje
+                            if(context.dataIndex === 0) {
+                                return `Activación: ${activaciones}`;
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    bodyFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    boxPadding: 10,
+                    boxWidth: 20,
+                    usePointStyle: true,
+                    borderColor: 'rgba(255,255,255,0.3)',
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: {
+                        size: 16
+                    },
+                    footerFont: {
+                        size: 12
+                    }
+                },
+                title: {
+                    display: true,
+                    text: `${porcentaje}%`,
+                    color: color,
+                    font: {
+                        size: 24, // Tamaño aumentado
+                        weight: 'bold',
+                        family: 'Arial'
+                    },
+                    padding: {
+                        top: 20,
+                        bottom: 30
+                    }
+                }
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true,
+                duration: 1500 // Animación más lenta
+            }
+        }
+    });
+}
+
+    // Función para convertir color hex a rgb
+    function hexToRgb(hex) {
+        // Eliminar el # si está presente
+        hex = hex.replace('#', '');
+        
+        // Convertir a valores RGB
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        
+        return {r, g, b};
+    }
+
+    // Crear las gráficas con efectos neón
+    crearGraficaNeon('graficaNegocio', porcentajes.negocio, '#FFFF00', '#FFD700'); // Amarillo neón - Oro
+    crearGraficaNeon('graficaCuadrante', porcentajes.cuadrante, '#00FFFF', '#008B8B'); // Cian neón - Cian oscuro
+    crearGraficaNeon('graficaExtorsion', porcentajes.extorsion, '#FF0000', '#8B0000'); // Rojo neón - Rojo oscuro
+    crearGraficaNeon('graficaConocido', porcentajes.conocido, '#FF00FF', '#8B008B'); // Magenta neón - Magenta oscuro
+
+         // Función para actualizar el contador de activaciones
+        function actualizarContadorActivaciones() {
+                    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+                    const totalActivaciones = registros.length;
+                    document.getElementById('activacionesCount').textContent = totalActivaciones;
+                }
+
+
+         
+        // Llamar a esta función al cargar la página para mostrar el contador inicial
+        window.addEventListener('load', function() {
+        actualizarContadorActivaciones();
+    
+            // Si el contenedor de gráficas está visible al cargar la página
+            if (document.getElementById('graficasContainer').style.display === 'block') {
+                actualizarGraficas();
+            }
+        });
+
+       
+
+
+
+    </script>   
 </body>
 </html>
