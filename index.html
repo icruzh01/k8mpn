@@ -9,8 +9,9 @@
     <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
     <!-- Incluir jsQR desde un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Three.js para efectos 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Meta tags para mejorar la experiencia -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,6 +30,7 @@
             background-color: #000000;
             font-family: Arial;
             position: relative;
+            overflow: hidden;
         }
 
         /* Contenedor del fondo negro */
@@ -221,46 +223,88 @@
             color: #ffffff;
         }
 
-        #emergencyButton {
-            background-color: rgb(255, 0, 0);
-            color: white;
-            font-size: 20px;
-            width: 150px;
-            height: 150px;
-            border: 15px solid #da2020;
-            border-radius: 50%;
+        /* Nuevo estilo para el botón 3D */
+        #emergencyButtonContainer {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 40px;
+            margin-bottom: 60px;
+        }
+
+        #emergencyButton3D {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
             cursor: pointer;
+        }
+
+        #emergencyButton3D:active {
+            transform: translateZ(-20px) scale(0.95);
+        }
+
+        .button-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-            box-sizing: border-box;
-            margin: 40px;
-            margin-bottom: 60px;
-            animation: neon-color-change 2s infinite;
+            font-size: 20px;
+            color: white;
+            backface-visibility: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            transition: all 0.3s;
         }
 
-        #emergencyButton:active, #emergencyButton.active {
-            background-color: rgb(125, 2, 2);
-            border-color: rgb(91, 67, 6);
-            color: rgb(100, 101, 103);
-            transform: scale(0.95);
+        .button-front {
+            background-color: #da2020;
+            transform: translateZ(30px);
+            animation: pulse-glow 2s infinite alternate;
         }
 
-        @keyframes neon-color-change {
+        .button-back {
+            background-color: #b30000;
+            transform: rotateY(180deg) translateZ(30px);
+        }
+
+        .button-side {
+            background-color: #ff3333;
+            transform: rotateY(90deg) translateZ(100px);
+            width: 40px;
+            height: 100%;
+            left: calc(50% - 20px);
+        }
+
+        .button-top {
+            background-color: #ff6666;
+            transform: rotateX(90deg) translateZ(100px);
+            height: 40px;
+            width: 100%;
+            top: calc(50% - 20px);
+        }
+
+        @keyframes pulse-glow {
             0% {
-                border-color: #fffb00;
-                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
-            }
-            50% {
-                border-color: #de9000;
-                box-shadow: 0 0 10px #7b1300, 0 0 20px #7b1300, 0 0 40px #7b1300;
+                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
             }
             100% {
-                border-color: #fffb00;
-                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+                box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
             }
+        }
+
+        /* Efecto de partículas */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
         /*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu*/
@@ -716,442 +760,415 @@
             box-shadow: 0 0 15px rgba(255, 0, 0, 1);
         }    
 
+        /* Estilos para los nuevos botones */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Espacio entre los botones */
+            margin-top: 20px; /* Espacio debajo del botón de emergencia */
+        }
 
+        .custom-button {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 10px;
+            width: 80px;
+            height: 40px;
+            border: 2px solid rgb(65, 61, 61);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            box-shadow: 3px 3px rgb(157, 151, 151);
+        }
 
+        .custom-button:active {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
 
+        .custom-button:active, .custom-button.active {
+            background-color: #1e90ff;
+            border-color: #00bfff;
+            transform: scale(0.95);
+        }
 
+        /* Estilo base para los botones */
+        .custom-button {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 10px;
+            width: 70px;
+            height: 40px;
+            border: 2px solid rgb(65, 61, 61);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            box-shadow: 3px 3px rgb(157, 151, 151);
+        }
 
-/* Estilos para los nuevos botones */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Espacio entre los botones */
-    margin-top: 20px; /* Espacio debajo del botón de emergencia */
-}
+        /* Estilo cuando el botón está deshabilitado */
+        .custom-button:disabled {
+            background-color: #047900; /* Fondo más oscuro */
+            color: #ffffff; /* Texto más claro */
+            border-color: #09ff00; /* Borde más claro */
+            cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
+            box-shadow: none; /* Eliminar la sombra */
+            /*opacity: 0.7; /* Reducir la opacidad */
+        }
 
-.custom-button {
-    background-color: #000000;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 10px;
-    width: 80px;
-    height: 40px;
-    border: 2px solid rgb(65, 61, 61);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
-    box-shadow: 3px 3px rgb(157, 151, 151);
-}
+        #emergenciaCuadranteButton {
+            display: none;
+            background-color: rgb(0, 110, 255);
+            color: white;
+            font-size: 15px;
+            width: 150px;
+            height: 150px;
+            border: 15px solid #1e90ff;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            margin: 40px;
+            margin-bottom: 60px;
+            animation: neon-color-change-blue 2s infinite;
+        }
 
-.custom-button:active {
-    box-shadow: none;
-    transform: translate(3px, 3px);
-}
+        @keyframes neon-color-change-blue {
+            0% {
+                border-color: #00bfff;
+                box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+            }
+            50% {
+                border-color: #166fc9;
+                box-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 40px #1e90ff;
+            }
+            100% {
+                border-color: #00bfff;
+                box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+            }
+        }
 
-.custom-button:active, .custom-button.active {
-    background-color: #1e90ff;
-    border-color: #00bfff;
-    transform: scale(0.95);
-}
+        /* Estilo para el nuevo botón EmergenciaExtorsion */
+        #emergenciaExtorsionButton {
+            display: none; /* Oculta el botón inicialmente */
+            background-color: #c6004c;
+            color: white;
+            font-size: 15px;
+            width: 150px;
+            height: 150px;
+            border: 15px solid #b70046;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            margin: 40px;
+            margin-bottom: 60px;
+            animation: neon-color-change-green 2s infinite;
+        }
 
-/* Estilo base para los botones */
-.custom-button {
-    background-color: #000000;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 10px;
-    width: 70px;
-    height: 40px;
-    border: 2px solid rgb(65, 61, 61);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
-    box-shadow: 3px 3px rgb(157, 151, 151);
-}
+        #emergenciaExtorsionButton::before {
+        /* Asegurar que el texto esté centrado */
+        display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Estilo cuando el botón está deshabilitado */
-.custom-button:disabled {
-    background-color: #047900; /* Fondo más oscuro */
-    color: #ffffff; /* Texto más claro */
-    border-color: #09ff00; /* Borde más claro */
-    cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
-    box-shadow: none; /* Eliminar la sombra */
-    /*opacity: 0.7; /* Reducir la opacidad */
-}
+        @keyframes neon-color-change-green {
+            0% {
+                border-color: #e00257;
+                box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
+            }
+            50% {
+                border-color: #ff5890;
+                box-shadow: 0 0 10px #92254e, 0 0 20px #92254e, 0 0 40px #92254e;
+            }
+            100% {
+                border-color: #e00257;
+                box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
+            }
+        }
 
+        #emergenciaConocidoButton {
+        display: none;
+        background-color: rgb(251, 95, 162);
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        width: 150px;
+        height: 150px;
+        border: 15px solid #ff69b4;
+        border-radius: 50%;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+        box-sizing: border-box;
+        margin: 40px;
+        margin-bottom: 60px;
+        animation: neon-color-change-pink 2s infinite;
+        }
 
+        @keyframes neon-color-change-pink {
+            0% {
+                border-color: #ff69b4;
+                box-shadow: 0 0 10px #fb1b8b, 0 0 20px #fb1b8b, 0 0 40px #fb1b8b;
+            }
+            50% {
+                border-color: #a83f77;
+                box-shadow: 0 0 10px #a83f77, 0 0 20px #a83f77, 0 0 40px #a83f77;
+            }
+            100% {
+                border-color: #ff69b4;
+                box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+            }
+        }
 
+        /*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu---------------------------------*/
+        #modifyTelCuadranteButton, #modifyTelExtorsionButton, #modifyTelConocidoButton {
+            background-color: #000000;
+            color: #7c7c7c;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            width: 100px;
+            height: 40px;
+            border: 2px solid rgb(65, 61, 61);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+            position: absolute;
+            bottom: 20px;
+            left: 350px; /* Ajusta la posición según sea necesario */
+            margin: 0 0;
+        }
 
-#emergenciaCuadranteButton {
-    display: none;
-    background-color: rgb(0, 110, 255);
-    color: white;
-    font-size: 15px;
-    width: 150px;
-    height: 150px;
-    border: 15px solid #1e90ff;
-    border-radius: 50%;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
-    margin: 40px;
-    margin-bottom: 60px;
-    animation: neon-color-change-blue 2s infinite;
-    
-}
+        #modifyTelExtorsionButton {
+            left: 460px; /* Ajusta la posición según sea necesario */
+        }
 
-@keyframes neon-color-change-blue {
-    0% {
-        border-color: #00bfff;
-        box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
-    }
-    50% {
-        border-color: #166fc9;
-        box-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 40px #1e90ff;
-    }
-    100% {
-        border-color: #00bfff;
-        box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
-    }
-}
+        #modifyTelConocidoButton {
+            left: 570px; /* Ajusta la posición según sea necesario */
+        }
 
+        #modifyTelCuadranteButton:active, #modifyTelExtorsionButton:active, #modifyTelConocidoButton:active {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
 
+        #modifyTelCuadranteButton:active, #modifyTelCuadranteButton.active, #modifyTelExtorsionButton:active, #modifyTelExtorsionButton.active, #modifyTelConocidoButton:active, #modifyTelConocidoButton.active {
+            background-color: #1e90ff;
+            border-color: #00bfff;
+            transform: scale(0.95);
+        }
 
-/* Estilo para el nuevo botón EmergenciaExtorsion */
-#emergenciaExtorsionButton {
-    display: none; /* Oculta el botón inicialmente */
-    background-color: #c6004c;
-    color: white;
-    font-size: 15px;
-    width: 150px;
-    height: 150px;
-    border: 15px solid #b70046;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
-    margin: 40px;
-    margin-bottom: 60px;
-    animation: neon-color-change-green 2s infinite;
-    
-}
+        /* Estilos para el cuadro de diálogo de teléfono, pero de CUADRANTE*/
+        .custom-tel-cuadrante-input {
+            display: none;
+            position: fixed;
+            width: 250px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 1px solid #d4a017;
+            padding: 20px;
+            box-shadow: 0 0 20px #e8a317;
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-#emergenciaExtorsionButton::before {
-/* Asegurar que el texto esté centrado */
-display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        .custom-tel-cuadrante-input input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom:7px;
+            font-size: 16px;
+            background: #ffe9bd;
+            color: #000000;
+            border: 1px solid #f5b104;
+            box-shadow: 0 0 5px #e8a317;
+            border-radius: 5px;
+        }
 
+        .custom-tel-cuadrante-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-@keyframes neon-color-change-green {
-    0% {
-        border-color: #e00257;
-        box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
-    }
-    50% {
-        border-color: #ff5890;
-        box-shadow: 0 0 10px #92254e, 0 0 20px #92254e, 0 0 40px #92254e;
-    }
-    100% {
-        border-color: #e00257;
-        box-shadow: 0 0 10px #e00257, 0 0 20px #e00257, 0 0 40px #e00257;
-    }
-}
+        .custom-tel-cuadrante-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #d4a017;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
 
+        .custom-tel-cuadrante-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #c20303;
+            box-shadow: 0 0 10px #ff0000;
+        }
 
-#emergenciaConocidoButton {
-display: none;
-background-color: rgb(251, 95, 162);
-color: rgb(255, 255, 255);
-font-size: 15px;
-width: 150px;
-height: 150px;
-border: 15px solid #ff69b4;
-border-radius: 50%;
-cursor: pointer;
-align-items: center;
-justify-content: center;
-text-align: center;
-transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-box-sizing: border-box;
-margin: 40px;
-margin-bottom: 60px;
-animation: neon-color-change-pink 2s infinite;
+        /* Estilos para el cuadro de diálogo de teléfono, pero de EXTORSIÓN (Checarlo porque comparte los mismos estilos que el imput para CUADRANTE)*/
+        .custom-tel-extorsion-input {
+            display: none;
+            position: fixed;
+            width: 250px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 1px solid #037787;
+            padding: 20px;
+            box-shadow: 0 0 20px #00d9ff;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-}
+        .custom-tel-extorsion-input input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom:7px;
+            font-size: 16px;
+            background: #9ef4ff;
+            color: #000000;
+            border: 1px solid #037787;
+            box-shadow: 0 0 5px #00d9ff;
+            border-radius: 5px;
+        }
 
+        .custom-tel-extorsion-input input:hover {
+            background: #000000;
+            border: 0.5px solid #004c5b;
+            color: #00d5ff;
+        }
 
+        .custom-tel-extorsion-input input:focus {
+            background: #000000;
+            border: .5px solid #007292;
+            color: #00e1ff;
+        }
 
-@keyframes neon-color-change-pink {
-    0% {
-        border-color: #ff69b4;
-        box-shadow: 0 0 10px #fb1b8b, 0 0 20px #fb1b8b, 0 0 40px #fb1b8b;
-    }
-    50% {
-        border-color: #a83f77;
-        box-shadow: 0 0 10px #a83f77, 0 0 20px #a83f77, 0 0 40px #a83f77;
-    }
-    100% {
-        border-color: #ff69b4;
-        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
-    }
-}
+        .custom-tel-extorsion-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
+        .custom-tel-extorsion-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #00d9ff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
 
+        .custom-tel-extorsion-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #00d5ff;
+            box-shadow: 0 0 10px #00d9ff;
+        }
 
-/*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu---------------------------------*/
-#modifyTelCuadranteButton, #modifyTelExtorsionButton, #modifyTelConocidoButton {
-    background-color: #000000;
-    color: #7c7c7c;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 14px;
-    width: 100px;
-    height: 40px;
-    border: 2px solid rgb(65, 61, 61);
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 20px;
-    left: 350px; /* Ajusta la posición según sea necesario */
-    margin: 0 0;
-}
+        /* Estilos para el cuadro de diálogo de teléfono, pero de CONOCIDO*/
+        .custom-tel-conocido-input {
+            display: none;
+            position: fixed;
+            width: 250px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 1px solid #318c00;
+            padding: 20px;
+            box-shadow: 0 0 20px #59ff00;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-#modifyTelExtorsionButton {
-    left: 460px; /* Ajusta la posición según sea necesario */
-}
+        .custom-tel-conocido-input input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom:7px;
+            font-size: 16px;
+            background: #d1f9bb;
+            color: #000000;
+            border: 1px solid #389f00;
+            box-shadow: 0 0 5px #59ff00;
+            border-radius: 5px;
+        }
 
-#modifyTelConocidoButton {
-    left: 570px; /* Ajusta la posición según sea necesario */
-}
+        .custom-tel-conocido-input input:hover {
+            background: #000000;
+            border: 0.5px solid #59ff00;
+            color: #389f00;
+        }
 
-#modifyTelCuadranteButton:active, #modifyTelExtorsionButton:active, #modifyTelConocidoButton:active {
-    box-shadow: none;
-    transform: translate(3px, 3px);
-}
+        .custom-tel-conocido-input input:focus {
+            background: #000000;
+            border: 0.5px solid #389f00;
+            color: #59ff00;
+        }
 
-#modifyTelCuadranteButton:active, #modifyTelCuadranteButton.active, #modifyTelExtorsionButton:active, #modifyTelExtorsionButton.active, #modifyTelConocidoButton:active, #modifyTelConocidoButton.active {
-    background-color: #1e90ff;
-    border-color: #00bfff;
-    transform: scale(0.95);
-}
+        .custom-tel-conocido-input .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
+        .custom-tel-conocido-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #59ff00;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
 
-/* Estilos para el cuadro de diálogo de teléfono, pero de CUADRANTE*/
-.custom-tel-cuadrante-input {
-    display: none;
-    position: fixed;
-    width: 250px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000000;
-    border: 1px solid #d4a017;
-    padding: 20px;
-    box-shadow: 0 0 20px #e8a317;
-    z-index: 1000;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
-}
+        .custom-tel-conocido-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #389f00;
+            box-shadow: 0 0 10px #59ff00;
+        }
 
-.custom-tel-cuadrante-input input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom:7px;
-    font-size: 16px;
-    background: #ffe9bd;
-    color: #000000;
-    border: 1px solid #f5b104;
-    box-shadow: 0 0 5px #e8a317;
-    border-radius: 5px;
-}
-
-.custom-tel-cuadrante-input .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.custom-tel-cuadrante-input .button-container button {
-    background-color: #000000;
-    color: white;
-    border: 1px solid #d4a017;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 15px;
-}
-
-.custom-tel-cuadrante-input .button-container button:hover {
-    background-color: #000000;
-    border: 2px solid #c20303;
-    box-shadow: 0 0 10px #ff0000;
-}
-
-
-
-
-/* Estilos para el cuadro de diálogo de teléfono, pero de EXTORSIÓN (Checarlo porque comparte los mismos estilos que el imput para CUADRANTE)*/
-.custom-tel-extorsion-input {
-    display: none;
-    position: fixed;
-    width: 250px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000000;
-    border: 1px solid #037787;
-    padding: 20px;
-    box-shadow: 0 0 20px #00d9ff;
-    z-index: 1000;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.custom-tel-extorsion-input input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom:7px;
-    font-size: 16px;
-    background: #9ef4ff;
-    color: #000000;
-    border: 1px solid #037787;
-    box-shadow: 0 0 5px #00d9ff;
-    border-radius: 5px;
-}
-
-.custom-tel-extorsion-input input:hover {
-    background: #000000;
-    border: 0.5px solid #004c5b;
-    color: #00d5ff;
-}
-
-.custom-tel-extorsion-input input:focus {
-    background: #000000;
-    border: .5px solid #007292;
-    color: #00e1ff;
-}
-
-.custom-tel-extorsion-input .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.custom-tel-extorsion-input .button-container button {
-    background-color: #000000;
-    color: white;
-    border: 1px solid #00d9ff;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 15px;
-}
-
-.custom-tel-extorsion-input .button-container button:hover {
-    background-color: #000000;
-    border: 2px solid #00d5ff;
-    box-shadow: 0 0 10px #00d9ff;
-}
-
-
-/* Estilos para el cuadro de diálogo de teléfono, pero de CONOCIDO*/
-.custom-tel-conocido-input {
-    display: none;
-    position: fixed;
-    width: 250px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000000;
-    border: 1px solid #318c00;
-    padding: 20px;
-    box-shadow: 0 0 20px #59ff00;
-    z-index: 1000;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.custom-tel-conocido-input input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom:7px;
-    font-size: 16px;
-    background: #d1f9bb;
-    color: #000000;
-    border: 1px solid #389f00;
-    box-shadow: 0 0 5px #59ff00;
-    border-radius: 5px;
-}
-
-.custom-tel-conocido-input input:hover {
-    background: #000000;
-    border: 0.5px solid #59ff00;
-    color: #389f00;
-}
-
-.custom-tel-conocido-input input:focus {
-    background: #000000;
-    border: 0.5px solid #389f00;
-    color: #59ff00;
-}
-
-.custom-tel-conocido-input .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.custom-tel-conocido-input .button-container button {
-    background-color: #000000;
-    color: white;
-    border: 1px solid #59ff00;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 15px;
-}
-
-.custom-tel-conocido-input .button-container button:hover {
-    background-color: #000000;
-    border: 2px solid #389f00;
-    box-shadow: 0 0 10px #59ff00;
-}
-
-
-
-
-/* Estilos para el botón de Registro */
-#toggleRegistrosButton {
+        /* Estilos para el botón de Registro */
+        #toggleRegistrosButton {
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -1252,99 +1269,90 @@ animation: neon-color-change-pink 2s infinite;
             z-index: 998; /* Asegurar que esté por encima de otros elementos */
         }
 
+        .registros-container {
+            position: flex;
+            bottom: 100px; /* Cambiado de -5px a 100px para subirlo */
+            left: 20px;
+            background-color: #000000;
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 10px;
+            height: 300px; /* Reducir la altura para que quepa mejor */
+            width: 300px;
+            color: #ffffff;
+            z-index: 1005;
+            max-height: 300px; /* Ajustar para coincidir con la altura */
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
 
+        .registros-container h2 {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #00ffff;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            /*background-color: #000000; /* Fondo para que el texto sea legible */
+            width: 310px;
+            height: 30px;
+            margin-left: -20px;
+            font-size: 1.3rem;
+            padding: 15px; /* Añadir padding para mejor apariencia */
+            top: 500px;
+            gap: 10px;
+            z-index: 1005; /* Asegurar que esté por encima de los registros */
+        }
 
-    .registros-container {
-        position: flex;
-        bottom: 100px; /* Cambiado de -5px a 100px para subirlo */
-        left: 20px;
-        background-color: #000000;
-        border: 1px solid #00ffff;
-        border-radius: 10px;
-        padding: 10px;
-        height: 300px; /* Reducir la altura para que quepa mejor */
-        width: 300px;
-        color: #ffffff;
-        z-index: 1005;
-        max-height: 300px; /* Ajustar para coincidir con la altura */
-        overflow-y: auto;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    }
+        .close-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-left: 10px; /* Espacio entre el título y el botón */
+        }
 
-.registros-container h2 {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #00ffff;
-    border-radius: 30px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    /*background-color: #000000; /* Fondo para que el texto sea legible */
-    width: 310px;
-    height: 30px;
-    margin-left: -20px;
-    font-size: 1.3rem;
-    padding: 15px; /* Añadir padding para mejor apariencia */
-    top: 500px;
-    gap: 10px;
-    z-index: 1005; /* Asegurar que esté por encima de los registros */
-}
+        .close-button:hover {
+            background-color: #cc0000;
+        }
 
+        #listaRegistros {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
+        #listaRegistros li {
+            padding: 5px 0;
+            border-bottom: 1px solid #444;
+        }
 
+        #listaRegistros li:last-child {
+            border-bottom: none;
+        }
 
+        /* Estilo para el overlay semitransparente */
+        .registros-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0); /* Fondo semitransparente */
+            z-index: 1005;
+        }
 
-
-.close-button {
-    background-color: #ff0000;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    margin-left: 10px; /* Espacio entre el título y el botón */
-}
-
-.close-button:hover {
-    background-color: #cc0000;
-}
-
-#listaRegistros {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-#listaRegistros li {
-    padding: 5px 0;
-    border-bottom: 1px solid #444;
-}
-
-#listaRegistros li:last-child {
-    border-bottom: none;
-}
-
-
-/* Estilo para el overlay semitransparente */
-.registros-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0); /* Fondo semitransparente */
-    z-index: 1005; /* Asegurar que esté por encima de otros elementos */
-}
-
-
-/* Estilos para el botón de Registro */
-#toggleRegistrosButton {
+        /* Estilos para el botón de Registro */
+        #toggleRegistrosButton {
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -1394,56 +1402,50 @@ animation: neon-color-change-pink 2s infinite;
             color: #ff69b4;
         }
 
+        /* Estilos actualizados para las gráficas */
+        .graficas-container {
+            display: none;
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 1006;
+            width: 90%;
+            max-width: 600px;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.85);
+            text-align: center;
+            /*border: 1px solid #00ffff;*/
+            /*box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);*/
+        }
 
+        .graficas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+        }
 
+        .dona-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-
-
-
-/* Estilos actualizados para las gráficas */
-.graficas-container {
-    display: none;
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-    padding: 20px;
-    z-index: 1006;
-    width: 90%;
-    max-width: 600px;
-    backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.85);
-    text-align: center;
-    /*border: 1px solid #00ffff;*/
-    /*box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);*/
-}
-
-.graficas-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.dona-wrapper {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.dona-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-}
+        .dona-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
 
         .dona-wrapper:hover {
             transform: scale(1.1);
@@ -1481,10 +1483,6 @@ animation: neon-color-change-pink 2s infinite;
             /*transition: opacity 0.3s ease;*/
             pointer-events: none;
         }
-
-        /*.dona-wrapper:hover .dona-count {
-            opacity: 1;
-        }*/
 
         /* Efectos neon mejorados */
         .neon-yellow {
@@ -1533,86 +1531,41 @@ animation: neon-color-change-pink 2s infinite;
             }
         }
 
+        /* Estilo mejorado para el número de activaciones */
+        .graficas-total {
+            position: relative; /* Cambiado de flex a relative */
+            margin: 5% auto; /* Centrado horizontal con auto */
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            border-radius: 30px;
+            width: 300px;
+            height: 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: block; /* Cambiado de inline-block a block */
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px currentColor;
+        }
 
+        /*Esto alinea verticalmente el contenedor .graficas-total*/
+        .graficas-header {
+            display: flex;
+            margin-top: 50px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
 
-   
-    /*#graficasButton {
-        position: fixed;
-        bottom: 20px;
-        left: 110px;
-        background-color: #000000;
-        color: #a5a5a5;
-        text-transform: uppercase;
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-size: 10px;
-        width: 80px;
-        height: 40px;
-        border: 2px solid rgb(65, 61, 61);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-        box-sizing: border-box;
-        box-shadow: 0 0 rgb(157, 151, 151); 
-    } */
-
-    /*#graficasButton:active {
-        box-shadow: none;
-        transform: translate(3px, 3px);
-    }
-
-    #graficasButton:active, #graficasButton.active {
-        background-color: #1e90ff;
-        border-color: #00bfff;
-        transform: scale(0.95);
-    } */
-
-
-
-/* Estilo mejorado para el número de activaciones */
-.graficas-total {
-    position: relative; /* Cambiado de flex a relative */
-    margin: 5% auto; /* Centrado horizontal con auto */
-    color: #00ffff;
-    border: 1px solid #00ffff;
-    border-radius: 30px;
-    width: 300px;
-    height: 30px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    display: block; /* Cambiado de inline-block a block */
-    padding: 10px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 10px currentColor;
-}
-/*Esto alinea verticalmente el contenedor .graficas-total*/
-.graficas-header {
-    display: flex;
-    margin-top: 50px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Estilos para el tooltip (el cuadrdo al pulsar la gráfica) de emergencia */
-.emergency-tooltip {
+        /* Estilos para el tooltip (el cuadrdo al pulsar la gráfica) de emergencia */
+        .emergency-tooltip {
             display: none;
             font-size: 14px;
             line-height: 1.4;
             pointer-events: none;
         }
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -1634,6 +1587,8 @@ animation: neon-color-change-pink 2s infinite;
     <!-- Overlay para los registros de activación -->
     <div id="registrosOverlay" class="registros-overlay"></div>
 
+    <!-- Efecto de partículas -->
+    <div id="particles-js"></div>
 
     <header>
         <hr class="codigos">
@@ -1644,8 +1599,17 @@ animation: neon-color-change-pink 2s infinite;
         <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
     </header>
    
-    <!-- Botón de emergencia -->
-    <button id="emergencyButton" aria-label="Activar emergencia">Negocio</button>
+    <!-- Contenedor del botón de emergencia 3D -->
+    <div id="emergencyButtonContainer">
+        <div id="emergencyButton3D">
+            <div class="button-face button-front">NEGOCIO</div>
+            <div class="button-face button-back">EMERGENCIA</div>
+            <div class="button-face button-side"></div>
+            <div class="button-face button-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
+            <div class="button-face button-top"></div>
+            <div class="button-face button-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+        </div>
+    </div>
     
     <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
     <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button>
@@ -1656,11 +1620,6 @@ animation: neon-color-change-pink 2s infinite;
     <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
     <button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>
 
-
-   
-
-
-
     <!-- Nuevos botones -->
     <div class="button-container">
         <button id="c5Button" class="custom-button" disabled>C5</button>
@@ -1669,15 +1628,12 @@ animation: neon-color-change-pink 2s infinite;
         <button id="conocidoButton" class="custom-button">Conocido</button>
     </div>
 
-
     <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
     <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
     <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
     <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
     <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
     <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
-
-
 
     <!-- Ventana de mensaje personalizada -->
     <div id="customAlert" class="custom-alert">
@@ -1728,72 +1684,57 @@ animation: neon-color-change-pink 2s infinite;
         </div>
     </div>  
 
-
-
-
-<!-- Cuadro de diálogo para ingresar el número de teléfono -->
-<div id="customTelCuadranteInput" class="custom-tel-cuadrante-input">
-    <input type="tel" id="newTelCuadranteInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
-    <div class="button-container">
-        <button id="telCuadranteSubmitButton">Guardar</button>
-        <button id="telCuadranteCancelButton">Cancelar</button>
+    <!-- Cuadro de diálogo para ingresar el número de teléfono -->
+    <div id="customTelCuadranteInput" class="custom-tel-cuadrante-input">
+        <input type="tel" id="newTelCuadranteInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+        <div class="button-container">
+            <button id="telCuadranteSubmitButton">Guardar</button>
+            <button id="telCuadranteCancelButton">Cancelar</button>
+        </div>
     </div>
-</div>
 
-
-<!-- Cuadro de diálogo para ingresar el número de teléfono -->
-<div id="customTelExtorsionInput" class="custom-tel-extorsion-input">
-    <input type="tel" id="newTelExtorsionInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
-    <div class="button-container">
-        <button id="telExtorsionSubmitButton">Guardar</button>
-        <button id="telExtorsionCancelButton">Cancelar</button>
+    <!-- Cuadro de diálogo para ingresar el número de teléfono -->
+    <div id="customTelExtorsionInput" class="custom-tel-extorsion-input">
+        <input type="tel" id="newTelExtorsionInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+        <div class="button-container">
+            <button id="telExtorsionSubmitButton">Guardar</button>
+            <button id="telExtorsionCancelButton">Cancelar</button>
+        </div>
     </div>
-</div>
 
-<!-- Cuadro de diálogo para modificar el teléfono de conocido -->
-<div id="customTelConocidoInput" class="custom-tel-conocido-input">
-    <input type="tel" id="newTelConocidoInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
-    <div class="button-container">
-        <button id="telConocidoSubmitButton">Guardar</button>
-        <button id="telConocidoCancelButton">Cancelar</button>
+    <!-- Cuadro de diálogo para modificar el teléfono de conocido -->
+    <div id="customTelConocidoInput" class="custom-tel-conocido-input">
+        <input type="tel" id="newTelConocidoInput" placeholder="Ingresa un número de 10 dígitos" maxlength="10">
+        <div class="button-container">
+            <button id="telConocidoSubmitButton">Guardar</button>
+            <button id="telConocidoCancelButton">Cancelar</button>
+        </div>
     </div>
-</div>
 
-
-
-
-<!-- Menú de hamburguesa -->
-<div id="hamburgerMenu" class="hamburger-menu">
-    <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
-    <div id="menuOptions" class="menu-options">
-        <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
-        <div class="menu-item" onclick="showCustomGiroInput()">Giro</div>
-        <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div>
-        <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
-        <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
-        <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
+    <!-- Menú de hamburguesa -->
+    <div id="hamburgerMenu" class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+        <div id="menuOptions" class="menu-options">
+            <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
+            <div class="menu-item" onclick="showCustomGiroInput()">Giro</div>
+            <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div>
+            <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
+            <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
+            <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
+        </div>
     </div>
-</div>
 
+    <!-- Apartado para mostrar los registros de activación -->
+    <div id="registrosActivacion" class="registros-container" style="display: none;">
+        <h2>Registros de Activación <button id="closeRegistrosButton" class="close-button">X</button></h2>
+        
+        <ul id="listaRegistros"></ul>
+    </div>
 
+    <!-- Botón para consultar los registros de activación -->
+    <button id="toggleRegistrosButton" class="custom-button">Registros</button>
 
-<!-- Apartado para mostrar los registros de activación -->
-<div id="registrosActivacion" class="registros-container" style="display: none;">
-    <h2>Registros de Activación <button id="closeRegistrosButton" class="close-button">X</button></h2>
-    
-    <ul id="listaRegistros"></ul>
-</div>
-
-<!-- Botón para consultar los registros de activación -->
-<button id="toggleRegistrosButton" class="custom-button">Registros</button>
-
-
-
-
-
-
-
-<div id="graficasOverlay" class="overlay"></div>
+    <div id="graficasOverlay" class="overlay"></div>
 
     <div id="graficasContainer" class="graficas-container">
         <div class="graficas-header">
@@ -1830,10 +1771,6 @@ animation: neon-color-change-pink 2s infinite;
             </div>
         </div>
     </div>
-
-<!-- <button id="graficasButton" class="custom-button">Gráficas</button> ----Este botón esta deshabilitado-->
-
-
 
     <script>
         /*-----Esta sección donde se guarda el giro y nombre en el localStorage------*/
@@ -1895,18 +1832,10 @@ animation: neon-color-change-pink 2s infinite;
         // Obtener la URL guardada en el LocalStorage o usar la predeterminada
         let currentUrl = localStorage.getItem('emergencyUrl') || '';// '' Aquí estaba la URL MPN
 
-
         const savedUrl = localStorage.getItem('emergencyUrl');
         if (savedUrl) {
             document.getElementById('newUrlInput').value = maskData(savedUrl);
         }
-
-
-
-
-
-
-
 
         // Función para mostrar la ventana de mensaje personalizada
         function showCustomAlert(message, alertType = 'error') {
@@ -1945,7 +1874,7 @@ animation: neon-color-change-pink 2s infinite;
             overlay.style.display = 'block';
 
             // Agregar la clase "active" al botón de emergencia
-            const emergencyButton = document.getElementById('emergencyButton');
+            const emergencyButton = document.getElementById('emergencyButton3D');
             emergencyButton.classList.add('active');
         }
 
@@ -1957,7 +1886,7 @@ animation: neon-color-change-pink 2s infinite;
             overlay.style.display = 'none';
 
             // Eliminar la clase "active" del botón de emergencia
-            const emergencyButton = document.getElementById('emergencyButton');
+            const emergencyButton = document.getElementById('emergencyButton3D');
             emergencyButton.classList.remove('active');
         }
 
@@ -2037,10 +1966,6 @@ animation: neon-color-change-pink 2s infinite;
                 const seconds = String(now.getSeconds()).padStart(2, '0');
                 const timeString = `${hours}:${minutes}:${seconds}`;
 
-
-
-
-
                 setTimeout(() => {
                     if (!nuevaVentana.closed) {
                         nuevaVentana.close();
@@ -2107,14 +2032,33 @@ animation: neon-color-change-pink 2s infinite;
             hideCustomNombreInput();
         });
 
-        // Lógica del botón de emergencia
-        document.getElementById('emergencyButton').addEventListener('click', function () {
+        // Lógica del botón de emergencia 3D
+        document.getElementById('emergencyButton3D').addEventListener('click', function () {
             // Verificar si la URL está vacía
             if (!currentUrl || currentUrl.trim() === '') {
                 showCustomAlert("Carga una URL MPN antes de activar la emergencia.");
             } else {
                 showCustomConfirm();
             }
+        });
+
+        // Animación 3D para el botón de emergencia
+        document.getElementById('emergencyButton3D').addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const angleX = (y - centerY) / 20;
+            const angleY = (centerX - x) / 20;
+            
+            this.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        });
+
+        document.getElementById('emergencyButton3D').addEventListener('mouseleave', function() {
+            this.style.transform = 'rotateX(0) rotateY(0)';
         });
 
         // Lógica del botón para modificar la URL
@@ -2157,7 +2101,6 @@ animation: neon-color-change-pink 2s infinite;
             scanQRButton.style.display = 'block'; // Mostrar el botón
         });
 
-
         // Habilitar/deshabilitar el botón de guardar giro
         document.getElementById('newGiroInput').addEventListener('input', function () {
             const giroSubmitButton = document.getElementById('giroSubmitButton');
@@ -2186,7 +2129,6 @@ animation: neon-color-change-pink 2s infinite;
             const video = document.getElementById('qrScanner');
             const qrScannerContainer = document.getElementById('qrScannerContainer');
             const closeScannerButton = document.getElementById('closeScannerButton');
-            const newUrlInput = document.getElementById('newUrlInput');
 
                 // Mostrar el contenedor y el video
                 qrScannerContainer.style.display = 'flex';
@@ -2274,924 +2216,938 @@ animation: neon-color-change-pink 2s infinite;
             return masked;
         }
 
-
-
-
-// Eventos para los nuevos botones
-document.getElementById('c5Button').addEventListener('click', function () {
-    // showCustomAlert("Botón C5 presionado."); //
-});
-
-document.getElementById('cuadranteButton').addEventListener('click', function () {
-   // showCustomAlert("Botón Cuadrante presionado."); //
-});
-
-document.getElementById('extorsionButton').addEventListener('click', function () {
-    // showCustomAlert("Botón Extorsión presionado."); //
-});
-
-document.getElementById('conocidoButton').addEventListener('click', function () {
-   //  showCustomAlert("Botón Conocido presionado."); //
-});
-
-
-
-
-// Obtener referencias a los botones
-const c5Button = document.getElementById('c5Button');
-const cuadranteButton = document.getElementById('cuadranteButton');
-const extorsionButton = document.getElementById('extorsionButton');
-const conocidoButton = document.getElementById('conocidoButton');
-
-// Función para habilitar el botón C5
-function habilitarC5() {
-    c5Button.disabled = false;
-}
-
-// Función para deshabilitar un botón y habilitar los demás
-function manejarEstadoBotones(botonPresionado) {
-    // Deshabilitar el botón presionado
-    botonPresionado.disabled = true;
-
-    // Habilitar los demás botones
-    if (botonPresionado !== c5Button) {
-        c5Button.disabled = false;
-    }
-    if (botonPresionado !== cuadranteButton) {
-        cuadranteButton.disabled = false;
-    }
-    if (botonPresionado !== extorsionButton) {
-        extorsionButton.disabled = false;
-    }
-    if (botonPresionado !== conocidoButton) {
-        conocidoButton.disabled = false;
-    }
-}
-
-// Eventos para los botones (sin mostrar alertas)
-cuadranteButton.addEventListener('click', function () {
-    manejarEstadoBotones(cuadranteButton);
-    // showCustomAlert("Botón Cuadrante presionado."); // Eliminar esta línea
-});
-
-extorsionButton.addEventListener('click', function () {
-    manejarEstadoBotones(extorsionButton);
-    // showCustomAlert("Botón Extorsión presionado."); // Eliminar esta línea
-});
-
-conocidoButton.addEventListener('click', function () {
-    manejarEstadoBotones(conocidoButton);
-    // showCustomAlert("Botón Conocido presionado."); // Eliminar esta línea
-});
-
-c5Button.addEventListener('click', function () {
-    manejarEstadoBotones(c5Button);
-    // showCustomAlert("Botón C5 presionado."); // Eliminar esta línea
-});
-
-
-
-
-// Evento para el botón C5
-document.getElementById('c5Button').addEventListener('click', function () {
-    // Restablecer el botón de emergencia
-    document.getElementById('emergencyButton').style.display = 'block'; // Mostrar el botón de emergencia original
-    document.getElementById('emergenciaCuadranteButton').style.display = 'none'; // Ocultar el botón de emergencia cuadrante
-    document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
-    document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
-
-    // Habilitar los botones deshabilitados
-    document.getElementById('cuadranteButton').disabled = false;
-    document.getElementById('extorsionButton').disabled = false;
-    document.getElementById('conocidoButton').disabled = false;
-
-    // Deshabilitar el botón C5
-    this.disabled = true;
-});
-
-
-
-document.getElementById('cuadranteButton').addEventListener('click', function () {
-    // Ocultar el botón de emergencia
-    document.getElementById('emergencyButton').style.display = 'none';
-    document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
-    document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
-    // Mostrar el botón EmergenciaCuadrante
-    document.getElementById('emergenciaCuadranteButton').style.display = 'flex';
-    
-    // Deshabilitar el botón Cuadrante
-    this.disabled = true;
-    
-    // Habilitar los demás botones
-    document.getElementById('c5Button').disabled = false;
-    document.getElementById('extorsionButton').disabled = false;
-    document.getElementById('conocidoButton').disabled = false;
-});
-
-// Evento para el botón "EmergenciaCuadrante"
-document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
-    guardarRegistroActivacion('Emergencia Cuadrante');
-    // Obtener la hora actual
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeString = `${hours}:${minutes}:${seconds}`;
-
-    // Mostrar el mensaje con la hora de activación
-    showCustomAlert(`Emergencia Cuadrante<br>Hora: ${timeString}`);
-});
-
-
-
-
-
-// Evento para el botón "Extorsión"
-document.getElementById('extorsionButton').addEventListener('click', function () {
-    // Ocultar los botones de emergencia y emergencia cuadrante
-    document.getElementById('emergencyButton').style.display = 'none';
-    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
-    document.getElementById('emergenciaConocidoButton').style.display = 'none';
-    // Mostrar el nuevo botón EmergenciaExtorsion
-    document.getElementById('emergenciaExtorsionButton').style.display = 'flex';
-    
-    // Deshabilitar el botón Extorsión
-    this.disabled = true;
-    
-    // Habilitar los demás botones
-    document.getElementById('c5Button').disabled = false;
-    document.getElementById('cuadranteButton').disabled = false;
-    document.getElementById('conocidoButton').disabled = false;
-});
-
-// Evento para el nuevo botón EmergenciaExtorsion
-document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
-    guardarRegistroActivacion('Emergencia por Extorsión');
-    // Obtener la hora actual
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeString = `${hours}:${minutes}:${seconds}`;
-
-    // Aquí puedes agregar la lógica para manejar la emergencia por extorsión
-    showCustomAlert(`Emergencia por Extorsión<br>Hora: ${timeString}`);
-});
-
-
-
-
-
-
-document.getElementById('conocidoButton').addEventListener('click', function () {
-    // Ocultar los botones de emergencia, emergencia cuadrante y extorsión
-    document.getElementById('emergencyButton').style.display = 'none';
-    document.getElementById('emergenciaCuadranteButton').style.display = 'none';
-    document.getElementById('emergenciaExtorsionButton').style.display = 'none';
-    
-    // Mostrar el nuevo botón EmergenciaConocido
-    document.getElementById('emergenciaConocidoButton').style.display = 'flex';
-    
-    // Deshabilitar el botón Conocido
-    this.disabled = true;
-    
-    // Habilitar los demás botones
-    document.getElementById('c5Button').disabled = false;
-    document.getElementById('cuadranteButton').disabled = false;
-    document.getElementById('extorsionButton').disabled = false;
-});
-
-// Evento para el nuevo botón EmergenciaConocido
-document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
-    guardarRegistroActivacion('Emergencia a Conocido');
-    // Obtener la hora actual
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeString = `${hours}:${minutes}:${seconds}`;
-
-    // Aquí puedes agregar la lógica para manejar la emergencia por conocido
-    showCustomAlert(`Emergencia a Conocido <br>Hora: ${timeString}`);
-});
-
-
-// Guardar el teléfono de cuadrante en localStorage
-document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
-    // const newTelCuadrante = prompt("Ingresa el número de teléfono para Cuadrante:");
-    if (newTelCuadrante) {
-        localStorage.setItem('telCuadrante', newTelCuadrante);
-        showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido.");
-    }
-});
-
-// Guardar el teléfono de extorsión en localStorage
-document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
-    //const newTelExtorsion = prompt("Ingresa el número de teléfono para Extorsión:");
-    if (newTelExtorsion) {
-        localStorage.setItem('telExtorsion', newTelExtorsion);
-        showCustomAlert("Teléfono de Extorsión guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido.");
-    }
-});
-
-// Guardar el teléfono de conocido en localStorage
-document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
-    //const newTelConocido = prompt("Ingresa el número de teléfono para Conocido:");
-    if (newTelConocido) {
-        localStorage.setItem('telConocido', newTelConocido);
-        showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido.");
-    }
-});
-
-// Cargar los números de teléfono desde localStorage al cargar la página
-window.addEventListener('load', function () {
-    const savedTelCuadrante = localStorage.getItem('telCuadrante');
-    const savedTelExtorsion = localStorage.getItem('telExtorsion');
-    const savedTelConocido = localStorage.getItem('telConocido');
-
-    if (savedTelCuadrante) {
-        console.log("Teléfono de Cuadrante cargado:", savedTelCuadrante);
-    }
-    if (savedTelExtorsion) {
-        console.log("Teléfono de Extorsión cargado:", savedTelExtorsion);
-    }
-    if (savedTelConocido) {
-        console.log("Teléfono de Conocido cargado:", savedTelConocido);
-    }
-});
-
-
-
-
-
-// Función para mostrar el cuadro de diálogo para modificar el teléfono de cuadrante
-function showCustomTelCuadranteInput() {
-    const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
-    const overlay = document.getElementById('overlay');
-    customTelCuadranteInput.style.display = 'block';
-    overlay.style.display = 'block';
-}
-
-// Función para ocultar el cuadro de diálogo para modificar el teléfono de cuadrante
-function hideCustomTelCuadranteInput() {
-    const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
-    const overlay = document.getElementById('overlay');
-    customTelCuadranteInput.style.display = 'none';
-    overlay.style.display = 'none';
-}
-
-// Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de cuadrante
-document.getElementById('telCuadranteSubmitButton').addEventListener('click', function () {
-    const newTelCuadrante = document.getElementById('newTelCuadranteInput').value;
-    if (newTelCuadrante && newTelCuadrante.length === 10 && /^\d+$/.test(newTelCuadrante)) {
-        localStorage.setItem('telCuadrante', newTelCuadrante);
-        hideCustomTelCuadranteInput();
-        showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
-    }
-});
-
-// Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de cuadrante
-document.getElementById('telCuadranteCancelButton').addEventListener('click', function () {
-    hideCustomTelCuadranteInput();
-});
-
-// Evento para el botón "Tel Cuadrante"
-document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
-    showCustomTelCuadranteInput("");
-});
-
-// Evento para el botón "EmergenciaCuadrante"
-document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
-    const telCuadrante = localStorage.getItem('telCuadrante');
-    if (telCuadrante) {
-        window.location.href = `tel:${telCuadrante}`;
-    } else {
-        showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
-    }
-});
-
-
-
-
-
-// Mostrar el cuadro de diálogo para ingresar el número de teléfono de extorsión
-document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
-    showCustomTelExtorsionInput();
-});
-
-// Función para mostrar el cuadro de diálogo de teléfono de extorsión
-function showCustomTelExtorsionInput() {
-    const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
-    const overlay = document.getElementById('overlay');
-    customTelExtorsionInput.style.display = 'block';
-    overlay.style.display = 'block';
-}
-
-// Función para ocultar el cuadro de diálogo de teléfono de extorsión
-function hideCustomTelExtorsionInput() {
-    const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
-    const overlay = document.getElementById('overlay');
-    customTelExtorsionInput.style.display = 'none';
-    overlay.style.display = 'none';
-}
-
-// Guardar el número de teléfono de extorsión en localStorage
-document.getElementById('telExtorsionSubmitButton').addEventListener('click', function () {
-    const newTelExtorsion = document.getElementById('newTelExtorsionInput').value;
-    if (newTelExtorsion && newTelExtorsion.length === 10) {
-        localStorage.setItem('telExtorsion', newTelExtorsion);
-        hideCustomTelExtorsionInput();
-        showCustomAlert("Número de teléfono guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
-    }
-});
-
-// Cancelar la edición del número de teléfono de extorsión
-document.getElementById('telExtorsionCancelButton').addEventListener('click', function () {
-    hideCustomTelExtorsionInput();
-});
-
-// Realizar la llamada cuando se pulse el botón "EmergenciaExtorsión"
-document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
-    const telExtorsion = localStorage.getItem('telExtorsion');
-    if (telExtorsion) {
-        window.location.href = `tel:${telExtorsion}`;
-    } else {
-        showCustomAlert("No se ha configurado un número de teléfono para extorsión.");
-    }
-});
-
-
-
-// Función para mostrar el cuadro de diálogo para modificar el teléfono de conocido
-function showCustomTelConocidoInput() {
-    const customTelConocidoInput = document.getElementById('customTelConocidoInput');
-    const overlay = document.getElementById('overlay');
-    customTelConocidoInput.style.display = 'block';
-    overlay.style.display = 'block';
-}
-
-// Función para ocultar el cuadro de diálogo para modificar el teléfono de conocido
-function hideCustomTelConocidoInput() {
-    const customTelConocidoInput = document.getElementById('customTelConocidoInput');
-    const overlay = document.getElementById('overlay');
-    customTelConocidoInput.style.display = 'none';
-    overlay.style.display = 'none';
-}
-
-// Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de conocido
-document.getElementById('telConocidoSubmitButton').addEventListener('click', function () {
-    const newTelConocido = document.getElementById('newTelConocidoInput').value;
-    if (newTelConocido && newTelConocido.length === 10 && /^\d+$/.test(newTelConocido)) {
-        localStorage.setItem('telConocido', newTelConocido);
-        hideCustomTelConocidoInput();
-        showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
-    } else {
-        showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
-    }
-});
-
-// Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de conocido
-document.getElementById('telConocidoCancelButton').addEventListener('click', function () {
-    hideCustomTelConocidoInput();
-});
-
-// Evento para el botón "EmergenciaConocido"
-document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
-    const telConocido = localStorage.getItem('telConocido');
-    if (telConocido) {
-        window.location.href = `tel:${telConocido}`;
-    } else {
-        showCustomAlert("No se ha configurado un número de teléfono para Conocido.");
-    }
-});
-
-// Evento para el botón "Tel Conocido"
-document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
-    showCustomTelConocidoInput();
-});
-
-
-
-
-
-// Función para mostrar/ocultar el menú
-function toggleMenu() {
-    const menuOptions = document.getElementById('menuOptions');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (menuOptions.style.display === 'block') {
-        menuOptions.style.display = 'none';
-        menuOverlay.style.display = 'none'; // Ocultar el overlay
-    } else {
-        menuOptions.style.display = 'block';
-        menuOverlay.style.display = 'block'; // Mostrar el overlay
-    }
-}
-
-// Cerrar el menú si se hace clic fuera de él
-document.addEventListener('click', function(event) {
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const menuOptions = document.getElementById('menuOptions');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (!hamburgerMenu.contains(event.target)) {
-        menuOptions.style.display = 'none';
-        menuOverlay.style.display = 'none'; // Ocultar el overlay
-    }
-});
-
-// Agregar eventos a los elementos del menú para ocultarlo al seleccionar una opción
-document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', function() {
-        toggleMenu(); // Ocultar el menú al seleccionar una opción
-    });
-});
-
-
-
-
-// Función para guardar un registro de activación
-function guardarRegistroActivacion(tipoEmergencia) {
-    const now = new Date();
-    const fecha = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
-    const horas = String(now.getHours()).padStart(2, '0');
-    const minutos = String(now.getMinutes()).padStart(2, '0');
-    const segundos = String(now.getSeconds()).padStart(2, '0');
-    const registro = {
-        tipo: tipoEmergencia,
-        hora: `${horas}:${minutos}:${segundos}`,
-        fecha: fecha
-    };
-
-    // Obtener los registros existentes o inicializar un array vacío
-    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
-    registros.push(registro);
-
-    // Guardar los registros actualizados en localStorage
-    localStorage.setItem('registrosActivacion', JSON.stringify(registros));
-
-    // Actualizar la lista de registros en la interfaz
-    actualizarListaRegistros();
-}
-
-// Función para agrupar registros por día
-function agruparRegistrosPorDia(registros) {
-    return registros.reduce((acc, registro) => {
-        const fecha = registro.fecha;
-        if (!acc[fecha]) {
-            acc[fecha] = [];
-        }
-        acc[fecha].push(registro);
-        return acc;
-    }, {});
-}
-
-
-
-
-
-
-//------------------
-
-
-document.getElementById('toggleRegistrosButton').addEventListener('click', function () {
-    const registrosContainer = document.getElementById('registrosActivacion');
-    const registrosOverlay = document.getElementById('registrosOverlay');
-    
-    if (registrosContainer.style.display === 'none' || registrosContainer.style.display === '') {
-        registrosContainer.style.display = 'block';
-        registrosOverlay.style.display = 'block'; // Mostrar el overlay
-        this.textContent = 'Ocultar Registros';
-    } else {
-        registrosContainer.style.display = 'none';
-        registrosOverlay.style.display = 'none'; // Ocultar el overlay
-        this.textContent = 'Registros';
-    }
-});
-
-document.getElementById('closeRegistrosButton').addEventListener('click', function () {
-    const registrosContainer = document.getElementById('registrosActivacion');
-    const registrosOverlay = document.getElementById('registrosOverlay');
-    
-    registrosContainer.style.display = 'none';
-    registrosOverlay.style.display = 'none'; // Ocultar el overlay
-    document.getElementById('toggleRegistrosButton').textContent = 'Registros';
-});
-
-
-
-function actualizarListaRegistros() {
-    const listaRegistros = document.getElementById('listaRegistros');
-    listaRegistros.innerHTML = ''; // Limpiar la lista actual
-
-    // Obtener los registros de localStorage
-    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
-
-    // Agrupar los registros por día
-    const registrosPorDia = agruparRegistrosPorDia(registros);
-
-    // Obtener la fecha actual
-    const now = new Date();
-    const fechaHoy = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
-
-    // Convertir las fechas a objetos Date para poder ordenarlas
-    const fechasOrdenadas = Object.keys(registrosPorDia)
-        .map(fechaStr => {
-            // Convertir la cadena de fecha a objeto Date
-            const partes = fechaStr.split(', ');
-            if (partes.length === 2) {
-                const [diaSemana, resto] = partes;
-                const [dia, mes, año] = resto.split('/');
-                return new Date(`${mes}/${dia}/${año}`);
-            }
-            return new Date(); // Si el formato no es el esperado, usar fecha actual
-        })
-        .sort((a, b) => b - a); // Ordenar de más reciente a más antiguo
-
-    // Mostrar los registros ordenados por fecha
-    fechasOrdenadas.forEach(fechaObj => {
-        const fechaStr = fechaObj.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
-        
-        if (registrosPorDia[fechaStr]) {
-            const liFecha = document.createElement('li');
-            liFecha.textContent = fechaStr === fechaHoy ? "Hoy" : fechaStr;
-            liFecha.style.fontWeight = 'bold';
-            liFecha.style.marginTop = '10px';
-            listaRegistros.appendChild(liFecha);
-
-            // Ordenar los registros del día por hora (de mayor a menor)
-            registrosPorDia[fechaStr].sort((a, b) => {
-                const horaA = a.hora.split(':').join('');
-                const horaB = b.hora.split(':').join('');
-                return horaB.localeCompare(horaA);
-            });
-
-            // Mostrar cada registro en la lista
-            registrosPorDia[fechaStr].forEach(registro => {
-                const li = document.createElement('li');
-                li.textContent = `${registro.tipo} - ${registro.hora}`;
-                li.style.marginLeft = '20px';
-
-                // Aplicar clases según el tipo de registro
-                switch (registro.tipo) {
-                    case 'Emergencia Negocio':
-                        li.classList.add('emergencia-negocio');
-                        break;
-                    case 'Emergencia por Extorsión':
-                        li.classList.add('emergencia-extorsion');
-                        break;
-                    case 'Emergencia Cuadrante':
-                        li.classList.add('emergencia-cuadrante');
-                        break;
-                    case 'Emergencia a Conocido':
-                        li.classList.add('emergencia-conocido');
-                        break;
-                }
-
-                listaRegistros.appendChild(li);
-            });
-        }
-    });
-}
-
-
-
-// Llamar a esta función al cargar la página para mostrar los registros existentes
-window.addEventListener('load', actualizarListaRegistros);
-
-
-
-
-
-
-// Función para mostrar/ocultar el contenedor de gráficas
-document.getElementById('toggleRegistrosButton').addEventListener('click', function() {
-
-        const graficasContainer = document.getElementById('graficasContainer');
-        const graficasOverlay = document.getElementById('graficasOverlay');
-        
-        if (graficasContainer.style.display === 'none' || graficasContainer.style.display === '') {
-            graficasContainer.style.display = 'block';
-            graficasOverlay.style.display = 'none';
-            actualizarGraficas();
-        } else {
-            graficasContainer.style.display = 'none';
-            graficasOverlay.style.display = 'none';
-        }
-    })
-
-    // Función para cerrar el contenedor de gráficas
-    document.getElementById(/*'cerrarGraficasButton'*/'closeRegistrosButton').addEventListener('click', function () {
-            const graficasContainer = document.getElementById('graficasContainer');
-            const registrosOverlay = document.getElementById('registrosOverlay');
-            graficasContainer.style.display = 'none';
-            registrosOverlay.style.display = 'none';
+        // Eventos para los nuevos botones
+        document.getElementById('c5Button').addEventListener('click', function () {
+            // showCustomAlert("Botón C5 presionado."); //
         });
 
+        document.getElementById('cuadranteButton').addEventListener('click', function () {
+           // showCustomAlert("Botón Cuadrante presionado."); //
+        });
 
-    // Variables para almacenar las instancias de Chart
-    let chartNegocio, chartCuadrante, chartExtorsion, chartConocido;
+        document.getElementById('extorsionButton').addEventListener('click', function () {
+            // showCustomAlert("Botón Extorsión presionado."); //
+        });
 
-    // Función para calcular porcentajes y conteos
-    function calcularPorcentajes() {
-    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
-    
-    const conteo = {
-        negocio: 0,
-        cuadrante: 0,
-        extorsion: 0,
-        conocido: 0
-    };
-    
-    registros.forEach(registro => {
-        if (registro.tipo === 'Emergencia Negocio') conteo.negocio++;
-        else if (registro.tipo === 'Emergencia Cuadrante') conteo.cuadrante++;
-        else if (registro.tipo === 'Emergencia por Extorsión') conteo.extorsion++;
-        else if (registro.tipo === 'Emergencia a Conocido') conteo.conocido++;
-    });
-    
-    const total = conteo.negocio + conteo.cuadrante + conteo.extorsion + conteo.conocido;
-    
-    return {
-        negocio: total > 0 ? Math.round((conteo.negocio / total * 100)) : 0,
-        cuadrante: total > 0 ? Math.round((conteo.cuadrante / total * 100)) : 0,
-        extorsion: total > 0 ? Math.round((conteo.extorsion / total * 100)) : 0,
-        conocido: total > 0 ? Math.round((conteo.conocido / total * 100)) : 0,
-        total: total,
-        conteo: conteo
-    };
-}
+        document.getElementById('conocidoButton').addEventListener('click', function () {
+           //  showCustomAlert("Botón Conocido presionado."); //
+        });
 
+        // Obtener referencias a los botones
+        const c5Button = document.getElementById('c5Button');
+        const cuadranteButton = document.getElementById('cuadranteButton');
+        const extorsionButton = document.getElementById('extorsionButton');
+        const conocidoButton = document.getElementById('conocidoButton');
+
+        // Función para habilitar el botón C5
+        function habilitarC5() {
+            c5Button.disabled = false;
+        }
+
+        // Función para deshabilitar un botón y habilitar los demás
+        function manejarEstadoBotones(botonPresionado) {
+            // Deshabilitar el botón presionado
+            botonPresionado.disabled = true;
+
+            // Habilitar los demás botones
+            if (botonPresionado !== c5Button) {
+                c5Button.disabled = false;
+            }
+            if (botonPresionado !== cuadranteButton) {
+                cuadranteButton.disabled = false;
+            }
+            if (botonPresionado !== extorsionButton) {
+                extorsionButton.disabled = false;
+            }
+            if (botonPresionado !== conocidoButton) {
+                conocidoButton.disabled = false;
+            }
+        }
+
+        // Eventos para los botones (sin mostrar alertas)
+        cuadranteButton.addEventListener('click', function () {
+            manejarEstadoBotones(cuadranteButton);
+            // showCustomAlert("Botón Cuadrante presionado."); // Eliminar esta línea
+        });
+
+        extorsionButton.addEventListener('click', function () {
+            manejarEstadoBotones(extorsionButton);
+            // showCustomAlert("Botón Extorsión presionado."); // Eliminar esta línea
+        });
+
+        conocidoButton.addEventListener('click', function () {
+            manejarEstadoBotones(conocidoButton);
+            // showCustomAlert("Botón Conocido presionado."); // Eliminar esta línea
+        });
+
+        c5Button.addEventListener('click', function () {
+            manejarEstadoBotones(c5Button);
+            // showCustomAlert("Botón C5 presionado."); // Eliminar esta línea
+        });
+
+        // Evento para el botón C5
+        document.getElementById('c5Button').addEventListener('click', function () {
+            // Restablecer el botón de emergencia
+            document.getElementById('emergencyButtonContainer').style.display = 'block'; // Mostrar el botón de emergencia original
+            document.getElementById('emergenciaCuadranteButton').style.display = 'none'; // Ocultar el botón de emergencia cuadrante
+            document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
+            document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
+
+            // Habilitar los botones deshabilitados
+            document.getElementById('cuadranteButton').disabled = false;
+            document.getElementById('extorsionButton').disabled = false;
+            document.getElementById('conocidoButton').disabled = false;
+
+            // Deshabilitar el botón C5
+            this.disabled = true;
+        });
+
+        document.getElementById('cuadranteButton').addEventListener('click', function () {
+            // Ocultar el botón de emergencia
+            document.getElementById('emergencyButtonContainer').style.display = 'none';
+            document.getElementById('emergenciaExtorsionButton').style.display = 'none'; // Ocultar el botón de emergencia extorsión
+            document.getElementById('emergenciaConocidoButton').style.display = 'none'; // Ocultar el botón de emergencia conocido
+            // Mostrar el botón EmergenciaCuadrante
+            document.getElementById('emergenciaCuadranteButton').style.display = 'flex';
+            
+            // Deshabilitar el botón Cuadrante
+            this.disabled = true;
+            
+            // Habilitar los demás botones
+            document.getElementById('c5Button').disabled = false;
+            document.getElementById('extorsionButton').disabled = false;
+            document.getElementById('conocidoButton').disabled = false;
+        });
+
+        // Evento para el botón "EmergenciaCuadrante"
+        document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
+            guardarRegistroActivacion('Emergencia Cuadrante');
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Mostrar el mensaje con la hora de activación
+            showCustomAlert(`Emergencia Cuadrante<br>Hora: ${timeString}`);
+        });
+
+        // Evento para el botón "Extorsión"
+        document.getElementById('extorsionButton').addEventListener('click', function () {
+            // Ocultar los botones de emergencia y emergencia cuadrante
+            document.getElementById('emergencyButtonContainer').style.display = 'none';
+            document.getElementById('emergenciaCuadranteButton').style.display = 'none';
+            document.getElementById('emergenciaConocidoButton').style.display = 'none';
+            // Mostrar el nuevo botón EmergenciaExtorsion
+            document.getElementById('emergenciaExtorsionButton').style.display = 'flex';
+            
+            // Deshabilitar el botón Extorsión
+            this.disabled = true;
+            
+            // Habilitar los demás botones
+            document.getElementById('c5Button').disabled = false;
+            document.getElementById('cuadranteButton').disabled = false;
+            document.getElementById('conocidoButton').disabled = false;
+        });
+
+        // Evento para el nuevo botón EmergenciaExtorsion
+        document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
+            guardarRegistroActivacion('Emergencia por Extorsión');
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Aquí puedes agregar la lógica para manejar la emergencia por extorsión
+            showCustomAlert(`Emergencia por Extorsión<br>Hora: ${timeString}`);
+        });
+
+        document.getElementById('conocidoButton').addEventListener('click', function () {
+            // Ocultar los botones de emergencia, emergencia cuadrante y extorsión
+            document.getElementById('emergencyButtonContainer').style.display = 'none';
+            document.getElementById('emergenciaCuadranteButton').style.display = 'none';
+            document.getElementById('emergenciaExtorsionButton').style.display = 'none';
+            
+            // Mostrar el nuevo botón EmergenciaConocido
+            document.getElementById('emergenciaConocidoButton').style.display = 'flex';
+            
+            // Deshabilitar el botón Conocido
+            this.disabled = true;
+            
+            // Habilitar los demás botones
+            document.getElementById('c5Button').disabled = false;
+            document.getElementById('cuadranteButton').disabled = false;
+            document.getElementById('extorsionButton').disabled = false;
+        });
+
+        // Evento para el nuevo botón EmergenciaConocido
+        document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
+            guardarRegistroActivacion('Emergencia a Conocido');
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Aquí puedes agregar la lógica para manejar la emergencia por conocido
+            showCustomAlert(`Emergencia a Conocido <br>Hora: ${timeString}`);
+        });
+
+        // Guardar el teléfono de cuadrante en localStorage
+        document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
+            // const newTelCuadrante = prompt("Ingresa el número de teléfono para Cuadrante:");
+            if (newTelCuadrante) {
+                localStorage.setItem('telCuadrante', newTelCuadrante);
+                showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido.");
+            }
+        });
+
+        // Guardar el teléfono de extorsión en localStorage
+        document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
+            //const newTelExtorsion = prompt("Ingresa el número de teléfono para Extorsión:");
+            if (newTelExtorsion) {
+                localStorage.setItem('telExtorsion', newTelExtorsion);
+                showCustomAlert("Teléfono de Extorsión guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido.");
+            }
+        });
+
+        // Guardar el teléfono de conocido en localStorage
+        document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
+            //const newTelConocido = prompt("Ingresa el número de teléfono para Conocido:");
+            if (newTelConocido) {
+                localStorage.setItem('telConocido', newTelConocido);
+                showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido.");
+            }
+        });
+
+        // Cargar los números de teléfono desde localStorage al cargar la página
+        window.addEventListener('load', function () {
+            const savedTelCuadrante = localStorage.getItem('telCuadrante');
+            const savedTelExtorsion = localStorage.getItem('telExtorsion');
+            const savedTelConocido = localStorage.getItem('telConocido');
+
+            if (savedTelCuadrante) {
+                console.log("Teléfono de Cuadrante cargado:", savedTelCuadrante);
+            }
+            if (savedTelExtorsion) {
+                console.log("Teléfono de Extorsión cargado:", savedTelExtorsion);
+            }
+            if (savedTelConocido) {
+                console.log("Teléfono de Conocido cargado:", savedTelConocido);
+            }
+        });
+
+        // Función para mostrar el cuadro de diálogo para modificar el teléfono de cuadrante
+        function showCustomTelCuadranteInput() {
+            const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
+            const overlay = document.getElementById('overlay');
+            customTelCuadranteInput.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo para modificar el teléfono de cuadrante
+        function hideCustomTelCuadranteInput() {
+            const customTelCuadranteInput = document.getElementById('customTelCuadranteInput');
+            const overlay = document.getElementById('overlay');
+            customTelCuadranteInput.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de cuadrante
+        document.getElementById('telCuadranteSubmitButton').addEventListener('click', function () {
+            const newTelCuadrante = document.getElementById('newTelCuadranteInput').value;
+            if (newTelCuadrante && newTelCuadrante.length === 10 && /^\d+$/.test(newTelCuadrante)) {
+                localStorage.setItem('telCuadrante', newTelCuadrante);
+                hideCustomTelCuadranteInput();
+                showCustomAlert("Teléfono de Cuadrante guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+            }
+        });
+
+        // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de cuadrante
+        document.getElementById('telCuadranteCancelButton').addEventListener('click', function () {
+            hideCustomTelCuadranteInput();
+        });
+
+        // Evento para el botón "Tel Cuadrante"
+        document.getElementById('modifyTelCuadranteButton').addEventListener('click', function () {
+            showCustomTelCuadranteInput("");
+        });
+
+        // Evento para el botón "EmergenciaCuadrante"
+        document.getElementById('emergenciaCuadranteButton').addEventListener('click', function () {
+            const telCuadrante = localStorage.getItem('telCuadrante');
+            if (telCuadrante) {
+                window.location.href = `tel:${telCuadrante}`;
+            } else {
+                showCustomAlert("No hay un número de teléfono de Cuadrante guardado.");
+            }
+        });
+
+        // Mostrar el cuadro de diálogo para ingresar el número de teléfono de extorsión
+        document.getElementById('modifyTelExtorsionButton').addEventListener('click', function () {
+            showCustomTelExtorsionInput();
+        });
+
+        // Función para mostrar el cuadro de diálogo de teléfono de extorsión
+        function showCustomTelExtorsionInput() {
+            const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
+            const overlay = document.getElementById('overlay');
+            customTelExtorsionInput.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo de teléfono de extorsión
+        function hideCustomTelExtorsionInput() {
+            const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
+            const overlay = document.getElementById('overlay');
+            customTelExtorsionInput.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Guardar el número de teléfono de extorsión en localStorage
+        document.getElementById('telExtorsionSubmitButton').addEventListener('click', function () {
+            const newTelExtorsion = document.getElementById('newTelExtorsionInput').value;
+            if (newTelExtorsion && newTelExtorsion.length === 10) {
+                localStorage.setItem('telExtorsion', newTelExtorsion);
+                hideCustomTelExtorsionInput();
+                showCustomAlert("Número de teléfono guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+            }
+        });
+
+        // Cancelar la edición del número de teléfono de extorsión
+        document.getElementById('telExtorsionCancelButton').addEventListener('click', function () {
+            hideCustomTelExtorsionInput();
+        });
+
+        // Realizar la llamada cuando se pulse el botón "EmergenciaExtorsión"
+        document.getElementById('emergenciaExtorsionButton').addEventListener('click', function () {
+            const telExtorsion = localStorage.getItem('telExtorsion');
+            if (telExtorsion) {
+                window.location.href = `tel:${telExtorsion}`;
+            } else {
+                showCustomAlert("No se ha configurado un número de teléfono para extorsión.");
+            }
+        });
+
+        // Función para mostrar el cuadro de diálogo para modificar el teléfono de conocido
+        function showCustomTelConocidoInput() {
+            const customTelConocidoInput = document.getElementById('customTelConocidoInput');
+            const overlay = document.getElementById('overlay');
+            customTelConocidoInput.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de diálogo para modificar el teléfono de conocido
+        function hideCustomTelConocidoInput() {
+            const customTelConocidoInput = document.getElementById('customTelConocidoInput');
+            const overlay = document.getElementById('overlay');
+            customTelConocidoInput.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Evento para el botón "Guardar" del cuadro de diálogo para modificar el teléfono de conocido
+        document.getElementById('telConocidoSubmitButton').addEventListener('click', function () {
+            const newTelConocido = document.getElementById('newTelConocidoInput').value;
+            if (newTelConocido && newTelConocido.length === 10 && /^\d+$/.test(newTelConocido)) {
+                localStorage.setItem('telConocido', newTelConocido);
+                hideCustomTelConocidoInput();
+                showCustomAlert("Teléfono de Conocido guardado exitosamente.", 'success');
+            } else {
+                showCustomAlert("Ingresa un número de teléfono válido de 10 dígitos.");
+            }
+        });
+
+        // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el teléfono de conocido
+        document.getElementById('telConocidoCancelButton').addEventListener('click', function () {
+            hideCustomTelConocidoInput();
+        });
+
+        // Evento para el botón "EmergenciaConocido"
+        document.getElementById('emergenciaConocidoButton').addEventListener('click', function () {
+            const telConocido = localStorage.getItem('telConocido');
+            if (telConocido) {
+                window.location.href = `tel:${telConocido}`;
+            } else {
+                showCustomAlert("No se ha configurado un número de teléfono para Conocido.");
+            }
+        });
+
+        // Evento para el botón "Tel Conocido"
+        document.getElementById('modifyTelConocidoButton').addEventListener('click', function () {
+            showCustomTelConocidoInput();
+        });
+
+        // Función para mostrar/ocultar el menú
+        function toggleMenu() {
+            const menuOptions = document.getElementById('menuOptions');
+            const menuOverlay = document.getElementById('menuOverlay');
+            if (menuOptions.style.display === 'block') {
+                menuOptions.style.display = 'none';
+                menuOverlay.style.display = 'none'; // Ocultar el overlay
+            } else {
+                menuOptions.style.display = 'block';
+                menuOverlay.style.display = 'block'; // Mostrar el overlay
+            }
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        document.addEventListener('click', function(event) {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const menuOptions = document.getElementById('menuOptions');
+            const menuOverlay = document.getElementById('menuOverlay');
+            if (!hamburgerMenu.contains(event.target)) {
+                menuOptions.style.display = 'none';
+                menuOverlay.style.display = 'none'; // Ocultar el overlay
+            }
+        });
+
+        // Agregar eventos a los elementos del menú para ocultarlo al seleccionar una opción
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                toggleMenu(); // Ocultar el menú al seleccionar una opción
+            });
+        });
+
+        // Función para guardar un registro de activación
+        function guardarRegistroActivacion(tipoEmergencia) {
+            const now = new Date();
+            const fecha = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+            const horas = String(now.getHours()).padStart(2, '0');
+            const minutos = String(now.getMinutes()).padStart(2, '0');
+            const segundos = String(now.getSeconds()).padStart(2, '0');
+            const registro = {
+                tipo: tipoEmergencia,
+                hora: `${horas}:${minutos}:${segundos}`,
+                fecha: fecha
+            };
+
+            // Obtener los registros existentes o inicializar un array vacío
+            const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+            registros.push(registro);
+
+            // Guardar los registros actualizados en localStorage
+            localStorage.setItem('registrosActivacion', JSON.stringify(registros));
+
+            // Actualizar la lista de registros en la interfaz
+            actualizarListaRegistros();
+        }
+
+        // Función para agrupar registros por día
+        function agruparRegistrosPorDia(registros) {
+            return registros.reduce((acc, registro) => {
+                const fecha = registro.fecha;
+                if (!acc[fecha]) {
+                    acc[fecha] = [];
+                }
+                acc[fecha].push(registro);
+                return acc;
+            }, {});
+        }
+
+        document.getElementById('toggleRegistrosButton').addEventListener('click', function () {
+            const registrosContainer = document.getElementById('registrosActivacion');
+            const registrosOverlay = document.getElementById('registrosOverlay');
+            
+            if (registrosContainer.style.display === 'none' || registrosContainer.style.display === '') {
+                registrosContainer.style.display = 'block';
+                registrosOverlay.style.display = 'block'; // Mostrar el overlay
+                this.textContent = 'Ocultar Registros';
+            } else {
+                registrosContainer.style.display = 'none';
+                registrosOverlay.style.display = 'none'; // Ocultar el overlay
+                this.textContent = 'Registros';
+            }
+        });
+
+        document.getElementById('closeRegistrosButton').addEventListener('click', function () {
+            const registrosContainer = document.getElementById('registrosActivacion');
+            const registrosOverlay = document.getElementById('registrosOverlay');
+            
+            registrosContainer.style.display = 'none';
+            registrosOverlay.style.display = 'none'; // Ocultar el overlay
+            document.getElementById('toggleRegistrosButton').textContent = 'Registros';
+        });
+
+        function actualizarListaRegistros() {
+            const listaRegistros = document.getElementById('listaRegistros');
+            listaRegistros.innerHTML = ''; // Limpiar la lista actual
+
+            // Obtener los registros de localStorage
+            const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+
+            // Agrupar los registros por día
+            const registrosPorDia = agruparRegistrosPorDia(registros);
+
+            // Obtener la fecha actual
+            const now = new Date();
+            const fechaHoy = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+
+            // Convertir las fechas a objetos Date para poder ordenarlas
+            const fechasOrdenadas = Object.keys(registrosPorDia)
+                .map(fechaStr => {
+                    // Convertir la cadena de fecha a objeto Date
+                    const partes = fechaStr.split(', ');
+                    if (partes.length === 2) {
+                        const [diaSemana, resto] = partes;
+                        const [dia, mes, año] = resto.split('/');
+                        return new Date(`${mes}/${dia}/${año}`);
+                    }
+                    return new Date(); // Si el formato no es el esperado, usar fecha actual
+                })
+                .sort((a, b) => b - a); // Ordenar de más reciente a más antiguo
+
+            // Mostrar los registros ordenados por fecha
+            fechasOrdenadas.forEach(fechaObj => {
+                const fechaStr = fechaObj.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+                
+                if (registrosPorDia[fechaStr]) {
+                    const liFecha = document.createElement('li');
+                    liFecha.textContent = fechaStr === fechaHoy ? "Hoy" : fechaStr;
+                    liFecha.style.fontWeight = 'bold';
+                    liFecha.style.marginTop = '10px';
+                    listaRegistros.appendChild(liFecha);
+
+                    // Ordenar los registros del día por hora (de mayor a menor)
+                    registrosPorDia[fechaStr].sort((a, b) => {
+                        const horaA = a.hora.split(':').join('');
+                        const horaB = b.hora.split(':').join('');
+                        return horaB.localeCompare(horaA);
+                    });
+
+                    // Mostrar cada registro en la lista
+                    registrosPorDia[fechaStr].forEach(registro => {
+                        const li = document.createElement('li');
+                        li.textContent = `${registro.tipo} - ${registro.hora}`;
+                        li.style.marginLeft = '20px';
+
+                        // Aplicar clases según el tipo de registro
+                        switch (registro.tipo) {
+                            case 'Emergencia Negocio':
+                                li.classList.add('emergencia-negocio');
+                                break;
+                            case 'Emergencia por Extorsión':
+                                li.classList.add('emergencia-extorsion');
+                                break;
+                            case 'Emergencia Cuadrante':
+                                li.classList.add('emergencia-cuadrante');
+                                break;
+                            case 'Emergencia a Conocido':
+                                li.classList.add('emergencia-conocido');
+                                break;
+                        }
+
+                        listaRegistros.appendChild(li);
+                    });
+                }
+            });
+        }
+
+        // Llamar a esta función al cargar la página para mostrar los registros existentes
+        window.addEventListener('load', actualizarListaRegistros);
+
+        // Función para mostrar/ocultar el contenedor de gráficas
+        document.getElementById('toggleRegistrosButton').addEventListener('click', function() {
+
+                const graficasContainer = document.getElementById('graficasContainer');
+                const graficasOverlay = document.getElementById('graficasOverlay');
+                
+                if (graficasContainer.style.display === 'none' || graficasContainer.style.display === '') {
+                    graficasContainer.style.display = 'block';
+                    graficasOverlay.style.display = 'none';
+                    actualizarGraficas();
+                } else {
+                    graficasContainer.style.display = 'none';
+                    graficasOverlay.style.display = 'none';
+                }
+            })
+
+            // Función para cerrar el contenedor de gráficas
+            document.getElementById(/*'cerrarGraficasButton'*/'closeRegistrosButton').addEventListener('click', function () {
+                    const graficasContainer = document.getElementById('graficasContainer');
+                    const registrosOverlay = document.getElementById('registrosOverlay');
+                    graficasContainer.style.display = 'none';
+                    registrosOverlay.style.display = 'none';
+                });
+
+        // Variables para almacenar las instancias de Chart
+        let chartNegocio, chartCuadrante, chartExtorsion, chartConocido;
+
+        // Función para calcular porcentajes y conteos
+        function calcularPorcentajes() {
+        const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
         
-        // Función para crear/actualizar las gráficas
-        function actualizarGraficas() {
-            const data = calcularPorcentajes();
-            const porcentajes = data;
-            const conteo = data.conteo;
-    
-            // Actualizar los porcentajes y conteos
-            document.getElementById('porcentajeNegocio').textContent = `${porcentajes.negocio}%`;
-            document.getElementById('porcentajeCuadrante').textContent = `${porcentajes.cuadrante}%`;
-            document.getElementById('porcentajeExtorsion').textContent = `${porcentajes.extorsion}%`;
-            document.getElementById('porcentajeConocido').textContent = `${porcentajes.conocido}%`;
+        const conteo = {
+            negocio: 0,
+            cuadrante: 0,
+            extorsion: 0,
+            conocido: 0
+        };
+        
+        registros.forEach(registro => {
+            if (registro.tipo === 'Emergencia Negocio') conteo.negocio++;
+            else if (registro.tipo === 'Emergencia Cuadrante') conteo.cuadrante++;
+            else if (registro.tipo === 'Emergencia por Extorsión') conteo.extorsion++;
+            else if (registro.tipo === 'Emergencia a Conocido') conteo.conocido++;
+        });
+        
+        const total = conteo.negocio + conteo.cuadrante + conteo.extorsion + conteo.conocido;
+        
+        return {
+            negocio: total > 0 ? Math.round((conteo.negocio / total * 100)) : 0,
+            cuadrante: total > 0 ? Math.round((conteo.cuadrante / total * 100)) : 0,
+            extorsion: total > 0 ? Math.round((conteo.extorsion / total * 100)) : 0,
+            conocido: total > 0 ? Math.round((conteo.conocido / total * 100)) : 0,
+            total: total,
+            conteo: conteo
+        };
+    }
             
-            document.getElementById('totalActivaciones').textContent = `Activaciones: ${porcentajes.total}`;
-            
-            // Configuración común para las gráficas
-            const config = {
-                type: 'doughnut',
-                options: {
-                    cutout: '70%',
-                    plugins: {
-                        legend: {
-                            display: false
+            // Función para crear/actualizar las gráficas
+            function actualizarGraficas() {
+                const data = calcularPorcentajes();
+                const porcentajes = data;
+                const conteo = data.conteo;
+        
+                // Actualizar los porcentajes y conteos
+                document.getElementById('porcentajeNegocio').textContent = `${porcentajes.negocio}%`;
+                document.getElementById('porcentajeCuadrante').textContent = `${porcentajes.cuadrante}%`;
+                document.getElementById('porcentajeExtorsion').textContent = `${porcentajes.extorsion}%`;
+                document.getElementById('porcentajeConocido').textContent = `${porcentajes.conocido}%`;
+                
+                document.getElementById('totalActivaciones').textContent = `Activaciones: ${porcentajes.total}`;
+                
+                // Configuración común para las gráficas
+                const config = {
+                    type: 'doughnut',
+                    options: {
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                enabled: false
+                            }
                         },
-                        tooltip: {
-                            enabled: false
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true,
+                            duration: 1000
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove']
+                    }
+                };
+                
+                // Destruir gráficas existentes si existen
+                if (chartNegocio) chartNegocio.destroy();
+                if (chartCuadrante) chartCuadrante.destroy();
+                if (chartExtorsion) chartExtorsion.destroy();
+                if (chartConocido) chartConocido.destroy();
+                
+                // Gráfica de Negocio
+                const donaNegocio = document.getElementById('donaNegocio').getContext('2d');
+                chartNegocio = new Chart(donaNegocio, {
+                    ...config,
+                    data: {
+                        datasets: [{
+                            data: [porcentajes.negocio, 100 - porcentajes.negocio],
+                            backgroundColor: [
+                                'rgba(255, 255, 0, 0.8)',
+                                'rgba(51, 51, 51, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 255, 0, 1)',
+                                'rgba(85, 85, 85, 0.5)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    }
+                });
+                
+                // Gráfica de Cuadrante
+                const donaCuadrante = document.getElementById('donaCuadrante').getContext('2d');
+                chartCuadrante = new Chart(donaCuadrante, {
+                    ...config,
+                    data: {
+                        datasets: [{
+                            data: [porcentajes.cuadrante, 100 - porcentajes.cuadrante],
+                            backgroundColor: [
+                                'rgba(0, 191, 255, 0.8)',
+                                'rgba(51, 51, 51, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 191, 255, 1)',
+                                'rgba(85, 85, 85, 0.5)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    }
+                });
+                
+                // Gráfica de Extorsión
+                const donaExtorsion = document.getElementById('donaExtorsion').getContext('2d');
+                chartExtorsion = new Chart(donaExtorsion, {
+                    ...config,
+                    data: {
+                        datasets: [{
+                            data: [porcentajes.extorsion, 100 - porcentajes.extorsion],
+                            backgroundColor: [
+                                'rgba(255, 0, 0, 0.8)',
+                                'rgba(51, 51, 51, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 0, 0, 1)',
+                                'rgba(85, 85, 85, 0.5)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    }
+                });
+                
+                // Gráfica de Conocido
+                const donaConocido = document.getElementById('donaConocido').getContext('2d');
+                chartConocido = new Chart(donaConocido, {
+                    ...config,
+                    data: {
+                        datasets: [{
+                            data: [porcentajes.conocido, 100 - porcentajes.conocido],
+                            backgroundColor: [
+                                'rgba(255, 105, 180, 0.8)',
+                                'rgba(51, 51, 51, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 105, 180, 1)',
+                                'rgba(85, 85, 85, 0.5)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    }
+                });
+
+                // Agregar eventos hover y clic a los wrappers
+                const wrappers = document.querySelectorAll('.dona-wrapper');
+                wrappers.forEach(wrapper => {
+                    // Eventos hover
+                    wrapper.addEventListener('mouseenter', function() {
+                        this.classList.add('active');
+                    });
+                    
+                    wrapper.addEventListener('mouseleave', function() {
+                        this.classList.remove('active');
+                    });
+                    
+                    // Evento clic para mostrar información detallada
+                    wrapper.addEventListener('click', function() {
+                        // Obtener el tipo de emergencia según el wrapper
+                        let tipoEmergencia = '';
+                        let color = '';
+                        
+                        if (this.id === 'donaNegocioWrapper') {
+                            tipoEmergencia = 'Emergencia Negocio';
+                            color = '#ffff00';
+                        } else if (this.id === 'donaCuadranteWrapper') {
+                            tipoEmergencia = 'Emergencia Cuadrante';
+                            color = '#00bfff';
+                        } else if (this.id === 'donaExtorsionWrapper') {
+                            tipoEmergencia = 'Emergencia Extorsion';
+                            color = '#ff0000';
+                        } else if (this.id === 'donaConocidoWrapper') {
+                            tipoEmergencia = 'Emergencia Conocido';
+                            color = '#ff69b4';
+                        }
+                        
+                        // Obtener conteo y porcentaje
+                        const conteo = data.conteo[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
+                        const porcentaje = porcentajes[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
+                        
+                        // Crear o actualizar el tooltip
+                        let tooltip = this.querySelector('.emergency-tooltip');
+                        if (!tooltip) {
+                            tooltip = document.createElement('div');
+                            tooltip.className = 'emergency-tooltip';
+                            this.appendChild(tooltip);
+                        }
+                        
+                        // Estilizar y posicionar el tooltip
+                        tooltip.innerHTML = `
+                            <strong>${tipoEmergencia}</strong><br>
+                            Activaciones: ${conteo}<br>
+                            Porcentaje: ${porcentaje}%
+                        `;
+                        tooltip.style.display = 'block';
+                        tooltip.style.position = 'absolute';
+                        tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                        tooltip.style.color = color;
+                        tooltip.style.padding = '10px';
+                        tooltip.style.borderRadius = '5px';
+                        tooltip.style.border = `1px solid ${color}`;
+                        tooltip.style.boxShadow = `0 0 10px ${color}`;
+                        tooltip.style.zIndex = '1000';
+                        tooltip.style.textAlign = 'center';
+                        tooltip.style.top = '50%';
+                        tooltip.style.left = '50%';
+                        tooltip.style.transform = 'translate(-50%, -50%)';
+                        tooltip.style.width = '150px';
+                        
+                        // Ocultar el tooltip después de 3 segundos
+                        setTimeout(() => {
+                            tooltip.style.display = 'none';
+                        }, 3000);
+                    });
+                });
+            }
+            
+            // Actualizar gráficas cada vez que se guarda un nuevo registro
+            function guardarRegistroActivacion(tipoEmergencia) {
+                const now = new Date();
+                const fecha = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+                const horas = String(now.getHours()).padStart(2, '0');
+                const minutos = String(now.getMinutes()).padStart(2, '0');
+                const segundos = String(now.getSeconds()).padStart(2, '0');
+                const registro = {
+                    tipo: tipoEmergencia,
+                    hora: `${horas}:${minutos}:${segundos}`,
+                    fecha: fecha
+                };
+
+                const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+                registros.push(registro);
+                localStorage.setItem('registrosActivacion', JSON.stringify(registros));
+
+                actualizarListaRegistros();
+                
+                // Actualizar gráficas si están visibles
+                if (document.getElementById('graficasContainer').style.display === 'block') {
+                    actualizarGraficas();
+                }
+            }
+
+            // Inicializar efecto de partículas
+            document.addEventListener('DOMContentLoaded', function() {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 80,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#ff0000"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                            "polygon": {
+                                "nb_sides": 5
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.5,
+                            "random": false,
+                            "anim": {
+                                "enable": false,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": false,
+                                "speed": 40,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#ff0000",
+                            "opacity": 0.4,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
                         }
                     },
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true,
-                        duration: 1000
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "repulse"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 400,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 100,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
                     },
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove']
-                }
-            };
-            
-            // Destruir gráficas existentes si existen
-            if (chartNegocio) chartNegocio.destroy();
-            if (chartCuadrante) chartCuadrante.destroy();
-            if (chartExtorsion) chartExtorsion.destroy();
-            if (chartConocido) chartConocido.destroy();
-            
-            // Gráfica de Negocio
-            const donaNegocio = document.getElementById('donaNegocio').getContext('2d');
-            chartNegocio = new Chart(donaNegocio, {
-                ...config,
-                data: {
-                    datasets: [{
-                        data: [porcentajes.negocio, 100 - porcentajes.negocio],
-                        backgroundColor: [
-                            'rgba(255, 255, 0, 0.8)',
-                            'rgba(51, 51, 51, 0.3)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 255, 0, 1)',
-                            'rgba(85, 85, 85, 0.5)'
-                        ],
-                        borderWidth: 2
-                    }]
-                }
-            });
-            
-            // Gráfica de Cuadrante
-            const donaCuadrante = document.getElementById('donaCuadrante').getContext('2d');
-            chartCuadrante = new Chart(donaCuadrante, {
-                ...config,
-                data: {
-                    datasets: [{
-                        data: [porcentajes.cuadrante, 100 - porcentajes.cuadrante],
-                        backgroundColor: [
-                            'rgba(0, 191, 255, 0.8)',
-                            'rgba(51, 51, 51, 0.3)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 191, 255, 1)',
-                            'rgba(85, 85, 85, 0.5)'
-                        ],
-                        borderWidth: 2
-                    }]
-                }
-            });
-            
-            // Gráfica de Extorsión
-            const donaExtorsion = document.getElementById('donaExtorsion').getContext('2d');
-            chartExtorsion = new Chart(donaExtorsion, {
-                ...config,
-                data: {
-                    datasets: [{
-                        data: [porcentajes.extorsion, 100 - porcentajes.extorsion],
-                        backgroundColor: [
-                            'rgba(255, 0, 0, 0.8)',
-                            'rgba(51, 51, 51, 0.3)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 0, 0, 1)',
-                            'rgba(85, 85, 85, 0.5)'
-                        ],
-                        borderWidth: 2
-                    }]
-                }
-            });
-            
-            // Gráfica de Conocido
-            const donaConocido = document.getElementById('donaConocido').getContext('2d');
-            chartConocido = new Chart(donaConocido, {
-                ...config,
-                data: {
-                    datasets: [{
-                        data: [porcentajes.conocido, 100 - porcentajes.conocido],
-                        backgroundColor: [
-                            'rgba(255, 105, 180, 0.8)',
-                            'rgba(51, 51, 51, 0.3)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 105, 180, 1)',
-                            'rgba(85, 85, 85, 0.5)'
-                        ],
-                        borderWidth: 2
-                    }]
-                }
-            });
-
-            // Agregar eventos hover y clic a los wrappers
-            const wrappers = document.querySelectorAll('.dona-wrapper');
-            wrappers.forEach(wrapper => {
-                // Eventos hover
-                wrapper.addEventListener('mouseenter', function() {
-                    this.classList.add('active');
-                });
-                
-                wrapper.addEventListener('mouseleave', function() {
-                    this.classList.remove('active');
-                });
-                
-                // Evento clic para mostrar información detallada
-                wrapper.addEventListener('click', function() {
-                    // Obtener el tipo de emergencia según el wrapper
-                    let tipoEmergencia = '';
-                    let color = '';
-                    
-                    if (this.id === 'donaNegocioWrapper') {
-                        tipoEmergencia = 'Emergencia Negocio';
-                        color = '#ffff00';
-                    } else if (this.id === 'donaCuadranteWrapper') {
-                        tipoEmergencia = 'Emergencia Cuadrante';
-                        color = '#00bfff';
-                    } else if (this.id === 'donaExtorsionWrapper') {
-                        tipoEmergencia = 'Emergencia Extorsion';
-                        color = '#ff0000';
-                    } else if (this.id === 'donaConocidoWrapper') {
-                        tipoEmergencia = 'Emergencia Conocido';
-                        color = '#ff69b4';
-                    }
-                    
-                    // Obtener conteo y porcentaje
-                    const conteo = data.conteo[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
-                    const porcentaje = porcentajes[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
-                    
-                    // Crear o actualizar el tooltip
-                    let tooltip = this.querySelector('.emergency-tooltip');
-                    if (!tooltip) {
-                        tooltip = document.createElement('div');
-                        tooltip.className = 'emergency-tooltip';
-                        this.appendChild(tooltip);
-                    }
-                    
-                    // Estilizar y posicionar el tooltip
-                    tooltip.innerHTML = `
-                        <strong>${tipoEmergencia}</strong><br>
-                        Activaciones: ${conteo}<br>
-                        Porcentaje: ${porcentaje}%
-                    `;
-                    tooltip.style.display = 'block';
-                    tooltip.style.position = 'absolute';
-                    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                    tooltip.style.color = color;
-                    tooltip.style.padding = '10px';
-                    tooltip.style.borderRadius = '5px';
-                    tooltip.style.border = `1px solid ${color}`;
-                    tooltip.style.boxShadow = `0 0 10px ${color}`;
-                    tooltip.style.zIndex = '1000';
-                    tooltip.style.textAlign = 'center';
-                    tooltip.style.top = '50%';
-                    tooltip.style.left = '50%';
-                    tooltip.style.transform = 'translate(-50%, -50%)';
-                    tooltip.style.width = '150px';
-                    
-                    // Ocultar el tooltip después de 3 segundos
-                    setTimeout(() => {
-                        tooltip.style.display = 'none';
-                    }, 3000);
+                    "retina_detect": true
                 });
             });
-        }
-        
-    
-
-    // Actualizar gráficas cada vez que se guarda un nuevo registro
-    function guardarRegistroActivacion(tipoEmergencia) {
-        const now = new Date();
-        const fecha = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
-        const horas = String(now.getHours()).padStart(2, '0');
-        const minutos = String(now.getMinutes()).padStart(2, '0');
-        const segundos = String(now.getSeconds()).padStart(2, '0');
-        const registro = {
-            tipo: tipoEmergencia,
-            hora: `${horas}:${minutos}:${segundos}`,
-            fecha: fecha
-        };
-
-        const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
-        registros.push(registro);
-        localStorage.setItem('registrosActivacion', JSON.stringify(registros));
-
-        actualizarListaRegistros();
-        
-        // Actualizar gráficas si están visibles
-        if (document.getElementById('graficasContainer').style.display === 'block') {
-            actualizarGraficas();
-        }
-    }
-
-
-    
-// Función para actualizar o crear las etiquetas neón y manejar los eventos de clic
-function updateNeonCounter(wrapperId, count, color) {
-    const wrapper = document.getElementById(wrapperId);
-    let counterElement = wrapper.querySelector('.contador-neon');
-    
-    if (!counterElement) {
-        counterElement = document.createElement('div');
-        counterElement.className = 'contador-neon';
-        wrapper.appendChild(counterElement);
-        wrapper.style.position = 'relative'; // Asegurar que el contador se posicione correctamente
-        
-        // Agregar evento de clic al wrapper
-        wrapper.addEventListener('click', function() {
-            // Ocultar todos los contadores primero
-            document.querySelectorAll('.contador-neon').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            // Mostrar solo el contador de este wrapper
-            counterElement.style.display = 'block';
-            
-            // Ocultar después de 3 segundos
-            setTimeout(() => {
-                counterElement.style.display = 'none';
-            }, 3000);
-        });
-    }
-    
-    counterElement.textContent = count;
-    counterElement.style.color = color;
-    counterElement.style.textShadow = `0 0 0 ${color}, 0 0 0 ${color}`;
-    counterElement.style.boxShadow = `0 0 10px ${color}`;
-    counterElement.style.border = `1px solid ${color}`;
-    counterElement.style.display = 'none'; // Ocultar inicialmente
-}
-    </script>   
+    </script>
+    <!-- Script para partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </body>
 </html>
