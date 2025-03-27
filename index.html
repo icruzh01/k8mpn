@@ -1257,22 +1257,28 @@ animation: neon-color-change-pink 2s infinite;
 
 
 
-        .registros-container {
-    position: center; /*tenía fixed*/
-    bottom: -5px;
-    left: 20px;
-    background-color: #000000;
-    border: 1px solid #00ffff;
-    border-radius: 10px;
-    padding: 10px;
-    height: 900px;
-    width: 300px;
-    color: #ffffff;
-    z-index: 1005;
-    max-height: 200px; /* Ajusta este valor según sea necesario */
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-}
+
+
+    .registros-container {
+        position: flex;
+        bottom: 100px; /* Cambiado de -5px a 100px para subirlo */
+        left: 20px;
+        background-color: #000000;
+        border: 1px solid #00ffff;
+        border-radius: 10px;
+        padding: 10px;
+        height: 300px; /* Reducir la altura para que quepa mejor */
+        width: 300px;
+        color: #ffffff;
+        z-index: 1005;
+        max-height: 300px; /* Ajustar para coincidir con la altura */
+        overflow-y: auto;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+
+
+
 
 .registros-container h2 {
     position: absolute;
@@ -1292,6 +1298,11 @@ animation: neon-color-change-pink 2s infinite;
     gap: 10px;
     z-index: 1005; /* Asegurar que esté por encima de los registros */
 }
+
+
+
+
+
 
 .close-button {
     background-color: #ff0000;
