@@ -1397,7 +1397,7 @@ animation: neon-color-change-pink 2s infinite;
 .graficas-container {
     display: none;
     position: fixed;
-    top: 23%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 15px;
@@ -1603,15 +1603,29 @@ animation: neon-color-change-pink 2s infinite;
         position: flex;
         margin: 0;
         text-align: center;
-        color: #0ff;
+        color: #00ffff;
+        border: 1px solid #00ffff;
+        border-radius: 30px;
+        width: 300px;
+        height: 30px;
         font-weight: bold;
         font-size: 1.5rem;
         display: inline-block;
-        padding: 0;
+        padding: 10px;
+        text-align: center;
+        justify-content: center;
         background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 10px currentColor;
 }
 
 
+/* Estilos para el tooltip de emergencia */
+.emergency-tooltip {
+            display: none;
+            font-size: 14px;
+            line-height: 1.4;
+            pointer-events: none;
+        }
 
 
 
@@ -2804,67 +2818,71 @@ function actualizarListaRegistros() {
     // Agrupar los registros por día
     const registrosPorDia = agruparRegistrosPorDia(registros);
 
-    // Obtener todas las fechas únicas y ordenarlas de más reciente a más antigua
-    const fechasUnicas = Object.keys(registrosPorDia).sort((a, b) => {
-        // Convertir las fechas a formato YYYYMMDD para comparación
-        const fechaA = a.split('/').reverse().join('');
-        const fechaB = b.split('/').reverse().join('');
-        return fechaB.localeCompare(fechaA);
-    });
+    // Obtener la fecha actual
+    const now = new Date();
+    const fechaHoy = now.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
 
-    // Mostrar los registros por cada fecha, ordenados de más reciente a más antigua
-    fechasUnicas.forEach(fecha => {
-        const liFecha = document.createElement('li');
-        liFecha.textContent = fecha;
-        liFecha.style.fontWeight = 'bold';
-        liFecha.style.marginTop = '10px';
-        listaRegistros.appendChild(liFecha);
-
-        // Ordenar los registros del día por hora (de mayor a menor)
-        registrosPorDia[fecha].sort((a, b) => {
-            const horaA = a.hora.split(':').join('');
-            const horaB = b.hora.split(':').join('');
-            return horaB.localeCompare(horaA);
-        });
-
-        // Mostrar cada registro en la lista
-        registrosPorDia[fecha].forEach(registro => {
-            const li = document.createElement('li');
-            li.textContent = `${registro.tipo} - ${registro.hora}`;
-            li.style.marginLeft = '20px';
-
-            // Aplicar clases según el tipo de registro
-            switch (registro.tipo) {
-                case 'Emergencia Negocio':
-                    li.classList.add('emergencia-negocio');
-                    break;
-                case 'Emergencia por Extorsión':
-                    li.classList.add('emergencia-extorsion');
-                    break;
-                case 'Emergencia Cuadrante':
-                    li.classList.add('emergencia-cuadrante');
-                    break;
-                case 'Emergencia a Conocido':
-                    li.classList.add('emergencia-conocido');
-                    break;
+    // Convertir las fechas a objetos Date para poder ordenarlas
+    const fechasOrdenadas = Object.keys(registrosPorDia)
+        .map(fechaStr => {
+            // Convertir la cadena de fecha a objeto Date
+            const partes = fechaStr.split(', ');
+            if (partes.length === 2) {
+                const [diaSemana, resto] = partes;
+                const [dia, mes, año] = resto.split('/');
+                return new Date(`${mes}/${dia}/${año}`);
             }
+            return new Date(); // Si el formato no es el esperado, usar fecha actual
+        })
+        .sort((a, b) => b - a); // Ordenar de más reciente a más antiguo
 
-            listaRegistros.appendChild(li);
-        });
+    // Mostrar los registros ordenados por fecha
+    fechasOrdenadas.forEach(fechaObj => {
+        const fechaStr = fechaObj.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' });
+        
+        if (registrosPorDia[fechaStr]) {
+            const liFecha = document.createElement('li');
+            liFecha.textContent = fechaStr === fechaHoy ? "Hoy" : fechaStr;
+            liFecha.style.fontWeight = 'bold';
+            liFecha.style.marginTop = '10px';
+            listaRegistros.appendChild(liFecha);
+
+            // Ordenar los registros del día por hora (de mayor a menor)
+            registrosPorDia[fechaStr].sort((a, b) => {
+                const horaA = a.hora.split(':').join('');
+                const horaB = b.hora.split(':').join('');
+                return horaB.localeCompare(horaA);
+            });
+
+            // Mostrar cada registro en la lista
+            registrosPorDia[fechaStr].forEach(registro => {
+                const li = document.createElement('li');
+                li.textContent = `${registro.tipo} - ${registro.hora}`;
+                li.style.marginLeft = '20px';
+
+                // Aplicar clases según el tipo de registro
+                switch (registro.tipo) {
+                    case 'Emergencia Negocio':
+                        li.classList.add('emergencia-negocio');
+                        break;
+                    case 'Emergencia por Extorsión':
+                        li.classList.add('emergencia-extorsion');
+                        break;
+                    case 'Emergencia Cuadrante':
+                        li.classList.add('emergencia-cuadrante');
+                        break;
+                    case 'Emergencia a Conocido':
+                        li.classList.add('emergencia-conocido');
+                        break;
+                }
+
+                listaRegistros.appendChild(li);
+            });
+        }
     });
 }
 
-// Función para agrupar registros por día
-function agruparRegistrosPorDia(registros) {
-    return registros.reduce((acc, registro) => {
-        const fecha = registro.fecha; // Asume que cada registro tiene una propiedad 'fecha'
-        if (!acc[fecha]) {
-            acc[fecha] = [];
-        }
-        acc[fecha].push(registro);
-        return acc;
-    }, {});
-}
+
 
 // Llamar a esta función al cargar la página para mostrar los registros existentes
 window.addEventListener('load', actualizarListaRegistros);
@@ -2874,7 +2892,6 @@ window.addEventListener('load', actualizarListaRegistros);
 
 
 
-// Función para mostrar/ocultar las gráficas
 // Función para mostrar/ocultar el contenedor de gráficas
 document.getElementById('toggleRegistrosButton').addEventListener('click', function() {
 
@@ -2903,40 +2920,37 @@ document.getElementById('toggleRegistrosButton').addEventListener('click', funct
     // Variables para almacenar las instancias de Chart
     let chartNegocio, chartCuadrante, chartExtorsion, chartConocido;
 
-    // Función para calcular porcentajes
     // Función para calcular porcentajes y conteos
-        function calcularPorcentajes() {
-            const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
-            
-            // Contar cada tipo de emergencia
-            const conteo = {
-                negocio: 0,
-                cuadrante: 0,
-                extorsion: 0,
-                conocido: 0
-            };
-            
-            registros.forEach(registro => {
-                if (registro.tipo.includes('Negocio')) conteo.negocio++;
-                else if (registro.tipo.includes('Cuadrante')) conteo.cuadrante++;
-                else if (registro.tipo.includes('Extorsión')) conteo.extorsion++;
-                else if (registro.tipo.includes('Conocido')) conteo.conocido++;
-            });
-            
-            // Calcular total
-            const total = conteo.negocio + conteo.cuadrante + conteo.extorsion + conteo.conocido;
-            
-            // Calcular porcentajes
-            return {
-                negocio: total > 0 ? Math.round((conteo.negocio / total * 100)) : 0,
-                cuadrante: total > 0 ? Math.round((conteo.cuadrante / total * 100)) : 0,
-                extorsion: total > 0 ? Math.round((conteo.extorsion / total * 100)) : 0,
-                conocido: total > 0 ? Math.round((conteo.conocido / total * 100)) : 0,
-                total: total,
-                conteo: conteo // Devolvemos también los conteos absolutos
-            };
-        }
+    function calcularPorcentajes() {
+    const registros = JSON.parse(localStorage.getItem('registrosActivacion')) || [];
+    
+    const conteo = {
+        negocio: 0,
+        cuadrante: 0,
+        extorsion: 0,
+        conocido: 0
+    };
+    
+    registros.forEach(registro => {
+        if (registro.tipo === 'Emergencia Negocio') conteo.negocio++;
+        else if (registro.tipo === 'Emergencia Cuadrante') conteo.cuadrante++;
+        else if (registro.tipo === 'Emergencia por Extorsión') conteo.extorsion++;
+        else if (registro.tipo === 'Emergencia a Conocido') conteo.conocido++;
+    });
+    
+    const total = conteo.negocio + conteo.cuadrante + conteo.extorsion + conteo.conocido;
+    
+    return {
+        negocio: total > 0 ? Math.round((conteo.negocio / total * 100)) : 0,
+        cuadrante: total > 0 ? Math.round((conteo.cuadrante / total * 100)) : 0,
+        extorsion: total > 0 ? Math.round((conteo.extorsion / total * 100)) : 0,
+        conocido: total > 0 ? Math.round((conteo.conocido / total * 100)) : 0,
+        total: total,
+        conteo: conteo
+    };
+}
 
+        
         // Función para crear/actualizar las gráficas
         function actualizarGraficas() {
             const data = calcularPorcentajes();
@@ -2949,13 +2963,6 @@ document.getElementById('toggleRegistrosButton').addEventListener('click', funct
             document.getElementById('porcentajeExtorsion').textContent = `${porcentajes.extorsion}%`;
             document.getElementById('porcentajeConocido').textContent = `${porcentajes.conocido}%`;
             
-            // Actualizar o crear etiquetas neón para los contadores
-            updateNeonCounter('donaNegocioWrapper', conteo.negocio, '#ffff00');
-            updateNeonCounter('donaCuadranteWrapper', conteo.cuadrante, '#00bfff');
-            updateNeonCounter('donaExtorsionWrapper', conteo.extorsion, '#ff00ff');
-            updateNeonCounter('donaConocidoWrapper', conteo.conocido, '#ff69b4');
-            
-                
             document.getElementById('totalActivaciones').textContent = `Activaciones: ${porcentajes.total}`;
             
             // Configuración común para las gráficas
@@ -3068,15 +3075,75 @@ document.getElementById('toggleRegistrosButton').addEventListener('click', funct
                 }
             });
 
-            // Agregar eventos hover a los wrappers
+            // Agregar eventos hover y clic a los wrappers
             const wrappers = document.querySelectorAll('.dona-wrapper');
             wrappers.forEach(wrapper => {
+                // Eventos hover
                 wrapper.addEventListener('mouseenter', function() {
                     this.classList.add('active');
                 });
                 
                 wrapper.addEventListener('mouseleave', function() {
                     this.classList.remove('active');
+                });
+                
+                // Evento clic para mostrar información detallada
+                wrapper.addEventListener('click', function() {
+                    // Obtener el tipo de emergencia según el wrapper
+                    let tipoEmergencia = '';
+                    let color = '';
+                    
+                    if (this.id === 'donaNegocioWrapper') {
+                        tipoEmergencia = 'Emergencia Negocio';
+                        color = '#ffff00';
+                    } else if (this.id === 'donaCuadranteWrapper') {
+                        tipoEmergencia = 'Emergencia Cuadrante';
+                        color = '#00bfff';
+                    } else if (this.id === 'donaExtorsionWrapper') {
+                        tipoEmergencia = 'Emergencia Extorsion';
+                        color = '#ff00ff';
+                    } else if (this.id === 'donaConocidoWrapper') {
+                        tipoEmergencia = 'Emergencia Conocido';
+                        color = '#ff69b4';
+                    }
+                    
+                    // Obtener conteo y porcentaje
+                    const conteo = data.conteo[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
+                    const porcentaje = porcentajes[tipoEmergencia.split(' ')[1].toLowerCase()] || 0;
+                    
+                    // Crear o actualizar el tooltip
+                    let tooltip = this.querySelector('.emergency-tooltip');
+                    if (!tooltip) {
+                        tooltip = document.createElement('div');
+                        tooltip.className = 'emergency-tooltip';
+                        this.appendChild(tooltip);
+                    }
+                    
+                    // Estilizar y posicionar el tooltip
+                    tooltip.innerHTML = `
+                        <strong>${tipoEmergencia}</strong><br>
+                        Activaciones: ${conteo}<br>
+                        Porcentaje: ${porcentaje}%
+                    `;
+                    tooltip.style.display = 'block';
+                    tooltip.style.position = 'absolute';
+                    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    tooltip.style.color = color;
+                    tooltip.style.padding = '10px';
+                    tooltip.style.borderRadius = '5px';
+                    tooltip.style.border = `1px solid ${color}`;
+                    tooltip.style.boxShadow = `0 0 10px ${color}`;
+                    tooltip.style.zIndex = '1000';
+                    tooltip.style.textAlign = 'center';
+                    tooltip.style.top = '50%';
+                    tooltip.style.left = '50%';
+                    tooltip.style.transform = 'translate(-50%, -50%)';
+                    tooltip.style.width = '150px';
+                    
+                    // Ocultar el tooltip después de 3 segundos
+                    setTimeout(() => {
+                        tooltip.style.display = 'none';
+                    }, 3000);
                 });
             });
         }
