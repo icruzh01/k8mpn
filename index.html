@@ -1572,39 +1572,6 @@ animation: neon-color-change-pink 2s infinite;
 
 
 
-
-/* Checar este codigo porque al parecer ya no esta activo */
-
-/* Estilo para la etiqueta neón de contador */
-.contador-neon {
-    display: none;
-    position: absolute;
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #00ffff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    /*text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;*/
-    /*box-shadow: 0 0 10px currentColor;*/
-    border: 1px solid currentColor;
-    z-index: 100;
-    /*animation: neon-pulse 1.5s infinite alternate;*/
-    transition: all 0.3s ease;
-}
-
-/* Ajustar posición para móviles */
-@media (max-width: 768px) {
-    .contador-neon {
-        right: -15px;
-        font-size: 1rem;
-        padding: 5px 8px;
-    }
-}
-
 /* Estilo mejorado para el número de activaciones */
 .graficas-total {
     position: relative; /* Cambiado de flex a relative */
@@ -1622,7 +1589,15 @@ animation: neon-color-change-pink 2s infinite;
     background-color: rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 10px currentColor;
 }
-
+/*Esto alinea verticalmente el contenedor .graficas-total*/
+.graficas-header {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
 /* Estilos para el tooltip (el cuadrdo al pulsar la gráfica) de emergencia */
 .emergency-tooltip {
