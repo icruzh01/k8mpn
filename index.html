@@ -534,12 +534,12 @@
             border: 1px solid #d4a017;
             padding: 20px;
             box-shadow: 0 0 20px #e8a317;
-            z-index: 1000;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-radius: 10px;
+            z-index: 1010;
         }   
 
         #scanQRButton {
@@ -608,7 +608,7 @@
             border: 2px solid #c20303;
             box-shadow: 0 0 10px #ff0000;
         }
-
+        /*Cuadro para agregar Giro*/
         .custom-giro-input {
             display: none;
             position: fixed;
@@ -621,7 +621,7 @@
             border: 1px solid #07edf5;
             padding: 20px;
             box-shadow: 0 0 20px #4ee2ec;
-            z-index: 1000;
+            z-index: 1010;
             text-align: center;
             border-radius: 10px;
         }
@@ -671,7 +671,7 @@
             border: 2px solid #d7159d;
             box-shadow: 0 0 10px #ec4ebd;
         }
-
+        /*Cuadro para agregar Nombre*/
         .custom-nombre-input {
             display: none;
             position: fixed;
@@ -684,7 +684,7 @@
             border: 1px solid #f30086;
             padding: 20px;
             box-shadow: 0 0 20px #f507dd;
-            z-index: 1000;
+            z-index: 1010;
             text-align: center;
             border-radius: 10px;
         }
@@ -734,7 +734,8 @@
             border: 2px solid #027e94;
             box-shadow: 0 0 10px #00d9ff;
         }
-
+        
+        /*Fondo destras de los input url, giro, nombre,...*/
         .overlay {
             display: none;
             position: fixed;
@@ -743,7 +744,7 @@
             width: 100%;
             height: 100%;
             background-color: rgb(0, 0, 0);
-            z-index: 999;
+            z-index: 1005;
         }
 
         /* Estilos para el contenedor del escáner con efecto glow */
@@ -817,7 +818,7 @@
             transform: scale(0.95);
         }
 
-        /* Estilo base para los botones (Tipos de Emergencia)*/
+        /* Estilo base para los botones (Tipos de Emergencia c5,cuadrante,extorsión, conocido)*/
         .custom-button {
             background-color: #000000;
             color: #FFFFFF;
@@ -827,7 +828,7 @@
             font-size: 10px;
             width: 70px;
             height: 40px;
-            margin-top: 20px;
+            margin-top: 5px;
             border: 2px solid rgb(65, 61, 61);
             cursor: pointer;
             display: flex;
@@ -1019,12 +1020,12 @@
             border: 1px solid #d4a017;
             padding: 20px;
             box-shadow: 0 0 20px #e8a317;
-            z-index: 1000;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-radius: 10px;
+            z-index: 1010;
         }
 
         .custom-tel-cuadrante-input input {
@@ -1074,9 +1075,9 @@
             border: 1px solid #037787;
             padding: 20px;
             box-shadow: 0 0 20px #00d9ff;
-            z-index: 1000;
             text-align: center;
             border-radius: 10px;
+            z-index: 1010;
         }
 
         .custom-tel-extorsion-input input {
@@ -1138,9 +1139,9 @@
             border: 1px solid #318c00;
             padding: 20px;
             box-shadow: 0 0 20px #59ff00;
-            z-index: 1000;
             text-align: center;
             border-radius: 10px;
+            z-index: 1010;
         }
 
         .custom-tel-conocido-input input {
@@ -1194,7 +1195,7 @@
             position: fixed;
             bottom: 40px;
             right: 20px;
-            z-index: 998;
+            z-index: 1001;
         }
 
         .hamburger-icon {
@@ -1253,7 +1254,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7); /* Fondo opaco */
-            z-index: 998; /* Asegurar que esté por encima de otros elementos */
+            z-index: 1001; /* Asegurar que esté por encima de otros elementos */
         }
 
         .registros-container {
