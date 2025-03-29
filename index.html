@@ -83,20 +83,24 @@
         /* Resto de los estilos (mantén el resto del CSS sin cambios) */
         header {
             width: 100%;
-            /*background-color: #000000;*/
+            height: 3%;
+            /*background-color: #bd1313;*/
             color: #b4b4b4;
             text-align: center;
             padding: 0;
-        }
+            z-index: 1000;
+            
+        }   
         
-        header h1 {
+        /*header h1 {
             width: 100%;
-            /*background-color: #000000;*/
-            color: #b4b4b4;
+            background-color: #44ff00;
+            color: #ef0303;
             text-align: center;
             padding: 20px 0;
             margin: 0;
-        }
+            z-index: 2000;
+        } */
         .codigos {
             margin-bottom: 10px;
             border: 0;
@@ -174,7 +178,7 @@
             }
         }
         
-        header h1.title_1 {
+        h1.title_1 {
             padding: 0 0;
             font-family: sans-serif;
             text-transform:none;
@@ -190,9 +194,9 @@
             z-index: 1000;
         }
 
-        header h1.title_2 {
+        h1.title_2 {
             margin: 0;
-            margin-bottom: 150px;
+            margin-bottom: 30px;
             padding: 0 0;
             font-family: sans-serif;
             text-transform: lowercase;
@@ -208,19 +212,41 @@
             z-index: 1000; 
         }
 
-        header h1.giroNegocio {
-    margin: 0 0 5px; /* Cambiado de margin: 0 0 10px */
-    padding: 0;
-    font-size: 30px;
-    color: #ffffff;
-}
+        h1.giroNegocio {
+            margin: 50px;
+            margin-bottom: 11px;
+            padding: 0 0;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            position: relative;
+            font-weight: 500;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            z-index: 1000;
+        }
 
-header h1.nombreNegocio {
-    margin: 0; /* Cambiado de margin: 0 0 10px */
-    padding: 0;
-    font-size: 30px;
-    color: #ffffff;
-}
+        h1.nombreNegocio {
+            margin: 0;
+            margin-bottom: 20px;
+            padding: 0 0;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            position: relative;
+            font-weight: 500;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            z-index: 1000;
+        }
 
         /* Nuevo estilo para el botón 3D */
         #emergencyButtonContainer {
@@ -230,6 +256,7 @@ header h1.nombreNegocio {
             perspective: 1000px;
             margin: 40px;
             margin-bottom: 60px;
+            z-index: 1000;
         }
 
         #emergencyButton3D {
@@ -303,7 +330,7 @@ header h1.nombreNegocio {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;  /* Detrás de todo el contenido */
+    z-index: 1;  /* Detrás de todo el contenido */
     background-color: #000000;  /* Fondo negro */
     background-image: url('');  /* Puedes añadir una imagen de fondo si lo deseas */
     background-size: cover;
@@ -770,26 +797,7 @@ header h1.nombreNegocio {
             justify-content: center;
             gap: 10px; /* Espacio entre los botones */
             margin-top: 20px; /* Espacio debajo del botón de emergencia */
-        }
-
-        .custom-button {
-            background-color: #000000;
-            color: #FFFFFF;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 10px;
-            width: 80px;
-            height: 40px;
-            border: 2px solid rgb(65, 61, 61);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-            box-sizing: border-box;
-            box-shadow: 3px 3px rgb(157, 151, 151);
+            z-index: 1000;
         }
 
         .custom-button:active {
@@ -852,6 +860,7 @@ header h1.nombreNegocio {
             margin: 40px;
             margin-bottom: 60px;
             animation: neon-color-change-blue 2s infinite;
+            z-index: 1000;
         }
 
         @keyframes neon-color-change-blue {
@@ -885,6 +894,7 @@ header h1.nombreNegocio {
             margin: 40px;
             margin-bottom: 60px;
             animation: neon-color-change-green 2s infinite;
+            z-index: 1000;
         }
 
         #emergenciaExtorsionButton::before {
@@ -928,6 +938,7 @@ header h1.nombreNegocio {
         margin: 40px;
         margin-bottom: 60px;
         animation: neon-color-change-pink 2s infinite;
+        z-index: 1000;
         }
 
         @keyframes neon-color-change-pink {
@@ -1193,6 +1204,7 @@ header h1.nombreNegocio {
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             box-sizing: border-box;
             box-shadow: 3px 3px rgb(157, 151, 151);
+            z-index: 1000;
         }
 
         #toggleRegistrosButton:active {
@@ -1595,14 +1607,26 @@ header h1.nombreNegocio {
     <div id="particles-js"></div>
 
     <header>
-        <hr class="codigos">
-        <h1 class="title_1">EMERGENCIA</h1>
-        <h1 class="title_2">k8</h1>
-               
-        <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
-        <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
+        <hr class="codigos"> 
     </header>
-   
+  
+    
+<div>
+    <h1 class="title_1">EMERGENCIA</h1>
+    <h1 class="title_2">k8</h1>
+</div>
+
+<div>
+
+    <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
+    <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE DEL NEGOCIO"</h1>
+
+</div>
+
+
+
+
+
     <!-- Contenedor del botón de emergencia 3D -->
     <div id="emergencyButtonContainer">
         <div id="emergencyButton3D">
