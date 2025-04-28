@@ -916,7 +916,7 @@
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.9),
                 0 0 20px rgba(255, 0, 0, 0.7);
     border-radius: 100%;
-    animation: laser-scan 1.5s infinite alternate ease-in-out;
+    animation: laser-scan 2s infinite alternate ease-in-out;
     z-index: 10001;
     display: none;
     top: 10%;
@@ -1758,6 +1758,7 @@
         .hamburger-icon:hover {
             background-color: #00ffff;
             color: #000000;
+            border: 1px solid #000000;
             transform: scale(1.1);
             box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
         }
@@ -2232,11 +2233,15 @@
             z-index: 1015;
         }
 
-        .custom-alert-c5 p {
-            margin: 0 0 20px;
-            color: #ffffff;
-        }
-
+     
+        .custom-alert-c5 video {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #000;
+}
         .custom-alert-c5 button {
             background-color: #ff3838;
             color: #000000;
@@ -3140,7 +3145,11 @@
 
             <!-- Alerta personalizada para C5 -->
             <div id="customAlertC5" class="custom-alert-c5">
-                <p id="alertC5Message">Podrás enviar una alerta a través de datos o internet.</p>
+                <video id="c5Video" width="280" height="160" autoplay loop muted playsinline>
+                    <!-- Ruta relativa desde la carpeta del proyecto -->
+                    <source src="videos/procesoMPN.mp4" type="video/mp4">
+                    Tu navegador no soporta videos HTML5.
+                </video>
                 <button id="alertC5CloseButton">Entendido</button>
             </div>
 
@@ -3427,21 +3436,27 @@
 
         // Función para mostrar la alerta a C5
         function showCustomAlertC5() {
-            const showCustomAlertC5 = document.getElementById('customAlertC5');
-            const overlay = document.getElementById('overlay');
-            
-            showCustomAlertC5.style.display = 'flex';
-            overlay.style.display = 'block';
-        }
+    const customAlertC5 = document.getElementById('customAlertC5');
+    const overlay = document.getElementById('overlay');
+    const video = document.getElementById('c5Video');
+    
+    customAlertC5.style.display = 'flex';
+    overlay.style.display = 'block';
+    
+    // Reiniciar el video si ya estaba reproduciéndose
+    video.currentTime = 0;
+    video.play().catch(e => console.log("Error al reproducir video:", e));
+}
 
-        // Función para ocultar la alerta a C5
-        function hideCustomAlertC5() {
-            const customAlertC5 = document.getElementById('customAlertC5');
-            const overlay = document.getElementById('overlay');
-            
-            customAlertC5.style.display = 'none';
-            overlay.style.display = 'none';
-        }
+function hideCustomAlertC5() {
+    const customAlertC5 = document.getElementById('customAlertC5');
+    const overlay = document.getElementById('overlay');
+    const video = document.getElementById('c5Video');
+    
+    customAlertC5.style.display = 'none';
+    overlay.style.display = 'none';
+    video.pause();
+}
 
         // Evento para cerrar la alerta a Conocido
         document.getElementById('alertC5CloseButton').addEventListener('click', hideCustomAlertC5);
