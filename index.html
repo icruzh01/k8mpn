@@ -2212,51 +2212,63 @@
         
         /*------------- Estilos para CONSEJO del Botón C5 -----------*/
         .custom-alert-c5 {
-            display: none;
-            position: fixed;
-            width: 300px;
-            height: auto;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #000000;
-            border: 1px solid #ff0000;
-            padding: 20px;
-            box-shadow: 0 0 20px #ff3f3f;
-            text-align: center;
-            font-size: 17.5px;
-            line-height: 1.5;
-            border-radius: 10px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1015;
-        }
+        display: none;
+        position: fixed;
+        width: 100%; /* Cambiado de 300px a 100% */
+        height: 100%; /* Cambiado de auto a 100% */
+        top: 0;
+        left: 0;
+        transform: none; /* Eliminado translate */
+        background-color: #000000;
+        border: none; /* Eliminado el borde */
+        padding: 0; /* Eliminado el padding */
+        box-shadow: none; /* Eliminado la sombra */
+        text-align: center;
+        font-size: 17.5px;
+        line-height: 1.5;
+        border-radius: 0; /* Eliminado el border-radius */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1030; /* Aumentado el z-index para estar sobre todo */
+    }
 
-     
-        .custom-alert-c5 video {
-    width: 100%;
-    height: auto;
-    max-height: 160px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background-color: #000;
-}
-        .custom-alert-c5 button {
-            background-color: #ff3838;
-            color: #000000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 15px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+    /* Estilos para el video a pantalla completa */
+    .custom-alert-c5 video {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* Mantiene la relación de aspecto */
+        background-color: #000;
+    }
 
-        .custom-alert-c5 button:hover {
-            background-color: #fb5959;
-            box-shadow: 0 0 10px #ff0000;
-        }
+    /* Estilos para el botón en pantalla completa */
+    .custom-alert-c5 button {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #ff3838;
+        color: #000000;
+        border: none;
+        padding: 15px 30px; /* Aumentado el padding */
+        border-radius: 15px;
+        font-size: 18px; /* Aumentado el tamaño de fuente */
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 1031; /* Para que esté sobre el video */
+    }
+
+    .custom-alert-c5 button:hover {
+        background-color: #fb5959;
+        box-shadow: 0 0 15px #ff0000;
+    }
+
+    /* Ocultar el overlay cuando el video está en pantalla completa */
+    .custom-alert-c5 ~ .overlay {
+        display: none !important;
+    }
     
         /*--------- Consejos en Casos de Extorsión ------------------*/
         .custom-alert-extorsion {
@@ -3145,12 +3157,12 @@
 
             <!-- Alerta personalizada para C5 -->
             <div id="customAlertC5" class="custom-alert-c5">
-                <video id="c5Video" width="280" height="160" autoplay loop muted playsinline>
+                <video id="c5Video" width="100%" height="100%" autoplay loop muted playsinline>
                     <!-- Ruta relativa desde la carpeta del proyecto -->
                     <source src="videos/procesoMPN.mp4" type="video/mp4">
                     Tu navegador no soporta videos HTML5.
                 </video>
-                <button id="alertC5CloseButton">Entendido</button>
+                <button id="alertC5CloseButton">Cerrar</button>
             </div>
 
 
