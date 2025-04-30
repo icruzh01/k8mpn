@@ -870,153 +870,146 @@
 
         /* Estilos para el contenedor del escáner con efecto glow */
         /*----------------  S C A N N E R ---------------------------------------------------*/
-#qrScannerContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Asegurar que esté por encima de todo */
-    margin: 0;
-    padding: 0;
-}
+        #qrScannerContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Asegurar que esté por encima de todo */
+            margin: 0;
+            padding: 0;
+        }
 
-/* Estilos para el video del escáner */
-#qrScanner {
-    position: relative;
-    width: 90%; /* Usar porcentaje para mejor adaptación */
-    max-width: 400px; /* Máximo ancho */
-    height: auto;
-    aspect-ratio: 1/1; /* Mantener relación cuadrada */
-    border: 2px solid rgb(0, 94, 255);
-    object-fit: cover;
-    background-color: black;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(1, 104, 133, 0.8), 
-                0 0 20px rgba(0, 112, 211, 0.8), 
-                0 0 30px rgba(1, 145, 255, 0.8);
-    z-index: 10000;
-}
+        /* Estilos para el video del escáner */
+        #qrScanner {
+            position: relative;
+            width: 90%; /* Usar porcentaje para mejor adaptación */
+            max-width: 400px; /* Máximo ancho */
+            height: auto;
+            aspect-ratio: 1/1; /* Mantener relación cuadrada */
+            border: 2px solid rgb(0, 94, 255);
+            object-fit: cover;
+            background-color: black;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(1, 104, 133, 0.8), 
+                        0 0 20px rgba(0, 112, 211, 0.8), 
+                        0 0 30px rgba(1, 145, 255, 0.8);
+            z-index: 10000;
+        }
 
-/* Efecto láser para el escáner QR */
-#qrLaser {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 3px;
-    background: linear-gradient(to right, 
-        rgba(0, 255, 255, 0), 
-        rgba(255, 0, 0, 0.9), 
-        rgba(0, 255, 255, 0));
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.9),
-                0 0 20px rgba(255, 0, 0, 0.7);
-    border-radius: 100%;
-    animation: laser-scan 2s infinite alternate ease-in-out;
-    z-index: 10001;
-    display: none;
-    top: 10%;
-}
+        /* Efecto láser para el escáner QR */
+        #qrLaser {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 3px;
+            background: linear-gradient(to right, 
+                rgba(0, 255, 255, 0), 
+                rgba(255, 0, 0, 0.9), 
+                rgba(0, 255, 255, 0));
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.9),
+                        0 0 20px rgba(255, 0, 0, 0.7);
+            border-radius: 100%;
+            animation: laser-scan 2s infinite alternate ease-in-out;
+            z-index: 10001;
+            display: none;
+            top: 10%;
+        }
 
-/* Animación del láser con márgenes */
-@keyframes laser-scan {
-    0% {
-        top: 30%;
-        opacity: 0.8;
-    }
-    100% {
-        top: 70%;
-        opacity: 1;
-    }
-}
+        /* Animación del láser con márgenes */
+        @keyframes laser-scan {
+            0% {
+                top: 30%;
+                opacity: 0.8;
+            }
+            100% {
+                top: 70%;
+                opacity: 1;
+            }
+        }
 
-/* Estilos para el botón de cerrar el escáner */
-#closeScannerButton {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ff0000;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    display: none;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-    z-index: 10002;
-    font-weight: bold;
-}
+        /* Estilos para el botón de cerrar el escáner */
+        #closeScannerButton {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            z-index: 10002;
+            font-weight: bold;
+        }
 
-#closeScannerButton:hover {
-    background-color: #cc0000;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 1);
-}
+        #closeScannerButton:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 1);
+        }
 
+        /* Estilos para el loader del escáner QR */
+        .qr-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10002; /* Por encima del video pero debajo del botón cerrar */
+            display: none; /* Inicialmente oculto */
+        }
 
-/* Estilos para el loader del escáner QR */
-.qr-loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10002; /* Por encima del video pero debajo del botón cerrar */
-    display: none; /* Inicialmente oculto */
-}
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
 
-.loader-content {
-    text-align: center;
-    color: white;
-}
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #00bfff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 15px;
+        }
 
-.loader-spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #00bfff;
-    animation: spin 1s ease-in-out infinite;
-    margin: 0 auto 15px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-
-/* Efecto de resplandor azul neón para el input */
-.neon-glow {
-    animation: neon-glow-effect 1.5s ease-in-out;
-    box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
-}
-
-@keyframes neon-glow-effect {
-    0% {
-        box-shadow: 0 0 5px #00bfff;
-    }
-    50% {
-        box-shadow: 0 0 20px #00bfff, 0 0 30px #00bfff;
-    }
-    100% {
-        box-shadow: 0 0 5px #00bfff;
-    }
-}
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
 
+        /* Efecto de resplandor azul neón para el input */
+        .neon-glow {
+            animation: neon-glow-effect 1.5s ease-in-out;
+            box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+        }
 
-
-
-
+        @keyframes neon-glow-effect {
+            0% {
+                box-shadow: 0 0 5px #00bfff;
+            }
+            50% {
+                box-shadow: 0 0 20px #00bfff, 0 0 30px #00bfff;
+            }
+            100% {
+                box-shadow: 0 0 5px #00bfff;
+            }
+        }
 
         /* Estilos para los botones "Guardar", "Borrar" y "Cancelar" que se encuentran en los diferentes inputs ---*/
         .button-container {
@@ -1739,8 +1732,8 @@
         }
 
         .hamburger-icon {
-            background-color: #ffffff70;
-            color: #000000;
+            background-color: #000000;
+            color: #ffffff;
             border-radius: 50%;
             width:35px;
             height: 35px;
@@ -1752,12 +1745,13 @@
             line-height: 1;
             transition: all 0.3s;
             padding: 0;
-            border: 1px solid #939393;
+            /*border: 1px solid #000000;*/
+            box-shadow: 0 0 15px #000000;
         }
 
         .hamburger-icon:hover {
-            background-color: #00ffff;
-            color: #000000;
+            background-color: #000000;
+            color: #00ffff;
             border: 1px solid #000000;
             transform: scale(1.1);
             box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
@@ -1908,8 +1902,8 @@
             left: 10px; /* Para posicionar a la izquierda */
             border-radius: 50%;
             border: 1px solid #7b7b7b;
-            background-color: #ffffff70;
-            color: #000000;
+            background-color: #000000;
+            color: #ffffff;
             width: 35px;
             height: 35px;
             align-items: center;
@@ -1920,14 +1914,15 @@
             font-size: 30px;
             line-height: 1;
             padding: 0;
+            box-shadow: 0 0 15px #000000;
             z-index: 1000;
         }
 
         #toggleRegistrosButton:hover {
             background-color: #000000;
-            color: #ffffff;
+            color: #00ffff;
             transform: scale(1.1);
-            box-shadow: 0 0 15px #000000, 0 0 30px #000000;
+            box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
         }
         
         #toggleRegistrosButton:active, #toggleRegistrosButton.active {
@@ -2231,44 +2226,44 @@
         justify-content: center;
         align-items: center;
         z-index: 1030; /* Aumentado el z-index para estar sobre todo */
-    }
+        }
 
-    /* Estilos para el video a pantalla completa */
-    .custom-alert-c5 video {
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain; /* Mantiene la relación de aspecto */
-        background-color: #000;
-    }
+        /* Estilos para el video de C5 */
+        .custom-alert-c5 video {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Mantiene la relación de aspecto */
+            background-color: #000;    
+        }
 
-    /* Estilos para el botón en pantalla completa */
-    .custom-alert-c5 button {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #ff3838;
-        color: #000000;
-        border: none;
-        padding: 15px 30px; /* Aumentado el padding */
-        border-radius: 15px;
-        font-size: 18px; /* Aumentado el tamaño de fuente */
-        cursor: pointer;
-        transition: all 0.3s;
-        z-index: 1031; /* Para que esté sobre el video */
-    }
+        /* Estilos para el botón en pantalla completa */
+        .custom-alert-c5 button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff3838;
+            color: #000000;
+            border: none;
+            padding: 15px 30px; /* Aumentado el padding */
+            border-radius: 15px;
+            font-size: 18px; /* Aumentado el tamaño de fuente */
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1031; /* Para que esté sobre el video */
+        }
 
-    .custom-alert-c5 button:hover {
-        background-color: #fb5959;
-        box-shadow: 0 0 15px #ff0000;
-    }
+        .custom-alert-c5 button:hover {
+            background-color: #fb5959;
+            box-shadow: 0 0 15px #ff0000;
+        }
 
-    /* Ocultar el overlay cuando el video está en pantalla completa */
-    .custom-alert-c5 ~ .overlay {
-        display: none !important;
-    }
+        /* Ocultar el overlay cuando el video está en pantalla completa */
+        .custom-alert-c5 ~ .overlay {
+            display: none !important;
+        }
     
         /*--------- Consejos en Casos de Extorsión ------------------*/
         .custom-alert-extorsion {
@@ -2638,11 +2633,6 @@
             100% { transform: rotate(360deg); }
         }
 
-
-
-
-
-
         /*----MESSAGE_3 ----------------------------------------*/
         .coordenadas-message_3 {
             display: none;
@@ -2653,9 +2643,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #000000;
-            border: 1px solid #daa520;
+            border: 1px solid #00ffff;
             padding: 20px;
-            box-shadow: 0 0 20px #daa520;
+            box-shadow: 0 0 20px #00ffff;
             text-align:left;
             font-size: 17.5px;
             line-height: 1.5;
@@ -2675,13 +2665,13 @@
             font-size: 1.4rem; /* Tamaño aún más grande para el título */
             display: block; /* Hacer que el título esté en su propia línea */
             margin-bottom: 10px; /* Espacio después del título */
-            color: red;
+            color: #ffffff;
             text-transform:uppercase;
             text-align: center;
         }
 
         .coordenadas-message_3 button {
-            background-color: #daa520;
+            background-color: #ff3838;
             color: #000000;
             border: none;
             padding: 10px 20px;
@@ -2692,16 +2682,9 @@
         }
 
         .coordenadas-message_3 button:hover {
-            background-color: #ffd700;
-            box-shadow: 0 0 10px #ffd700;
+            background-color: #fb5959;
+            box-shadow: 0 0 10px #ff0000;
         }
-
-
-
-
-
-
-
 
         /*--------------- Estilo para el marcador arrastrable ------------------------*/
         .ubicacion-marker {
@@ -2898,7 +2881,6 @@
                 transform: scale(1);
             }
         }
-
 
         /* Estilo para el botón de CENTRAR MAPA - Checar si se ocupan estos estilos ya que los esta tomando directamente en el java script */
        
@@ -3448,27 +3430,27 @@
 
         // Función para mostrar la alerta a C5
         function showCustomAlertC5() {
-    const customAlertC5 = document.getElementById('customAlertC5');
-    const overlay = document.getElementById('overlay');
-    const video = document.getElementById('c5Video');
-    
-    customAlertC5.style.display = 'flex';
-    overlay.style.display = 'block';
-    
-    // Reiniciar el video si ya estaba reproduciéndose
-    video.currentTime = 0;
-    video.play().catch(e => console.log("Error al reproducir video:", e));
-}
+            const customAlertC5 = document.getElementById('customAlertC5');
+            const overlay = document.getElementById('overlay');
+            const video = document.getElementById('c5Video');
+            
+            customAlertC5.style.display = 'flex';
+            overlay.style.display = 'block';
+            
+            // Reiniciar el video si ya estaba reproduciéndose
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Error al reproducir video:", e));
+        }
 
-function hideCustomAlertC5() {
-    const customAlertC5 = document.getElementById('customAlertC5');
-    const overlay = document.getElementById('overlay');
-    const video = document.getElementById('c5Video');
-    
-    customAlertC5.style.display = 'none';
-    overlay.style.display = 'none';
-    video.pause();
-}
+        function hideCustomAlertC5() {
+            const customAlertC5 = document.getElementById('customAlertC5');
+            const overlay = document.getElementById('overlay');
+            const video = document.getElementById('c5Video');
+            
+            customAlertC5.style.display = 'none';
+            overlay.style.display = 'none';
+            video.pause();
+        }
 
         // Evento para cerrar la alerta a Conocido
         document.getElementById('alertC5CloseButton').addEventListener('click', hideCustomAlertC5);
@@ -6156,6 +6138,95 @@ function hideCustomAlertC5() {
             return masked;
         }
 
+
+
+
+
+
+
+     // Ocultar botones después de 8 segundos al cargar la aplicación
+let hideButtonsTimeout;
+
+function startHideButtonsTimer() {
+    // Limpiar timeout existente si hay uno
+    if (hideButtonsTimeout) {
+        clearTimeout(hideButtonsTimeout);
+    }
+    
+    // Establecer nuevo timeout para ocultar después de 8 segundos
+    hideButtonsTimeout = setTimeout(() => {
+        // Solo ocultar si el menú no está abierto
+        if (document.getElementById('menuOptions').style.display !== 'block') {
+            hideButtons();
+        }
+    }, 6000);
+}
+
+function hideButtons() {
+    document.getElementById('theme-toggle').style.display = 'none';
+    document.getElementById('hamburgerMenu').style.display = 'none';
+    document.getElementById('toggleRegistrosButton').style.display = 'none';
+}
+
+function showButtons() {
+    document.getElementById('theme-toggle').style.display = 'flex';
+    document.getElementById('hamburgerMenu').style.display = 'block';
+    document.getElementById('toggleRegistrosButton').style.display = 'flex';
+}
+
+// Evento de doble clic en el mapa para mostrar los botones
+document.getElementById('map').addEventListener('dblclick', function() {
+    showButtons();
+    // Reiniciar el temporizador para ocultar después de 8 segundos
+    startHideButtonsTimer();
+});
+
+// Modificar la función toggleMenu para manejar la visibilidad de los botones
+function toggleMenu() {
+    const menuOptions = document.getElementById('menuOptions');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+        menuOverlay.style.display = 'none';
+        // Ocultar botones después de cerrar el menú
+        startHideButtonsTimer();
+    } else {
+        menuOptions.style.display = 'block';
+        menuOverlay.style.display = 'block';
+        // Mostrar botones cuando el menú está abierto
+        showButtons();
+        // No ocultar automáticamente mientras el menú está abierto
+        clearTimeout(hideButtonsTimeout);
+    }
+}
+
+// Modificar el evento click fuera del menú para ocultar los botones
+document.addEventListener('click', function(event) {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const menuOptions = document.getElementById('menuOptions');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (!hamburgerMenu.contains(event.target)) {
+        menuOptions.style.display = 'none';
+        menuOverlay.style.display = 'none';
+        // Ocultar botones después de cerrar el menú
+        startHideButtonsTimer();
+    }
+});
+
+// Iniciar el temporizador al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    startHideButtonsTimer();
+    
+    // También ocultar botones cuando se cierra el menú seleccionando una opción
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Ocultar botones después de seleccionar una opción
+            startHideButtonsTimer();
+        });
+    });
+});   
     </script>   
 </body>
 </html>
