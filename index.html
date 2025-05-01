@@ -1528,7 +1528,7 @@
             display: none;
             position: fixed;
             width: 250px;
-            height: 100px;
+            height: 130px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -1597,7 +1597,7 @@
             display: none;
             position: fixed;
             width: 250px;
-            height: 100px;
+            height: 130px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -1664,7 +1664,7 @@
             display: none;
             position: fixed;
             width: 250px;
-            height: 100px;
+            height: 130px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -1740,12 +1740,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size:29px;
+            font-size:23px;
             cursor: pointer;
             line-height: 1;
             transition: all 0.3s;
             padding: 0;
-            /*border: 1px solid #000000;*/
+            border: 1px solid #7b7b7b;
             box-shadow: 0 0 15px #000000;
         }
 
@@ -1904,6 +1904,7 @@
             border: 1px solid #7b7b7b;
             background-color: #000000;
             color: #ffffff;
+            rotate: 90deg;
             width: 35px;
             height: 35px;
             align-items: center;
@@ -1930,9 +1931,9 @@
             border-color: #ffffff;
             transform: scale(0.95);
         }
-
+        /*------------Estilos para Tipos de Registros de Activación ---------------------*/
         .emergencia-negocio {
-            color: rgb(211, 0, 0);
+            color: #d30000;
         }
 
         .emergencia-extorsion {
@@ -2985,6 +2986,118 @@
             opacity: 0;
         }
 
+
+
+
+
+
+
+
+        /*------------------ Estilos para el modal de condiciones de uso ------------------*/
+.terms-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1050;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.terms-content {
+    background-color: #000000;
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    color: #ffffff;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+.terms-title {
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.terms-text {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.terms-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.terms-text::-webkit-scrollbar-thumb {
+    background-color: #00ffff;
+    border-radius: 5px;
+}
+
+.terms-accept {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.terms-checkbox {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: #00ffff;
+}
+
+.terms-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.terms-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.terms-accept-button {
+    background-color: #00bfff;
+    color: #000;
+}
+
+.terms-accept-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.terms-accept-button:not(:disabled):hover {
+    background-color: #0080ff;
+}
+
+.terms-decline-button {
+    background-color: #ff5555;
+    color: #000;
+}
+
+.terms-decline-button:hover {
+    background-color: #ff0000;
+}
+
+
+
     </style>
     
 </head>
@@ -2995,231 +3108,234 @@
             <div id="map"></div>
         </div>
 
-            <!-- Botón para cambiar el tema -->
-            <button id="theme-toggle" title="Cambiar modo día/noche">🌙</button>
+        <!-- Botón para cambiar el tema -->
+        <button id="theme-toggle" title="Cambiar modo día/noche">🌙</button>
 
 
-            <!-- Mensaje inicial cuando abres la app -->
-            <div id="initialMessageContainer">
-                <!-- Contenido del mensaje inicial -->
-                <div id="initialMessageContent">
-                    <hr class="codigos">EMERGENCIA<br>k8
-                </div>
+        <!-- Mensaje inicial cuando abres la app -->
+        <div id="initialMessageContainer">
+            <!-- Contenido del mensaje inicial -->
+            <div id="initialMessageContent">
+                <hr class="codigos">EMERGENCIA<br>k8
             </div>
+        </div>
 
-            <!-- Resto del contenido de la página -->
-            <div id="overlay" class="overlay"></div>
+        <!-- Resto del contenido de la página -->
+        <div id="overlay" class="overlay"></div>
 
-            <!-- Overlay para el menú -->
-            <div id="menuOverlay" class="menu-overlay"></div>
+        <!-- Overlay para el menú -->
+        <div id="menuOverlay" class="menu-overlay"></div>
 
-            <!-- Overlay para los registros de activación -->
-            <div id="registrosOverlay" class="registros-overlay"></div>
+        <!-- Overlay para los registros de activación -->
+        <div id="registrosOverlay" class="registros-overlay"></div>
 
 
-            <header>
-                <hr class="codigos">
-                <h1 class="title_1">EMERGENCIA k8</h1>
-            </header>
+        <header>
+            <hr class="codigos">
+            <h1 class="title_1">EMERGENCIA k8</h1>
+        </header>
 
             
-            <div>
-                <!--<h1 class="title_1">EMERGENCIA k8</h1>-->
-                <h1 class="title_2">.</h1>
+        <div>
+            <!--<h1 class="title_1">EMERGENCIA k8</h1>-->
+            <h1 class="title_2">.</h1>
+        </div>
+
+        <div>
+
+            <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
+            <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE"</h1>
+
+        </div>
+
+        <!-- Contenedor del botón de emergencia 3D -->
+        <div id="emergencyButtonContainer">
+            <div id="emergencyButton3D">
+                <div class="button-face button-front">NEGOCIO</div>
+                <div class="button-face button-back">EMERGENCIA</div>
+                <div class="button-face button-side"></div>
+                <div class="button-face button-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
+                <div class="button-face button-top"></div>
+                <div class="button-face button-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
             </div>
+        </div>
+        
+        <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
+        <!-- <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button> -->
 
-            <div>
-
-                <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
-                <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE"</h1>
-
+        <!-- Contenedor del botón de emergencia 3D para Cuadrante -->
+        <div id="emergencyCuadranteButtonContainer">
+            <div id="emergenciaCuadranteButton3D">
+                <div class="buttonCuadrante-face buttonCuadrante-front">CUADRANTE<br>NEGOCIO</div>
+                <div class="buttonCuadrante-face buttonCuadrante-back">EMERGENCIA</div>
+                <div class="buttonCuadrante-face buttonCuadrante-side"></div>
+                <div class="buttonCuadrante-face buttonCuadrante-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
+                <div class="buttonCuadrante-face buttonCuadrante-top"></div>
+                <div class="buttonCuadrante-face buttonCuadrante-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
             </div>
+        </div>
 
-            <!-- Contenedor del botón de emergencia 3D -->
-            <div id="emergencyButtonContainer">
-                <div id="emergencyButton3D">
-                    <div class="button-face button-front">NEGOCIO</div>
-                    <div class="button-face button-back">EMERGENCIA</div>
-                    <div class="button-face button-side"></div>
-                    <div class="button-face button-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
-                    <div class="button-face button-top"></div>
-                    <div class="button-face button-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+        <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
+        <!-- <button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsión</button>-->
+        
+        <!-- Contenedor del botón de emergencia 3D para Extorsión -->
+        <div id="emergencyExtorsionButtonContainer">
+            <div id="emergenciaExtorsionButton3D">
+                <div class="buttonExtorsion-face buttonExtorsion-front">DENUNCIAR<br>EXTORSIÓN</div>
+                <div class="buttonExtorsion-face buttonExtorsion-back">EMERGENCIA</div>
+                <div class="buttonExtorsion-face buttonExtorsion-side"></div>
+                <div class="buttonExtorsion-face buttonExtorsion-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
+                <div class="buttonExtorsion-face buttonExtorsion-top"></div>
+                <div class="buttonExtorsion-face buttonExtorsion-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+            </div>
+        </div>
+
+
+        <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
+        <!--<button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>-->
+
+        <!-- Contenedor del botón de emergencia 3D para Conocido -->
+        <div id="emergencyConocidoButtonContainer">
+            <div id="emergenciaConocidoButton3D">
+                <div class="buttonConocido-face buttonConocido-front">LLAMAR A<br>CONOCIDO</div>
+                <div class="buttonConocido-face buttonConocido-back">EMERGENCIA</div>
+                <div class="buttonConocido-face buttonConocido-side"></div>
+                <div class="buttonConocido-face buttonConocido-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
+                <div class="buttonConocido-face buttonConocido-top"></div>
+                <div class="buttonConocido-face buttonConocido-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+            </div>
+        </div>
+
+        <!-- botones debajo del botón de emergencia y Contenedores de ayuda para los botones -->
+        <div class="button-containerTipoEmergencias">
+            <div class="button-with-help">
+                <button id="c5Button" class="custom-button" disabled>C5</button>
+                <div id="c5HelpContainer" class="help-container" style="display: flex;">
+                    <div id="c5Help" class="help-icon">!</div>
                 </div>
             </div>
             
-            <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
-            <!-- <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button> -->
-
-            <!-- Contenedor del botón de emergencia 3D para Cuadrante -->
-            <div id="emergencyCuadranteButtonContainer">
-                <div id="emergenciaCuadranteButton3D">
-                    <div class="buttonCuadrante-face buttonCuadrante-front">CUADRANTE<br>NEGOCIO</div>
-                    <div class="buttonCuadrante-face buttonCuadrante-back">EMERGENCIA</div>
-                    <div class="buttonCuadrante-face buttonCuadrante-side"></div>
-                    <div class="buttonCuadrante-face buttonCuadrante-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
-                    <div class="buttonCuadrante-face buttonCuadrante-top"></div>
-                    <div class="buttonCuadrante-face buttonCuadrante-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+            <div class="button-with-help">
+                <button id="cuadranteButton" class="custom-button">Cuadrante</button>
+                <div id="cuadranteHelpContainer" class="help-container" style="display: none;">
+                    <div id="cuadranteHelp" class="help-icon">!</div>
                 </div>
             </div>
-
-            <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
-            <!-- <button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsión</button>-->
             
-            <!-- Contenedor del botón de emergencia 3D para Extorsión -->
-            <div id="emergencyExtorsionButtonContainer">
-                <div id="emergenciaExtorsionButton3D">
-                    <div class="buttonExtorsion-face buttonExtorsion-front">DENUNCIAR<br>EXTORSIÓN</div>
-                    <div class="buttonExtorsion-face buttonExtorsion-back">EMERGENCIA</div>
-                    <div class="buttonExtorsion-face buttonExtorsion-side"></div>
-                    <div class="buttonExtorsion-face buttonExtorsion-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
-                    <div class="buttonExtorsion-face buttonExtorsion-top"></div>
-                    <div class="buttonExtorsion-face buttonExtorsion-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+            <div class="button-with-help">
+                <button id="extorsionButton" class="custom-button">Extorsión</button>
+                <div id="extorsionHelpContainer" class="help-container" style="display: none;">
+                    <div id="extorsionHelp" class="help-icon">!</div>
                 </div>
             </div>
-
-
-            <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
-            <!--<button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>-->
-
-            <!-- Contenedor del botón de emergencia 3D para Conocido -->
-            <div id="emergencyConocidoButtonContainer">
-                <div id="emergenciaConocidoButton3D">
-                    <div class="buttonConocido-face buttonConocido-front">LLAMAR A<br>CONOCIDO</div>
-                    <div class="buttonConocido-face buttonConocido-back">EMERGENCIA</div>
-                    <div class="buttonConocido-face buttonConocido-side"></div>
-                    <div class="buttonConocido-face buttonConocido-side" style="transform: rotateY(-90deg) translateZ(100px);"></div>
-                    <div class="buttonConocido-face buttonConocido-top"></div>
-                    <div class="buttonConocido-face buttonConocido-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
+            
+            <div class="button-with-help">
+                <button id="conocidoButton" class="custom-button">Conocido</button>
+                <div id="conocidoHelpContainer" class="help-container" style="display:none;">
+                    <div id="conocidoHelp" class="help-icon">!</div>
                 </div>
             </div>
+        </div>
 
-            <!-- botones debajo del botón de emergencia y Contenedores de ayuda para los botones -->
-            <div class="button-containerTipoEmergencias">
-                <div class="button-with-help">
-                    <button id="c5Button" class="custom-button" disabled>C5</button>
-                    <div id="c5HelpContainer" class="help-container" style="display: flex;">
-                        <div id="c5Help" class="help-icon">!</div>
-                    </div>
-                </div>
+        <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
+        <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
+        <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
+        <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
+        <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
+        <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
+
+        <!-- Ventana de mensaje personalizada -->
+        <div id="customAlert" class="custom-alert">
+            <p id="alertMessage"></p>
+            <button id="alertCloseButton">Entendido</button>
+        </div>
+
+        <!-- Alerta personalizada para C5 -->
+        <div id="customAlertC5" class="custom-alert-c5">
+            <video id="c5Video" width="100%" height="100%" autoplay loop muted playsinline>
+                <!-- Ruta relativa desde la carpeta del proyecto -->
+                <source src="videos/procesoMPN.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <button id="alertC5CloseButton">Cerrar</button>
+        </div>
+
+
+        <!-- Alerta personalizada para Cuadrante -->
+        <div id="customAlertCuadrante" class="custom-alert-cuadrante">
+            <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante correspondiente al negocio o establecimiento registrado.</p>
+            <button id="alertCuadranteCloseButton">Entendido</button>
+        </div>
+        
+        
+        <!-- Para el mensaje de Casos de Extorsión -->
+        <div id="customAlertExtorsion" class="custom-alert-extorsion">
+            <p><strong>Ante un caso de Extorsión:</strong><br>
+                1. Trata de mantener la calma<br>
+                2. De acuerdo a la situación cuelga o actúa con cautela<br>
+                3. Comunícate a las lineas Anti-Extorsión en la Ciudad de México:<br>
+                   Policía: 55-5242-5034<br>
+                        C5: 55-5036-3301</p>
+            <button id="alertExtorsionCloseButton">Entendido</button>
+        </div>
+
+        <!-- Alerta personalizada para Conocido -->
+        <div id="customAlertConocido" class="custom-alert-conocido">
+            <p id="alertConocidoMessage">Te comunicarás con una persona de confianza.</p>
+            <button id="alertConocidoCloseButton">Entendido</button>
+        </div>
+
+        <!-- Cuadro de confirmación personalizado -->
+        <div id="customConfirm" class="custom-confirm" style="display: none;">
+            <p>¿Confirma activar la emergencia? <br>Esto enviará una alerta a las autoridades.</p>
+            <div class="button-container">
+                <button id="confirmYes">Activar</button>
+                <button id="confirmNo">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- Cuadro de diálogo para modificar la URL -->
+        <div id="customUrlInput" class="custom-url-input">
+            <input type="text" id="newUrlInput" placeholder="Ingresa una URL MPN">
+            <div class="button-container">
+                <button id="urlSubmitButton">Guardar</button>
+                <button id="urlCancelButton">Cancelar</button>
                 
-                <div class="button-with-help">
-                    <button id="cuadranteButton" class="custom-button">Cuadrante</button>
-                    <div id="cuadranteHelpContainer" class="help-container" style="display: none;">
-                        <div id="cuadranteHelp" class="help-icon">!</div>
-                    </div>
-                </div>
+            </div>
+            <button id="scanQRButton">[-]</button>  
+        </div>
+        
+        <div id="qrScannerContainer">
+            <video id="qrScanner">
                 
-                <div class="button-with-help">
-                    <button id="extorsionButton" class="custom-button">Extorsión</button>
-                    <div id="extorsionHelpContainer" class="help-container" style="display: none;">
-                        <div id="extorsionHelp" class="help-icon">!</div>
-                    </div>
-                </div>
-                
-                <div class="button-with-help">
-                    <button id="conocidoButton" class="custom-button">Conocido</button>
-                    <div id="conocidoHelpContainer" class="help-container" style="display:none;">
-                        <div id="conocidoHelp" class="help-icon">!</div>
-                    </div>
-                </div>
+            </video>
+            <div id="qrLaser"></div> <!-- Nuevo elemento para el láser -->
+            <button id="closeScannerButton">Cerrar</button>
+        </div>
+
+        <!-- Cuadro de diálogo para modificar el giro del negocio -->
+        <div id="customGiroInput" class="custom-giro-input">
+            <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
+            <div class="char-counter" id="giroCharCounter">0/16</div>
+            <div class="button-container">
+                <button id="giroSubmitButton">Guardar</button>
+                <button id="giroCancelButton">Cancelar</button>
             </div>
+        </div>
 
-            <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
-            <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
-            <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
-            <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
-            <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
-            <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
-
-            <!-- Ventana de mensaje personalizada -->
-            <div id="customAlert" class="custom-alert">
-                <p id="alertMessage"></p>
-                <button id="alertCloseButton">Entendido</button>
+        <!-- Cuadro de diálogo para modificar el nombre del negocio -->
+        <div id="customNombreInput" class="custom-nombre-input">
+            <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
+            <div class="char-counter" id="nombreCharCounter">0/15</div>
+            <div class="button-container">
+                <button id="nombreSubmitButton">Guardar</button>
+                <button id="nombreCancelButton">Cancelar</button>
             </div>
+        </div> 
 
-            <!-- Alerta personalizada para C5 -->
-            <div id="customAlertC5" class="custom-alert-c5">
-                <video id="c5Video" width="100%" height="100%" autoplay loop muted playsinline>
-                    <!-- Ruta relativa desde la carpeta del proyecto -->
-                    <source src="videos/procesoMPN.mp4" type="video/mp4">
-                    Tu navegador no soporta videos HTML5.
-                </video>
-                <button id="alertC5CloseButton">Cerrar</button>
-            </div>
-
-
-            <!-- Alerta personalizada para Cuadrante -->
-            <div id="customAlertCuadrante" class="custom-alert-cuadrante">
-                <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante correspondiente al negocio o establecimiento registrado.</p>
-                <button id="alertCuadranteCloseButton">Entendido</button>
-            </div>
-            
-            
-            <!-- Para el mensaje de Casos de Extorsión -->
-            <div id="customAlertExtorsion" class="custom-alert-extorsion">
-                <p><strong>Ante un caso de Extorsión:</strong><br>
-                    1. Trata de mantener la calma<br>
-                    2. De acuerdo a la situación cuelga o actúa con cautela<br>
-                    3. Comunícate al teléfono de atención</p>
-                <button id="alertExtorsionCloseButton">Entendido</button>
-            </div>
-
-            <!-- Alerta personalizada para Conocido -->
-            <div id="customAlertConocido" class="custom-alert-conocido">
-                <p id="alertConocidoMessage">Te comunicarás con una persona de confianza.</p>
-                <button id="alertConocidoCloseButton">Entendido</button>
-            </div>
-
-            <!-- Cuadro de confirmación personalizado -->
-            <div id="customConfirm" class="custom-confirm" style="display: none;">
-                <p>¿Confirma activar la emergencia? <br>Esto enviará una alerta a las autoridades.</p>
-                <div class="button-container">
-                    <button id="confirmYes">Activar</button>
-                    <button id="confirmNo">Cancelar</button>
-                </div>
-            </div>
-
-            <!-- Cuadro de diálogo para modificar la URL -->
-            <div id="customUrlInput" class="custom-url-input">
-                <input type="text" id="newUrlInput" placeholder="Ingresa una URL MPN">
-                <div class="button-container">
-                    <button id="urlSubmitButton">Guardar</button>
-                    <button id="urlCancelButton">Cancelar</button>
-                    
-                </div>
-                <button id="scanQRButton">[-]</button>  
-            </div>
-            
-            <div id="qrScannerContainer">
-                <video id="qrScanner">
-                    
-                </video>
-                <div id="qrLaser"></div> <!-- Nuevo elemento para el láser -->
-                <button id="closeScannerButton">Cerrar</button>
-            </div>
-
-            <!-- Cuadro de diálogo para modificar el giro del negocio -->
-            <div id="customGiroInput" class="custom-giro-input">
-                <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
-                <div class="char-counter" id="giroCharCounter">0/16</div>
-                <div class="button-container">
-                    <button id="giroSubmitButton">Guardar</button>
-                    <button id="giroCancelButton">Cancelar</button>
-                </div>
-            </div>
-
-            <!-- Cuadro de diálogo para modificar el nombre del negocio -->
-            <div id="customNombreInput" class="custom-nombre-input">
-                <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
-                <div class="char-counter" id="nombreCharCounter">0/15</div>
-                <div class="button-container">
-                    <button id="nombreSubmitButton">Guardar</button>
-                    <button id="nombreCancelButton">Cancelar</button>
-                </div>
-            </div> 
-
-            <!-- Cuadro de diálogo para ingresar el número de teléfono -->
+            <!-- Cuadro de diálogo para ingresar el número de teléfono de Cuadrante -->
         <div id="customTelCuadranteInput" class="custom-tel-cuadrante-input">
+            <h3 style="color: #00bfff; margin-top: 0; text-align: center;">Teléfono del Cuadrante</h3>
             <input type="tel" id="newTelCuadranteInput" placeholder="Teléfono de 10 dígitos" maxlength="10">
             <div class="char-counter" id="telCuadranteCharCounter">0/10</div>
             <div class="button-container">
@@ -3228,8 +3344,9 @@
             </div>
         </div>
 
-            <!-- Cuadro de diálogo para ingresar el número de teléfono -->
+        <!-- Cuadro de diálogo para ingresar el número de teléfono de Extorsión -->
         <div id="customTelExtorsionInput" class="custom-tel-extorsion-input">
+            <h3 style="color: #ffaa00; margin-top: 0; text-align: center;">Teléfono Anti-Extorsión</h3>
             <input type="tel" id="newTelExtorsionInput" placeholder="Teléfono de 10 dígitos" maxlength="10">
             <div class="char-counter" id="telExtorsionCharCounter">0/10</div>
             <div class="button-container">
@@ -3238,8 +3355,9 @@
             </div>
         </div>
 
-        <!-- Cuadro de diálogo para modificar el teléfono de conocido -->
+        <!-- Cuadro de diálogo para modificar el teléfono de Conocido -->
         <div id="customTelConocidoInput" class="custom-tel-conocido-input">
+            <h3 style="color: #ff69b4; margin-top: 0; text-align: center;">Teléfono de Conocido</h3>
             <input type="tel" id="newTelConocidoInput" placeholder="Teléfono de 10 dígitos" maxlength="10">
             <div class="char-counter" id="telConocidoCharCounter">0/10</div>
             <div class="button-container">
@@ -3248,19 +3366,19 @@
             </div>
         </div>
 
-            <!-- Menú de hamburguesa -->
-            <div id="hamburgerMenu" class="hamburger-menu">
-                <div class="hamburger-icon" title="Menú" onclick="toggleMenu()">&#9881;</div>
-                <div id="menuOptions" class="menu-options">
-                    <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
-                    <div class="menu-item" onclick="showCustomGiroInput()">Giro y Nombre</div>
-                    <!-- <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div> -->
-                    <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
-                    <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
-                    <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
-                    <div class="menu-item" onclick="mostrarFormularioUbicacion()">Ubicación</div>
-                </div>
+        <!-- Menú de hamburguesa -->
+        <div id="hamburgerMenu" class="hamburger-menu">
+            <div class="hamburger-icon" title="Menú" onclick="toggleMenu()">&#9776;</div>
+            <div id="menuOptions" class="menu-options">
+                <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
+                <div class="menu-item" onclick="showCustomGiroInput()">Giro y Nombre</div>
+                <!-- <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div> -->
+                <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
+                <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
+                <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
+                <div class="menu-item" onclick="mostrarFormularioUbicacion()">Ubicación</div>
             </div>
+        </div>
 
         <!-- Apartado para mostrar los registros de activación -->
         <h2 id="registrosTitulo" style="display: none;">Registros de Activación <button id="closeRegistrosButton" class="close-button">X</button></h2>
@@ -3269,7 +3387,7 @@
         </div>
 
         <!-- Botón para consultar los registros de activación -->
-        <button id="toggleRegistrosButton" class="custom-button"  title="Registros de Activación" aria-label="Registros">≡</button>
+        <button id="toggleRegistrosButton" class="custom-button"  title="Registros de Activación" aria-label="Registros">⦺</button>
 
         <div id="graficasOverlay" class="overlay"></div>
 
@@ -3380,6 +3498,25 @@
                 <button id="warningCancel">Cancelar</button>
             </div>
         </div>
+
+
+        <!-- Modal de Condiciones de Uso y Privacidad -->
+<div id="termsModal" class="terms-modal">
+    <div class="terms-content">
+        <h2 class="terms-title" id="termsTitle">CONDICIONES DE USO Y AVISO DE PRIVACIDAD</h2>
+        <div class="terms-text" id="termsText">
+            Cargando condiciones de uso...
+        </div>
+        <div class="terms-accept">
+            <input type="checkbox" id="termsCheckbox" class="terms-checkbox">
+            <label for="termsCheckbox">He leído y acepto los términos y condiciones</label>
+        </div>
+        <div class="terms-buttons">
+            <button id="termsDeclineButton" class="terms-button terms-decline-button">Rechazar</button>
+            <button id="termsAcceptButton" class="terms-button terms-accept-button" disabled>Aceptar</button>
+        </div>
+    </div>
+</div>
 
 
     <script>
@@ -4192,20 +4329,20 @@
         });
 
         function maskData(value, unmask = false) {
-    if (!value) return '';
-    
-    // Si estamos desenmascarando y el valor no está enmascarado, devolver el original
-    if (unmask && !value.includes('*')) {
-        return value;
-    }
-    
-    // Si estamos enmascarando o el valor ya está enmascarado
-    if (value.length <= 5) return value;
-    
-    // Mostrar exactamente 15 caracteres: 10 asteriscos + últimos 5 caracteres
-    const masked = '*'.repeat(10) + value.slice(-5);
-    return masked;
-}
+            if (!value) return '';
+            
+            // Si estamos desenmascarando y el valor no está enmascarado, devolver el original
+            if (unmask && !value.includes('*')) {
+                return value;
+            }
+            
+            // Si estamos enmascarando o el valor ya está enmascarado
+            if (value.length <= 5) return value;
+            
+            // Mostrar exactamente 15 caracteres: 10 asteriscos + últimos 5 caracteres
+            const masked = '*'.repeat(10) + value.slice(-5);
+            return masked;
+        }
 
         
         //------- Estos son lo pequeños botones son los que aparecen debajo de los botones de emergencia -----------
@@ -4597,7 +4734,7 @@
         // Cargar los números de teléfono desde localStorage al cargar la página
         window.addEventListener('load', function () {
             const savedTelCuadrante = localStorage.getItem('telCuadrante');
-            const savedTelExtorsion = localStorage.getItem('telExtorsion');
+            const savedTelExtorsion = localStorage.getItem('telExtorsion') || '5552425034';
             const savedTelConocido = localStorage.getItem('telConocido');
 
             if (savedTelCuadrante) {
@@ -4609,6 +4746,11 @@
             if (savedTelConocido) {
                 console.log("Teléfono de Conocido cargado:", savedTelConocido);
             }
+
+            
+
+
+
         });
 
         // Aquí se configuran los botones para que cuando se opriman se realice la llamada telefónica -----
@@ -4630,7 +4772,7 @@
             // Cargar el teléfono guardado si existe
             const savedTel = localStorage.getItem('telCuadrante');
             if (savedTel) {
-                document.getElementById('newTelCuadranteInput').value = formatPhoneNumber(savedTel);
+                document.getElementById('newTelCuadranteInput').value = (savedTel);
                 document.getElementById('telCuadranteCharCounter').textContent = `${savedTel.length}/10`;
             } else {
                 document.getElementById('newTelCuadranteInput').value = '';
@@ -4693,15 +4835,10 @@
             const customTelExtorsionInput = document.getElementById('customTelExtorsionInput');
             const overlay = document.getElementById('overlay');
             
-            // Cargar el teléfono guardado si existe
-            const savedTel = localStorage.getItem('telExtorsion');
-            if (savedTel) {
-                document.getElementById('newTelExtorsionInput').value = formatPhoneNumber(savedTel);
-                document.getElementById('telExtorsionCharCounter').textContent = `${savedTel.length}/10`;
-            } else {
-                document.getElementById('newTelExtorsionInput').value = '';
-                document.getElementById('telExtorsionCharCounter').textContent = '0/10';
-            }
+            // Cargar el teléfono guardado si existe, o usar el predeterminado
+            const savedTel = localStorage.getItem('telExtorsion') || '5552425034';
+            document.getElementById('newTelExtorsionInput').value = savedTel;
+            document.getElementById('telExtorsionCharCounter').textContent = `${savedTel.length}/10`;
             
             customTelExtorsionInput.style.display = 'block';
             overlay.style.display = 'block';
@@ -4840,7 +4977,8 @@
         setupPhoneInputCounter('newTelCuadranteInput', 'telCuadranteCharCounter');
         setupPhoneInputCounter('newTelExtorsionInput', 'telExtorsionCharCounter');
         setupPhoneInputCounter('newTelConocidoInput', 'telConocidoCharCounter');
-//------------------------------------ M E N U -------------------------------------------------------//
+        
+        //------------------------------------ M E N U -------------------------------------------------------//
         // Función para mostrar/ocultar el menú
         function toggleMenu() {
             const menuOptions = document.getElementById('menuOptions');
@@ -4934,7 +5072,7 @@
             registrosTitulo.style.display = 'none';
             registrosContainer.style.display = 'none';
             registrosOverlay.style.display = 'none';
-            document.getElementById('toggleRegistrosButton').textContent = '≡';
+            document.getElementById('toggleRegistrosButton').textContent = '⦺';
         });
 
         function actualizarListaRegistros() {
@@ -5014,7 +5152,7 @@
         // Llamar a esta función al cargar la página para mostrar los registros existentes
         window.addEventListener('load', actualizarListaRegistros);
 
-        //--------------- G R A F I C A S de dona --------------------------------------------------------------------- 
+        //--------------- G R A F I C A S de DONA --------------------------------------------------------------------- 
 
         // Función para mostrar/ocultar el contenedor de gráficas
         document.getElementById('toggleRegistrosButton').addEventListener('click', function() {
@@ -5404,7 +5542,7 @@
             
             // Cargar valores guardados
             const savedGiro = localStorage.getItem('giroNegocio') || 'GIRO DEL NEGOCIO';
-            const savedNombre = localStorage.getItem('nombreNegocio') || '"NOMBRE DEL NEGOCIO"';
+            const savedNombre = localStorage.getItem('nombreNegocio') || '" NOMBRE "';
             
             document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
             document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
@@ -5758,7 +5896,6 @@
             // Centrar mapa
             map.setView([resultado.lat, resultado.lng], 16);
 
-
             //-------- Overlay de Coordenadas Generadas ------//
             document.getElementById('coordenadasOverlay').style.display = 'flex';
             setTimeout(() => {
@@ -5768,7 +5905,6 @@
             this.style.display = 'none';
             });
         });
-
         
         //-------------------MENSAJE DATOS INCORRECTOS O ERRONEOS---------------------------
         // Función para mostrar el mensaje de coordenadas no encontradas
@@ -5859,7 +5995,6 @@
             // Mostrar mensaje de éxito
             //showCustomAlert("Ubicación guardada y mostrada en el mapa.", 'success');
         });
-
       
         // Función para actualizar el marcador de ubicación
         function actualizarMarcadorUbicacion() {
@@ -5934,7 +6069,7 @@
                         
                         // Desplazar el mapa 100 píxeles hacia arriba y 50 píxeles a la derecha después de un pequeño retraso
                         setTimeout(() => {
-                            map.panBy([-40, 120], {  // Cambiado de [0, 120] a [50, 120] para desplazar 50px a la derecha
+                            map.panBy([0, 130], {  // Cambiado de [0, 120] a [50, 120] para desplazar 50px a la derecha
                                 animate: true,
                                 duration: 0.5
                             });
@@ -6060,53 +6195,53 @@
         // -------------- Evento para el botón de centrar mapa en el marcador -------------------------
         // Evento para el botón de centrar mapa en el marcador
         document.getElementById('center-map-button').addEventListener('click', function() {
-    if (ubicacionMarker) {
-        // Cerrar el popup si está abierto
-        if (ubicacionMarker.isPopupOpen()) {
-            ubicacionMarker.closePopup();
-        }
-
-        // Centrar el mapa en el marcador con zoom 16
-        map.setView(ubicacionMarker.getLatLng(), 16, {
-            animate: true,
-            duration: 1
-        });
-
-        // Pequeño retraso para asegurar que el mapa se haya centrado
-        setTimeout(() => {
-            // Abrir el popup
-            ubicacionMarker.openPopup();
-            
-            // Esperar a que el popup se renderice completamente
-            setTimeout(() => {
-                const popupElement = document.querySelector('.leaflet-popup-content-wrapper');
-                if (popupElement) {
-                    // Aplicar la animación
-                    popupElement.classList.add('vibrating-popup');
-                    
-                    // Eliminar la clase después de que termine la animación
-                    setTimeout(() => {
-                        popupElement.classList.remove('vibrating-popup');
-                    }, 500);
-                    
-                    // Cerrar el popup después de 3 segundos
-                    setTimeout(() => {
-                        if (ubicacionMarker.isPopupOpen()) {
-                            ubicacionMarker.closePopup();
-                        }
-                    }, 3000);
+            if (ubicacionMarker) {
+                // Cerrar el popup si está abierto
+                if (ubicacionMarker.isPopupOpen()) {
+                    ubicacionMarker.closePopup();
                 }
-            }, 100);
-        }, 300); // Tiempo para que el mapa termine de moverse
 
-        // Vibración táctil
-        if (supportsVibration()) {
-            navigator.vibrate(100);
-        }
-    } else {
-        showCustomAlert("No hay un marcador de ubicación establecido.");
-    }
-});
+                // Centrar el mapa en el marcador con zoom 16
+                map.setView(ubicacionMarker.getLatLng(), 16, {
+                    animate: true,
+                    duration: 1
+                });
+
+                // Pequeño retraso para asegurar que el mapa se haya centrado
+                setTimeout(() => {
+                    // Abrir el popup
+                    ubicacionMarker.openPopup();
+                    
+                    // Esperar a que el popup se renderice completamente
+                    setTimeout(() => {
+                        const popupElement = document.querySelector('.leaflet-popup-content-wrapper');
+                        if (popupElement) {
+                            // Aplicar la animación
+                            popupElement.classList.add('vibrating-popup');
+                            
+                            // Eliminar la clase después de que termine la animación
+                            setTimeout(() => {
+                                popupElement.classList.remove('vibrating-popup');
+                            }, 500);
+                            
+                            // Cerrar el popup después de 3 segundos
+                            setTimeout(() => {
+                                if (ubicacionMarker.isPopupOpen()) {
+                                    ubicacionMarker.closePopup();
+                                }
+                            }, 3000);
+                        }
+                    }, 100);
+                }, 300); // Tiempo para que el mapa termine de moverse
+
+                // Vibración táctil
+                if (supportsVibration()) {
+                    navigator.vibrate(100);
+                }
+            } else {
+                showCustomAlert("No hay un marcador de ubicación establecido.");
+            }
+        });
 
         //----------------------MODO OBSCURO del Botón Centrar el Mapa----------------------------------//
         const observer = new MutationObserver(() => {
@@ -6138,95 +6273,212 @@
             return masked;
         }
 
+        //--------------- Ocultar botones después de 5 segundos al cargar la aplicación --------------------//
+        let hideButtonsTimeout;
 
-
-
-
-
-
-     // Ocultar botones después de 8 segundos al cargar la aplicación
-let hideButtonsTimeout;
-
-function startHideButtonsTimer() {
-    // Limpiar timeout existente si hay uno
-    if (hideButtonsTimeout) {
-        clearTimeout(hideButtonsTimeout);
-    }
-    
-    // Establecer nuevo timeout para ocultar después de 8 segundos
-    hideButtonsTimeout = setTimeout(() => {
-        // Solo ocultar si el menú no está abierto
-        if (document.getElementById('menuOptions').style.display !== 'block') {
-            hideButtons();
+        function startHideButtonsTimer() {
+            // Limpiar timeout existente si hay uno
+            if (hideButtonsTimeout) {
+                clearTimeout(hideButtonsTimeout);
+            }
+            
+            // Establecer nuevo timeout para ocultar después de 5 segundos
+            hideButtonsTimeout = setTimeout(() => {
+                // Solo ocultar si el menú no está abierto
+                if (document.getElementById('menuOptions').style.display !== 'block') {
+                    hideButtons();
+                }
+            }, 5000);
         }
-    }, 6000);
-}
 
-function hideButtons() {
-    document.getElementById('theme-toggle').style.display = 'none';
-    document.getElementById('hamburgerMenu').style.display = 'none';
-    document.getElementById('toggleRegistrosButton').style.display = 'none';
-}
+        function hideButtons() {
+            document.getElementById('theme-toggle').style.display = 'none';
+            document.getElementById('hamburgerMenu').style.display = 'none';
+            document.getElementById('toggleRegistrosButton').style.display = 'none';
+        }
 
-function showButtons() {
-    document.getElementById('theme-toggle').style.display = 'flex';
-    document.getElementById('hamburgerMenu').style.display = 'block';
-    document.getElementById('toggleRegistrosButton').style.display = 'flex';
-}
+        function showButtons() {
+            document.getElementById('theme-toggle').style.display = 'flex';
+            document.getElementById('hamburgerMenu').style.display = 'block';
+            document.getElementById('toggleRegistrosButton').style.display = 'flex';
+        }
 
-// Evento de doble clic en el mapa para mostrar los botones
-document.getElementById('map').addEventListener('dblclick', function() {
-    showButtons();
-    // Reiniciar el temporizador para ocultar después de 8 segundos
-    startHideButtonsTimer();
-});
-
-// Modificar la función toggleMenu para manejar la visibilidad de los botones
-function toggleMenu() {
-    const menuOptions = document.getElementById('menuOptions');
-    const menuOverlay = document.getElementById('menuOverlay');
-    
-    if (menuOptions.style.display === 'block') {
-        menuOptions.style.display = 'none';
-        menuOverlay.style.display = 'none';
-        // Ocultar botones después de cerrar el menú
-        startHideButtonsTimer();
-    } else {
-        menuOptions.style.display = 'block';
-        menuOverlay.style.display = 'block';
-        // Mostrar botones cuando el menú está abierto
-        showButtons();
-        // No ocultar automáticamente mientras el menú está abierto
-        clearTimeout(hideButtonsTimeout);
-    }
-}
-
-// Modificar el evento click fuera del menú para ocultar los botones
-document.addEventListener('click', function(event) {
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const menuOptions = document.getElementById('menuOptions');
-    const menuOverlay = document.getElementById('menuOverlay');
-    
-    if (!hamburgerMenu.contains(event.target)) {
-        menuOptions.style.display = 'none';
-        menuOverlay.style.display = 'none';
-        // Ocultar botones después de cerrar el menú
-        startHideButtonsTimer();
-    }
-});
-
-// Iniciar el temporizador al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    startHideButtonsTimer();
-    
-    // También ocultar botones cuando se cierra el menú seleccionando una opción
-    document.querySelectorAll('.menu-item').forEach(item => {
-        item.addEventListener('click', function() {
-            // Ocultar botones después de seleccionar una opción
+        // Evento de doble clic en el mapa para mostrar los botones
+        document.getElementById('map').addEventListener('dblclick', function() {
+            showButtons();
+            // Reiniciar el temporizador para ocultar después de 5 segundos
             startHideButtonsTimer();
         });
+
+        // Modificar la función toggleMenu para manejar la visibilidad de los botones
+        function toggleMenu() {
+            const menuOptions = document.getElementById('menuOptions');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            if (menuOptions.style.display === 'block') {
+                menuOptions.style.display = 'none';
+                menuOverlay.style.display = 'none';
+                // Ocultar botones después de cerrar el menú
+                startHideButtonsTimer();
+            } else {
+                menuOptions.style.display = 'block';
+                menuOverlay.style.display = 'block';
+                // Mostrar botones cuando el menú está abierto
+                showButtons();
+                // No ocultar automáticamente mientras el menú está abierto
+                clearTimeout(hideButtonsTimeout);
+            }
+        }
+
+        // Modificar el evento click fuera del menú para ocultar los botones
+        document.addEventListener('click', function(event) {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const menuOptions = document.getElementById('menuOptions');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            if (!hamburgerMenu.contains(event.target)) {
+                menuOptions.style.display = 'none';
+                menuOverlay.style.display = 'none';
+                // Ocultar botones después de cerrar el menú
+                startHideButtonsTimer();
+            }
+        });
+
+        // Iniciar el temporizador al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            startHideButtonsTimer();
+            
+            // También ocultar botones cuando se cierra el menú seleccionando una opción
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Ocultar botones después de seleccionar una opción
+                    startHideButtonsTimer();
+                });
+            });
+        });
+
+
+
+
+
+        
+
+// Función para cargar el contenido de términos desde un archivo JSON
+async function loadTermsContent() {
+    try {
+        const response = await fetch('terms.json');
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el archivo de términos');
+        }
+        const termsData = await response.json();
+        return termsData;
+    } catch (error) {
+        console.error('Error al cargar términos:', error);
+        // Contenido por defecto en caso de error
+        return {
+            title: "CONDICIONES DE USO Y AVISO DE PRIVACIDAD",
+            content: `
+                <h3>1. Condiciones de Uso</h3>
+                <p>Al utilizar esta aplicación, usted acepta cumplir con estos términos y condiciones...</p>
+                
+                <h3>2. Privacidad</h3>
+                <p>Respetamos su privacidad. Los datos personales que recopilamos se utilizan únicamente para...</p>
+                
+                <h3>3. Responsabilidad</h3>
+                <p>El uso de esta aplicación es bajo su propio riesgo. No nos hacemos responsables por...</p>
+                
+                <h3>4. Modificaciones</h3>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento...</p>
+            `
+        };
+    }
+}
+
+// Función para mostrar el modal de términos
+async function showTermsModal() {
+    const termsModal = document.getElementById('termsModal');
+    const termsTitle = document.getElementById('termsTitle');
+    const termsText = document.getElementById('termsText');
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    const termsAcceptButton = document.getElementById('termsAcceptButton');
+    const termsDeclineButton = document.getElementById('termsDeclineButton');
+    
+    // Cargar contenido desde JSON
+    const termsData = await loadTermsContent();
+    termsTitle.textContent = termsData.title;
+    termsText.innerHTML = termsData.content;
+    
+    // Mostrar modal
+    termsModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Evento para el checkbox
+    termsCheckbox.addEventListener('change', function() {
+        termsAcceptButton.disabled = !this.checked;
     });
-});   
+    
+    // Evento para el botón Aceptar
+    termsAcceptButton.addEventListener('click', function() {
+        localStorage.setItem('termsAccepted', 'true');
+        termsModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Mostrar mensaje inicial de la app
+        showInitialMessage();
+    });
+    
+    // Evento para el botón Rechazar
+    termsDeclineButton.addEventListener('click', function() {
+        showCustomAlert("Para usar esta aplicación debe aceptar los términos y condiciones.");
+    });
+}
+
+// Función para verificar si se deben mostrar los términos
+function checkTermsAccepted() {
+    return localStorage.getItem('termsAccepted') === 'true';
+}
+
+// Modificar la función que muestra el mensaje inicial
+function showInitialMessage() {
+    if (!checkTermsAccepted()) {
+        showTermsModal();
+        return;
+    }
+    
+    const initialMessageContent = document.getElementById('initialMessageContent');
+    const initialMessageContainer = document.getElementById('initialMessageContainer');
+    
+    setTimeout(() => {
+        initialMessageContent.classList.add('slide-up-and-fade');
+        setTimeout(() => {
+            initialMessageContainer.style.display = 'none';
+        }, 1000);
+    }, 2000);
+}
+
+// Agregar opción al menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    // Agregar esta línea dentro del menúOptions que ya existe
+    const menuOptions = document.getElementById('menuOptions');
+    const termsMenuItem = document.createElement('div');
+    termsMenuItem.className = 'menu-item';
+    termsMenuItem.textContent = 'Términos y Privacidad';
+    termsMenuItem.addEventListener('click', function() {
+        showTermsModal();
+    });
+    menuOptions.insertBefore(termsMenuItem, menuOptions.firstChild);
+    
+    // Verificar términos al cargar la app
+    if (!checkTermsAccepted()) {
+        // Ocultar mensaje inicial hasta aceptar términos
+        document.getElementById('initialMessageContainer').style.display = 'none';
+        showTermsModal();
+    } else {
+        showInitialMessage();
+    }
+});
+
+
     </script>   
 </body>
 </html>
