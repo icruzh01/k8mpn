@@ -107,7 +107,7 @@
             width: 100%;
             height: 100%;
             background-color: rgb(0, 0, 0);
-            z-index: 1020;
+            z-index: 2000;
         }
 
         /* Contenedor del contenido (texto y línea) */
@@ -126,7 +126,7 @@
             align-items: center;
             font-size: 2.3rem;
             letter-spacing: 4px;
-            z-index: 1009;
+            z-index: 2000;
         }
 
         /* Animación para el contenido */
@@ -159,16 +159,6 @@
             z-index: 1000;
         }
         
-        /*header h1 {
-            width: 100%;
-            background-color: #44ff00;
-            color: #ef0303;
-            text-align: center;
-            padding: 20px 0;
-            margin: 0;
-            z-index: 2000;
-        } */
-
         /*------- Efectos LUCES CÓDIGOS TORRETA ---------------------------------------*/
         .codigos {
             margin-bottom: 2px;
@@ -270,26 +260,7 @@
             -webkit-text-stroke: 1px rgb(255, 255, 255);
             z-index: 1000;
         }
-        
-        /*h1.title_2 {
-            position: relative;    
-            margin: 0;
-            bottom: 35px;
-            margin-bottom: 30px;
-            padding: 0 0;
-            font-family: sans-serif;
-            text-transform: lowercase;
-            min-height: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000000;
-            font-weight: 500;
-            font-size: 2.3rem;
-            letter-spacing: 4px;
-            z-index: 1000; 
-        } */
-        
+                
         /*---------- GIRO y NOMBRE del Establecimiento ------------------*/
         h1.giroNegocio {
             top: 150px;
@@ -437,51 +408,6 @@
                 opacity: 0;
             }
         }
-
-        /*Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu*/
-
-        /*#modifyUrlButton, #modifyGiroButton, #modifyNombreButton {
-            background-color: #000000;
-            color: #7c7c7c;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            width: 100px;
-            height: 40px;
-            border: 2px solid rgb(65, 61, 61);
-            cursor: pointer;
-            display: none; /*Le puse none para que no se vean los botones*/
-            /* align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-            box-sizing: border-box;
-            /* box-shadow: 3px 3px rgb(157, 151, 151); */
-            /* position: absolute;
-            bottom: 20px;
-            left: 20px;
-            margin: 0 0;
-        }*/
-
-        /* #modifyUrlButton:active, #modifyGiroButton:active, #modifyNombreButton:active {
-            box-shadow: none;
-            transform: translate(3px, 3px);
-        }
-
-        #modifyGiroButton {
-            left: 130px;
-        }
-
-        #modifyNombreButton {
-            left: 240px;
-        }
-
-        #modifyUrlButton:active, #modifyUrlButton.active, #modifyGiroButton:active, #modifyGiroButton.active, #modifyNombreButton:active, #modifyNombreButton.active {
-            background-color: #1e90ff;
-            border-color: #00bfff;
-            transform: scale(0.95);
-        } */
 
         /*Aquí se modifican los mensensajes que se mandan CUANDO NO INGRESAS un dato en los campoos giro, nombre, url*/
         .custom-alert {
@@ -728,7 +654,7 @@
             border: 2px solid #c20303;
             box-shadow: 0 0 10px #ff0000;
         }
-        /*-------- Cuadro para AGREGAR GIRO del establecimiento ------------------*/
+        /*-------- Cuadro para AGREGAR GIRO del establecimiento (showGiroNombreInput) ------------------*/
         .custom-giro-input {
             display: none;
             position: fixed;
@@ -771,9 +697,8 @@
         }
 
         .custom-giro-input .button-container {
-            display: flex;
             justify-content: center;
-            gap: 20px;
+            
         }
 
         .custom-giro-input .button-container button {
@@ -781,6 +706,7 @@
             color: white;
             border: 1px solid #4ee2ec;
             padding: 10px 20px;
+            margin-top: 20px;
             cursor: pointer;
             font-size: 16px;
             border-radius: 15px;
@@ -791,7 +717,7 @@
             border: 2px solid #d7159d;
             box-shadow: 0 0 10px #ec4ebd;
         }
-        /*---------- Cuadro para AGREGAR NOMBRE --------------------*/
+        /*---------- Cuadro para AGREGAR NOMBRE (showGiroNombreInput) --------------------*/
         .custom-nombre-input {
             display: none;
             position: fixed;
@@ -844,6 +770,7 @@
             color: white;
             border: 1px solid #f30086;
             padding: 10px 20px;
+            margin-top: 20px;
             cursor: pointer;
             font-size: 16px;
             border-radius: 15px;
@@ -1480,49 +1407,6 @@
             }
         }
 
-        /*---- Oculte los botones URL, GIRO Y NOMBRE porque ya estan en el menu ------------------------*/
-        /*#modifyTelCuadranteButton, #modifyTelExtorsionButton, #modifyTelConocidoButton {
-            background-color: #000000;
-            color: #7c7c7c;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            width: 100px;
-            height: 40px;
-            border: 2px solid rgb(65, 61, 61);
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
-            box-sizing: border-box;
-            position: absolute;
-            bottom: 20px;
-            left: 350px; /* Ajusta la posición según sea necesario */
-           /* margin: 0 0;
-        } */
-
-       /* #modifyTelExtorsionButton {
-            left: 460px; /* Ajusta la posición según sea necesario */
-        /*}*/
-
-        /*#modifyTelConocidoButton {
-            left: 570px; /* Ajusta la posición según sea necesario */
-        /*} */
-
-        /*#modifyTelCuadranteButton:active, #modifyTelExtorsionButton:active, #modifyTelConocidoButton:active {
-            box-shadow: none;
-            transform: translate(3px, 3px);
-        }*/
-
-        /*#modifyTelCuadranteButton:active, #modifyTelCuadranteButton.active, #modifyTelExtorsionButton:active, #modifyTelExtorsionButton.active, #modifyTelConocidoButton:active, #modifyTelConocidoButton.active {
-            background-color: #1e90ff;
-            border-color: #00bfff;
-            transform: scale(0.95);
-        }*/
-
         /*-------------------- Estilos para el INPUT de CUADRANTE -------------------*/
         .custom-tel-cuadrante-input {
             display: none;
@@ -1563,7 +1447,7 @@
             color: #00bfff;
         }
 
-        .custom-tel-extorsion-input input:focus {
+        .custom-tel-cuadrante-input input:focus {
             background: #000000;
             border: .5px solid #00bfff;
             color: #00bfff;
@@ -1728,7 +1612,7 @@
             position: fixed;
             top: 180px; /* Cambiado de bottom a top */
             left: 10px; /* Para posicionar a la izquierda */
-            z-index: 1001;
+            z-index: 1000;
         }
 
         .hamburger-icon {
@@ -1767,7 +1651,7 @@
             border: 1px solid #00ffff;
             border-radius: 10px;
             padding: 10px;
-            width: 150px;
+            width: 200px;
             box-shadow: 0 0 10px #00ffff;
             z-index: 1000; /* Asegurar que esté por encima del overlay */
         }
@@ -1904,7 +1788,6 @@
             border: 1px solid #7b7b7b;
             background-color: #000000;
             color: #ffffff;
-            rotate: 90deg;
             width: 35px;
             height: 35px;
             align-items: center;
@@ -1912,7 +1795,7 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: none;
-            font-size: 30px;
+            font-size: 20px;
             line-height: 1;
             padding: 0;
             box-shadow: 0 0 15px #000000;
@@ -1961,11 +1844,6 @@
             padding: 20px;
             width: 90%;
             max-width: 600px;
-            /*backdrop-filter: blur(5px);*/
-            /*background: rgba(4, 131, 32, 0.85);
-            text-align: center;
-            /*border: 1px solid #00ffff;*/
-            /*box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);*/
             z-index: 1020;
         }
 
@@ -2174,26 +2052,26 @@
         }
         
         /*------ Botón BORRAR y botón CHECK (paloma) del imput giroNegocio --------*/
-        .check-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: #4CAF50;
+        /* Estilo para el botón Guardar */
+        #giroSubmitButton {
+            background-color: #4CAF50; /* Verde */
             color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            margin-left: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        
-        #giroSubmitButton.saved {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
+
+        /* Estilo para cuando es botón Borrar */
+        #giroSubmitButton.delete-btn {
+            background-color: #f44336; /* Rojo */
         }
-        
-        #giroCancelButton.delete {
-            background-color: #f44336;
-            border-color: #f44336;
+
+        /* Efecto hover para ambos estados */
+        #giroSubmitButton:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
         }
 
         /*------------ Contador de 16 caracteres para giro y nombre ---------------*/
@@ -2986,6 +2864,182 @@
             opacity: 0;
         }
 
+/*MENSJE INICIAL (CHECAR SI SE NECESITA ESTOS ESTILOS O SE PUEDEN ELIMINAR)*/
+
+        /* Animación para el contenido */
+@keyframes slideUpAndFade {
+    0% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -300%);
+        opacity: 1;
+    }
+}
+
+/* Clase para aplicar la animación */
+.slide-up-and-fade {
+    animation: slideUpAndFade 1s forwards;
+}
+
+
+
+ /*-------------- Animaciones para el mensaje de bienvenida ------------------------------*/
+ @keyframes buttonShine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    
+    /* Efectos del universo digital aplicados */
+    .digital-universe {
+        background: radial-gradient(circle at center, rgba(20,20,60,0.8) 0%, rgba(0,0,30,0.9) 70%);
+        border-radius: 10px;
+        transform-style: preserve-3d;
+        animation: 
+            universeFloat 8s ease-in-out infinite alternate,
+            universePulse 12s ease-in-out infinite;
+        box-shadow: 
+            0 0 15px rgba(0, 150, 255, 0.5),
+            inset 0 0 15px rgba(0, 150, 255, 0.3);
+    }
+    
+    .aura-effect {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 15px;
+        background: radial-gradient(circle at center, rgba(0,200,255,0.2) 0%, transparent 70%);
+        opacity: 0;
+        animation: auraPulse 8s infinite alternate 2s;
+        z-index: 0;
+    }
+    
+    .digital-distortion {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            linear-gradient(0deg, transparent 48%, rgba(0,255,255,0.1) 49%, rgba(0,255,255,0.1) 51%, transparent 52%) 0 0 / 100% 10px,
+            linear-gradient(90deg, transparent 48%, rgba(0,255,255,0.1) 49%, rgba(0,255,255,0.1) 51%, transparent 52%) 0 0 / 10px 100%;
+        opacity: 0;
+        animation: distortionAppear 2s forwards 1.5s, distortionGlitch 6s infinite alternate 3s;
+        pointer-events: none;
+    }
+    
+    .scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.7), transparent);
+        opacity: 0;
+        animation: scanAppear 2s forwards 2s, scanMove 4s linear infinite 2s;
+        pointer-events: none;
+    }
+    
+    /* Keyframes reutilizados */
+    @keyframes universeFloat {
+        from { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+        to { transform: translateY(-20px) rotateX(3deg) rotateY(2deg); }
+    }
+    
+    @keyframes universePulse {
+        0%, 100% { box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), inset 0 0 15px rgba(0, 150, 255, 0.3); }
+        50% { box-shadow: 0 0 25px rgba(0, 200, 255, 0.7), inset 0 0 20px rgba(0, 200, 255, 0.5); }
+    }
+    
+    @keyframes auraPulse {
+        from { opacity: 0.3; transform: scale(0.95); }
+        to { opacity: 0.7; transform: scale(1.05); }
+    }
+    
+    @keyframes distortionAppear {
+        from { opacity: 1; }
+        to { opacity: 3.3; }
+    }
+    
+    @keyframes distortionGlitch {
+        0% { transform: translate(0); background-position: 0 0, 0 0; }
+        20% { transform: translate(-2px, 1px); background-position: 5px 0, 0 5px; }
+        40% { transform: translate(1px, -2px); background-position: 0 5px, 5px 0; }
+        60% { transform: translate(2px, 1px); background-position: 5px 5px, 0 0; }
+        80% { transform: translate(-1px, -1px); background-position: 0 0, 5px 5px; }
+        100% { transform: translate(0); background-position: 0 0, 0 0; }
+    }
+    
+    @keyframes scanAppear {
+        from { opacity: 0; }
+        to { opacity: 0.7; }
+    }
+    
+    @keyframes scanMove {
+        from { top: 0; }
+        to { top: 100%; }
+    }
+
+/*-------------------------------------*/
+
+#acceptWelcome {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #00ffff;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.3);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+}
+
+#acceptWelcome:checked {
+    background-color: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px #00ffff,
+    inset 0 0 15px rgba(0, 150, 255, 0.3);
+}
+
+
+#acceptWelcome:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*-----------------------*/
+
+
+
+/*-------------- Animación de desplazamiento para el mensaje de bienvenida -----------------*/
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.welcome-message-animation {
+    animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+/*----------------- Evitar actualizar ventana cuando arrastras hacia abajo en Aviso de Privacidad -------*/
 
 
 
@@ -2993,108 +3047,199 @@
 
 
 
-        /*------------------ Estilos para el modal de condiciones de uso ------------------*/
-.terms-modal {
+
+
+
+
+
+
+
+
+/*------- Estilos para el MENÚ de OPCIONES PANTALLA COMPLETA ----------*/
+.fullscreen-menu {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1050;
-    overflow-y: auto;
-    padding: 20px;
-    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease-out;
+    z-index: 1000;
 }
 
-.terms-content {
-    background-color: #000000;
-    border: 1px solid #00ffff;
-    border-radius: 10px;
-    padding: 20px;
+.fullscreen-menu.active {
+    display: flex;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 90%;
     max-width: 800px;
-    margin: 40px auto;
-    color: #ffffff;
-    box-shadow: 0 0 20px #00ffff;
+    padding: 20px;
 }
 
-.terms-title {
-    color: #00ffff;
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px #00ffff;
+    cursor: pointer;
+    width: 70%; /*yo lo agregue*/
+    right: 5%; /* yo lo agregue */
+    transition: all 0.3s ease;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.terms-text {
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-right: 10px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+.menu-item:hover {
+    background-color: rgba(0, 150, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.terms-text::-webkit-scrollbar {
-    width: 5px;
+.menu-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #00bfff;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
 }
 
-.terms-text::-webkit-scrollbar-thumb {
-    background-color: #00ffff;
-    border-radius: 5px;
+.menu-text {
+    font-size: .8rem;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.terms-accept {
+.close-menu-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.3);
 }
 
-.terms-checkbox {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    accent-color: #00ffff;
+.close-menu-btn:hover {
+    transform: rotate(90deg);
+    background-color: rgba(255, 0, 0, 0.5);
 }
 
-.terms-buttons {
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Efectos modernos */
+.menu-item:nth-child(1) .menu-icon { color: #ff5252; text-shadow: 0 0 10px rgba(255, 82, 82, 0.7); }
+.menu-item:nth-child(2) .menu-icon { color: #4caf50; text-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+.menu-item:nth-child(3) .menu-icon { color: #ff9800; text-shadow: 0 0 10px rgba(255, 152, 0, 0.7); }
+.menu-item:nth-child(4) .menu-icon { color: #9c27b0; text-shadow: 0 0 10px rgba(156, 39, 176, 0.7); }
+.menu-item:nth-child(5) .menu-icon { color: #00bcd4; text-shadow: 0 0 10px rgba(0, 188, 212, 0.7); }
+.menu-item:nth-child(6) .menu-icon { color: #ffeb3b; text-shadow: 0 0 10px rgba(255, 235, 59, 0.7); }
+
+.menu-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.menu-item:hover::before {
+    animation: shine 1.5s;
+    opacity: 1;
+}
+
+@keyframes shine {
+    0% { left: -100%; top: -100%; }
+    100% { left: 100%; top: 100%; }
+}
+
+
+
+
+
+
+
+/*------------- Estilo para el contenedor de giro y nombre (showGiroNombreInput) --------- */
+.giro-nombre-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 300px;
+    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
+    z-index: 1010;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #00bfff;
+    box-shadow: 0 0 20px #00bfff;
 }
 
-.terms-button {
-    padding: 10px 20px;
+/* Ajusta los estilos de los inputs individuales para que se vean bien en el contenedor */
+.giro-nombre-container .custom-giro-input,
+.giro-nombre-container .custom-nombre-input {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    top: auto;
+    left: auto;
+    transform: none;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
+    padding: 0;
+    box-shadow: none;
 }
 
-.terms-accept-button {
-    background-color: #00bfff;
-    color: #000;
+/* Ajusta los botones para que se vean consistentes */
+.giro-nombre-container .button-container {
+    margin-top: 10px;
 }
 
-.terms-accept-button:disabled {
-    background-color: #666;
-    cursor: not-allowed;
-}
 
-.terms-accept-button:not(:disabled):hover {
-    background-color: #0080ff;
-}
 
-.terms-decline-button {
-    background-color: #ff5555;
-    color: #000;
-}
-
-.terms-decline-button:hover {
-    background-color: #ff0000;
-}
 
 
 
@@ -3160,9 +3305,6 @@
             </div>
         </div>
         
-        <!-- Nuevo botón EmergenciaCuadrante (inicialmente oculto) -->
-        <!-- <button id="emergenciaCuadranteButton" class="custom-button">Cuadrante<br>Negocio</button> -->
-
         <!-- Contenedor del botón de emergencia 3D para Cuadrante -->
         <div id="emergencyCuadranteButtonContainer">
             <div id="emergenciaCuadranteButton3D">
@@ -3175,9 +3317,6 @@
             </div>
         </div>
 
-        <!-- Nuevo botón EmergenciaExtorsion (inicialmente oculto) -->
-        <!-- <button id="emergenciaExtorsionButton" class="custom-button">Denunciar<br>Extorsión</button>-->
-        
         <!-- Contenedor del botón de emergencia 3D para Extorsión -->
         <div id="emergencyExtorsionButtonContainer">
             <div id="emergenciaExtorsionButton3D">
@@ -3189,10 +3328,6 @@
                 <div class="buttonExtorsion-face buttonExtorsion-top" style="transform: rotateX(-90deg) translateZ(100px);"></div>
             </div>
         </div>
-
-
-        <!-- Nuevo botón EmergenciaConocido (inicialmente oculto) -->
-        <!--<button id="emergenciaConocidoButton" class="custom-button">Llamar a<br>Conocido</button>-->
 
         <!-- Contenedor del botón de emergencia 3D para Conocido -->
         <div id="emergencyConocidoButtonContainer">
@@ -3237,11 +3372,12 @@
             </div>
         </div>
 
-        <button id="modifyUrlButton" aria-label="Modificar URL">URL MPN</button>
+        <!-- Elementos necesarios para la modificación de los datos -->
+        <button id="modifyUrlButton" aria-label="Modificar Token">Token</button>
         <button id="modifyGiroButton" aria-label="Modificar Giro">Giro</button>
         <button id="modifyNombreButton" aria-label="Modificar Nombre">Nombre</button>
         <button id="modifyTelCuadranteButton" aria-label="Modificar Tel Cuadrante">Tel Cuadrante</button>
-        <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Extorsión</button>
+        <button id="modifyTelExtorsionButton" aria-label="Modificar Tel Extorsión">Tel Anti-Extorsión</button>
         <button id="modifyTelConocidoButton" aria-label="Modificar Tel Conocido">Tel Conocido</button>
 
         <!-- Ventana de mensaje personalizada -->
@@ -3273,9 +3409,11 @@
             <p><strong>Ante un caso de Extorsión:</strong><br>
                 1. Trata de mantener la calma<br>
                 2. De acuerdo a la situación cuelga o actúa con cautela<br>
-                3. Comunícate a las lineas Anti-Extorsión en la Ciudad de México:<br>
-                   Policía: 55-5242-5034<br>
-                        C5: 55-5036-3301</p>
+                3. No contestar llamadas o mensajes de números desconocidos<br>
+                4. No entregar dinero o bien económico<br>
+                5. Comunícate a las lineas Anti-Extorsión en la Ciudad de México:<br>
+                ☎️ Policía: 55-5242-5034<br>
+                ☎️ C5: 55-5036-3301</p>
             <button id="alertExtorsionCloseButton">Entendido</button>
         </div>
 
@@ -3292,11 +3430,18 @@
                 <button id="confirmYes">Activar</button>
                 <button id="confirmNo">Cancelar</button>
             </div>
+            <div style="text-align: left; margin: 30px 0; padding: 15px; background-color: rgba(255, 0, 0, 0.1); border-left: 3px solid #ff0000; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(transparent, rgba(255,0,0,0.05), transparent);"></div>
+                <p style="margin: 0; color: #ff5555; font-weight: bold; font-size: 1.1rem; text-shadow: 0 0 5px rgba(255,0,0,0.5);">⚠️ ATENCIÓN:</p>
+                <p style="margin: 10px 0 0 0; color: #ff9999; font-size: 0.95rem;">
+                    Esta Aplicación, 'Emergencia K8', no es responsable de la atención a las emergencias y/o canalización de apoyos.
+                </p>
+            </div>
         </div>
 
         <!-- Cuadro de diálogo para modificar la URL -->
         <div id="customUrlInput" class="custom-url-input">
-            <input type="text" id="newUrlInput" placeholder="Ingresa una URL MPN">
+            <input type="text" id="newUrlInput" placeholder="Ingresa un Token">
             <div class="button-container">
                 <button id="urlSubmitButton">Guardar</button>
                 <button id="urlCancelButton">Cancelar</button>
@@ -3313,25 +3458,35 @@
             <button id="closeScannerButton">Cerrar</button>
         </div>
 
-        <!-- Cuadro de diálogo para modificar el giro del negocio -->
-        <div id="customGiroInput" class="custom-giro-input">
-            <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
-            <div class="char-counter" id="giroCharCounter">0/16</div>
-            <div class="button-container">
-                <button id="giroSubmitButton">Guardar</button>
-                <button id="giroCancelButton">Cancelar</button>
-            </div>
-        </div>
+        
 
-        <!-- Cuadro de diálogo para modificar el nombre del negocio -->
-        <div id="customNombreInput" class="custom-nombre-input">
-            <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
-            <div class="char-counter" id="nombreCharCounter">0/15</div>
-            <div class="button-container">
-                <button id="nombreSubmitButton">Guardar</button>
-                <button id="nombreCancelButton">Cancelar</button>
-            </div>
-        </div> 
+
+
+
+<!------- Agrega esto en tu HTML donde quieras que aparezcan los inputs (showGiroNombreInput) ------>
+<div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
+    <div id="customGiroInput" class="custom-giro-input">
+        <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
+        <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
+        <div class="char-counter" id="giroCharCounter">0/16</div>
+        <div class="button-container">
+            <button id="giroSubmitButton">Guardar</button>
+            
+        </div>
+    </div>
+
+    <div id="customNombreInput" class="custom-nombre-input">
+        <h3 style="color: #f30086; margin-top: 0; text-align: center;">N O M B R E</h3>
+        <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
+        <div class="char-counter" id="nombreCharCounter">0/15</div>
+        <div class="button-container">
+            <button id="nombreSubmitButton">Guardar</button>
+            <button id="nombreCancelButton">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+
 
             <!-- Cuadro de diálogo para ingresar el número de teléfono de Cuadrante -->
         <div id="customTelCuadranteInput" class="custom-tel-cuadrante-input">
@@ -3370,13 +3525,14 @@
         <div id="hamburgerMenu" class="hamburger-menu">
             <div class="hamburger-icon" title="Menú" onclick="toggleMenu()">&#9776;</div>
             <div id="menuOptions" class="menu-options">
-                <div class="menu-item" onclick="showCustomUrlInput()">URL</div>
-                <div class="menu-item" onclick="showCustomGiroInput()">Giro y Nombre</div>
+                <div class="menu-item" onclick="showCustomUrlInput()">🌐 Token</div>
+                <div class="menu-item" onclick="showGiroNombreInput()">🏪 Giro y Nombre</div>
                 <!-- <div class="menu-item" onclick="showCustomNombreInput()">Nombre</div> -->
-                <div class="menu-item" onclick="showCustomTelCuadranteInput()">Tel Cuadrante</div>
-                <div class="menu-item" onclick="showCustomTelExtorsionInput()">Tel Extorsión</div>
-                <div class="menu-item" onclick="showCustomTelConocidoInput()">Tel Conocido</div>
-                <div class="menu-item" onclick="mostrarFormularioUbicacion()">Ubicación</div>
+                <div class="menu-item" onclick="showCustomTelCuadranteInput()">☎️ Tel Cuadrante</div>
+                <div class="menu-item" onclick="showCustomTelExtorsionInput()">☎️ Tel Anti-Extorsión</div>
+                <div class="menu-item" onclick="showCustomTelConocidoInput()">☎️ Tel Conocido</div>
+                <div class="menu-item" onclick="mostrarFormularioUbicacion()">🧭 Ubicación</div>
+                <div class="menu-item" onclick="showPrivacyNotice()">📑 Aviso de Privacidad</div>
             </div>
         </div>
 
@@ -3386,8 +3542,9 @@
             <ul id="listaRegistros"></ul>
         </div>
 
-        <!-- Botón para consultar los registros de activación -->
-        <button id="toggleRegistrosButton" class="custom-button"  title="Registros de Activación" aria-label="Registros">⦺</button>
+        <button id="toggleRegistrosButton" class="custom-button" title="Registros de Activación" aria-label="Registros">
+            <img src="icons/iconGrafica1.png" alt="Registros" class="button-icon">
+          </button>
 
         <div id="graficasOverlay" class="overlay"></div>
 
@@ -3500,23 +3657,318 @@
         </div>
 
 
-        <!-- Modal de Condiciones de Uso y Privacidad -->
-<div id="termsModal" class="terms-modal">
-    <div class="terms-content">
-        <h2 class="terms-title" id="termsTitle">CONDICIONES DE USO Y AVISO DE PRIVACIDAD</h2>
-        <div class="terms-text" id="termsText">
-            Cargando condiciones de uso...
+<!-- Aviso de Privacidad - Pantalla inicial -->
+<div id="privacyNoticeContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; color: #fff; z-index: 2000; overflow-y: auto; padding: 20px; box-sizing: border-box;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h1 style="text-align: center; color: #f00; margin-bottom: 20px;">CONDICIONES DE USO Y AVISO DE PRIVACIDAD</h1>
+        <h2 style="text-align: center; margin-bottom: 30px;">APLICACIÓN EMERGENCIA K8</h2>
+        
+        <p style="text-align: justify; margin-bottom: 20px;">
+            En el presente documento se dan a conocer las Condiciones de Uso y Aviso de Privacidad de la Aplicación Emergencia K8.
+        </p>
+        
+        <h3 style="color: #f00; margin-top: 30px;">CONTENIDO</h3>
+        <ol style="margin-bottom: 20px;">
+            <li>De la Aplicación</li>
+            <li>Del Objetivo</li>
+            <li>Del Uso y Funcionamiento</li>
+            <li>De la Protección de Datos Personales</li>
+            <li>De la Propiedad Intelectual</li>
+            <li>De las Consideraciones Finales</li>
+        </ol>
+        
+        <p style="text-align: justify; margin-bottom: 30px; font-style: italic;">
+            Es importante mencionar que la información aquí contenida podrá modificarse total o parcialmente debido a actualizaciones, mejoras o nuevos servicios, ya sea por requerimientos legales o cambios en su estructura de funcionamiento. Cualquier modificación será notificada a través de la misma aplicación.
+        </p>
+        
+        <h3 style="color: #f00; margin-top: 20px;">I. DE LA APLICACIÓN</h3>
+        <p style="text-align: justify; margin-bottom: 20px;">
+            La aplicación Emergencia K8 es una herramienta tecnológica diseñada, desarrollada e implementada por la Secretaría de Seguridad Ciudadana de la Ciudad de México, con una interfaz intuitiva que facilita la comunicación entre la ciudadanía y los cuerpos de seguridad en situaciones de emergencia.
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 20px;">
+            Emergencia K8 está dirigida a establecimientos comerciales, negocios y locaciones fijas dentro de la Ciudad de México, funcionando como un botón de pánico virtual silencioso. Mediante esta aplicación, empleados, encargados o propietarios podrán solicitar auxilio policial de manera inmediata en caso de una emergencia.
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 20px;">
+            La aplicación Emergencia K8 está disponible para su descarga en:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Google Play (Android)</li>
+            <li>App Store (iOS)</li>
+        </ul>
+        
+        <h3 style="color: #f00; margin-top: 20px;">II. DEL OBJETIVO</h3>
+        <p style="text-align: justify; margin-bottom: 20px;">
+            Los objetivos de Emergencia K8 son:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Agilizar la solicitud de auxilio ante incidentes dentro o en las inmediaciones de un establecimiento.</li>
+            <li>Garantizar una respuesta rápida y eficiente por parte de las autoridades correspondientes.</li>
+            <li>Ofrecer una herramienta tecnológica gratuita, segura y de fácil acceso.</li>
+            <li>Fomentar la prevención y disuasión del delito mediante una conexión directa con los servicios de seguridad.</li>
+        </ul>
+        
+        <h3 style="color: #f00; margin-top: 20px;">III. DEL USO Y FUNCIONAMIENTO</h3>
+        <p style="text-align: justify; margin-bottom: 20px;">
+            Para un correcto funcionamiento, el usuario deberá considerar lo siguiente:
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Requisitos de operación:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>La aplicación solo opera dentro de la Ciudad de México.</li>
+            <li>Es necesario contar con un dispositivo móvil (teléfono o tableta), o equipo de cómputo.</li>
+            <li>Se requiere conexión a internet o datos móviles.</li>
+            <li>El establecimiento debe estar registrado en la Plataforma Tecnológica Emergencia K8.</li>
+            <li>Se debe contar con un token de acceso único, proporcionado por la Dirección de Desarrollo de Sistemas Informáticos de la SSC-CDmx.</li>
+        </ul>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Configuración y activación:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Durante la configuración, se deberá ingresar el token asignado al establecimiento.</li>
+            <li>Se recomienda realizar pruebas de funcionamiento para verificar la compatibilidad del botón de pánico.</li>
+        </ul>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Proceso de alerta:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Al activar el botón de pánico, el usuario tendrá unos segundos para cancelar la solicitud antes de que sea enviada.</li>
+            <li>Las alertas se canalizarán directamente a la Secretaría de Seguridad Ciudadana, siendo atendidas por la policía del cuadrante correspondiente.</li>
+        </ul>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Incorporación de nuevos establecimientos:
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 5px;">
+            Los negocios interesados deberán:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Solicitar su incorporación ante la SSC-CDmx.</li>
+            <li>Llenar un formato de datos generales y presentarlo en la Oficialía de Partes.</li>
+            <li>Cumplir con el requisito de estar en un punto fijo y debidamente identificado.</li>
+        </ul>
+        
+        <p style="text-align: justify; margin-bottom: 20px; font-style: italic;">
+            Nota: Las funcionalidades pueden variar por actualizaciones, mantenimiento o mejoras en la aplicación.
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Sobre la ubicación:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Emergencia K8 NO requiere acceso a la ubicación del dispositivo.</li>
+            <li>NO utiliza la ubicación en segundo plano.</li>
+        </ul>
+        
+        <h3 style="color: #f00; margin-top: 20px;">IV. DE LA PROTECCIÓN DE DATOS PERSONALES</h3>
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Recopilación de datos:
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 20px;">
+            La aplicación NO recopila datos personales de los usuarios ni información del dispositivo.
+        </p>
+        
+        <h3 style="color: #f00; margin-top: 20px;">V. DE LA PROPIEDAD INTELECTUAL</h3>
+        <p style="text-align: justify; margin-bottom: 20px;">
+            Todo el contenido de Emergencia K8 (código fuente, diseño, imágenes, textos, nombre, etc.) es propiedad de la Secretaría de Seguridad Ciudadana de la CDMX y está protegido por derechos de autor y propiedad industrial.
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 5px;">
+            Queda estrictamente prohibido:
+        </p>
+        
+        <ul style="margin-bottom: 20px;">
+            <li>Su uso con fines comerciales o distintos a los previstos.</li>
+            <li>La reproducción, modificación o decompilación sin autorización expresa.</li>
+        </ul>
+        
+        <h3 style="color: #f00; margin-top: 20px;">VI. CONSIDERACIONES FINALES</h3>
+        <ul style="margin-bottom: 20px;">
+            <li>El usuario es responsable del uso adecuado de la aplicación.</li>
+            <li>La SSC-CDmx podrá suspender temporalmente los servicios por mantenimiento, actualizaciones o mejoras.</li>
+            <li>No se permite el uso con fines ilícitos o comerciales.</li>
+            <li>La SSC-CDmx no se hace responsable por daños en dispositivos derivados de la descarga o uso de la aplicación.</li>
+        </ul>
+        
+        <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
+            Reporte de anomalías:
+        </p>
+        
+        <p style="text-align: justify; margin-bottom: 20px;">
+            Los servicios de Emergencia K8 son gratuitos. Para reportar fallas, contactar a la Unidad de Contacto del Secretario:
+        </p>
+        
+        <ul style="margin-bottom: 30px;">
+            <li>📞 Teléfono: 55-5208-9898</li>
+            <li>📱 WhatsApp: 55-4331-9636</li>
+            <li>📧  Correo: ucontacto@ssc.cdmx.gob.mx</li>
+            <li>𝕏  @UCS_CDMX</li>
+        </ul>
+        
+        <p style="text-align: right; font-style: italic; margin-bottom: 30px;">
+            Última actualización: 01 de mayo de 2025
+        </p>
+        
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <input type="checkbox" id="acceptTerms" style="margin-right: 10px;">
+            <label for="acceptTerms">Acepto los Términos, Condiciones de Uso y Aviso de Privacidad</label>
         </div>
-        <div class="terms-accept">
-            <input type="checkbox" id="termsCheckbox" class="terms-checkbox">
-            <label for="termsCheckbox">He leído y acepto los términos y condiciones</label>
-        </div>
-        <div class="terms-buttons">
-            <button id="termsDeclineButton" class="terms-button terms-decline-button">Rechazar</button>
-            <button id="termsAcceptButton" class="terms-button terms-accept-button" disabled>Aceptar</button>
+        
+        <div style="text-align: center;">
+            <button id="continueButton" style="padding: 10px 30px; background-color: #f00; color: #fff; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; opacity: 0.5;" disabled>Continuar</button>
         </div>
     </div>
 </div>
+
+
+
+
+<!-- Mensaje de Bienvenida -->
+<div id="welcomeMessageContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 1030; display: flex; justify-content: center; align-items: center; perspective: 1000px;">
+    <div class="digital-universe welcome-message-animation" style="width: 90%; max-width: 500px; padding: 30px; position: relative;">
+        <!-- Efecto de aura exterior -->
+        <div class="aura-effect"></div>
+        
+        <!-- Efecto de distorsión digital -->
+        <div class="digital-distortion"></div>
+        
+        <!-- Efecto de escaneo -->
+        <div class="scan-line"></div>
+        
+        <!-- Contenido principal -->
+        <div style="position: relative; z-index: 2;">
+            <h2 style="color: #00ffff; margin-top: 0; text-align: center; font-size: 2rem; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;">¡BIENVENIDO A EMERGENCIA K8!</h2>
+            
+            <p style="margin-bottom: 20px; line-height: 1.5; color: #ffffff; text-align: center; font-size: 1.1rem;">
+                Esta aplicación servirá de mecanismo para poder denunciar extorsión, avisar a un contacto y solicitar ayuda en situaciones de emergencia.<br><br>
+                Podrás cambiar al modo obscuro, consultar registros de activación y acceder al menú de configuración y servicios, pulsando dos veces el mapa en la pantalla principal.
+            </p>
+            
+            <!-- Texto de atención con efecto especial -->
+            <div style="text-align: left; margin: 30px 0; padding: 15px; background-color: rgba(255, 0, 0, 0.1); border-left: 3px solid #ff0000; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(transparent, rgba(255,0,0,0.05), transparent);"></div>
+                <p style="margin: 0; color: #ff5555; font-weight: bold; font-size: 1.1rem; text-shadow: 0 0 5px rgba(255,0,0,0.5);">⚠️ ATENCIÓN:</p>
+                <p style="margin: 10px 0 0 0; color: #ff9999; font-size: 0.95rem;">
+                    La canalización de apoyos y/o atención de las emergencias, tanto de seguridad como de cualquier otro tipo, no es responsabilidad de la Aplicación Emergencia K8
+                </p>
+            </div>
+            
+            <!-- Checkbox con estilo futurista -->
+            <div style="display: flex; align-items: center; justify-content: center; margin: 25px 0; position: relative;">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="acceptWelcome">
+                    <div id="customCheck"></div>
+                </div>
+                <label for="acceptWelcome" style="color: #00ffff; cursor: pointer; text-shadow: 0 0 5px rgba(0,255,255,0.5);">
+                    He leído y comprendo la información anterior
+                </label>
+            </div>
+            
+            <!-- Botón con efectos -->
+            <button id="welcomeContinueButton" style="
+                background: linear-gradient(to bottom, rgba(0,200,255,0.3), rgba(0,150,255,0.5));
+                color: #ffffff;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 25px;
+                font-size: 1rem;
+                cursor: pointer;
+                opacity: 0.5;
+                display: block;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s;
+                box-shadow: 0 0 10px rgba(0,150,255,0.3);
+                border: 1px solid rgba(0,255,255,0.3);
+                text-shadow: 0 0 5px rgba(0,255,255,0.5);
+            " disabled>
+                <span style="position: relative; z-index: 2;">ENTENDIDO</span>
+                <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, transparent, rgba(0,255,255,0.3), transparent); transform: rotate(45deg); animation: buttonShine 3s infinite;"></div>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- HTML del menú -->
+<div id="fullscreenMenu" class="fullscreen-menu">
+    <button class="close-menu-btn" onclick="toggleFullscreenMenu()">×</button>
+    
+    <div class="menu-grid">
+        <!-- Ítem 1 -->
+        <div class="menu-item" onclick="menuAction('token')">
+            <div class="menu-icon">🌐</div>
+            <div class="menu-text">Token</div>
+        </div>
+        
+        <!-- Ítem 2 -->
+        <div class="menu-item" onclick="menuAction('giro')">
+            <div class="menu-icon">🏪</div>
+            <div class="menu-text">Giro y Nombre</div>
+        </div>
+        
+        <!-- Ítem 3 -->
+        <div class="menu-item" onclick="menuAction('cuadrante')">
+            <div class="menu-icon">☎️</div>
+            <div class="menu-text">Tel Cuadrante</div>
+        </div>
+        
+        <!-- Ítem 4 -->
+        <div class="menu-item" onclick="menuAction('extorsion')">
+            <div class="menu-icon">📞</div>
+            <div class="menu-text">Tel Anti-Extorsión</div>
+        </div>
+        
+        <!-- Ítem 5 -->
+        <div class="menu-item" onclick="menuAction('conocido')">
+            <div class="menu-icon">👤</div>
+            <div class="menu-text">Tel Conocido</div>
+        </div>
+        
+        <!-- Ítem 6 -->
+        <div class="menu-item" onclick="menuAction('ubicacion')">
+            <div class="menu-icon">📍</div>
+            <div class="menu-text">Ubicación</div>
+        </div>
+        
+        <!-- Ítem 7 -->
+        <div class="menu-item" onclick="menuAction('privacidad')">
+            <div class="menu-icon">📑</div>
+            <div class="menu-text">Aviso de Privacidad</div>
+        </div>
+        
+        <!-- Ítem 8 -->
+        <div class="menu-item" onclick="menuAction('registros')">
+            <div class="menu-icon">📊</div>
+            <div class="menu-text">Registros</div>
+        </div>
+        
+        <!-- Ítem 9 -->
+        <div class="menu-item" onclick="menuAction('Preguntas')">
+            <div class="menu-icon">❓</div>
+            <div class="menu-text">Preguntas Frecuentes</div>
+        </div>
+    </div>
+</div>
+
+
 
 
     <script>
@@ -3756,71 +4208,35 @@
             overlay.style.display = 'none';
         }
 
-        
         // Función para mostrar el cuadro de diálogo para modificar el giro del negocio
-        function showCustomGiroInput() {
-            const customGiroInput = document.getElementById('customGiroInput');
-            const customNombreInput = document.getElementById('customNombreInput');
-            const overlay = document.getElementById('overlay');
-            
-            // Mostrar ambos inputs
-            customGiroInput.style.display = 'block';
-            customNombreInput.style.display = 'block';
-            
-            // Posicionar uno debajo del otro
-            customGiroInput.style.top = '40%';
-            customNombreInput.style.top = '80%';
-            
-            overlay.style.display = 'block';
-            
-            // Enfocar el input del giro automáticamente
-            document.getElementById('newGiroInput').focus();
-        }
+        // Función para mostrar ambos inputs juntos
+function showGiroNombreInput() {
+    const container = document.getElementById('giroNombreContainer');
+    const overlay = document.getElementById('overlay');
+    
+    container.style.display = 'flex';
+    overlay.style.display = 'block';
+    
+    // Enfocar el input del giro automáticamente
+    document.getElementById('newGiroInput').focus();
+}
 
-        // Función para ocultar el cuadro de diálogo para modificar el giro del negocio
-        function hideCustomGiroInput() {
-            const customGiroInput = document.getElementById('customGiroInput');
-            const customNombreInput = document.getElementById('customNombreInput');
-            const overlay = document.getElementById('overlay');
-            
-            // Solo cerrar si el botón no está en estado "guardado"
-            const saveButton = document.getElementById('giroSubmitButton');
-            const cancelButton = document.getElementById('giroCancelButton');
-            
-            if (!saveButton.classList.contains('saved') || cancelButton.textContent === 'Cancelar') {
-                customGiroInput.style.display = 'none';
-            
-                
-                // Restablecer posiciones
-                customGiroInput.style.top = '50%';
-                customNombreInput.style.top = '50%';
-                
-                overlay.style.display = 'block';
-            }
-        }
+// Función para ocultar ambos inputs
+function hideGiroNombreInput() {
+    const container = document.getElementById('giroNombreContainer');
+    const overlay = document.getElementById('overlay');
+    
+    container.style.display = 'none';
+    overlay.style.display = 'none';
+}
 
-        // Función para mostrar el cuadro de diálogo para modificar el nombre del negocio
-        function showCustomNombreInput() {
-            const customNombreInput = document.getElementById('customNombreInput');
-            const overlay = document.getElementById('overlay');
-            customNombreInput.style.display = 'block';
-            overlay.style.display = 'block';
-        }
+// Actualiza los eventos de los botones para usar las nuevas funciones
+document.getElementById('modifyGiroButton').addEventListener('click', showGiroNombreInput);
+document.getElementById('modifyNombreButton').addEventListener('click', showGiroNombreInput);
 
-        // Función para ocultar el cuadro de diálogo para modificar el nombre del negocio
-        function hideCustomNombreInput() {
-            const customNombreInput = document.getElementById('customNombreInput');
-            const customGiroInput = document.getElementById('customGiroInput');
-            const overlay = document.getElementById('overlay');
-            
-            customNombreInput.style.display = 'none';
-            customGiroInput.style.display = 'none';
-            overlay.style.display = 'none';
-            
-            // Restablecer posiciones
-            customGiroInput.style.top = '50%';
-            customNombreInput.style.top = '50%';
-        }
+
+
+document.getElementById('nombreCancelButton').addEventListener('click', hideGiroNombreInput);
 
         // Evento para cerrar la ventana de mensaje
         document.getElementById('alertCloseButton').addEventListener('click', hideCustomAlert);
@@ -3971,9 +4387,9 @@
                 scannedUrl = '';
                 
                 hideCustomUrlInput(false);
-                showCustomAlert("URL modificada exitosamente.", 'success');
+                showCustomAlert("Token modificado exitosamente.", 'success');
             } else {
-                showCustomAlert("Ingresa una URL MPN válida.");
+                showCustomAlert("Ingresa un Token válido.");
             }
         });
 
@@ -3984,100 +4400,83 @@
 
         
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el giro del negocio
-        document.getElementById('giroSubmitButton').addEventListener('click', function () {
-            const newGiro = document.getElementById('newGiroInput').value;
-            const newNombre = document.getElementById('newNombreInput').value;
-            
-            if (newGiro) {
-                // Validar que no exceda 16 caracteres
-                if (newGiro.length > 16) {
-                    showCustomAlert("El giro del negocio no debe exceder 16 caracteres.");
-                    return;
-                }
-                
-                // Actualizar el texto mostrado
-                document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
-                
-                // Guardar en localStorage
-                localStorage.setItem('giroNegocio', newGiro);
-                
-                // También guardar el nombre si se modificó
-                if (newNombre) {
-                    const nombreConComillas = `"${newNombre}"`;
-                    document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-                    localStorage.setItem('nombreNegocio', nombreConComillas);
-                }
-                
-                // Cambiar el botón Guardar a icono de validación
-                this.innerHTML = '✓';
-                this.classList.add('saved');
-                this.disabled = true;
-                
-                // Cambiar el botón Cancelar a Borrar
-                const cancelButton = document.getElementById('giroCancelButton');
-                cancelButton.textContent = 'Borrar';
-                cancelButton.classList.add('delete');
+        // Evento para el botón "Guardar/Borrar"
+document.getElementById('giroSubmitButton').addEventListener('click', function () {
+    const newGiro = document.getElementById('newGiroInput').value;
+    
+    if (this.textContent === 'Guardar') {
+        // Lógica para guardar
+        if (newGiro) {
+            // Validar que no exceda 16 caracteres
+            if (newGiro.length > 16) {
+                showCustomAlert("El giro del negocio no debe exceder 16 caracteres.");
+                return;
             }
             
+            // Actualizar el texto mostrado
+            document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+            
+            // Guardar en localStorage
+            localStorage.setItem('giroNegocio', newGiro);
+            
+            // Cambiar el botón a "Borrar"
+            this.textContent = 'Borrar';
+            this.classList.add('delete-btn'); // Clase para estilo diferente
+            
+            // Enfocar el input del nombre
             document.getElementById('newNombreInput').focus();
-        });
+        }
+    } else {
+        // Lógica para borrar
+        document.getElementById('newGiroInput').value = '';
+        localStorage.removeItem('giroNegocio');
+        document.getElementById('giroNegocioText').textContent = 'GIRO DEL NEGOCIO';
+        
+        // Restaurar botón a "Guardar"
+        this.textContent = 'Guardar';
+        this.classList.remove('delete-btn');
+        
+        // Actualizar contador de caracteres
+        document.getElementById('giroCharCounter').textContent = '0/16';
+    }
+});
 
-        // Modificar el evento del botón Cancelar/Borrar el giro del negocio
-        document.getElementById('giroCancelButton').addEventListener('click', function () {
-            if (this.textContent === 'Borrar') {
-                // Lógica para borrar
-                document.getElementById('newGiroInput').value = '';
-                localStorage.removeItem('giroNegocio');
-                document.getElementById('giroNegocioText').textContent = 'GIRO DEL NEGOCIO';
-                
-                
-                // Restaurar botones a su estado original
-                const saveButton = document.getElementById('giroSubmitButton');
-                saveButton.innerHTML = 'Guardar';
-                saveButton.classList.remove('saved');
-                saveButton.disabled = false;
-                
-                this.textContent = 'Cancelar';
-                this.classList.remove('delete');
-                
-                // Posicionar el cursor en el input del giro
-                document.getElementById('newGiroInput').focus();
-                
-                // No cerrar el overlay aquí
-            } else {
-                // Comportamiento normal de cancelar
-                hideCustomGiroInput();
-            }
-        });
+        
 
         // Cargar el giro del negocio desde localStorage al cargar la página
         window.addEventListener('load', function() {
-            const savedGiro = localStorage.getItem('giroNegocio');
-            if (savedGiro) {
-                document.getElementById('newGiroInput').value = savedGiro;
-                document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
-            }
-        });
+    const savedGiro = localStorage.getItem('giroNegocio');
+    const giroSubmitButton = document.getElementById('giroSubmitButton');
+    
+    if (savedGiro) {
+        document.getElementById('newGiroInput').value = savedGiro;
+        document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
+        giroSubmitButton.textContent = 'Borrar';
+        giroSubmitButton.classList.add('delete-btn');
+    }
+});
 
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el nombre del negocio
         document.getElementById('nombreSubmitButton').addEventListener('click', function() {
-            const newNombre = document.getElementById('newNombreInput').value;
-            if (newNombre) {
-                // Validar que no exceda 16 caracteres
-                if (newNombre.length > 15) {
-                    showCustomAlert("El nombre del negocio no debe exceder 15 caracteres.");
-                    return;
-                }
-                
-                // Asegurarse de que el nombre esté entre comillas
-                const nombreConComillas = `"${newNombre}"`;
-                document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-                localStorage.setItem('nombreNegocio', nombreConComillas);
-                hideCustomNombreInput();
-            } else {
-                showCustomAlert("Ingresa un nombre válido.");
-            }
-        });
+    const newNombre = document.getElementById('newNombreInput').value;
+    if (newNombre) {
+        // Validar que no exceda 15 caracteres
+        if (newNombre.length > 15) {
+            showCustomAlert("El nombre del negocio no debe exceder 15 caracteres.");
+            return;
+        }
+        
+        // Asegurarse de que el nombre esté entre comillas
+        const nombreConComillas = `"${newNombre}"`;
+        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+        localStorage.setItem('nombreNegocio', nombreConComillas);
+        
+        // Ocultar el contenedor después de guardar
+        hideGiroNombreInput();
+    } else {
+        showCustomAlert("Ingresa un nombre válido.");
+    }
+});
 
         // Cargar el nombre del negocio desde localStorage al cargar la página
         window.addEventListener('load', function() {
@@ -4101,7 +4500,7 @@
     
             // Verificar si la URL está vacía
             if (!currentUrl || currentUrl.trim() === '') {
-                showCustomAlert("Carga una URL MPN antes de activar la emergencia.");
+                showCustomAlert("Carga un Token antes de activar la emergencia.");
             } else {
                 showCustomConfirm();
             }
@@ -4734,7 +5133,7 @@
         // Cargar los números de teléfono desde localStorage al cargar la página
         window.addEventListener('load', function () {
             const savedTelCuadrante = localStorage.getItem('telCuadrante');
-            const savedTelExtorsion = localStorage.getItem('telExtorsion') || '5552425034';
+            const savedTelExtorsion = localStorage.getItem('telExtorsion') || '5550363301';
             const savedTelConocido = localStorage.getItem('telConocido');
 
             if (savedTelCuadrante) {
@@ -4836,7 +5235,7 @@
             const overlay = document.getElementById('overlay');
             
             // Cargar el teléfono guardado si existe, o usar el predeterminado
-            const savedTel = localStorage.getItem('telExtorsion') || '5552425034';
+            const savedTel = localStorage.getItem('telExtorsion') || '5550363301';
             document.getElementById('newTelExtorsionInput').value = savedTel;
             document.getElementById('telExtorsionCharCounter').textContent = `${savedTel.length}/10`;
             
@@ -5072,7 +5471,7 @@
             registrosTitulo.style.display = 'none';
             registrosContainer.style.display = 'none';
             registrosOverlay.style.display = 'none';
-            document.getElementById('toggleRegistrosButton').textContent = '⦺';
+            document.getElementById('toggleRegistrosButton').textContent = '📊';
         });
 
         function actualizarListaRegistros() {
@@ -5972,28 +6371,32 @@
             
             return true;
         }
-
+       
         // Evento para el botón "Mostrar Ubicación"
         document.getElementById('mostrarUbicacionButton').addEventListener('click', function() {
             if (!ubicacionData) return;
             
-            // Mostrar el overlay con el loader (corresponde al boón Mostrar ubicación en Mapa)
+            // Cerrar el menú fullscreen si está abierto
+            const menu = document.getElementById('fullscreenMenu');
+            if (menu.classList.contains('active')) {
+                toggleFullscreenMenu();
+            }
+            
+            // Cerrar el formulario de ubicación
+            ubicacionFormContainer.style.display = 'none';
+            registrosOverlay.style.display = 'none';
+            
+            // Mostrar el overlay con el loader
             document.getElementById('coordenadasOverlay_2').style.display = 'flex';
             setTimeout(() => {
                 document.getElementById('coordenadasOverlay_2').style.display = 'none';
             }, 3000);
             
-            ubicacionFormContainer.style.display = 'none';
-            registrosOverlay.style.display = 'none'; //oculta el overlay del Formulario de Ubicación
-
             // Actualizar el marcador en el mapa
             actualizarMarcadorUbicacion();
             
             // Guardar en localStorage
             localStorage.setItem('ubicacionNegocio', JSON.stringify(ubicacionData));
-            
-            // Mostrar mensaje de éxito
-            //showCustomAlert("Ubicación guardada y mostrada en el mapa.", 'success');
         });
       
         // Función para actualizar el marcador de ubicación
@@ -6357,126 +6760,322 @@
             });
         });
 
-
-
-
-
-        
-
-// Función para cargar el contenido de términos desde un archivo JSON
-async function loadTermsContent() {
-    try {
-        const response = await fetch('terms.json');
-        if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo de términos');
-        }
-        const termsData = await response.json();
-        return termsData;
-    } catch (error) {
-        console.error('Error al cargar términos:', error);
-        // Contenido por defecto en caso de error
-        return {
-            title: "CONDICIONES DE USO Y AVISO DE PRIVACIDAD",
-            content: `
-                <h3>1. Condiciones de Uso</h3>
-                <p>Al utilizar esta aplicación, usted acepta cumplir con estos términos y condiciones...</p>
-                
-                <h3>2. Privacidad</h3>
-                <p>Respetamos su privacidad. Los datos personales que recopilamos se utilizan únicamente para...</p>
-                
-                <h3>3. Responsabilidad</h3>
-                <p>El uso de esta aplicación es bajo su propio riesgo. No nos hacemos responsables por...</p>
-                
-                <h3>4. Modificaciones</h3>
-                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento...</p>
-            `
-        };
-    }
-}
-
-// Función para mostrar el modal de términos
-async function showTermsModal() {
-    const termsModal = document.getElementById('termsModal');
-    const termsTitle = document.getElementById('termsTitle');
-    const termsText = document.getElementById('termsText');
-    const termsCheckbox = document.getElementById('termsCheckbox');
-    const termsAcceptButton = document.getElementById('termsAcceptButton');
-    const termsDeclineButton = document.getElementById('termsDeclineButton');
-    
-    // Cargar contenido desde JSON
-    const termsData = await loadTermsContent();
-    termsTitle.textContent = termsData.title;
-    termsText.innerHTML = termsData.content;
-    
-    // Mostrar modal
-    termsModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    
-    // Evento para el checkbox
-    termsCheckbox.addEventListener('change', function() {
-        termsAcceptButton.disabled = !this.checked;
-    });
-    
-    // Evento para el botón Aceptar
-    termsAcceptButton.addEventListener('click', function() {
-        localStorage.setItem('termsAccepted', 'true');
-        termsModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        
-        // Mostrar mensaje inicial de la app
-        showInitialMessage();
-    });
-    
-    // Evento para el botón Rechazar
-    termsDeclineButton.addEventListener('click', function() {
-        showCustomAlert("Para usar esta aplicación debe aceptar los términos y condiciones.");
-    });
-}
-
-// Función para verificar si se deben mostrar los términos
-function checkTermsAccepted() {
-    return localStorage.getItem('termsAccepted') === 'true';
-}
-
-// Modificar la función que muestra el mensaje inicial
-function showInitialMessage() {
-    if (!checkTermsAccepted()) {
-        showTermsModal();
-        return;
-    }
-    
-    const initialMessageContent = document.getElementById('initialMessageContent');
+        //-------------- Manejo del Aviso de Privacidad ----------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const privacyNoticeContainer = document.getElementById('privacyNoticeContainer');
+    const acceptTermsCheckbox = document.getElementById('acceptTerms');
+    const continueButton = document.getElementById('continueButton');
     const initialMessageContainer = document.getElementById('initialMessageContainer');
     
-    setTimeout(() => {
-        initialMessageContent.classList.add('slide-up-and-fade');
-        setTimeout(() => {
-            initialMessageContainer.style.display = 'none';
-        }, 1000);
-    }, 2000);
-}
-
-// Agregar opción al menú hamburguesa
-document.addEventListener('DOMContentLoaded', function() {
-    // Agregar esta línea dentro del menúOptions que ya existe
-    const menuOptions = document.getElementById('menuOptions');
-    const termsMenuItem = document.createElement('div');
-    termsMenuItem.className = 'menu-item';
-    termsMenuItem.textContent = 'Términos y Privacidad';
-    termsMenuItem.addEventListener('click', function() {
-        showTermsModal();
-    });
-    menuOptions.insertBefore(termsMenuItem, menuOptions.firstChild);
+    // Verificar si el usuario ya aceptó los términos
+    const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
     
-    // Verificar términos al cargar la app
-    if (!checkTermsAccepted()) {
-        // Ocultar mensaje inicial hasta aceptar términos
-        document.getElementById('initialMessageContainer').style.display = 'none';
-        showTermsModal();
+    if (!termsAccepted) {
+        // Mostrar el aviso de privacidad si no ha sido aceptado
+        privacyNoticeContainer.style.display = 'block';
+        initialMessageContainer.style.display = 'none';
     } else {
+        // Mostrar el mensaje inicial si ya aceptó los términos
+        privacyNoticeContainer.style.display = 'none';
         showInitialMessage();
     }
+    
+    // Habilitar/deshabilitar botón Continuar según checkbox
+    acceptTermsCheckbox.addEventListener('change', function() {
+        continueButton.disabled = !this.checked;
+        continueButton.style.opacity = this.checked ? '1' : '0.5';
+    });
+    
+    // Manejar el botón Continuar
+    continueButton.addEventListener('click', function() {
+        if (acceptTermsCheckbox.checked) {
+            localStorage.setItem('termsAccepted', 'true');
+            privacyNoticeContainer.style.display = 'none';
+            showInitialMessage();
+        }
+    });
+    
+    // Función para mostrar el mensaje inicial con animación
+    function showInitialMessage() {
+        initialMessageContainer.style.display = 'block';
+        const initialMessageContent = document.getElementById('initialMessageContent');
+        
+        setTimeout(() => {
+            initialMessageContent.classList.add('slide-up-and-fade');
+            setTimeout(() => {
+                initialMessageContainer.style.display = 'none';
+            }, 1000);
+        }, 2000);
+    }
 });
+
+
+document.getElementById('privacyNoticeContainer').addEventListener('touchmove', function(e) {
+    e.stopPropagation();
+}, { passive: false });
+
+// Bloquea el scroll del body cuando el aviso está visible
+function blockBodyScroll(shouldBlock) {
+    document.body.style.overflow = shouldBlock ? 'hidden' : '';
+    document.body.style.position = shouldBlock ? 'fixed' : '';
+    document.body.style.width = shouldBlock ? '100%' : '';
+}
+
+// Usar al mostrar/ocultar el aviso
+function showPrivacyNotice() {
+    document.getElementById('privacyNoticeContainer').style.display = 'block';
+    blockBodyScroll(true);
+}
+
+function hidePrivacyNotice() {
+    document.getElementById('privacyNoticeContainer').style.display = 'none';
+    blockBodyScroll(false);
+}
+
+
+
+//-------------- Función para mostrar el Aviso de Privacidad desde el menú ---------------------
+function showPrivacyNotice() {
+    const privacyNoticeContainer = document.getElementById('privacyNoticeContainer');
+    const overlay = document.getElementById('overlay');
+    
+    // Mostrar contenedores
+    privacyNoticeContainer.style.display = 'block';
+    overlay.style.display = 'block';
+    
+    // Ocultar elementos de aceptación de términos
+    document.getElementById('acceptTerms').style.display = 'none';
+    document.querySelector('label[for="acceptTerms"]').style.display = 'none';
+    document.getElementById('continueButton').style.display = 'none';
+    
+    // Buscar si ya existe un botón de cerrar
+    let closeButton = privacyNoticeContainer.querySelector('.privacy-close-button');
+    
+    // Si no existe, crearlo
+    if (!closeButton) {
+        closeButton = document.createElement('button');
+        closeButton.textContent = 'Cerrar';
+        closeButton.className = 'privacy-close-button'; // Añadir clase para identificarlo
+        closeButton.style.cssText = 'padding: 10px 30px; background-color: #f00; color: #fff; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin: 20px auto; display: block;';
+        
+        // Añadir evento de clic
+        closeButton.onclick = function() {
+            privacyNoticeContainer.style.display = 'none';
+            overlay.style.display = 'none';
+        };
+        
+        // Añadir al contenedor
+        privacyNoticeContainer.querySelector('div').appendChild(closeButton);
+    }
+}
+
+
+
+
+//----------------- Función para mostrar el Mensaje de BIENVENIDA -----------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    const privacyNoticeContainer = document.getElementById('privacyNoticeContainer');
+    const welcomeMessageContainer = document.getElementById('welcomeMessageContainer');
+    const initialMessageContainer = document.getElementById('initialMessageContainer');
+    const initialMessageContent = document.getElementById('initialMessageContent');
+    const acceptTermsCheckbox = document.getElementById('acceptTerms');
+    const continueButton = document.getElementById('continueButton');
+    const welcomeContinueButton = document.getElementById('welcomeContinueButton');
+    
+    // Verificar si el usuario ya aceptó los términos
+    const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
+    
+    if (!termsAccepted) {
+        // Mostrar el mensaje inicial primero
+        initialMessageContainer.style.display = 'block';
+        privacyNoticeContainer.style.display = 'none';
+        welcomeMessageContainer.style.display = 'none';
+        
+        // Después de 2 segundos, animar y ocultar el mensaje inicial
+        setTimeout(() => {
+            initialMessageContent.classList.add('slide-up-and-fade');
+            setTimeout(() => {
+                initialMessageContainer.style.display = 'none';
+                // Mostrar el mensaje de bienvenida
+                welcomeMessageContainer.style.display = 'flex';
+            }, 1000);
+        }, 2000);
+    } else {
+        // Si ya aceptó los términos, solo mostrar el mensaje inicial brevemente
+        privacyNoticeContainer.style.display = 'none';
+        welcomeMessageContainer.style.display = 'none';
+        showInitialMessage();
+    }
+    
+    // Manejar el botón de continuar del mensaje de bienvenida
+    welcomeContinueButton.addEventListener('click', function() {
+        welcomeMessageContainer.style.display = 'none';
+        // Mostrar el aviso de privacidad después del mensaje de bienvenida
+        privacyNoticeContainer.style.display = 'block';
+    });
+    
+    // Habilitar/deshabilitar botón Continuar según checkbox
+    acceptTermsCheckbox.addEventListener('change', function() {
+        continueButton.disabled = !this.checked;
+        continueButton.style.opacity = this.checked ? '1' : '0.5';
+    });
+    
+    // Manejar el botón Continuar del aviso de privacidad
+    continueButton.addEventListener('click', function() {
+        if (acceptTermsCheckbox.checked) {
+            localStorage.setItem('termsAccepted', 'true');
+            privacyNoticeContainer.style.display = 'none';
+            showInitialMessage();
+        }
+    });
+    
+    // Función para mostrar el mensaje inicial con animación
+    function showInitialMessage() {
+        initialMessageContainer.style.display = 'block';
+        
+        setTimeout(() => {
+            initialMessageContent.classList.add('slide-up-and-fade');
+            setTimeout(() => {
+                initialMessageContainer.style.display = 'none';
+            }, 1000);
+        }, 2000);
+    }
+});
+
+
+// Evento para habilitar/deshabilitar el botón de continuar en el mensaje de bienvenida
+// Evento para el checkbox personalizado
+document.getElementById('acceptWelcome').addEventListener('change', function() {
+        const customCheck = document.getElementById('customCheck');
+        const continueButton = document.getElementById('welcomeContinueButton');
+        
+        if(this.checked) {
+            customCheck.style.opacity = '1';
+            customCheck.style.animation = 'none';
+            customCheck.offsetHeight; // Trigger reflow
+            customCheck.style.animation = 'hologramAppear 0.3s forwards';
+            continueButton.disabled = false;
+            continueButton.style.opacity = '1';
+            continueButton.style.boxShadow = '0 0 15px rgba(0,200,255,0.5)';
+        } else {
+            customCheck.style.animation = 'none';
+            customCheck.offsetHeight; // Trigger reflow
+            customCheck.style.animation = 'hologramAppear 0.3s reverse forwards';
+            continueButton.disabled = true;
+            continueButton.style.opacity = '0.5';
+            continueButton.style.boxShadow = '0 0 10px rgba(0,150,255,0.3)';
+        }
+    });
+
+    // Keyframe adicional para el check
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            @keyframes hologramAppear {
+                from { opacity: 0; transform: scale(0.5); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        </style>
+    `);
+
+
+
+// Modifica la función que muestra el mensaje de bienvenida para reiniciar la animación
+function showWelcomeMessage() {
+    const welcomeMessageContainer = document.getElementById('welcomeMessageContainer');
+    const welcomeMessageContent = welcomeMessageContainer.querySelector('.digital-universe');
+    
+    // Reiniciar la animación
+    welcomeMessageContent.classList.remove('welcome-message-animation');
+    void welcomeMessageContent.offsetWidth; // Trigger reflow
+    welcomeMessageContent.classList.add('welcome-message-animation');
+    
+    welcomeMessageContainer.style.display = 'flex';
+}
+
+
+
+// Función para mostrar/ocultar el menú
+// Función para mostrar/ocultar el menú de pantalla completa
+function toggleFullscreenMenu() {
+    const menu = document.getElementById('fullscreenMenu');
+    menu.classList.toggle('active');
+    
+    // Bloquear/desbloquear scroll del body
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+}
+
+// Función para manejar las acciones del menú
+// Para el menú hamburguesa tradicional
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const menuOptions = document.getElementById('menuOptions');
+        const menuOverlay = document.getElementById('menuOverlay');
+        menuOptions.style.display = 'none';
+        menuOverlay.style.display = 'none';
+    });
+});
+
+// Para el menú a pantalla completa
+// Función para manejar las acciones del menú
+function menuAction(action) {
+    // Cerrar el menú con animación
+    toggleFullscreenMenu();
+    
+    // Pequeño retraso para que la animación de cierre se complete
+    setTimeout(() => {
+        switch(action) {
+            case 'token':
+                showCustomUrlInput();
+                break;
+            case 'giro':
+                showGiroNombreInput();
+                break;
+            case 'cuadrante':
+                showCustomTelCuadranteInput();
+                break;
+            case 'extorsion':
+                showCustomTelExtorsionInput();
+                break;
+            case 'conocido':
+                showCustomTelConocidoInput();
+                break;
+            case 'ubicacion':
+                mostrarFormularioUbicacion();
+                break;
+            case 'privacidad':
+                showPrivacyNotice();
+                break;
+            case 'registros':
+                // Mostrar el título y contenedor de registros
+                document.getElementById('registrosTitulo').style.display = 'flex';
+                document.getElementById('registrosActivacion').style.display = 'block';
+                document.getElementById('registrosOverlay').style.display = 'block';
+                
+                // Mostrar el contenedor de gráficas
+                document.getElementById('graficasContainer').style.display = 'block';
+                
+                // Actualizar ambos componentes
+                actualizarListaRegistros();
+                actualizarGraficas();
+                break;
+            case 'Preguntas':
+                showCustomAlert("🫡 ¡Pronto responderemos a tus preguntas!", 'success');
+                break;
+        }
+    }, 300); // 300ms de retraso para que complete la animación de cierre
+}
+
+// Para activar el menú desde el botón de hamburguesa existente
+function toggleMenu() {
+    toggleFullscreenMenu();
+}
+
+
+
+
+
+
 
 
     </script>   
