@@ -150,7 +150,7 @@
         header {
             width: 100%;
             height: 70px;
-            background: linear-gradient(to bottom, #000000, #000000d7, #000000c0, #000000a5, #00000098, #00000070, #00000030, #00000005);
+            background: linear-gradient(to bottom, #000000, #000000ea, #000000ea, #000000c9, #000000c3, #000000af, #0000008a, #00000035);
             color: #b4b4b4;
             text-align: center;
             align-items: center;
@@ -714,8 +714,8 @@
 
         .custom-giro-input .button-container button:hover {
             background-color: #000000;
-            border: 2px solid #d7159d;
-            box-shadow: 0 0 10px #ec4ebd;
+            border: 2px solid #000000;
+            box-shadow: 0 0 10px #000000;
         }
         /*---------- Cuadro para AGREGAR NOMBRE (showGiroNombreInput) --------------------*/
         .custom-nombre-input {
@@ -2051,7 +2051,7 @@
             justify-content: center;
         }
         
-        /*------ Botón BORRAR y botón CHECK (paloma) del imput giroNegocio --------*/
+        /*------ Botón BORRAR y botón GUARDAR del imput giroNegocio --------*/
         /* Estilo para el botón Guardar */
         #giroSubmitButton {
             background-color: #4CAF50; /* Verde */
@@ -3399,7 +3399,7 @@
 
         <!-- Alerta personalizada para Cuadrante -->
         <div id="customAlertCuadrante" class="custom-alert-cuadrante">
-            <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante correspondiente al negocio o establecimiento registrado.</p>
+            <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante del negocio o establecimiento registrado.</p>
             <button id="alertCuadranteCloseButton">Entendido</button>
         </div>
         
@@ -3463,7 +3463,7 @@
 
 
 
-<!------- Agrega esto en tu HTML donde quieras que aparezcan los inputs (showGiroNombreInput) ------>
+<!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
 <div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
     <div id="customGiroInput" class="custom-giro-input">
         <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
@@ -4500,7 +4500,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
     
             // Verificar si la URL está vacía
             if (!currentUrl || currentUrl.trim() === '') {
-                showCustomAlert("Carga un Token antes de activar la emergencia.");
+                showCustomAlert("Carga un Token para poder activar la emergencia.");
             } else {
                 showCustomConfirm();
             }
@@ -5019,19 +5019,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             document.getElementById('conocidoButton').disabled = false;
         });
 
-        // Evento para el botón "EmergenciaCuadrante"
-        document.getElementById('emergencyCuadranteButtonContainer').addEventListener('click', function () {
-            guardarRegistroActivacion('Emergencia Cuadrante');
-            // Obtener la hora actual
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-
-            // Mostrar el mensaje con la hora de activación
-            showCustomAlert(`Emergencia Cuadrante<br>Hora: ${timeString}`);
-        });
+        
 
         // Evento para el botón "Extorsión"
         document.getElementById('extorsionButton').addEventListener('click', function () {
@@ -5051,20 +5039,6 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             document.getElementById('conocidoButton').disabled = false;
         });
 
-        // Evento para el nuevo botón EmergenciaExtorsion
-        document.getElementById('emergencyExtorsionButtonContainer').addEventListener('click', function () {
-            guardarRegistroActivacion('Emergencia por Extorsión');
-            // Obtener la hora actual
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-
-            // Aquí puedes agregar la lógica para manejar la emergencia por extorsión
-            showCustomAlert(`Emergencia por Extorsión<br>Hora: ${timeString}`);
-        });
-
         document.getElementById('conocidoButton').addEventListener('click', function () {
             // Ocultar los botones de emergencia, emergencia cuadrante y extorsión
             document.getElementById('emergencyButtonContainer').style.display = 'none';
@@ -5081,20 +5055,6 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             document.getElementById('c5Button').disabled = false;
             document.getElementById('cuadranteButton').disabled = false;
             document.getElementById('extorsionButton').disabled = false;
-        });
-
-        // Evento para el nuevo botón EmergenciaConocido
-        document.getElementById('emergencyConocidoButtonContainer').addEventListener('click', function () {
-            guardarRegistroActivacion('Emergencia a Conocido');
-            // Obtener la hora actual
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-
-            // Aquí puedes agregar la lógica para manejar la emergencia por conocido
-            showCustomAlert(`Emergencia a Conocido <br>Hora: ${timeString}`);
         });
 
         // Guardar el teléfono de cuadrante en localStorage
@@ -5214,14 +5174,29 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         });
 
        // Evento para el botón "EmergenciaCuadrante"
-        document.getElementById('emergencyCuadranteButtonContainer').addEventListener('click', function () {
+       document.getElementById('emergencyCuadranteButtonContainer').addEventListener('click', function() {
             const telCuadrante = localStorage.getItem('telCuadrante');
-            if (telCuadrante && telCuadrante.length === 10 && /^\d+$/.test(telCuadrante)) {
-                vibrateLong(); // Vibración larga antes de la llamada
-                window.location.href = `tel:${telCuadrante}`;
-            } else {
+            
+            // Verificar si hay un teléfono guardado
+            if (!telCuadrante || telCuadrante.length !== 10 || !/^\d+$/.test(telCuadrante)) {
                 showCustomAlert("No hay un número de teléfono de Cuadrante guardado o no es válido.");
+                return; // Salir de la función sin registrar la activación
             }
+            
+            // Si hay teléfono válido, proceder con la llamada y registro
+            vibrateLong();
+            window.location.href = `tel:${telCuadrante}`;
+            guardarRegistroActivacion('Emergencia Cuadrante');
+            
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Mostrar el mensaje con la hora de activación
+            showCustomAlert(`Emergencia Cuadrante<br>Hora: ${timeString}`);
         });
 
         // Mostrar el cuadro de diálogo para ingresar el número de teléfono de extorsión
@@ -5270,14 +5245,29 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         });
 
         // Realizar la llamada cuando se pulse el botón "EmergenciaExtorsión"
-        document.getElementById('emergencyExtorsionButtonContainer').addEventListener('click', function () {
+        // Evento para el nuevo botón EmergenciaExtorsion
+        document.getElementById('emergencyExtorsionButtonContainer').addEventListener('click', function() {
             const telExtorsion = localStorage.getItem('telExtorsion');
-            if (telExtorsion && telExtorsion.length === 10 && /^\d+$/.test(telExtorsion)) {
-                vibrateLong(); // Vibración larga antes de la llamada
-                window.location.href = `tel:${telExtorsion}`;
-            } else {
-                showCustomAlert("No se ha configurado un número de teléfono para extorsión o no es válido.");
+            
+            // Verificar si hay un teléfono guardado
+            if (!telExtorsion || telExtorsion.length !== 10 || !/^\d+$/.test(telExtorsion)) {
+                showCustomAlert("No hay un número de teléfono Anti-Extorsión guardado o no es válido.");
+                return; // Salir de la función sin registrar la activación
             }
+            
+            // Si hay teléfono válido, proceder con la llamada y registro
+            vibrateLong();
+            window.location.href = `tel:${telExtorsion}`;
+            guardarRegistroActivacion('Emergencia por Extorsión');
+            
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            showCustomAlert(`Emergencia por Extorsión<br>Hora: ${timeString}`);
         });
 
         // Evento para el botón "Tel Conocido"
@@ -5330,16 +5320,29 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         });
 
         // Evento para el botón "EmergenciaConocido"
-        document.getElementById('emergencyConocidoButtonContainer').addEventListener('click', function () {
+        document.getElementById('emergencyConocidoButtonContainer').addEventListener('click', function() {
             const telConocido = localStorage.getItem('telConocido');
-            if (telConocido && telConocido.length === 10 && /^\d+$/.test(telConocido)) {
-                vibrateLong(); // Vibración larga antes de la llamada
-                window.location.href = `tel:${telConocido}`;
-            } else {
-                showCustomAlert("No se ha configurado un número de teléfono para Conocido o no es válido.");
+            
+            // Verificar si hay un teléfono guardado
+            if (!telConocido || telConocido.length !== 10 || !/^\d+$/.test(telConocido)) {
+                showCustomAlert("No hay un número de teléfono de Conocido guardado o no es válido.");
+                return; // Salir de la función sin registrar la activación
             }
-        });
+            
+            // Si hay teléfono válido, proceder con la llamada y registro
+            vibrateLong();
+            window.location.href = `tel:${telConocido}`;
+            guardarRegistroActivacion('Emergencia a Conocido');
+            
+            // Obtener la hora actual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
 
+            showCustomAlert(`Emergencia a Conocido<br>Hora: ${timeString}`);
+        });
         // Función para manejar el conteo de caracteres en los inputs de teléfono
         function setupPhoneInputCounter(inputId, counterId) {
             const input = document.getElementById(inputId);
@@ -5471,7 +5474,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             registrosTitulo.style.display = 'none';
             registrosContainer.style.display = 'none';
             registrosOverlay.style.display = 'none';
-            document.getElementById('toggleRegistrosButton').textContent = '📊';
+            document.getElementById('toggleRegistrosButton').innerHTML = '<img src="icons/iconGrafica1.png" alt="Registros">';
         });
 
         function actualizarListaRegistros() {
@@ -6486,7 +6489,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
                                     if (ubicacionMarker.isPopupOpen()) {
                                         ubicacionMarker.closePopup();
                                     }
-                                }, 3000);
+                                }, 10000);
 
                             }, 500);
                         }, 2000); // Retraso de 2 segundos después del centrado
