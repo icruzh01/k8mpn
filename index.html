@@ -2051,6 +2051,35 @@
             justify-content: center;
         }
         
+
+        /*------ Botón BORRAR y botón GUARDAR del imput IDENTIFICADOR iDNegocio --------*/
+        /* Estilo para el botón Guardar */
+        #idSubmitButton {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        /* Estilo para cuando es botón Borrar */
+        #idSubmitButton.delete-btn {
+            background-color: #f44336; /* Rojo */
+        }
+
+        /* Efecto hover para ambos estados */
+        #idSubmitButton:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+
+
+
+
+
         /*------ Botón BORRAR y botón GUARDAR del imput giroNegocio --------*/
         /* Estilo para el botón Guardar */
         #giroSubmitButton {
@@ -3464,14 +3493,23 @@
 
 
 <!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
+<!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
 <div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
+    <div id="customIdInput" class="custom-giro-input">
+        <h3 style="color: #00ff88; margin-top: 0; text-align: center;">I D</h3>
+        <input type="text" id="newIdInput" placeholder="Identificador del Negocio" maxlength="10">
+        <div class="char-counter" id="idCharCounter">0/10</div>
+        <div class="button-container">
+            <button id="idSubmitButton">Guardar</button>
+        </div>
+    </div>
+
     <div id="customGiroInput" class="custom-giro-input">
         <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
         <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
         <div class="char-counter" id="giroCharCounter">0/16</div>
         <div class="button-container">
             <button id="giroSubmitButton">Guardar</button>
-            
         </div>
     </div>
 
@@ -3485,7 +3523,6 @@
         </div>
     </div>
 </div>
-
 
 
             <!-- Cuadro de diálogo para ingresar el número de teléfono de Cuadrante -->
@@ -6412,11 +6449,13 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             if (!ubicacionData) return;
 
             // Obtener el nombre del negocio para el popup
+            const negocioId = localStorage.getItem('negocioId') || 'ID no asignado';
             const giroNegocio = localStorage.getItem('giroNegocio') || 'Giro';
             const nombreNegocio = localStorage.getItem('nombreNegocio') || 'Negocio';
 
             // Crear el contenido del popup
             const popupContent = `
+                <b>ID: ${negocioId}</b><br>    
                 <b>${giroNegocio.replace(/"/g, '')}</b><br>
                 <b>${nombreNegocio.replace(/"/g, '')}</b><br>
                 ${ubicacionData.direccionCompleta}
@@ -7074,10 +7113,74 @@ function toggleMenu() {
     toggleFullscreenMenu();
 }
 
+//------------------------------------- INPUT ID --------------
 
 
+// Evento para el botón "Guardar" del ID
+document.getElementById('idSubmitButton').addEventListener('click', function () {
+    const newId = document.getElementById('newIdInput').value;
+    
+    if (this.textContent === 'Guardar') {
+        // Lógica para guardar
+        if (newId) {
+            // Validar que no exceda 10 caracteres
+            if (newId.length > 10) {
+                showCustomAlert("El ID no debe exceder 10 caracteres.");
+                return;
+            }
+            
+            // Guardar en localStorage
+            localStorage.setItem('negocioId', newId);
+            
+            // Cambiar el botón a "Borrar"
+            this.textContent = 'Borrar';
+            this.classList.add('delete-btn');
+            
+            // Enfocar el input del giro
+            document.getElementById('newGiroInput').focus();
+        }
+    } else {
+        // Lógica para borrar
+        document.getElementById('newIdInput').value = '';
+        localStorage.removeItem('negocioId');
+        
+        // Restaurar botón a "Guardar"
+        this.textContent = 'Guardar';
+        this.classList.remove('delete-btn');
+        
+        // Actualizar contador de caracteres
+        document.getElementById('idCharCounter').textContent = '0/10';
+    }
+});
 
+// Cargar el ID desde localStorage al cargar la página
+window.addEventListener('load', function() {
+    const savedId = localStorage.getItem('negocioId');
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    
+    if (savedId) {
+        document.getElementById('newIdInput').value = savedId;
+        document.getElementById('idCharCounter').textContent = `${savedId.length}/10`;
+        idSubmitButton.textContent = 'Borrar';
+        idSubmitButton.classList.add('delete-btn');
+    }
+});
 
+// Evento para el contador de caracteres del ID
+document.getElementById('newIdInput').addEventListener('input', function() {
+    const currentLength = this.value.length;
+    document.getElementById('idCharCounter').textContent = `${currentLength}/10`;
+    
+    if (currentLength > 10) {
+        this.value = this.value.substring(0, 10);
+        document.getElementById('idCharCounter').textContent = "10/10";
+        showCustomAlert("Máximo 10 caracteres permitidos");
+        return;
+    }
+    
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    idSubmitButton.disabled = !this.value.trim();
+});
 
 
 
