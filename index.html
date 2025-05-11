@@ -654,6 +654,76 @@
             border: 2px solid #c20303;
             box-shadow: 0 0 10px #ff0000;
         }
+
+        /*-------- Cuadro para AGREGAR IDENTIFICADOR (ID) del establecimiento (showGiroNombreInput) ------------------*/
+        .custom-id-input {
+            display: none;
+            position: fixed;
+            width: 250px;
+            height: 100px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #00000050;
+            border: 1px solid #ffa600;
+            padding: 20px;
+            box-shadow: 0 0 20px #ffbd42;
+            z-index: 1010;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .custom-id-input input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 7px;
+            font-size: 16px;
+            background: #ffeac3;
+            color: #000000;
+            border: 1px solid #ffa600;
+            box-shadow: 0 0 5px #ffbd42;
+            border-radius: 5px;
+        }
+
+        .custom-id-input input:hover {
+            background: #000000;
+            border: 0.5px solid #ffa600;
+            color: #ffa600;
+        }
+
+        .custom-id-input input:focus {
+            background: #000000;
+            border: 0.5px solid #ffa600;
+            color: #ffa600;
+        }
+
+        .custom-id-input .button-container {
+            justify-content: center;
+            
+        }
+
+        .custom-id-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #ffa600;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
+
+        .custom-id-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #000000;
+            box-shadow: 0 0 10px #000000;
+        }
+
+
+
+
+
+
         /*-------- Cuadro para AGREGAR GIRO del establecimiento (showGiroNombreInput) ------------------*/
         .custom-giro-input {
             display: none;
@@ -692,7 +762,7 @@
 
         .custom-giro-input input:focus {
             background: #000000;
-            border: 0.5px solid #5cbd02;
+            border: 0.5px solid #4ee2ec;
             color: #4ee2ec;
         }
 
@@ -755,7 +825,7 @@
 
         .custom-nombre-input input:focus {
             background: #000000;
-            border: 0.5px solid #5cbd02;
+            border: 0.5px solid #f507dd;
             color: #f507dd;
         }
 
@@ -3226,20 +3296,20 @@
 
 
 
-/*------------- Estilo para el contenedor de giro y nombre (showGiroNombreInput) --------- */
+/*------------- Contenedor principal para los inputs de ID, giro y nombre (showGiroNombreInput) --------- */
 .giro-nombre-container {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: auto;
-    height: 300px;
+    width: 300px; /* Ancho fijo para mejor consistencia */
+    height: auto; /* Altura automática según contenido */
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none; /* Inicialmente oculto */
     flex-direction: column;
     align-items: center;
     gap: 20px;
     z-index: 1010;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 20px;
     border-radius: 15px;
     border: 1px solid #00bfff;
@@ -3247,10 +3317,12 @@
 }
 
 /* Ajusta los estilos de los inputs individuales para que se vean bien en el contenedor */
+.giro-nombre-container .custom-id-input,
 .giro-nombre-container .custom-giro-input,
 .giro-nombre-container .custom-nombre-input {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
     top: auto;
@@ -3259,6 +3331,7 @@
     background: transparent;
     border: none;
     padding: 0;
+    margin: 0;
     box-shadow: none;
 }
 
@@ -3487,42 +3560,36 @@
             <button id="closeScannerButton">Cerrar</button>
         </div>
 
-        
+        <!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
+        <div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
+            <div id="customIdInput" class="custom-id-input">
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">I D</h3>
+                <input type="text" id="newIdInput" placeholder="Identificador del Negocio" maxlength="10">
+                <div class="char-counter" id="idCharCounter">0/10</div>
+                <div class="button-container">
+                    <button id="idSubmitButton">Guardar</button>
+                </div>
+            </div>
 
+            <div id="customGiroInput" class="custom-giro-input">
+                <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
+                <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
+                <div class="char-counter" id="giroCharCounter">0/16</div>
+                <div class="button-container">
+                    <button id="giroSubmitButton">Guardar</button>
+                </div>
+            </div>
 
-
-
-<!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
-<!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
-<div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
-    <div id="customIdInput" class="custom-giro-input">
-        <h3 style="color: #00ff88; margin-top: 0; text-align: center;">I D</h3>
-        <input type="text" id="newIdInput" placeholder="Identificador del Negocio" maxlength="10">
-        <div class="char-counter" id="idCharCounter">0/10</div>
-        <div class="button-container">
-            <button id="idSubmitButton">Guardar</button>
+            <div id="customNombreInput" class="custom-nombre-input">
+                <h3 style="color: #f30086; margin-top: 0; text-align: center;">N O M B R E</h3>
+                <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
+                <div class="char-counter" id="nombreCharCounter">0/15</div>
+                <div class="button-container">
+                    <button id="nombreSubmitButton">Guardar</button>
+                    <button id="nombreCancelButton">Cancelar</button>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="customGiroInput" class="custom-giro-input">
-        <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
-        <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
-        <div class="char-counter" id="giroCharCounter">0/16</div>
-        <div class="button-container">
-            <button id="giroSubmitButton">Guardar</button>
-        </div>
-    </div>
-
-    <div id="customNombreInput" class="custom-nombre-input">
-        <h3 style="color: #f30086; margin-top: 0; text-align: center;">N O M B R E</h3>
-        <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
-        <div class="char-counter" id="nombreCharCounter">0/15</div>
-        <div class="button-container">
-            <button id="nombreSubmitButton">Guardar</button>
-            <button id="nombreCancelButton">Cancelar</button>
-        </div>
-    </div>
-</div>
 
 
             <!-- Cuadro de diálogo para ingresar el número de teléfono de Cuadrante -->
