@@ -262,8 +262,28 @@
         }
                 
         /*---------- GIRO y NOMBRE del Establecimiento ------------------*/
+        h1.idNegocio {
+            top: 110px;
+            margin-bottom: 11px;
+            padding: 0 0;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            min-height: 0;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            text-shadow:0 0 2px #ff0000, 0 0 4px #ff0000;
+            z-index: 1000;
+        }
+        
         h1.giroNegocio {
-            top: 150px;
+            top: 85px;
             margin-bottom: 11px;
             padding: 0 0;
             font-family: sans-serif;
@@ -283,7 +303,7 @@
         }
 
         h1.nombreNegocio {
-            top: 130px;
+            top: 60px;
             margin-bottom: 20px;
             padding: 0 0;
             font-family: sans-serif;
@@ -306,7 +326,7 @@
         
         #emergencyButtonContainer {
             position: relative;
-            top: 110px;
+            top: 40px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -3388,10 +3408,9 @@
         </div>
 
         <div>
-
+            <h1 id="idNegocioText" class="idNegocio">ID</h1>
             <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
             <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE"</h1>
-
         </div>
 
         <!-- Contenedor del botón de emergencia 3D -->
@@ -4321,7 +4340,7 @@ function showGiroNombreInput() {
     overlay.style.display = 'block';
     
     // Enfocar el input del giro automáticamente
-    document.getElementById('newGiroInput').focus();
+    //document.getElementById('newGiroInput').focus();
 }
 
 // Función para ocultar ambos inputs
@@ -4527,7 +4546,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             this.classList.add('delete-btn'); // Clase para estilo diferente
             
             // Enfocar el input del nombre
-            document.getElementById('newNombreInput').focus();
+            //document.getElementById('newNombreInput').focus();
         }
     } else {
         // Lógica para borrar
@@ -5962,11 +5981,11 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
 
         //--------------------- EFECTO de HUMO blanco permanente ----------------------------------------------------
         class SmokeEffect {
-            constructor(element) {
-                this.element = element;
-                this.originalText = '';
-                this.init();
-            }
+        constructor(element) {
+            this.element = element;
+            this.originalText = element.textContent; // Esto ahora incluirá "ID: "
+            this.init();
+        }
             
             init() {
                 this.applyEffect();
@@ -6019,7 +6038,15 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             }
             
             updateText(newText) {
-                this.originalText = newText;
+                // Para el ID, mantenemos el prefijo "ID: "
+                if (this.element.id === 'idNegocioText') {
+                    const idValue = newText.replace('ID: ', '');
+                    this.originalText = `ID: ${idValue}`;
+                    this.element.textContent = `ID: ${idValue}`;
+                } else {
+                    this.originalText = newText;
+                    this.element.textContent = newText;
+                }
                 this.applyEffect();
             }
             
@@ -6042,19 +6069,39 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         // Aplicar al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar efectos
+            const idEffect = new SmokeEffect(document.getElementById('idNegocioText'));
             const giroEffect = new SmokeEffect(document.getElementById('giroNegocioText'));
             const nombreEffect = new SmokeEffect(document.getElementById('nombreNegocioText'));
             
             // Cargar valores guardados
+            const savedId = localStorage.getItem('negocioId') || '';
+                document.getElementById('idNegocioText').textContent = `ID: ${savedId.toUpperCase()}`;
             const savedGiro = localStorage.getItem('giroNegocio') || 'GIRO DEL NEGOCIO';
             const savedNombre = localStorage.getItem('nombreNegocio') || '" NOMBRE "';
             
+            document.getElementById('idNegocioText').textContent = savedId.toUpperCase();
             document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
             document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
             
             // Reaplicar efectos después de cargar los valores
+            idEffect.updateText(savedId.toUpperCase());
             giroEffect.updateText(savedGiro.toUpperCase());
             nombreEffect.updateText(savedNombre.toUpperCase());
+            
+            // Modifica la función que actualiza el ID cuando se guarda
+            document.getElementById('idSubmitButton')?.addEventListener('click', function() {
+                const newId = document.getElementById('newIdInput').value;
+                if (newId) {
+                    const idTextElement = document.getElementById('idNegocioText');
+                    idTextElement.textContent = `ID: ${newId.toUpperCase()}`;
+                    localStorage.setItem('negocioId', newId);
+                    
+                    // Actualizar el efecto de humo
+                    if (idTextElement._smokeEffect) {
+                        idTextElement._smokeEffect.updateText(`ID: ${newId.toUpperCase()}`);
+                    }
+                }
+            });
             
             // Modificar funciones de guardado para mantener el efecto
             document.getElementById('giroSubmitButton')?.addEventListener('click', function() {
@@ -6083,7 +6130,8 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             return element._smokeEffect;
         }
 
-        ['giroNegocioText', 'nombreNegocioText'].forEach(id => {
+        // Agregar al array de elementos que deben tener el efecto Smoke
+        ['idNegocioText', 'giroNegocioText', 'nombreNegocioText'].forEach(id => {
             const element = document.getElementById(id);
             if (element) {
                 const originalTextContent = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), 'textContent');
@@ -6151,7 +6199,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             localStorage.setItem('mapTheme', isDarkMode ? 'dark' : 'light');
             
             // Resto del código existente...
-            const elements = document.querySelectorAll('h1.giroNegocio, h1.nombreNegocio');
+            const elements = document.querySelectorAll('h1.idNegocio, h1.giroNegocio, h1.nombreNegocio');
             
             elements.forEach(el => {
                 // Estilos comunes para ambos modos
@@ -6172,7 +6220,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
                     //el.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'; // Fondo semitransparente para mejor contraste
                 }
             });
-            
+                      
             this.textContent = isDarkMode ? '☀️' : '🌙';
         });
     
@@ -6192,7 +6240,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             
             // Aplicar estilos según el tema
             const isDarkMode = mapContainer.classList.contains('dark-mode');
-            const elements = document.querySelectorAll('h1.giroNegocio, h1.nombreNegocio');
+            const elements = document.querySelectorAll('h1.idNegocio, h1.giroNegocio, h1.nombreNegocio');
             
             elements.forEach(el => {
                 // Estilos comunes para ambos modos
@@ -7202,8 +7250,8 @@ document.getElementById('idSubmitButton').addEventListener('click', function () 
             this.textContent = 'Borrar';
             this.classList.add('delete-btn');
             
-            // Enfocar el input del giro
-            document.getElementById('newGiroInput').focus();
+            // Enfocar el input del ID
+            document.getElementById('newIdInput').focus();
         }
     } else {
         // Lógica para borrar
