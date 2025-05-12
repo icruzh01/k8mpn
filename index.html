@@ -2154,7 +2154,7 @@
         }
 
         /* Estilo para cuando es botón Borrar */
-        #idSubmitButton.delete-btn {
+        #idSubmitButton.edit-btn {
             background-color: #f44336; /* Rojo */
         }
 
@@ -2182,7 +2182,7 @@
         }
 
         /* Estilo para cuando es botón Borrar */
-        #giroSubmitButton.delete-btn {
+        #giroSubmitButton.edit-btn {
             background-color: #f44336; /* Rojo */
         }
 
@@ -4525,43 +4525,37 @@ document.getElementById('nombreCancelButton').addEventListener('click', hideGiro
         
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el giro del negocio
         // Evento para el botón "Guardar/Borrar"
-document.getElementById('giroSubmitButton').addEventListener('click', function () {
-    const newGiro = document.getElementById('newGiroInput').value;
+// Evento para el botón "Guardar/Editar" del giro del negocio
+document.getElementById('giroSubmitButton').addEventListener('click', function() {
+    const inputElement = document.getElementById('newGiroInput');
     
-    if (this.textContent === 'Guardar') {
-        // Lógica para guardar
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
+        // Colocar el cursor al final del texto
+        setTimeout(() => {
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        }, 0);
+    } else {
+        // Guardar cambios
+        const newGiro = inputElement.value;
         if (newGiro) {
-            // Validar que no exceda 16 caracteres
             if (newGiro.length > 16) {
-                showCustomAlert("El giro del negocio no debe exceder 16 caracteres.");
+                showCustomAlert("El giro no debe exceder 16 caracteres.");
                 return;
             }
             
-            // Actualizar el texto mostrado
-            document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
-            
-            // Guardar en localStorage
             localStorage.setItem('giroNegocio', newGiro);
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
             
-            // Cambiar el botón a "Borrar"
-            this.textContent = 'Borrar';
-            this.classList.add('delete-btn'); // Clase para estilo diferente
-            
-            // Enfocar el input del nombre
+            // Mover el cursor al input de nombre
             document.getElementById('newNombreInput').focus();
         }
-    } else {
-        // Lógica para borrar
-        document.getElementById('newGiroInput').value = '';
-        localStorage.removeItem('giroNegocio');
-        document.getElementById('giroNegocioText').textContent = 'GIRO DEL NEGOCIO';
-        
-        // Restaurar botón a "Guardar"
-        this.textContent = 'Guardar';
-        this.classList.remove('delete-btn');
-        
-        // Actualizar contador de caracteres
-        document.getElementById('giroCharCounter').textContent = '0/16';
     }
 });
 
@@ -4571,12 +4565,14 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         window.addEventListener('load', function() {
     const savedGiro = localStorage.getItem('giroNegocio');
     const giroSubmitButton = document.getElementById('giroSubmitButton');
-    
     if (savedGiro) {
         document.getElementById('newGiroInput').value = savedGiro;
         document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
-        giroSubmitButton.textContent = 'Borrar';
-        giroSubmitButton.classList.add('delete-btn');
+        giroSubmitButton.textContent = 'Editar';
+        giroSubmitButton.classList.add('edit-btn');
+    } else {
+        giroSubmitButton.textContent = 'Guardar';
+        giroSubmitButton.classList.add('save-btn');
     }
 });
 
@@ -7232,52 +7228,50 @@ function toggleMenu() {
 
 
 // Evento para el botón "Guardar" del ID
-document.getElementById('idSubmitButton').addEventListener('click', function () {
-    const newId = document.getElementById('newIdInput').value;
+document.getElementById('idSubmitButton').addEventListener('click', function() {
+    const inputElement = document.getElementById('newIdInput');
     
-    if (this.textContent === 'Guardar') {
-        // Lógica para guardar
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
+        // Colocar el cursor al final
+        inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+    } else {
+        // Guardar cambios
+        const newId = inputElement.value;
         if (newId) {
-            // Validar que no exceda 10 caracteres
             if (newId.length > 10) {
                 showCustomAlert("El ID no debe exceder 10 caracteres.");
                 return;
             }
             
-            // Guardar en localStorage
             localStorage.setItem('negocioId', newId);
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
             
-            // Cambiar el botón a "Borrar"
-            this.textContent = 'Borrar';
-            this.classList.add('delete-btn');
-            
-            // Enfocar el input del ID
-            document.getElementById('newIdInput').focus();
+            // Mover el cursor al input de giro
+            document.getElementById('newGiroInput').focus();
         }
-    } else {
-        // Lógica para borrar
-        document.getElementById('newIdInput').value = '';
-        localStorage.removeItem('negocioId');
-        
-        // Restaurar botón a "Guardar"
-        this.textContent = 'Guardar';
-        this.classList.remove('delete-btn');
-        
-        // Actualizar contador de caracteres
-        document.getElementById('idCharCounter').textContent = '0/10';
     }
 });
 
 // Cargar el ID desde localStorage al cargar la página
 window.addEventListener('load', function() {
+    // Para el ID
     const savedId = localStorage.getItem('negocioId');
     const idSubmitButton = document.getElementById('idSubmitButton');
-    
     if (savedId) {
         document.getElementById('newIdInput').value = savedId;
         document.getElementById('idCharCounter').textContent = `${savedId.length}/10`;
-        idSubmitButton.textContent = 'Borrar';
-        idSubmitButton.classList.add('delete-btn');
+        idSubmitButton.textContent = 'Editar';
+        idSubmitButton.classList.add('edit-btn');
+    } else {
+        idSubmitButton.textContent = 'Guardar';
+        idSubmitButton.classList.add('save-btn');
     }
 });
 
