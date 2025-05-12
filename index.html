@@ -4339,8 +4339,10 @@ function showGiroNombreInput() {
     container.style.display = 'flex';
     overlay.style.display = 'block';
     
-    // Enfocar el input del giro automáticamente
-    //document.getElementById('newGiroInput').focus();
+    // Enfocar el input del ID automáticamente después de un pequeño retraso
+    setTimeout(() => {
+        document.getElementById('newIdInput').focus();
+    }, 50); // Pequeño retraso para asegurar que el contenedor esté visible
 }
 
 // Función para ocultar ambos inputs
