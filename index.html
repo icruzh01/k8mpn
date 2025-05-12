@@ -4548,7 +4548,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             this.classList.add('delete-btn'); // Clase para estilo diferente
             
             // Enfocar el input del nombre
-            //document.getElementById('newNombreInput').focus();
+            document.getElementById('newNombreInput').focus();
         }
     } else {
         // Lógica para borrar
@@ -6571,7 +6571,6 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
 
             // Crear el contenido del popup
             const popupContent = `
-                <b>ID: ${negocioId}</b><br>    
                 <b>${giroNegocio.replace(/"/g, '')}</b><br>
                 <b>${nombreNegocio.replace(/"/g, '')}</b><br>
                 ${ubicacionData.direccionCompleta}
