@@ -4680,6 +4680,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             
             const giroSubmitButton = document.getElementById('giroSubmitButton');
             giroSubmitButton.disabled = !this.value.trim();
+            toggleEditSaveButton(this, giroSubmitButton);
         });
 
         //Para tener un control sobre la función pegar (Ctrl+V) que no tenga más de 18 digitos, quitar esta función en su versión Web
@@ -4708,6 +4709,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             
             const nombreSubmitButton = document.getElementById('nombreSubmitButton');
             nombreSubmitButton.disabled = !this.value.trim();
+            toggleEditSaveButton(this, nombreSubmitButton);
         });
 
         // Evento para controlar el pegado de texto en el campo de nombre
@@ -7237,8 +7239,10 @@ document.getElementById('idSubmitButton').addEventListener('click', function() {
         this.classList.remove('edit-btn');
         this.classList.add('save-btn');
         inputElement.focus();
-        // Colocar el cursor al final
-        inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        // Colocar el cursor al final del texto
+        setTimeout(() => {
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        }, 0);
     } else {
         // Guardar cambios
         const newId = inputElement.value;
@@ -7289,8 +7293,22 @@ document.getElementById('newIdInput').addEventListener('input', function() {
     
     const idSubmitButton = document.getElementById('idSubmitButton');
     idSubmitButton.disabled = !this.value.trim();
+    toggleEditSaveButton(this, idSubmitButton);
 });
 
+
+// Función para cambiar el texto del botón de Editar a Guardar
+function toggleEditSaveButton(inputElement, buttonElement) {
+    if (inputElement.value.trim().length > 0) {
+        buttonElement.textContent = 'Guardar';
+        buttonElement.classList.remove('edit-btn');
+        buttonElement.classList.add('save-btn');
+    } else {
+        buttonElement.textContent = 'Editar';
+        buttonElement.classList.remove('save-btn');
+        buttonElement.classList.add('edit-btn');
+    }
+}
 
 
     </script>   
