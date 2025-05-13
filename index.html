@@ -698,7 +698,7 @@
             padding: 10px;
             margin-bottom: 7px;
             font-size: 16px;
-            background: #ffeac3;
+            background: #f7f0e5;
             color: #000000;
             border: 1px solid #ffa600;
             box-shadow: 0 0 5px #ffbd42;
@@ -754,9 +754,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #00000050;
-            border: 1px solid #07edf5;
+            border: 1px solid #d4a017;
             padding: 20px;
-            box-shadow: 0 0 20px #4ee2ec;
+            box-shadow: 0 0 20px #e8a317;
             z-index: 1010;
             text-align: center;
             border-radius: 10px;
@@ -767,23 +767,23 @@
             padding: 10px;
             margin-bottom: 7px;
             font-size: 16px;
-            background: #bbf9ff;
+            background: #f7f0e5;
             color: #000000;
-            border: 1px solid #07edf5;
-            box-shadow: 0 0 5px #4ee2ec;
+            border: 1px solid #f5b104;
+            box-shadow: 0 0 5px #e8a317;
             border-radius: 5px;
         }
 
         .custom-giro-input input:hover {
             background: #000000;
-            border: 0.5px solid #4ee2ec;
-            color: #4ee2ec;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-giro-input input:focus {
             background: #000000;
-            border: 0.5px solid #4ee2ec;
-            color: #4ee2ec;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-giro-input .button-container {
@@ -794,7 +794,7 @@
         .custom-giro-input .button-container button {
             background-color: #000000;
             color: white;
-            border: 1px solid #4ee2ec;
+            border: 1px solid #d4a017;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -817,9 +817,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #00000050;
-            border: 1px solid #f30086;
+            border: 1px solid #d4a017;
             padding: 20px;
-            box-shadow: 0 0 20px #f507dd;
+            box-shadow: 0 0 20px #e8a317;
             z-index: 1010;
             text-align: center;
             border-radius: 10px;
@@ -830,23 +830,23 @@
             padding: 10px;
             margin-bottom: 7px;
             font-size: 16px;
-            background: #ffb1f7;
+            background: #f7f0e5;
             color: #000000;
-            border: 1px solid #f507dd;
-            box-shadow: 0 0 5px #f507dd;
+            border: 1px solid #f5b104;
+            box-shadow: 0 0 5px #e8a317;
             border-radius: 5px;
         }
 
         .custom-nombre-input input:hover {
             background: #000000;
-            border: 0.5px solid #f507dd;
-            color: #f507dd;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-nombre-input input:focus {
             background: #000000;
-            border: 0.5px solid #f507dd;
-            color: #f507dd;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-nombre-input .button-container {
@@ -858,7 +858,7 @@
         .custom-nombre-input .button-container button {
             background-color: #000000;
             color: white;
-            border: 1px solid #f30086;
+            border: 1px solid #d4a017;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -866,9 +866,9 @@
             border-radius: 15px;
         }
 
-        .custom-nombre-input .button-container button:hover {
-            background-color: #000000;
-            border: 2px solid #027e94;
+       /* .custom-nombre-input .button-container button:hover {
+            background-color: #000000;*/
+            /*border: 2px solid #027e94;
             box-shadow: 0 0 10px #00d9ff;
         }
         
@@ -2141,7 +2141,7 @@
         }
         
 
-        /*------ Botón BORRAR y botón GUARDAR del imput IDENTIFICADOR iDNegocio --------*/
+        /*------ Botón BORRAR EDITAR y botón GUARDAR del imput IDENTIFICADOR iDNegocio --------*/
         /* Estilo para el botón Guardar */
         #idSubmitButton {
             background-color: #4CAF50; /* Verde */
@@ -2155,7 +2155,7 @@
 
         /* Estilo para cuando es botón Borrar */
         #idSubmitButton.edit-btn {
-            background-color: #f44336; /* Rojo */
+            background-color: #00a6a9;
         }
 
         /* Efecto hover para ambos estados */
@@ -2164,12 +2164,7 @@
             transform: scale(1.05);
         }
 
-
-
-
-
-
-        /*------ Botón BORRAR y botón GUARDAR del imput giroNegocio --------*/
+        /*------ Botón BORRAR, EDITAR y botón GUARDAR del imput giroNegocio --------*/
         /* Estilo para el botón Guardar */
         #giroSubmitButton {
             background-color: #4CAF50; /* Verde */
@@ -2183,7 +2178,7 @@
 
         /* Estilo para cuando es botón Borrar */
         #giroSubmitButton.edit-btn {
-            background-color: #f44336; /* Rojo */
+            background-color: #00a6a9; /* Rojo */
         }
 
         /* Efecto hover para ambos estados */
@@ -2191,6 +2186,34 @@
             opacity: 0.8;
             transform: scale(1.05);
         }
+
+
+/*------ Botón BORRAR, EDITAR y botón GUARDAR del imput nombreNegocio --------*/
+        /* Estilo para el botón Guardar */
+        #nombreSubmitButton {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        /* Estilo para cuando es botón Borrar */
+        #nombreSubmitButton.edit-btn {
+            background-color: #00a6a9; /* Rojo */
+        }
+
+        /* Efecto hover para ambos estados */
+        #nombreSubmitButton:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+
+
+
 
         /*------------ Contador de 16 caracteres para giro y nombre ---------------*/
         .char-counter {
@@ -3364,6 +3387,35 @@
 
 
 
+.button-container-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    grid-column: 1 / -1; /* Para que ocupe todas las columnas */
+}
+
+.button-container-footer button {
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-container-footer button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-container-footer button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+
     </style>
     
 </head>
@@ -3590,7 +3642,7 @@
             </div>
 
             <div id="customGiroInput" class="custom-giro-input">
-                <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">G I R O</h3>
                 <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
                 <div class="char-counter" id="giroCharCounter">0/16</div>
                 <div class="button-container">
@@ -3599,13 +3651,18 @@
             </div>
 
             <div id="customNombreInput" class="custom-nombre-input">
-                <h3 style="color: #f30086; margin-top: 0; text-align: center;">N O M B R E</h3>
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">N O M B R E</h3>
                 <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
                 <div class="char-counter" id="nombreCharCounter">0/15</div>
                 <div class="button-container">
                     <button id="nombreSubmitButton">Guardar</button>
-                    <button id="nombreCancelButton">Cancelar</button>
+                    
                 </div>
+            </div>
+
+            <div class="button-container-footer">
+                <button id="guardarTodoButton">Guardar Todo</button>
+                <button id="cancelarTodoButton">Cancelar</button>
             </div>
         </div>
 
@@ -4332,18 +4389,104 @@
 
         // Función para mostrar el cuadro de diálogo para modificar el giro del negocio
         // Función para mostrar ambos inputs juntos
+// Modificar la función para cargar los datos al abrir el contenedor
 function showGiroNombreInput() {
     const container = document.getElementById('giroNombreContainer');
     const overlay = document.getElementById('overlay');
     
+    // Cargar datos guardados
+    const savedId = localStorage.getItem('negocioId') || '';
+    const savedGiro = localStorage.getItem('giroNegocio') || '';
+    const savedNombre = localStorage.getItem('nombreNegocio') || '';
+    
+    document.getElementById('newIdInput').value = savedId;
+    document.getElementById('idCharCounter').textContent = `${savedId.length}/10`;
+    
+    document.getElementById('newGiroInput').value = savedGiro;
+    document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
+    
+    // Eliminar comillas del nombre si existen
+    const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
+    document.getElementById('newNombreInput').value = nombreSinComillas;
+    document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
+    
+    // Configurar estado de los botones
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    const giroSubmitButton = document.getElementById('giroSubmitButton');
+    const nombreSubmitButton = document.getElementById('nombreSubmitButton');
+    
+    idSubmitButton.textContent = savedId ? 'Editar' : 'Guardar';
+    idSubmitButton.classList.add(savedId ? 'edit-btn' : 'save-btn');
+    
+    giroSubmitButton.textContent = savedGiro ? 'Editar' : 'Guardar';
+    giroSubmitButton.classList.add(savedGiro ? 'edit-btn' : 'save-btn');
+    
+    nombreSubmitButton.textContent = savedNombre ? 'Editar' : 'Guardar';
+    nombreSubmitButton.classList.add(savedNombre ? 'edit-btn' : 'save-btn');
+    
     container.style.display = 'flex';
     overlay.style.display = 'block';
     
-    // Enfocar el input del ID automáticamente después de un pequeño retraso
-    setTimeout(() => {
-        document.getElementById('newIdInput').focus();
-    }, 50); // Pequeño retraso para asegurar que el contenedor esté visible
+    // Enfocar el primer campo
+    document.getElementById('newIdInput').focus();
 }
+
+
+// Enfocar el input del ID automáticamente después de un pequeño retraso
+   // setTimeout(() => {
+       // document.getElementById('newIdInput').focus();
+   // }, 50); // Pequeño retraso para asegurar que el contenedor esté visible
+
+
+
+
+
+// Evento para el botón "Guardar Todo"
+document.getElementById('guardarTodoButton').addEventListener('click', function() {
+    // Guardar ID
+    const newId = document.getElementById('newIdInput').value;
+    if (newId) {
+        if (newId.length > 10) {
+            showCustomAlert("El ID no debe exceder 10 caracteres.");
+            return;
+        }
+        localStorage.setItem('negocioId', newId);
+        document.getElementById('idNegocioText').textContent = newId.toUpperCase();
+    }
+    
+    // Guardar Giro
+    const newGiro = document.getElementById('newGiroInput').value;
+    if (newGiro) {
+        if (newGiro.length > 16) {
+            showCustomAlert("El giro no debe exceder 16 caracteres.");
+            return;
+        }
+        localStorage.setItem('giroNegocio', newGiro);
+        document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+    }
+    
+    // Guardar Nombre
+    const newNombre = document.getElementById('newNombreInput').value;
+    if (newNombre) {
+        if (newNombre.length > 15) {
+            showCustomAlert("El nombre no debe exceder 15 caracteres.");
+            return;
+        }
+        const nombreConComillas = `"${newNombre}"`;
+        localStorage.setItem('nombreNegocio', nombreConComillas);
+        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+    }
+    
+    hideGiroNombreInput();
+    showCustomAlert("Datos guardados exitosamente.", 'success');
+});
+
+// Evento para el botón "Cancelar Todo"
+document.getElementById('cancelarTodoButton').addEventListener('click', function() {
+    hideGiroNombreInput();
+});
+
+
 
 // Función para ocultar ambos inputs
 function hideGiroNombreInput() {
@@ -4360,7 +4503,12 @@ document.getElementById('modifyNombreButton').addEventListener('click', showGiro
 
 
 
-document.getElementById('nombreCancelButton').addEventListener('click', hideGiroNombreInput);
+//document.getElementById('nombreCancelButton').addEventListener('click', hideGiroNombreInput);
+
+
+//-------------------------------------------------------//
+
+
 
         // Evento para cerrar la ventana de mensaje
         document.getElementById('alertCloseButton').addEventListener('click', hideCustomAlert);
@@ -4578,23 +4726,31 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
 
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el nombre del negocio
         document.getElementById('nombreSubmitButton').addEventListener('click', function() {
-    const newNombre = document.getElementById('newNombreInput').value;
-    if (newNombre) {
-        // Validar que no exceda 15 caracteres
-        if (newNombre.length > 15) {
-            showCustomAlert("El nombre del negocio no debe exceder 15 caracteres.");
-            return;
-        }
-        
-        // Asegurarse de que el nombre esté entre comillas
-        const nombreConComillas = `"${newNombre}"`;
-        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-        localStorage.setItem('nombreNegocio', nombreConComillas);
-        
-        // Ocultar el contenedor después de guardar
-        hideGiroNombreInput();
+    const inputElement = document.getElementById('newNombreInput');
+    
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
     } else {
-        showCustomAlert("Ingresa un nombre válido.");
+        // Guardar cambios
+        const newNombre = inputElement.value;
+        if (newNombre) {
+            if (newNombre.length > 15) {
+                showCustomAlert("El nombre no debe exceder 15 caracteres.");
+                return;
+            }
+            
+            const nombreConComillas = `"${newNombre}"`;
+            document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+            localStorage.setItem('nombreNegocio', nombreConComillas);
+            
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
+        }
     }
 });
 
@@ -4610,9 +4766,9 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
         });
 
         // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el nombre del negocio
-        document.getElementById('nombreCancelButton').addEventListener('click', function () {
-            hideCustomNombreInput();
-        });
+        //document.getElementById('nombreCancelButton').addEventListener('click', function () {
+            //hideCustomNombreInput();
+        //});
 
         // Lógica del botón de emergencia 3D
         document.getElementById('emergencyButton3D').addEventListener('click', function() {
