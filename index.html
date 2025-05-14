@@ -1178,7 +1178,7 @@
         #emergencyCuadranteButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -1287,7 +1287,7 @@
         #emergencyExtorsionButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -1394,7 +1394,7 @@
         #emergencyConocidoButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -4755,15 +4755,15 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
 });
 
         // Cargar el nombre del negocio desde localStorage al cargar la página
-        window.addEventListener('load', function() {
-            const savedNombre = localStorage.getItem('nombreNegocio');
-            if (savedNombre) {
+        //window.addEventListener('load', function() {
+            //const savedNombre = localStorage.getItem('nombreNegocio');
+            //if (savedNombre) {
                 // Eliminar las comillas si existen para mostrarlas en el input
-                const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
-                document.getElementById('newNombreInput').value = nombreSinComillas;
-                document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
-            }
-        });
+                //const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
+                //document.getElementById('newNombreInput').value = nombreSinComillas;
+                //document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
+            //}
+        //});
 
         // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el nombre del negocio
         //document.getElementById('nombreCancelButton').addEventListener('click', function () {
