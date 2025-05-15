@@ -6721,12 +6721,12 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             // Obtener el nombre del negocio para el popup
             const negocioId = localStorage.getItem('negocioId') || 'ID no asignado';
             const giroNegocio = localStorage.getItem('giroNegocio') || 'Giro';
-            const nombreNegocio = localStorage.getItem('nombreNegocio') || 'Negocio';
-
+            const nombreNegocio = localStorage.getItem('nombreNegocio') || '"Negocio"';
+            
             // Crear el contenido del popup
             const popupContent = `
                 <b>${giroNegocio.replace(/"/g, '')}</b><br>
-                <b>${nombreNegocio.replace(/"/g, '')}</b><br>
+                <b>"${nombreNegocio.replace(/"/g, '')}"</b><br>
                 ${ubicacionData.direccionCompleta}
             `;
 
