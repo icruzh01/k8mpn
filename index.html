@@ -262,8 +262,28 @@
         }
                 
         /*---------- GIRO y NOMBRE del Establecimiento ------------------*/
+        h1.idNegocio {
+            top: 110px;
+            margin-bottom: 11px;
+            padding: 0 0;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            min-height: 0;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            text-shadow:0 0 2px #ff0000, 0 0 4px #ff0000;
+            z-index: 1000;
+        }
+        
         h1.giroNegocio {
-            top: 150px;
+            top: 92px;
             margin-bottom: 11px;
             padding: 0 0;
             font-family: sans-serif;
@@ -283,7 +303,7 @@
         }
 
         h1.nombreNegocio {
-            top: 130px;
+            top: 70px;
             margin-bottom: 20px;
             padding: 0 0;
             font-family: sans-serif;
@@ -306,7 +326,7 @@
         
         #emergencyButtonContainer {
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -654,6 +674,76 @@
             border: 2px solid #c20303;
             box-shadow: 0 0 10px #ff0000;
         }
+
+        /*-------- Cuadro para AGREGAR IDENTIFICADOR (ID) del establecimiento (showGiroNombreInput) ------------------*/
+        .custom-id-input {
+            display: none;
+            position: fixed;
+            width: 250px;
+            height: 100px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #00000050;
+            border: 1px solid #ffa600;
+            padding: 20px;
+            box-shadow: 0 0 20px #ffbd42;
+            z-index: 1010;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .custom-id-input input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 7px;
+            font-size: 16px;
+            background: #f7f0e5;
+            color: #000000;
+            border: 1px solid #ffa600;
+            box-shadow: 0 0 5px #ffbd42;
+            border-radius: 5px;
+        }
+
+        .custom-id-input input:hover {
+            background: #000000;
+            border: 0.5px solid #ffa600;
+            color: #ffa600;
+        }
+
+        .custom-id-input input:focus {
+            background: #000000;
+            border: 0.5px solid #ffa600;
+            color: #ffa600;
+        }
+
+        .custom-id-input .button-container {
+            justify-content: center;
+            
+        }
+
+        .custom-id-input .button-container button {
+            background-color: #000000;
+            color: white;
+            border: 1px solid #ffa600;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
+
+        .custom-id-input .button-container button:hover {
+            background-color: #000000;
+            border: 2px solid #000000;
+            box-shadow: 0 0 10px #000000;
+        }
+
+
+
+
+
+
         /*-------- Cuadro para AGREGAR GIRO del establecimiento (showGiroNombreInput) ------------------*/
         .custom-giro-input {
             display: none;
@@ -664,9 +754,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #00000050;
-            border: 1px solid #07edf5;
+            border: 1px solid #d4a017;
             padding: 20px;
-            box-shadow: 0 0 20px #4ee2ec;
+            box-shadow: 0 0 20px #e8a317;
             z-index: 1010;
             text-align: center;
             border-radius: 10px;
@@ -677,23 +767,23 @@
             padding: 10px;
             margin-bottom: 7px;
             font-size: 16px;
-            background: #bbf9ff;
+            background: #f7f0e5;
             color: #000000;
-            border: 1px solid #07edf5;
-            box-shadow: 0 0 5px #4ee2ec;
+            border: 1px solid #f5b104;
+            box-shadow: 0 0 5px #e8a317;
             border-radius: 5px;
         }
 
         .custom-giro-input input:hover {
             background: #000000;
-            border: 0.5px solid #4ee2ec;
-            color: #4ee2ec;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-giro-input input:focus {
             background: #000000;
-            border: 0.5px solid #5cbd02;
-            color: #4ee2ec;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-giro-input .button-container {
@@ -704,7 +794,7 @@
         .custom-giro-input .button-container button {
             background-color: #000000;
             color: white;
-            border: 1px solid #4ee2ec;
+            border: 1px solid #d4a017;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -727,9 +817,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #00000050;
-            border: 1px solid #f30086;
+            border: 1px solid #d4a017;
             padding: 20px;
-            box-shadow: 0 0 20px #f507dd;
+            box-shadow: 0 0 20px #e8a317;
             z-index: 1010;
             text-align: center;
             border-radius: 10px;
@@ -740,23 +830,23 @@
             padding: 10px;
             margin-bottom: 7px;
             font-size: 16px;
-            background: #ffb1f7;
+            background: #f7f0e5;
             color: #000000;
-            border: 1px solid #f507dd;
-            box-shadow: 0 0 5px #f507dd;
+            border: 1px solid #f5b104;
+            box-shadow: 0 0 5px #e8a317;
             border-radius: 5px;
         }
 
         .custom-nombre-input input:hover {
             background: #000000;
-            border: 0.5px solid #f507dd;
-            color: #f507dd;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-nombre-input input:focus {
             background: #000000;
-            border: 0.5px solid #5cbd02;
-            color: #f507dd;
+            border: 0.5px solid #f7b100;
+            color: #f5b104;
         }
 
         .custom-nombre-input .button-container {
@@ -768,7 +858,7 @@
         .custom-nombre-input .button-container button {
             background-color: #000000;
             color: white;
-            border: 1px solid #f30086;
+            border: 1px solid #d4a017;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -776,9 +866,9 @@
             border-radius: 15px;
         }
 
-        .custom-nombre-input .button-container button:hover {
-            background-color: #000000;
-            border: 2px solid #027e94;
+       /* .custom-nombre-input .button-container button:hover {
+            background-color: #000000;*/
+            /*border: 2px solid #027e94;
             box-shadow: 0 0 10px #00d9ff;
         }
         
@@ -1088,7 +1178,7 @@
         #emergencyCuadranteButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -1197,7 +1287,7 @@
         #emergencyExtorsionButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -1304,7 +1394,7 @@
         #emergencyConocidoButtonContainer {
             display: none; 
             position: relative;
-            top: 110px;
+            top: 60px;
             width: 200px;
             height: 200px;
             perspective: 1000px;
@@ -1686,10 +1776,9 @@
         /* Para ajustar la posición del Texto y contenedor */
         
         /* Ajusta el contenedor de registros para que no incluya el título */
-        
         .registros-container {
             position: fixed;
-            bottom: 18%; /* Cambiado de bottom: 05px */
+            bottom: 20%; /* Cambiado de bottom: 05px */
             left: 50%;
             transform: translate(-50%, 50%); /* Centra horizontal y verticalmente */
             background-color: rgba(0, 0, 0, 0.9);
@@ -1708,7 +1797,7 @@
         /* Estilos para el título de registros - centrado */
         #registrosTitulo {
             position: fixed;
-            bottom: calc(35%); /* Ajusta esta posición para que esté arriba del contenedor */
+            bottom: calc(37%); /* Ajusta esta posición para que esté arriba del contenedor */
             left: 50%;
             transform: translateX(-50%); /* Centra horizontalmente */
             background-color: rgba(0, 0, 0, 0.9);
@@ -2051,7 +2140,31 @@
             justify-content: center;
         }
         
-        /*------ Botón BORRAR y botón GUARDAR del imput giroNegocio --------*/
+
+        /*------ Botón BORRAR EDITAR y botón GUARDAR del imput IDENTIFICADOR iDNegocio --------*/
+        /* Estilo para el botón Guardar */
+        #idSubmitButton {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        /* Estilo para cuando es botón Borrar */
+        #idSubmitButton.edit-btn {
+            background-color: #00a6a9;
+        }
+
+        /* Efecto hover para ambos estados */
+        #idSubmitButton:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        /*------ Botón BORRAR, EDITAR y botón GUARDAR del imput giroNegocio --------*/
         /* Estilo para el botón Guardar */
         #giroSubmitButton {
             background-color: #4CAF50; /* Verde */
@@ -2064,8 +2177,8 @@
         }
 
         /* Estilo para cuando es botón Borrar */
-        #giroSubmitButton.delete-btn {
-            background-color: #f44336; /* Rojo */
+        #giroSubmitButton.edit-btn {
+            background-color: #00a6a9; /* Rojo */
         }
 
         /* Efecto hover para ambos estados */
@@ -2073,6 +2186,34 @@
             opacity: 0.8;
             transform: scale(1.05);
         }
+
+
+/*------ Botón BORRAR, EDITAR y botón GUARDAR del imput nombreNegocio --------*/
+        /* Estilo para el botón Guardar */
+        #nombreSubmitButton {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        /* Estilo para cuando es botón Borrar */
+        #nombreSubmitButton.edit-btn {
+            background-color: #00a6a9; /* Rojo */
+        }
+
+        /* Efecto hover para ambos estados */
+        #nombreSubmitButton:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+
+
+
 
         /*------------ Contador de 16 caracteres para giro y nombre ---------------*/
         .char-counter {
@@ -3197,20 +3338,20 @@
 
 
 
-/*------------- Estilo para el contenedor de giro y nombre (showGiroNombreInput) --------- */
+/*------------- Contenedor principal para los inputs de ID, giro y nombre (showGiroNombreInput) --------- */
 .giro-nombre-container {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: auto;
-    height: 300px;
+    width: 300px; /* Ancho fijo para mejor consistencia */
+    height: auto; /* Altura automática según contenido */
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none; /* Inicialmente oculto */
     flex-direction: column;
     align-items: center;
     gap: 20px;
     z-index: 1010;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 20px;
     border-radius: 15px;
     border: 1px solid #00bfff;
@@ -3218,10 +3359,12 @@
 }
 
 /* Ajusta los estilos de los inputs individuales para que se vean bien en el contenedor */
+.giro-nombre-container .custom-id-input,
 .giro-nombre-container .custom-giro-input,
 .giro-nombre-container .custom-nombre-input {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
     top: auto;
@@ -3230,6 +3373,7 @@
     background: transparent;
     border: none;
     padding: 0;
+    margin: 0;
     box-shadow: none;
 }
 
@@ -3241,6 +3385,35 @@
 
 
 
+
+
+.button-container-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    grid-column: 1 / -1; /* Para que ocupe todas las columnas */
+}
+
+.button-container-footer button {
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-container-footer button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-container-footer button:last-child {
+    background-color: #f44336;
+    color: white;
+}
 
 
     </style>
@@ -3287,10 +3460,9 @@
         </div>
 
         <div>
-
+            <h1 id="idNegocioText" class="idNegocio">ID</h1>
             <h1 id="giroNegocioText" class="giroNegocio">GIRO DEL NEGOCIO</h1>
             <h1 id="nombreNegocioText" class="nombreNegocio">"NOMBRE"</h1>
-
         </div>
 
         <!-- Contenedor del botón de emergencia 3D -->
@@ -3398,10 +3570,11 @@
 
 
         <!-- Alerta personalizada para Cuadrante -->
-        <div id="customAlertCuadrante" class="custom-alert-cuadrante">
-            <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante del negocio o establecimiento registrado.</p>
-            <button id="alertCuadranteCloseButton">Entendido</button>
-        </div>
+<div id="customAlertCuadrante" class="custom-alert-cuadrante">
+    <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante del negocio o establecimiento registrado.</p>
+    <img src="imagen/ciudadano_policia.png" alt="Jefe de Cuadrante" style="width: 100%; max-width: 300px; margin: 15px auto; display: block; border-radius: 8px;">
+    <button id="alertCuadranteCloseButton">Entendido</button>
+</div>
         
         
         <!-- Para el mensaje de Casos de Extorsión -->
@@ -3412,8 +3585,8 @@
                 3. No contestar llamadas o mensajes de números desconocidos<br>
                 4. No entregar dinero o bien económico<br>
                 5. Comunícate a las lineas Anti-Extorsión en la Ciudad de México:<br>
-                ☎️ Policía: 55-5242-5034<br>
-                ☎️ C5: 55-5036-3301</p>
+                ☎️ C5: 55-5036-3301<br>
+                ☎️ Policía: 55-5242-5034</p>
             <button id="alertExtorsionCloseButton">Entendido</button>
         </div>
 
@@ -3458,34 +3631,41 @@
             <button id="closeScannerButton">Cerrar</button>
         </div>
 
-        
+        <!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
+        <div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
+            <div id="customIdInput" class="custom-id-input">
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">I D</h3>
+                <input type="text" id="newIdInput" placeholder="Identificador del Negocio" maxlength="10">
+                <div class="char-counter" id="idCharCounter">0/10</div>
+                <div class="button-container">
+                    <button id="idSubmitButton">Guardar</button>
+                </div>
+            </div>
 
+            <div id="customGiroInput" class="custom-giro-input">
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">G I R O</h3>
+                <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
+                <div class="char-counter" id="giroCharCounter">0/16</div>
+                <div class="button-container">
+                    <button id="giroSubmitButton">Guardar</button>
+                </div>
+            </div>
 
+            <div id="customNombreInput" class="custom-nombre-input">
+                <h3 style="color: #ffa600; margin-top: 0; text-align: center;">N O M B R E</h3>
+                <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
+                <div class="char-counter" id="nombreCharCounter">0/15</div>
+                <div class="button-container">
+                    <button id="nombreSubmitButton">Guardar</button>
+                    
+                </div>
+            </div>
 
-
-<!------- Unión de los inputs GIRO y NOMBRE (showGiroNombreInput) ------>
-<div id="giroNombreContainer" class="giro-nombre-container" style="display: none;">
-    <div id="customGiroInput" class="custom-giro-input">
-        <h3 style="color: #00ffff; margin-top: 0; text-align: center;">G I R O</h3>
-        <input type="text" id="newGiroInput" placeholder="Giro del Negocio" maxlength="16">
-        <div class="char-counter" id="giroCharCounter">0/16</div>
-        <div class="button-container">
-            <button id="giroSubmitButton">Guardar</button>
-            
+            <div class="button-container-footer">
+                <button id="guardarTodoButton">Guardar Todo</button>
+                <button id="cancelarTodoButton">Cancelar</button>
+            </div>
         </div>
-    </div>
-
-    <div id="customNombreInput" class="custom-nombre-input">
-        <h3 style="color: #f30086; margin-top: 0; text-align: center;">N O M B R E</h3>
-        <input type="text" id="newNombreInput" placeholder="Nombre del Negocio" maxlength="15">
-        <div class="char-counter" id="nombreCharCounter">0/15</div>
-        <div class="button-container">
-            <button id="nombreSubmitButton">Guardar</button>
-            <button id="nombreCancelButton">Cancelar</button>
-        </div>
-    </div>
-</div>
-
 
 
             <!-- Cuadro de diálogo para ingresar el número de teléfono de Cuadrante -->
@@ -3668,13 +3848,14 @@
         </p>
         
         <h3 style="color: #f00; margin-top: 30px;">CONTENIDO</h3>
-        <ol style="margin-bottom: 20px;">
+        <ol style="margin-bottom: 20px; list-style-type: upper-roman;">
             <li>De la Aplicación</li>
             <li>Del Objetivo</li>
             <li>Del Uso y Funcionamiento</li>
             <li>De la Protección de Datos Personales</li>
             <li>De la Propiedad Intelectual</li>
             <li>De las Consideraciones Finales</li>
+            <li>De la responsabilidad</li>
         </ol>
         
         <p style="text-align: justify; margin-bottom: 30px; font-style: italic;">
@@ -3683,11 +3864,11 @@
         
         <h3 style="color: #f00; margin-top: 20px;">I. DE LA APLICACIÓN</h3>
         <p style="text-align: justify; margin-bottom: 20px;">
-            La aplicación Emergencia K8 es una herramienta tecnológica diseñada, desarrollada e implementada por la Secretaría de Seguridad Ciudadana de la Ciudad de México, con una interfaz intuitiva que facilita la comunicación entre la ciudadanía y los cuerpos de seguridad en situaciones de emergencia.
+            La aplicación Emergencia K8 es una herramienta tecnológica diseñada, desarrollada e implementada, con una interfaz intuitiva que facilita la comunicación para poder soliitar el auxilio en situaciones de emergencia.
         </p>
         
         <p style="text-align: justify; margin-bottom: 20px;">
-            Emergencia K8 está dirigida a establecimientos comerciales, negocios y locaciones fijas dentro de la Ciudad de México, funcionando como un botón de pánico virtual silencioso. Mediante esta aplicación, empleados, encargados o propietarios podrán solicitar auxilio policial de manera inmediata en caso de una emergencia.
+            Emergencia K8 está dirigida a establecimientos comerciales, negocios y locaciones fijas dentro de la Ciudad de México, funcionando como un botón de pánico virtual silencioso. Mediante esta aplicación, empleados, encargados o propietarios podrán solicitar auxilio de manera inmediata en caso de una emergencia.
         </p>
         
         <p style="text-align: justify; margin-bottom: 20px;">
@@ -3725,7 +3906,7 @@
             <li>Es necesario contar con un dispositivo móvil (teléfono o tableta), o equipo de cómputo.</li>
             <li>Se requiere conexión a internet o datos móviles.</li>
             <li>El establecimiento debe estar registrado en la Plataforma Tecnológica Emergencia K8.</li>
-            <li>Se debe contar con un token de acceso único, proporcionado por la Dirección de Desarrollo de Sistemas Informáticos de la SSC-CDmx.</li>
+            <li>Se debe contar con un token de acceso único, que sirva de enlace entre el establecimiento o negocio y el servicio de emergencia.</li>
         </ul>
         
         <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
@@ -3733,8 +3914,8 @@
         </p>
         
         <ul style="margin-bottom: 20px;">
-            <li>Durante la configuración, se deberá ingresar el token asignado al establecimiento.</li>
-            <li>Se recomienda realizar pruebas de funcionamiento para verificar la compatibilidad del botón de pánico.</li>
+            <li>Durante la configuración, se deberá ingresar el token asignado al establecimiento o negocio.</li>
+            <li>Se recomienda realizar pruebas de funcionamiento para verificar la compatibilidad del botón de pánico virtual.</li>
         </ul>
         
         <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
@@ -3743,7 +3924,7 @@
         
         <ul style="margin-bottom: 20px;">
             <li>Al activar el botón de pánico, el usuario tendrá unos segundos para cancelar la solicitud antes de que sea enviada.</li>
-            <li>Las alertas se canalizarán directamente a la Secretaría de Seguridad Ciudadana, siendo atendidas por la policía del cuadrante correspondiente.</li>
+            <li>Las alertas se canalizarán directamente al área correspondiente, para que la emergencia pueda ser atendida.</li>
         </ul>
         
         <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
@@ -3755,8 +3936,8 @@
         </p>
         
         <ul style="margin-bottom: 20px;">
-            <li>Solicitar su incorporación ante la SSC-CDmx.</li>
-            <li>Llenar un formato de datos generales y presentarlo en la Oficialía de Partes.</li>
+            <li>Para el botón de emergencia a Negocio, se deberá solicitar el token al área correspondiente.</li>
+            <li>Llenar un formato de datos generales y presentarlo en área que asignará el token.</li>
             <li>Cumplir con el requisito de estar en un punto fijo y debidamente identificado.</li>
         </ul>
         
@@ -3784,7 +3965,7 @@
         
         <h3 style="color: #f00; margin-top: 20px;">V. DE LA PROPIEDAD INTELECTUAL</h3>
         <p style="text-align: justify; margin-bottom: 20px;">
-            Todo el contenido de Emergencia K8 (código fuente, diseño, imágenes, textos, nombre, etc.) es propiedad de la Secretaría de Seguridad Ciudadana de la CDMX y está protegido por derechos de autor y propiedad industrial.
+            Todo el contenido de Emergencia K8 (código fuente, diseño, imágenes, textos, nombre, etc.) es propiedad particular y está protegido por derechos de autor y propiedad industrial.
         </p>
         
         <p style="text-align: justify; margin-bottom: 5px;">
@@ -3792,7 +3973,7 @@
         </p>
         
         <ul style="margin-bottom: 20px;">
-            <li>Su uso con fines comerciales o distintos a los previstos.</li>
+            <li>Su uso con fines distintos a los previstos.</li>
             <li>La reproducción, modificación o decompilación sin autorización expresa.</li>
         </ul>
         
@@ -3800,8 +3981,8 @@
         <ul style="margin-bottom: 20px;">
             <li>El usuario es responsable del uso adecuado de la aplicación.</li>
             <li>La SSC-CDmx podrá suspender temporalmente los servicios por mantenimiento, actualizaciones o mejoras.</li>
-            <li>No se permite el uso con fines ilícitos o comerciales.</li>
-            <li>La SSC-CDmx no se hace responsable por daños en dispositivos derivados de la descarga o uso de la aplicación.</li>
+            <li>No se permite el uso con fines ilícitos.</li>
+            <li>La aplicación Emergencia K8 no se hace responsable por daños en dispositivos derivados de la descarga o uso de la aplicación.</li>
         </ul>
         
         <p style="text-align: justify; margin-bottom: 5px; font-weight: bold;">
@@ -3809,18 +3990,29 @@
         </p>
         
         <p style="text-align: justify; margin-bottom: 20px;">
-            Los servicios de Emergencia K8 son gratuitos. Para reportar fallas, contactar a la Unidad de Contacto del Secretario:
+            Para reportar fallas o anomalias del funcionamiento de la aplicación se tendrán los siguientes medios de contacto:
         </p>
         
         <ul style="margin-bottom: 30px;">
-            <li>📞 Teléfono: 55-5208-9898</li>
-            <li>📱 WhatsApp: 55-4331-9636</li>
-            <li>📧  Correo: ucontacto@ssc.cdmx.gob.mx</li>
-            <li>𝕏  @UCS_CDMX</li>
+            <li>📞 Teléfono: 55-0000-5555</li>
+            <li>📱 WhatsApp: 55-0000-5555</li>
+            <li>📧  Correo: contacto@emergenciak8.com.mx</li>
+            <li>𝕏  @emergenciak8_CDMX</li>
         </ul>
         
+        <h3 style="color: #f00; margin-top: 20px;">VII. DE LA RESPONSABILIDAD</h3>
+        <!-- Texto de atención con efecto especial -->
+        <div style="text-align: left; margin: 30px 0; padding: 15px; background-color: rgba(255, 0, 0, 0.1); border-left: 3px solid #ff0000; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(transparent, rgba(255,0,0,0.05), transparent);"></div>
+            <p style="margin: 0; color: #ff5555; font-weight: bold; font-size: 1.1rem; text-shadow: 0 0 5px rgba(255,0,0,0.5);">⚠️ ATENCIÓN:</p>
+            <p style="margin: 10px 0 0 0; color: #ff9999; font-size: 0.95rem;">
+                La canalización de apoyos y/o atención de las emergencias, tanto de seguridad como de cualquier otro tipo, no es responsabilidad de la Aplicación Emergencia K8
+            </p>
+        </div>
+
+
         <p style="text-align: right; font-style: italic; margin-bottom: 30px;">
-            Última actualización: 01 de mayo de 2025
+            Última actualización: 23 de mayo de 2025
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
@@ -4210,16 +4402,104 @@
 
         // Función para mostrar el cuadro de diálogo para modificar el giro del negocio
         // Función para mostrar ambos inputs juntos
+// Modificar la función para cargar los datos al abrir el contenedor
 function showGiroNombreInput() {
     const container = document.getElementById('giroNombreContainer');
     const overlay = document.getElementById('overlay');
     
+    // Cargar datos guardados
+    const savedId = localStorage.getItem('negocioId') || '';
+    const savedGiro = localStorage.getItem('giroNegocio') || '';
+    const savedNombre = localStorage.getItem('nombreNegocio') || '';
+    
+    document.getElementById('newIdInput').value = savedId;
+    document.getElementById('idCharCounter').textContent = `${savedId.length}/10`;
+    
+    document.getElementById('newGiroInput').value = savedGiro;
+    document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
+    
+    // Eliminar comillas del nombre si existen
+    const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
+    document.getElementById('newNombreInput').value = nombreSinComillas;
+    document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
+    
+    // Configurar estado de los botones
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    const giroSubmitButton = document.getElementById('giroSubmitButton');
+    const nombreSubmitButton = document.getElementById('nombreSubmitButton');
+    
+    idSubmitButton.textContent = savedId ? 'Editar' : 'Guardar';
+    idSubmitButton.classList.add(savedId ? 'edit-btn' : 'save-btn');
+    
+    giroSubmitButton.textContent = savedGiro ? 'Editar' : 'Guardar';
+    giroSubmitButton.classList.add(savedGiro ? 'edit-btn' : 'save-btn');
+    
+    nombreSubmitButton.textContent = savedNombre ? 'Editar' : 'Guardar';
+    nombreSubmitButton.classList.add(savedNombre ? 'edit-btn' : 'save-btn');
+    
     container.style.display = 'flex';
     overlay.style.display = 'block';
     
-    // Enfocar el input del giro automáticamente
-    document.getElementById('newGiroInput').focus();
+    // Enfocar el primer campo
+    document.getElementById('newIdInput').focus();
 }
+
+
+// Enfocar el input del ID automáticamente después de un pequeño retraso
+   // setTimeout(() => {
+       // document.getElementById('newIdInput').focus();
+   // }, 50); // Pequeño retraso para asegurar que el contenedor esté visible
+
+
+
+
+
+// Evento para el botón "Guardar Todo"
+document.getElementById('guardarTodoButton').addEventListener('click', function() {
+    // Guardar ID
+    const newId = document.getElementById('newIdInput').value;
+    if (newId) {
+        if (newId.length > 10) {
+            showCustomAlert("El ID no debe exceder 10 caracteres.");
+            return;
+        }
+        localStorage.setItem('negocioId', newId);
+        document.getElementById('idNegocioText').textContent = newId.toUpperCase();
+    }
+    
+    // Guardar Giro
+    const newGiro = document.getElementById('newGiroInput').value;
+    if (newGiro) {
+        if (newGiro.length > 16) {
+            showCustomAlert("El giro no debe exceder 16 caracteres.");
+            return;
+        }
+        localStorage.setItem('giroNegocio', newGiro);
+        document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
+    }
+    
+    // Guardar Nombre
+    const newNombre = document.getElementById('newNombreInput').value;
+    if (newNombre) {
+        if (newNombre.length > 15) {
+            showCustomAlert("El nombre no debe exceder 15 caracteres.");
+            return;
+        }
+        const nombreConComillas = `"${newNombre}"`;
+        localStorage.setItem('nombreNegocio', nombreConComillas);
+        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+    }
+    
+    hideGiroNombreInput();
+    showCustomAlert("Datos guardados exitosamente.", 'success');
+});
+
+// Evento para el botón "Cancelar Todo"
+document.getElementById('cancelarTodoButton').addEventListener('click', function() {
+    hideGiroNombreInput();
+});
+
+
 
 // Función para ocultar ambos inputs
 function hideGiroNombreInput() {
@@ -4236,7 +4516,12 @@ document.getElementById('modifyNombreButton').addEventListener('click', showGiro
 
 
 
-document.getElementById('nombreCancelButton').addEventListener('click', hideGiroNombreInput);
+//document.getElementById('nombreCancelButton').addEventListener('click', hideGiroNombreInput);
+
+
+//-------------------------------------------------------//
+
+
 
         // Evento para cerrar la ventana de mensaje
         document.getElementById('alertCloseButton').addEventListener('click', hideCustomAlert);
@@ -4401,43 +4686,37 @@ document.getElementById('nombreCancelButton').addEventListener('click', hideGiro
         
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el giro del negocio
         // Evento para el botón "Guardar/Borrar"
-document.getElementById('giroSubmitButton').addEventListener('click', function () {
-    const newGiro = document.getElementById('newGiroInput').value;
+// Evento para el botón "Guardar/Editar" del giro del negocio
+document.getElementById('giroSubmitButton').addEventListener('click', function() {
+    const inputElement = document.getElementById('newGiroInput');
     
-    if (this.textContent === 'Guardar') {
-        // Lógica para guardar
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
+        // Colocar el cursor al final del texto
+        setTimeout(() => {
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        }, 0);
+    } else {
+        // Guardar cambios
+        const newGiro = inputElement.value;
         if (newGiro) {
-            // Validar que no exceda 16 caracteres
             if (newGiro.length > 16) {
-                showCustomAlert("El giro del negocio no debe exceder 16 caracteres.");
+                showCustomAlert("El giro no debe exceder 16 caracteres.");
                 return;
             }
             
-            // Actualizar el texto mostrado
-            document.getElementById('giroNegocioText').textContent = newGiro.toUpperCase();
-            
-            // Guardar en localStorage
             localStorage.setItem('giroNegocio', newGiro);
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
             
-            // Cambiar el botón a "Borrar"
-            this.textContent = 'Borrar';
-            this.classList.add('delete-btn'); // Clase para estilo diferente
-            
-            // Enfocar el input del nombre
+            // Mover el cursor al input de nombre
             document.getElementById('newNombreInput').focus();
         }
-    } else {
-        // Lógica para borrar
-        document.getElementById('newGiroInput').value = '';
-        localStorage.removeItem('giroNegocio');
-        document.getElementById('giroNegocioText').textContent = 'GIRO DEL NEGOCIO';
-        
-        // Restaurar botón a "Guardar"
-        this.textContent = 'Guardar';
-        this.classList.remove('delete-btn');
-        
-        // Actualizar contador de caracteres
-        document.getElementById('giroCharCounter').textContent = '0/16';
     }
 });
 
@@ -4447,52 +4726,62 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         window.addEventListener('load', function() {
     const savedGiro = localStorage.getItem('giroNegocio');
     const giroSubmitButton = document.getElementById('giroSubmitButton');
-    
     if (savedGiro) {
         document.getElementById('newGiroInput').value = savedGiro;
         document.getElementById('giroCharCounter').textContent = `${savedGiro.length}/16`;
-        giroSubmitButton.textContent = 'Borrar';
-        giroSubmitButton.classList.add('delete-btn');
+        giroSubmitButton.textContent = 'Editar';
+        giroSubmitButton.classList.add('edit-btn');
+    } else {
+        giroSubmitButton.textContent = 'Guardar';
+        giroSubmitButton.classList.add('save-btn');
     }
 });
 
         // Evento para el botón "Guardar" (en localStorage) del cuadro de diálogo para modificar el nombre del negocio
         document.getElementById('nombreSubmitButton').addEventListener('click', function() {
-    const newNombre = document.getElementById('newNombreInput').value;
-    if (newNombre) {
-        // Validar que no exceda 15 caracteres
-        if (newNombre.length > 15) {
-            showCustomAlert("El nombre del negocio no debe exceder 15 caracteres.");
-            return;
-        }
-        
-        // Asegurarse de que el nombre esté entre comillas
-        const nombreConComillas = `"${newNombre}"`;
-        document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
-        localStorage.setItem('nombreNegocio', nombreConComillas);
-        
-        // Ocultar el contenedor después de guardar
-        hideGiroNombreInput();
+    const inputElement = document.getElementById('newNombreInput');
+    
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
     } else {
-        showCustomAlert("Ingresa un nombre válido.");
+        // Guardar cambios
+        const newNombre = inputElement.value;
+        if (newNombre) {
+            if (newNombre.length > 15) {
+                showCustomAlert("El nombre no debe exceder 15 caracteres.");
+                return;
+            }
+            
+            const nombreConComillas = `"${newNombre}"`;
+            document.getElementById('nombreNegocioText').textContent = nombreConComillas.toUpperCase();
+            localStorage.setItem('nombreNegocio', nombreConComillas);
+            
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
+        }
     }
 });
 
         // Cargar el nombre del negocio desde localStorage al cargar la página
-        window.addEventListener('load', function() {
-            const savedNombre = localStorage.getItem('nombreNegocio');
-            if (savedNombre) {
+        //window.addEventListener('load', function() {
+            //const savedNombre = localStorage.getItem('nombreNegocio');
+            //if (savedNombre) {
                 // Eliminar las comillas si existen para mostrarlas en el input
-                const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
-                document.getElementById('newNombreInput').value = nombreSinComillas;
-                document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
-            }
-        });
+                //const nombreSinComillas = savedNombre.replace(/^"|"$/g, '');
+                //document.getElementById('newNombreInput').value = nombreSinComillas;
+                //document.getElementById('nombreCharCounter').textContent = `${nombreSinComillas.length}/15`;
+            //}
+        //});
 
         // Evento para el botón "Cancelar" del cuadro de diálogo para modificar el nombre del negocio
-        document.getElementById('nombreCancelButton').addEventListener('click', function () {
-            hideCustomNombreInput();
-        });
+        //document.getElementById('nombreCancelButton').addEventListener('click', function () {
+            //hideCustomNombreInput();
+        //});
 
         // Lógica del botón de emergencia 3D
         document.getElementById('emergencyButton3D').addEventListener('click', function() {
@@ -4560,6 +4849,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             
             const giroSubmitButton = document.getElementById('giroSubmitButton');
             giroSubmitButton.disabled = !this.value.trim();
+            toggleEditSaveButton(this, giroSubmitButton);
         });
 
         //Para tener un control sobre la función pegar (Ctrl+V) que no tenga más de 18 digitos, quitar esta función en su versión Web
@@ -4588,6 +4878,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             
             const nombreSubmitButton = document.getElementById('nombreSubmitButton');
             nombreSubmitButton.disabled = !this.value.trim();
+            toggleEditSaveButton(this, nombreSubmitButton);
         });
 
         // Evento para controlar el pegado de texto en el campo de nombre
@@ -5859,11 +6150,11 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
 
         //--------------------- EFECTO de HUMO blanco permanente ----------------------------------------------------
         class SmokeEffect {
-            constructor(element) {
-                this.element = element;
-                this.originalText = '';
-                this.init();
-            }
+        constructor(element) {
+            this.element = element;
+            this.originalText = element.textContent; // Esto ahora incluirá "ID: "
+            this.init();
+        }
             
             init() {
                 this.applyEffect();
@@ -5916,7 +6207,15 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             }
             
             updateText(newText) {
-                this.originalText = newText;
+                // Para el ID, mantenemos el prefijo "ID: "
+                if (this.element.id === 'idNegocioText') {
+                    const idValue = newText.replace('ID: ', '');
+                    this.originalText = `ID: ${idValue}`;
+                    this.element.textContent = `ID: ${idValue}`;
+                } else {
+                    this.originalText = newText;
+                    this.element.textContent = newText;
+                }
                 this.applyEffect();
             }
             
@@ -5939,19 +6238,39 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
         // Aplicar al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar efectos
+            const idEffect = new SmokeEffect(document.getElementById('idNegocioText'));
             const giroEffect = new SmokeEffect(document.getElementById('giroNegocioText'));
             const nombreEffect = new SmokeEffect(document.getElementById('nombreNegocioText'));
             
             // Cargar valores guardados
+            const savedId = localStorage.getItem('negocioId') || '';
+                document.getElementById('idNegocioText').textContent = `ID: ${savedId.toUpperCase()}`;
             const savedGiro = localStorage.getItem('giroNegocio') || 'GIRO DEL NEGOCIO';
             const savedNombre = localStorage.getItem('nombreNegocio') || '" NOMBRE "';
             
+            document.getElementById('idNegocioText').textContent = savedId.toUpperCase();
             document.getElementById('giroNegocioText').textContent = savedGiro.toUpperCase();
             document.getElementById('nombreNegocioText').textContent = savedNombre.toUpperCase();
             
             // Reaplicar efectos después de cargar los valores
+            idEffect.updateText(savedId.toUpperCase());
             giroEffect.updateText(savedGiro.toUpperCase());
             nombreEffect.updateText(savedNombre.toUpperCase());
+            
+            // Modifica la función que actualiza el ID cuando se guarda
+            document.getElementById('idSubmitButton')?.addEventListener('click', function() {
+                const newId = document.getElementById('newIdInput').value;
+                if (newId) {
+                    const idTextElement = document.getElementById('idNegocioText');
+                    idTextElement.textContent = `ID: ${newId.toUpperCase()}`;
+                    localStorage.setItem('negocioId', newId);
+                    
+                    // Actualizar el efecto de humo
+                    if (idTextElement._smokeEffect) {
+                        idTextElement._smokeEffect.updateText(`ID: ${newId.toUpperCase()}`);
+                    }
+                }
+            });
             
             // Modificar funciones de guardado para mantener el efecto
             document.getElementById('giroSubmitButton')?.addEventListener('click', function() {
@@ -5980,7 +6299,8 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             return element._smokeEffect;
         }
 
-        ['giroNegocioText', 'nombreNegocioText'].forEach(id => {
+        // Agregar al array de elementos que deben tener el efecto Smoke
+        ['idNegocioText', 'giroNegocioText', 'nombreNegocioText'].forEach(id => {
             const element = document.getElementById(id);
             if (element) {
                 const originalTextContent = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), 'textContent');
@@ -6048,7 +6368,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             localStorage.setItem('mapTheme', isDarkMode ? 'dark' : 'light');
             
             // Resto del código existente...
-            const elements = document.querySelectorAll('h1.giroNegocio, h1.nombreNegocio');
+            const elements = document.querySelectorAll('h1.idNegocio, h1.giroNegocio, h1.nombreNegocio');
             
             elements.forEach(el => {
                 // Estilos comunes para ambos modos
@@ -6069,7 +6389,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
                     //el.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'; // Fondo semitransparente para mejor contraste
                 }
             });
-            
+                      
             this.textContent = isDarkMode ? '☀️' : '🌙';
         });
     
@@ -6089,7 +6409,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             
             // Aplicar estilos según el tema
             const isDarkMode = mapContainer.classList.contains('dark-mode');
-            const elements = document.querySelectorAll('h1.giroNegocio, h1.nombreNegocio');
+            const elements = document.querySelectorAll('h1.idNegocio, h1.giroNegocio, h1.nombreNegocio');
             
             elements.forEach(el => {
                 // Estilos comunes para ambos modos
@@ -6412,13 +6732,14 @@ document.getElementById('giroSubmitButton').addEventListener('click', function (
             if (!ubicacionData) return;
 
             // Obtener el nombre del negocio para el popup
+            const negocioId = localStorage.getItem('negocioId') || 'ID no asignado';
             const giroNegocio = localStorage.getItem('giroNegocio') || 'Giro';
-            const nombreNegocio = localStorage.getItem('nombreNegocio') || 'Negocio';
-
+            const nombreNegocio = localStorage.getItem('nombreNegocio') || '"Negocio"';
+            
             // Crear el contenido del popup
             const popupContent = `
                 <b>${giroNegocio.replace(/"/g, '')}</b><br>
-                <b>${nombreNegocio.replace(/"/g, '')}</b><br>
+                <b>"${nombreNegocio.replace(/"/g, '')}"</b><br>
                 ${ubicacionData.direccionCompleta}
             `;
 
@@ -7074,11 +7395,89 @@ function toggleMenu() {
     toggleFullscreenMenu();
 }
 
+//------------------------------------- INPUT ID --------------
 
 
+// Evento para el botón "Guardar" del ID
+document.getElementById('idSubmitButton').addEventListener('click', function() {
+    const inputElement = document.getElementById('newIdInput');
+    
+    if (this.textContent === 'Editar') {
+        // Cambiar a modo edición
+        this.textContent = 'Guardar';
+        this.classList.remove('edit-btn');
+        this.classList.add('save-btn');
+        inputElement.focus();
+        // Colocar el cursor al final del texto
+        setTimeout(() => {
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        }, 0);
+    } else {
+        // Guardar cambios
+        const newId = inputElement.value;
+        if (newId) {
+            if (newId.length > 10) {
+                showCustomAlert("El ID no debe exceder 10 caracteres.");
+                return;
+            }
+            
+            localStorage.setItem('negocioId', newId);
+            this.textContent = 'Editar';
+            this.classList.remove('save-btn');
+            this.classList.add('edit-btn');
+            
+            // Mover el cursor al input de giro
+            document.getElementById('newGiroInput').focus();
+        }
+    }
+});
+
+// Cargar el ID desde localStorage al cargar la página
+window.addEventListener('load', function() {
+    // Para el ID
+    const savedId = localStorage.getItem('negocioId');
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    if (savedId) {
+        document.getElementById('newIdInput').value = savedId;
+        document.getElementById('idCharCounter').textContent = `${savedId.length}/10`;
+        idSubmitButton.textContent = 'Editar';
+        idSubmitButton.classList.add('edit-btn');
+    } else {
+        idSubmitButton.textContent = 'Guardar';
+        idSubmitButton.classList.add('save-btn');
+    }
+});
+
+// Evento para el contador de caracteres del ID
+document.getElementById('newIdInput').addEventListener('input', function() {
+    const currentLength = this.value.length;
+    document.getElementById('idCharCounter').textContent = `${currentLength}/10`;
+    
+    if (currentLength > 10) {
+        this.value = this.value.substring(0, 10);
+        document.getElementById('idCharCounter').textContent = "10/10";
+        showCustomAlert("Máximo 10 caracteres permitidos");
+        return;
+    }
+    
+    const idSubmitButton = document.getElementById('idSubmitButton');
+    idSubmitButton.disabled = !this.value.trim();
+    toggleEditSaveButton(this, idSubmitButton);
+});
 
 
-
+// Función para cambiar el texto del botón de Editar a Guardar
+function toggleEditSaveButton(inputElement, buttonElement) {
+    if (inputElement.value.trim().length > 0) {
+        buttonElement.textContent = 'Guardar';
+        buttonElement.classList.remove('edit-btn');
+        buttonElement.classList.add('save-btn');
+    } else {
+        buttonElement.textContent = 'Editar';
+        buttonElement.classList.remove('save-btn');
+        buttonElement.classList.add('edit-btn');
+    }
+}
 
 
     </script>   
