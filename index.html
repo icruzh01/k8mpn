@@ -3415,6 +3415,83 @@
     color: white;
 }
 
+/*------ MENSAJE DOBLE CLIC -----*/
+
+.menu-hint-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.menu-hint-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 800px) {
+    .menu-hint-message {
+        font-size: 14px;
+        padding: 10px 10px;
+        bottom: 15px;
+    }
+}
+
+
+
+
+
+
+
+    .faq-item {
+        margin-bottom: 15px;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid #00bfff;
+    }
+    
+    .faq-question {
+        color: #00bfff;
+        margin-top: 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .faq-question:hover {
+        color: #00ffff;
+    }
+    
+    .faq-toggle {
+        font-size: 1.5em;
+        margin-left: 10px;
+    }
+    
+    .faq-answer {
+        margin-top: 10px;
+        color: #ccc;
+        padding-top: 10px;
+        border-top: 1px solid rgba(0, 191, 255, 0.3);
+    }
+
+
 
     </style>
     
@@ -3571,7 +3648,7 @@
 
         <!-- Alerta personalizada para Cuadrante -->
         <div id="customAlertCuadrante" class="custom-alert-cuadrante">
-            <img src="imagen/ciudadano_policia.png" alt="Jefe de Cuadrante" style="width: 100%; max-width: 300px; margin: 15px auto; display: block; border-radius: 8px;">
+            <img src="imagen/ciudadano_policia2.png" alt="Jefe de Cuadrante" style="width: 100%; max-width: 300px; margin: 15px auto; display: block; border-radius: 8px;">
             <p id="alertCuadranteMessage">Te comunicarás con el jefe de cuadrante del negocio o establecimiento registrado.</p>
             <button id="alertCuadranteCloseButton">Entendido</button>
         </div>
@@ -3592,7 +3669,7 @@
 
         <!-- Alerta personalizada para Conocido -->
         <div id="customAlertConocido" class="custom-alert-conocido">
-            <img src="imagen/conocido1.png" alt="Jefe de Cuadrante" style="width: 100%; max-width: 300px; margin: 15px auto; display: block; border-radius: 8px;">
+            <img src="imagen/conocido2.png" alt="Jefe de Cuadrante" style="width: 100%; max-width: 300px; margin: 15px auto; display: block; border-radius: 8px;">
             <p id="alertConocidoMessage">Te comunicarás con una persona de confianza.</p>
             <button id="alertConocidoCloseButton">Entendido</button>
         </div>
@@ -3865,7 +3942,7 @@
         
         <h3 style="color: #f00; margin-top: 20px;">I. DE LA APLICACIÓN</h3>
         <p style="text-align: justify; margin-bottom: 20px;">
-            La aplicación Emergencia K8 es una herramienta tecnológica diseñada, desarrollada e implementada, con una interfaz intuitiva que facilita la comunicación para poder soliitar el auxilio en situaciones de emergencia.
+            La aplicación Emergencia K8 es una herramienta tecnológica diseñada, desarrollada e implementada, con una interfaz intuitiva que facilita la comunicación para poder solicitar el auxilio en situaciones de emergencia.
         </p>
         
         <p style="text-align: justify; margin-bottom: 20px;">
@@ -4160,6 +4237,88 @@
         </div>
     </div>
 </div>
+
+
+<!-- Mensaje DOBLE CLIC -->
+<div id="menuHintMessage" class="menu-hint-message">
+    Para mostrar el 'menú' da doble clic en el mapa
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Preguntas Frecuentes - Pantalla completa -->
+<div id="faqContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; color: #fff; z-index: 2000; overflow-y: auto; padding: 20px; box-sizing: border-box;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h1 style="text-align: center; color: #00bfff; margin-bottom: 20px;">PREGUNTAS FRECUENTES</h1>
+        <h2 style="text-align: center; margin-bottom: 30px;">APLICACIÓN EMERGENCIA K8</h2>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿Qué es la app Emergencia k8?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p>Es una herramienta tecnológica diseñada y desarrollada con una interfaz intuitiva que facilita la comunicación con el objetivo de solicitar el auxilio en situaciones de emergencia.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿La app Emergencia k8 es la responsable de mandar los apoyos?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p>No, la canalización de apoyos y/o atención de las emergencias, tanto de seguridad como de cualquier otro tipo, no es responsabilidad de la Aplicación Emergencia K8.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿Cómo puedo obtener un token para mi negocio o establecimiento?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p>Para obtener un token, este se deberá solicitar a través de un escrito al área de seguridad correspondiente. Asimismo, deberá complementar los formatos correspondientes y cumplir con los requisitos de punto fijo, visibilidad e identificación del negocio o establecimiento.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿Por qué se ingresan los datos de ubicación del negocio?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p>Para que al momento de cargar la aplicación el usuario pueda visualizar la georreferenciación del negocio o establecimiento.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿La app tiene acceso a la ubicación del dispositivo?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p>No, la aplicación no tiene acceso a la ubicación del dispositivo.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">¿Cómo funcionan los botones de emergencia?<span class="faq-toggle">+</span></h3>
+            <div class="faq-answer" style="display: none;">
+                <p><strong>Botón de Emergencia Negocio:</strong> Al momento de activarlo manda una señal de alerta a una institución de seguridad para que este a su vez canalice la solicitud de emergencia al policía del cuadrante que corresponda.</p>
+                
+                <p><strong>Botón de Emergencia Cuadrante:</strong> Te comunica vía llamada telefónica con el policía del cuadrante en donde se encuentra el negocio o establecimiento (el número telefónico se tiene que configurar previamente).</p>
+                
+                <p><strong>Botón de Emergencia Anti-Extorsión:</strong> Te comunica vía llamada telefónica con la Unidad de Atención a Casos de Secuestro y Extorsión ya sea del C5 o de la Secretaría de Seguridad Ciudadana, ambos, de la Ciudad de México (el número telefónico se tiene que configurar previamente).</p>
+                
+                <p><strong>Botón de Emergencia Conocido:</strong> Te comunica vía llamada telefónica con una persona de tu confianza el cual puede o no estar dentro de tus contactos (el número telefónico se tiene que configurar previamente).</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button id="faqCloseButton" style="padding: 10px 30px; background-color: #00bfff; color: #000; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -6967,7 +7126,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
                     navigator.vibrate(100);
                 }
             } else {
-                showCustomAlert("No hay un marcador de ubicación establecido.");
+                showCustomAlert("No hay un marcador de ubicación establecido. Configuralo en el 'menu' de servicios.");
             }
         });
 
@@ -7385,7 +7544,7 @@ function menuAction(action) {
                 actualizarGraficas();
                 break;
             case 'Preguntas':
-                showCustomAlert("🫡 ¡Pronto responderemos a tus preguntas!", 'success');
+                showFAQ();
                 break;
         }
     }, 300); // 300ms de retraso para que complete la animación de cierre
@@ -7480,6 +7639,61 @@ function toggleEditSaveButton(inputElement, buttonElement) {
     }
 }
 
+
+// Función para mostrar el mensaje del menú
+function showMenuHint() {
+    const hintMessage = document.getElementById('menuHintMessage');
+    if (!hintMessage) return;
+    
+    // Mostrar el mensaje
+    hintMessage.classList.add('show');
+    
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+        hintMessage.classList.remove('show');
+    }, 3000);
+}
+
+// Mostrar al cargar la página (después de 2 segundos del mensaje inicial)
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(showMenuHint, 5000);
+});
+
+// -------------- Función para mostrar las preguntas frecuentes ------------------
+function showFAQ() {
+    const faqContainer = document.getElementById('faqContainer');
+    const overlay = document.getElementById('overlay');
+    
+    faqContainer.style.display = 'block';
+    overlay.style.display = 'block';
+    
+    // Configurar el botón de cerrar
+    document.getElementById('faqCloseButton').onclick = function() {
+        faqContainer.style.display = 'none';
+        overlay.style.display = 'none';
+    };
+    
+    // Configurar los eventos para las preguntas
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const toggle = this.querySelector('.faq-toggle');
+            
+            // Alternar la visualización de la respuesta
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                toggle.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                toggle.textContent = '-';
+            }
+            
+            // Opcional: animación suave
+            answer.style.maxHeight = answer.style.display === 'block' ? answer.scrollHeight + 'px' : '0';
+        });
+    });
+}
 
     </script>   
 </body>
