@@ -4301,11 +4301,11 @@
             <div class="faq-answer" style="display: none;">
                 <p><strong>Botón de Emergencia Negocio:</strong> Al momento de activarlo manda una señal de alerta a una institución de seguridad para que este a su vez canalice la solicitud de emergencia al policía del cuadrante que corresponda.</p>
                 
-                <p><strong>Botón de Emergencia Cuadrante:</strong> Te comunica vía llamada telefónica con el policía del cuadrante en donde se encuentra el negocio o establecimiento (el número telefónico se tiene que configurar previamente).</p>
+                <p><strong>Botón de Emergencia Cuadrante:</strong> Te comunica vía llamada telefónica con el policía del cuadrante en donde se encuentra el negocio o establecimiento (el número telefónico se configura previamente).</p>
                 
-                <p><strong>Botón de Emergencia Anti-Extorsión:</strong> Te comunica vía llamada telefónica con la Unidad de Atención a Casos de Secuestro y Extorsión ya sea del C5 o de la Secretaría de Seguridad Ciudadana, ambos, de la Ciudad de México (el número telefónico se tiene que configurar previamente).</p>
+                <p><strong>Botón de Emergencia Anti-Extorsión:</strong> Te comunica vía llamada telefónica con la Unidad de Atención a Casos de Secuestro y Extorsión ya sea del C5 o de la Secretaría de Seguridad Ciudadana, ambos, de la Ciudad de México (el número telefónico se configura previamente).</p>
                 
-                <p><strong>Botón de Emergencia Conocido:</strong> Te comunica vía llamada telefónica con una persona de tu confianza el cual puede o no estar dentro de tus contactos (el número telefónico se tiene que configurar previamente).</p>
+                <p><strong>Botón de Emergencia Conocido:</strong> Te comunica vía llamada telefónica con una persona de tu confianza la cual puede o no estar dentro de tus contactos (el número telefónico se configura previamente).</p>
             </div>
         </div>
         
@@ -4950,7 +4950,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
     
             // Verificar si la URL está vacía
             if (!currentUrl || currentUrl.trim() === '') {
-                showCustomAlert("Carga un Token para poder activar la emergencia.");
+                showCustomAlert("Carga un Token, desde el Menú de servicios, para poder activar la emergencia.");
             } else {
                 showCustomConfirm();
             }
@@ -5631,7 +5631,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             
             // Verificar si hay un teléfono guardado
             if (!telCuadrante || telCuadrante.length !== 10 || !/^\d+$/.test(telCuadrante)) {
-                showCustomAlert("No hay un número de teléfono de Cuadrante guardado o no es válido.");
+                showCustomAlert("Registra, en el Menú de servicios, el teléfono del Cuadrante, correspondiente al establecimiento.");
                 return; // Salir de la función sin registrar la activación
             }
             
@@ -5703,7 +5703,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             
             // Verificar si hay un teléfono guardado
             if (!telExtorsion || telExtorsion.length !== 10 || !/^\d+$/.test(telExtorsion)) {
-                showCustomAlert("No hay un número de teléfono Anti-Extorsión guardado o no es válido.");
+                showCustomAlert("Registra, desde el Menú de servicios, un teléfono Anti-Extorsión válido.");
                 return; // Salir de la función sin registrar la activación
             }
             
@@ -5777,7 +5777,7 @@ document.getElementById('giroSubmitButton').addEventListener('click', function()
             
             // Verificar si hay un teléfono guardado
             if (!telConocido || telConocido.length !== 10 || !/^\d+$/.test(telConocido)) {
-                showCustomAlert("No hay un número de teléfono de Conocido guardado o no es válido.");
+                showCustomAlert("Registra, desde el Menú de servicios, un teléfono de contacto Conocido.");
                 return; // Salir de la función sin registrar la activación
             }
             
