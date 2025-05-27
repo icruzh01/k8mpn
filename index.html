@@ -3493,6 +3493,209 @@
 
 
 
+
+
+
+
+
+
+
+
+
+    /* Estilo para el menú de pantalla completa */
+.fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.fullscreen-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.close-menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #00ffff;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 90%;
+    max-width: 800px;
+    z-index: 1001;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    height: 120px;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.menu-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.menu-text {
+    font-size: 16px;
+    text-align: center;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+/* Fondo de estrellas */
+.stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: var(--opacity); transform: scale(1); }
+}
+
+/* Efectos especiales para el menú */
+.digital-universe {
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg);
+}
+
+.digital-universe::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(0, 255, 255, 0.1) 0%,
+        rgba(0, 255, 255, 0) 50%,
+        rgba(0, 255, 255, 0.1) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 6s infinite linear;
+}
+
+@keyframes shine {
+    0% { transform: rotate(45deg) translateX(-100%); }
+    100% { transform: rotate(45deg) translateX(100%); }
+}
+
+.aura-effect {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 15px;
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.2), transparent 70%);
+    z-index: 1001;
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+.digital-distortion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 255, 255, 0.05),
+            rgba(0, 255, 255, 0.05) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    z-index: 1001;
+    pointer-events: none;
+    animation: distort 10s infinite linear;
+}
+
+@keyframes distort {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.7), transparent);
+    z-index: 1001;
+    pointer-events: none;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -2px; }
+    100% { top: 100%; }
+}
+
     </style>
     
 </head>
@@ -4179,6 +4382,7 @@
 
 
 <!-- HTML del menú -->
+<!-- Menú de pantalla completa con fondo de estrellas -->
 <div id="fullscreenMenu" class="fullscreen-menu">
     <button class="close-menu-btn" onclick="toggleFullscreenMenu()">×</button>
     
@@ -7482,6 +7686,7 @@ function showWelcomeMessage() {
 
 // Función para mostrar/ocultar el menú
 // Función para mostrar/ocultar el menú de pantalla completa
+// Función para mostrar/ocultar el menú de pantalla completa
 function toggleFullscreenMenu() {
     const menu = document.getElementById('fullscreenMenu');
     menu.classList.toggle('active');
@@ -7490,18 +7695,6 @@ function toggleFullscreenMenu() {
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
 }
 
-// Función para manejar las acciones del menú
-// Para el menú hamburguesa tradicional
-document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', function() {
-        const menuOptions = document.getElementById('menuOptions');
-        const menuOverlay = document.getElementById('menuOverlay');
-        menuOptions.style.display = 'none';
-        menuOverlay.style.display = 'none';
-    });
-});
-
-// Para el menú a pantalla completa
 // Función para manejar las acciones del menú
 function menuAction(action) {
     // Cerrar el menú con animación
@@ -7550,6 +7743,7 @@ function menuAction(action) {
         }
     }, 300); // 300ms de retraso para que complete la animación de cierre
 }
+
 
 // Para activar el menú desde el botón de hamburguesa existente
 function toggleMenu() {
@@ -7696,6 +7890,57 @@ function showFAQ() {
     });
 }
 
+
+
+
+
+
+// Función para crear el fondo de estrellas
+function createStarfield(container) {
+    const starfield = document.createElement('div');
+    starfield.className = 'stars-background';
+    
+    // Crear 100 estrellas
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Posición aleatoria
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        // Tamaño aleatorio entre 1px y 3px
+        const size = Math.random() * 2 + 1;
+        
+        // Opacidad aleatoria entre 0.3 y 0.9
+        const opacity = Math.random() * 0.6 + 0.3;
+        
+        // Duración de animación aleatoria entre 2s y 5s
+        const duration = Math.random() * 3 + 2;
+        
+        // Retraso aleatorio para que no todas parpadeen a la vez
+        const delay = Math.random() * 5;
+        
+        // Aplicar propiedades CSS
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.setProperty('--opacity', opacity);
+        star.style.setProperty('--duration', `${duration}s`);
+        star.style.animationDelay = `${delay}s`;
+        
+        starfield.appendChild(star);
+    }
+    
+    container.appendChild(starfield);
+}
+
+// Crear el fondo de estrellas cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    const fullscreenMenu = document.getElementById('fullscreenMenu');
+    createStarfield(fullscreenMenu);
+});
     </script>   
 </body>
 </html>
